@@ -1,0 +1,112 @@
+body, body > table, body > table > tbody, body > table > tbody > tr, body > table > tbody > tr > td {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    height: 100%;
+    font-family: "Trebuchet MS", Garuda, Verdana, "Arial Rounded MT Bold", Calibri, Cambria, Arial, sans-serif;
+    text-shadow: rgba(255, 255, 255, 0.597656) 0px 1px 0px;
+    background-color: #52e469;
+    background-image: url(http://mp4downloader.mozdev.org/firstrun-bg.png);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
+    background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
+}
+
+a, a:visited {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.revealed {
+    text-decoration: underline;
+}
+
+a.revealed:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    /* http://voracity.org/Workarounds/LinkFocus */
+    -moz-outline: none;
+    outline: none;
+}
+
+img {
+    border-style: none;
+}
+
+abbr {
+    border-bottom: 1px dotted #FFFFFF;
+}
+
+h1 {
+    border-bottom: 1px solid #EEE;
+}
+
+h2.topnav {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 12pt;
+}
+
+h2.topleftnav {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    font-size: 12pt;
+}
+
+p {
+    text-align: left;
+}
+
+#content {
+    position: relative;
+    width: 760px;
+    margin: 10px auto;
+    padding: 30px 50px 50px 50px;
+    border: 2px solid white;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -moz-box-shadow: 5px 5px 5px rgb(108,114,190);
+    -webkit-box-shadow: 5px 5px 5px rgb(108,114,190);
+    box-shadow: 5px 5px 5px rgb(108,114,190);
+    background-color: #4fbbbf;
+    background-image: url(http://mp4downloader.mozdev.org/firstrun-fg.png);
+    background-repeat: repeat-x;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(108,114,230)), to(rgb(79,187,191)));
+    background-image: -moz-linear-gradient(100% 100% 90deg, rgb(79,187,191), rgb(108,114,230));
+}
+
+.button {
+    color: black;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-color: rgb(82,228,105);
+    background-image: url(http://mp4downloader.mozdev.org/firstrun-bg.png);
+    background-repeat: repeat-x;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
+    background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
+}
+
+.button:hover {
+    -moz-box-shadow: 5px 5px 5px #ccc;
+    -webkit-box-shadow: 5px 5px 5px #ccc;
+    box-shadow: 5px 5px 5px #ccc;
+    margin-left: -4px;
+    margin-top: -4px;
+}
