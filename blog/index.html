@@ -1,0 +1,10 @@
+---
+layout: "post"
+noextra: 1
+---
+{% for post in site.posts limit:10 %}
+                <article>
+                    <h2><a href="{{ post.url | escape}}">{{ post.title | escape }}</a></h2>
+                    <p>{{ post.date }}</p>
+                    <div>{{ post.excerpt | escape }}</div>
+                </article>{% endfor %}
