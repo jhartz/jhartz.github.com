@@ -12,9 +12,11 @@ atomfeed: 1
                     <li><a href="{{ post.url }}">{{ post.title | escape }}</a> ({{ post.date | date: '%m/%d/%Y' }})</li>{% endfor %}
                 </ul>
             </div>{% endunless %}{% if page.title %}
-            <h2>{{ page.title | escape }}</h2>{% endif %}
+            <h2>{{ page.title | escape }}</h2>
+            <p>Posted on {{ page.date | date: '%m/%d/%Y' }}</p>{% endif %}
 
-{{ content }}{% unless page.noextra %}
+{{ content }}
+{% unless page.noextra %}
             <div style="clear: both;">{% if page.previous.url %}
                 <span>«&nbsp;<a href="{{ page.previous.url | escape }}" title="{{ page.previous.title | escape }}">{{ page.previous.title | truncatewords: 15 | escape }}</a></span>{% endif %}{% if page.next.url %}
                 <span style="float: right;"><a href="{{ page.next.url | escape }}" title="{{ page.next.title | escape }}">{{ page.next.title | truncatewords: 15 | escape }}</a>&nbsp;»</span>{% endif %}

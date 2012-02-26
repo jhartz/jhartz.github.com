@@ -17,6 +17,20 @@ body {
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
 }
 
+article {
+    text-align: left;
+}
+
+article h2 {
+    margin-bottom: 0;
+}
+
+article p.timestamp {
+    font-style: italic;
+    margin: 10px;
+    font-size: 11pt;
+}
+
 a, a:visited {
     text-decoration: inherit;
     color: inherit;
