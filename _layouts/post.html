@@ -11,9 +11,9 @@ atomfeed: 1
                 <ul>{% for post in site.posts limit:4 %}
                     <li><a href="{{ post.url }}">{{ post.title | escape }}</a> ({{ post.date | date: '%m/%d/%Y' }})</li>{% endfor %}
                 </ul>
-            </div>{% endunless %}{% if page.title %}
+            </div>{% endunless %}{% unless page.noextra %}
             <h2>{{ page.title | escape }}</h2>
-            <p>Posted on {{ page.date | date: '%m/%d/%Y' }}</p>{% endif %}
+            <p>Posted on {{ page.date | date: '%m/%d/%Y' }}</p>{% endunless %}
 
 {{ content }}
 {% unless page.noextra %}
