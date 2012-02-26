@@ -6,6 +6,6 @@ noextra: 1
 {% for post in site.posts limit:10 %}
                 <article>
                     <h2><a href="{{ post.url | escape}}">{{ post.title | escape }}</a></h2>
-                    <p>Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
+                    <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
                     <div>{{ post.excerpt | escape }}</div>
                 </article>{% endfor %}
