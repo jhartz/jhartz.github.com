@@ -52,22 +52,34 @@ h1 {
     border-bottom: 1px solid #EEE;
 }
 
-h2.topnav {
+div.topnav {
     position: absolute;
     top: 0;
     right: 15px;
     font-size: 12pt;
+    font-weight: bold;
+    margin: 13px 0;
 }
 
-h2.topleftnav {
+div.topleftnav {
     position: absolute;
     top: 0;
     left: 15px;
     font-size: 12pt;
+    font-weight: bold;
+    margin: 13px 0;
 }
 
 p {
     text-align: left;
+}
+
+#bigtable {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 #content {
@@ -89,7 +101,12 @@ p {
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(79,187,191), rgb(108,114,230));
 }
 
-.button {
+div.sidebar {
+    float: right;
+    border-left: 1px solid white;
+}
+
+div.button {
     color: black;
     padding: 10px;
     border: 1px solid white;
@@ -103,7 +120,7 @@ p {
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
 }
 
-.button:hover {
+div.button:hover {
     -moz-box-shadow: 5px 5px 5px #ccc;
     -webkit-box-shadow: 5px 5px 5px #ccc;
     box-shadow: 5px 5px 5px #ccc;
