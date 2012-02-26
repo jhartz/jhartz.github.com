@@ -13,7 +13,7 @@ atomfeed: 1
                 </ul>
             </div>{% endunless %}{% unless page.noextra %}
             <h2>{{ page.title | escape }}</h2>
-            <p>Posted on {{ page.date | date: '%m/%d/%Y' }}</p>{% endunless %}
+            <p class="timestamp">Posted on {{ page.date | date: '%m/%d/%Y' }}</p>{% endunless %}
 
 {{ content }}
 {% unless page.noextra %}

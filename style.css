@@ -17,6 +17,10 @@ body {
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
 }
 
+p {
+    text-align: left;
+}
+
 article {
     text-align: left;
 }
@@ -25,10 +29,15 @@ article h2 {
     margin-bottom: 0;
 }
 
-article p.timestamp {
+p.timestamp {
     font-style: italic;
-    margin: 10px;
     font-size: 11pt;
+    text-align: center;
+}
+
+article p.timestamp {
+    margin: 10px;
+    text-align: left;
 }
 
 a, a:visited {
@@ -83,10 +92,6 @@ div.topleftnav {
     font-size: 12pt;
     font-weight: bold;
     margin: 13px 0;
-}
-
-p {
-    text-align: left;
 }
 
 #bigtable {
