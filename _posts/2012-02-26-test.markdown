@@ -1,0 +1,5 @@
+---
+layout: "post"
+title: "My New Blog"
+---
+This is a test of my new Jekyll configuration.

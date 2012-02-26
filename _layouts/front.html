@@ -2,8 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" type="text/css" media="screen,tv,projection" href="/style.css">
+    <title>{{ page.title | escape }}</title>
+    <link rel="stylesheet" type="text/css" media="screen,tv,projection" href="/style.css">{% if longpage %}
+    <style type="text/css">
+    #content {
+        margin: 10px 30px;
+    }
+    </style>{% endif %}
 </head>
 
 <body>
