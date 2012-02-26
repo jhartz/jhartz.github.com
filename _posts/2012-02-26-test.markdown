@@ -1,5 +1,6 @@
 ---
 layout: "post"
 title: "My New Blog"
+excerpt: "This is a test of my new Jekyll configuration."
 ---
 This is a test of my new Jekyll configuration.

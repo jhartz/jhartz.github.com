@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{{ page.title | escape }}</title>
+    <title>{{ page.title | escape }}</title>{% if page.atomfeed %}
+    <link rel="alternate" type="application/atom+xml" title="Ramblings by Jake &raquo; Feed" href="/blog/atom.xml">{% endif %}
     <link rel="stylesheet" type="text/css" media="screen,tv,projection" href="/style.css">{% if page.longpage %}
     <style type="text/css">
     #content {
@@ -20,7 +21,6 @@
             <div class="topleftnav"><a href="/">Home</a></div>{% endif %}
 
 {{ content }}
-
         </div>
         <!--[if IE]>
         <div style="text-align: center;"><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></div>
