@@ -12,10 +12,11 @@
     </author>
 {% for post in site.posts limit:20 %}
     <entry>
-        <title>{{ post.title | escape }}</title>
-        <link href="http://jhartz.github.com{{ post.url | escape }}"/>
+        <id>http://jhartz.github.com{{ post.url | xml_escape }}</id>
+        <title>{{ post.title | xml_escape }}</title>
+        <link rel="alternate" type="text/html" href="http://jhartz.github.com{{ post.url | xml_escape }}" />
         <updated>{{ post.date | date_to_xmlschema }}</updated>
-        <id>http://jhartz.github.com{{ post.url | escape }}</id>
-        <summary type="html">{{ post.excerpt | escape }}</summary>
+        <summary type="html">{{ post.excerpt | xml_escape }}</summary>
+        <content type="html">{{ post.content | xml_escape }}</content>
     </entry>{% endfor %}
 </feed>
