@@ -89,7 +89,6 @@ div.topnav {
     right: 15px;
     font-size: 12pt;
     font-weight: bold;
-    text-decoration: none;
     margin: 13px 0;
 }
 
@@ -99,8 +98,11 @@ div.topleftnav {
     left: 15px;
     font-size: 12pt;
     font-weight: bold;
-    text-decoration: none;
     margin: 13px 0;
+}
+
+div.topnav a, div.topleftnav a {
+    text-decoration: none;
 }
 
 #bigtable {
@@ -155,8 +157,4 @@ div.button:hover {
     box-shadow: 5px 5px 5px #ccc;
     margin-left: -4px;
     margin-top: -4px;
-}
-
-div.button a {
-    text-decoration: none;
 }
