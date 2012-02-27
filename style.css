@@ -46,17 +46,19 @@ a, a:visited {
 }
 
 a:hover {
-    text-decoration: underline;
-    text-shadow: 0 0 2px white;
+    /* text-decoration: underline; */
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.596), 0 0 1px white;
 }
 
 a.revealed {
     text-decoration: underline;
 }
 
+/*
 a.revealed:hover {
     text-decoration: none;
 }
+*/
 
 a:focus {
     /* http://voracity.org/Workarounds/LinkFocus */
