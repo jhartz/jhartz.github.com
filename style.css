@@ -41,20 +41,20 @@ article p.timestamp {
 }
 
 a, a:visited {
-    text-decoration: inherit;
+    /* text-decoration: inherit; */
     color: inherit;
 }
 
 a:hover {
     /* text-decoration: underline; */
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.596), 0 0 1px white;
+    text-shadow: 0 0 1px white, 0 1px 0 rgba(255, 255, 255, 0.596);
 }
 
+/*
 a.revealed {
     text-decoration: underline;
 }
 
-/*
 a.revealed:hover {
     text-decoration: none;
 }
@@ -74,6 +74,10 @@ abbr {
     border-bottom: 1px dotted #FFFFFF;
 }
 
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    text-decoration: none;
+}
+
 h1 {
     border-bottom: 1px solid #EEE;
     margin-bottom: 30px;
@@ -85,6 +89,7 @@ div.topnav {
     right: 15px;
     font-size: 12pt;
     font-weight: bold;
+    text-decoration: none;
     margin: 13px 0;
 }
 
@@ -94,6 +99,7 @@ div.topleftnav {
     left: 15px;
     font-size: 12pt;
     font-weight: bold;
+    text-decoration: none;
     margin: 13px 0;
 }
 
@@ -149,4 +155,8 @@ div.button:hover {
     box-shadow: 5px 5px 5px #ccc;
     margin-left: -4px;
     margin-top: -4px;
+}
+
+div.button a {
+    text-decoration: none;
 }
