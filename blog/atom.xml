@@ -12,7 +12,7 @@
     </author>
 {% for post in site.posts limit:20 %}
     <entry>
-        <id>http://jhartz.github.com{{ post.url | xml_escape }}</id>
+        <id>http://jhartz.github.com{{ post.id | xml_escape }}</id>
         <title>{{ post.title | xml_escape }}</title>
         <link rel="alternate" type="text/html" href="http://jhartz.github.com{{ post.url | xml_escape }}" />
         <updated>{{ post.date | date_to_xmlschema }}</updated>
