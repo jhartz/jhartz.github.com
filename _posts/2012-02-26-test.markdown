@@ -1,6 +1,7 @@
 ---
 layout: "post"
 title: "My New Blog"
+date: 2012-02-26 05:04:02  # This is to change from the default (which is derived from the file name) - mostly used to add a time to the post
 excerpt: "This is a test of my new Jekyll configuration."
 ---
-This is a test of my new Jekyll configuration.
+This is a test of my new [Jekyll](https://github.com/mojombo/jekyll) configuration.
