@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "My New Blog"
-date: 2012-02-26 05:04:02  # This is to change from the default (which is derived from the file name) - mostly used to add a time to the post
+date: 2012-02-26 05:04:02  # This is to change from the default (which is derived from the file name) - mostly used to add a time to the post (FYI: The time zone associated with these dates is UTC -08:00; ie. EST - 3 hours; so without a time it defaults to midnight, which is 3:00 am in EST)
 excerpt: "This is a test of my new Jekyll configuration."
 ---
 This is a test of my new [Jekyll](https://github.com/mojombo/jekyll) configuration.
