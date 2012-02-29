@@ -40,6 +40,10 @@ article p.timestamp {
     text-align: left;
 }
 
+div.postbody {
+    margin-left: 10px;
+}
+
 a, a:visited {
     /* text-decoration: inherit; */
     color: inherit;

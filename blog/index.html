@@ -7,5 +7,5 @@ noextra: 1
                 <article>
                     <h2><a href="{{ post.url | escape}}">{{ post.title | escape }}</a></h2>
                     <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
-                    <div>{{ post.excerpt | escape | newline_to_br }}</div>
+                    <div class="postbody">{{ post.content }}</div>
                 </article>{% endfor %}
