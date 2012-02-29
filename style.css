@@ -13,6 +13,7 @@ body {
     text-shadow: rgba(255, 255, 255, 0.597656) 0px 1px 0px;
     background-color: #52e469;
     background-image: url(http://mp4downloader.mozdev.org/firstrun-bg.png);
+    background-repeat: repeat-x;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
 }
