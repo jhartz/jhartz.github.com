@@ -4,7 +4,7 @@ title: "CSS vendor prefixes - a retun to the IE6 era?"
 date: 2012-03-06 17:28:00  # 8:28 pm EST
 excerpt: 'CSS vendor prefixes, a system originally meant for testing prototypes of not-yet-standardized CSS features, have led to "Only-works-in-WebKit" sites on the mobile Web and across the Internet, just like the old days of "Only-works-in-IE6" sites (a problem which took a decade to fix).'
 ---
-I just read [a great article][1] regarding the current problems in the browser world (mostly among mobile browsers) regarding CSS vendor prefixes. A system originally meant for testing prototypes of not-yet-standardized CSS features, vendor prefixes (such as the most problematic, `-webkit-*`) have led to "Only-works-in-WebKit" sites on the mobile Web, just like the old days of "Only-works-in-IE6" sites (a problem which took a decade to fix).
+I just read [a great article][1] by Daniel Glazman regarding the current problems in the browser world (mostly among mobile browsers) regarding CSS vendor prefixes. A system originally meant for testing prototypes of not-yet-standardized CSS features, vendor prefixes (such as the most problematic, `-webkit-*`) have led to "Only-works-in-WebKit" sites on the mobile Web, just like the old days of "Only-works-in-IE6" sites (a problem which took a decade to fix).
 
 Additionally, this is leading web developers back into the old habit of using browser detection, resulting in vendor-specific websites, sometimes even used to promote a specific browser as being better, even though most modern browsers support the features in question. A few examples:
 
@@ -22,10 +22,11 @@ It is time that vendor-specific prefixes were put back to use the way they were 
 ### Update
 FYI: I'm not trying to blame the W3C or CSS WG - more the process by which browser vendors propose standards, or the stage in a CSS property's development when the vendor chooses to standardize it.
 
-Also, In addition to the original article I linked to above, here is [another article][4] by the same author with some clarifications (and also [another one][5]).
+Also, In addition to the original article I linked to above, here is [another article][4] by the same author with some clarifications (and also [another one][5]). Additionally, Robert Accettura wrote up a [nice response][6] as well.
 
 [1]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/09/CALL-FOR-ACTION%3A-THE-OPEN-WEB-NEEDS-YOU-NOW
 [2]: http://chrome.angrybirds.com/
 [3]: http://www.cuttherope.ie/
 [4]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/09/Some-clarifications
 [5]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/10/Blaming-CSS-WG-is-too-easy-Brendan
+[6]: http://robert.accettura.com/blog/2012/02/09/on-prefixing-and-monobrowser-culture/
