@@ -140,6 +140,11 @@ div.sidebar {
     max-width: 27%;
 }
 
+div.bottombar {
+    margin-right: 28%;
+    text-align: left;
+}
+
 div.button {
     color: black;
     padding: 10px;
