@@ -16,6 +16,7 @@ body {
     background-repeat: repeat-x;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
+    /* TODO: Opera/MS gradients (venor prefixes) */
 }
 
 p, ul, li, article {
@@ -131,6 +132,7 @@ div.topnav a, div.topleftnav a {
     background-repeat: repeat-x;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(108,114,230)), to(rgb(79,187,191)));
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(79,187,191), rgb(108,114,230));
+    /* TODO: Opera/MS gradients (venor prefixes) */
 }
 
 div.sidebar {
