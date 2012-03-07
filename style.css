@@ -136,6 +136,7 @@ div.topnav a, div.topleftnav a {
 div.sidebar {
     float: right;
     border-left: 1px solid white;
+    border-bottom: 1px solid white;
     max-width: 27%;
 }
 
