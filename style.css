@@ -143,6 +143,7 @@ div.sidebar {
 div.bottombar {
     margin-right: 28%;
     text-align: left;
+    padding-top: 6px;
 }
 
 div.button {
