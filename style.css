@@ -18,11 +18,7 @@ body {
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
 }
 
-p {
-    text-align: left;
-}
-
-article {
+p, ul, li, article {
     text-align: left;
 }
 
@@ -140,6 +136,7 @@ div.topnav a, div.topleftnav a {
 div.sidebar {
     float: right;
     border-left: 1px solid white;
+    max-width: 27%;
 }
 
 div.button {
