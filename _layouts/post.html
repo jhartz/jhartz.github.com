@@ -13,10 +13,12 @@ atomfeed: 1
                 </ul>
             </div>{% unless page.noextra %}
             <h2>{{ page.title | escape }}</h2>
-            <p class="timestamp">Posted on {{ page.date | date: '%m/%d/%Y' }}</p>{% endunless %}
+            <p class="timestamp">Posted on {{ page.date | date: '%m/%d/%Y' }}</p>
+            <article>{% endunless %}
 
 {{ content }}
 {% unless page.noextra %}
+            </article>
             <div class="bottombar" style="clear: both;">{% if page.previous.url %}
                 <span>«&nbsp;<a href="{{ page.previous.url | escape }}" title="{{ page.previous.title | escape }}">{{ page.previous.title | truncatewords: 15 | escape }}</a></span>{% endif %}{% if page.next.url %}
                 <span style="float: right;"><a href="{{ page.next.url | escape }}" title="{{ page.next.title | escape }}">{{ page.next.title | truncatewords: 15 | escape }}</a>&nbsp;»</span>{% endif %}
