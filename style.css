@@ -85,6 +85,10 @@ h1 {
     margin-bottom: 30px;
 }
 
+.nobr {
+    white-space: nowrap;
+}
+
 div.topnav {
     position: absolute;
     top: 0;
