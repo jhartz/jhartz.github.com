@@ -10,7 +10,7 @@
 <body>
     <table id="bigtable" style="border: none;">
         <tbody><tr><td style="text-align: center; vertical-align: {% if page.longpage %}top{% else %}middle{% endif %};{% if page.longpage %} padding: 50px;{% endif %}">
-        <div id="content"{% if page.longpage %} style="longpage"{% endif %}>{% if page.homebtn %}
+        <div id="content"{% if page.longpage %} class="longpage"{% endif %}>{% if page.homebtn %}
             <div class="topleftnav"><a href="/">Home</a></div>{% endif %}
 
 {{ content }}
