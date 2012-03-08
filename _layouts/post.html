@@ -9,7 +9,7 @@ atomfeed: 1
             <div class="sidebar">
                 <h3>Recent Posts</h3>
                 <ul>{% for post in site.posts limit:4 %}
-                    <li><a href="{{ post.url }}">{{ post.title | escape }}</a> <span class="nobr">({{ post.date | date: '%m/%d/%Y' }})</span></li>{% endfor %}
+                    <li><a href="{{ post.url }}">{{ post.title | escape }}</a> <span class="postdate">({{ post.date | date: '%m/%d/%Y' }})</span></li>{% endfor %}
                 </ul>
             </div>{% unless page.noextra %}
             <h2>{{ page.title | escape }}</h2>
