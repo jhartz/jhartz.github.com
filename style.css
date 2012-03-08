@@ -115,7 +115,7 @@ div.topnav a, div.topleftnav a {
     top: 0;
 }
 
-#content {
+div#content {
     position: relative;
     width: 760px;
     margin: 10px auto;
@@ -133,6 +133,15 @@ div.topnav a, div.topleftnav a {
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(108,114,230)), to(rgb(79,187,191)));
     background-image: -moz-linear-gradient(100% 100% 90deg, rgb(79,187,191), rgb(108,114,230));
     /* TODO: Opera/MS gradients (venor prefixes) */
+}
+
+div#content.longpage {
+    margin: 0 auto;
+    width: auto;
+    min-width: 700px;
+    max-width: 1000px;
+    min-height: 100%;
+    background-size: auto 115px;
 }
 
 div.sidebar {
