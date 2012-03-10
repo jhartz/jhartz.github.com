@@ -181,6 +181,11 @@ div#content.notable h1, div#content.notable h2 {
     text-shadow: 0pt 1pt 0pt #374683;
 }
 
+div#content.notable a:hover {
+    /* TODO: This should be prettier */
+    text-shadow: 0 0 1px white, rgba(120, 120, 130, 0.7) 0px 1px 1px;
+}
+
 div#bodyContent {
     margin: 10px 20px;
 }
