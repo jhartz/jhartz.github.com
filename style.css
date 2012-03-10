@@ -249,7 +249,7 @@ div.button:hover {
         padding: 10px 2px;
         border: 1px solid white;
         background-color: #52e469;
-        background-image: url(firstrun-header.png);
+        background-image: url(images/header.png);
         background-repeat: repeat-x;
         background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
         background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
