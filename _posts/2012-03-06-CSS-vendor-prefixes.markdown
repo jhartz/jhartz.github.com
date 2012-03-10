@@ -22,7 +22,7 @@ It is time that vendor-specific prefixes were put back to use the way they were 
 ### Update
 FYI: I'm not trying to blame the W3C or CSS WG - more the process by which browser vendors propose standards, or the stage in a CSS property's development when the vendor chooses to standardize it. (Although sometimes I do feel that the W3C could work a bit faster, that is neither the root nor the direct solution to this problem.)
 
-Also, In addition to the original article I linked to above, here is [another article][4] by the same author with some clarifications (and also [another one][5]). Additionally, Robert Accettura wrote up a [nice response][6] as well.
+Also, In addition to the original article I linked to above, here is [another article][4] by the same author with some clarifications (and also [another one][5]). Additionally, Robert Accettura and Robert Nyman wrote up nice responses [here][6] and [here][7], respectively.
 
 [1]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/09/CALL-FOR-ACTION%3A-THE-OPEN-WEB-NEEDS-YOU-NOW
 [2]: http://chrome.angrybirds.com/
@@ -30,3 +30,4 @@ Also, In addition to the original article I linked to above, here is [another ar
 [4]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/09/Some-clarifications
 [5]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/10/Blaming-CSS-WG-is-too-easy-Brendan
 [6]: http://robert.accettura.com/blog/2012/02/09/on-prefixing-and-monobrowser-culture/
+[7]: http://robertnyman.com/2012/02/16/thoughts-on-the-css-prefix-situation/
