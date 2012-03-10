@@ -11,12 +11,15 @@ body {
     height: 100%;
     font-family: "Trebuchet MS", Garuda, Verdana, "Arial Rounded MT Bold", Calibri, Cambria, Arial, sans-serif;
     text-shadow: rgba(255, 255, 255, 0.597656) 0px 1px 0px;
+
     background-color: #52e469;
-    background-image: url(http://mp4downloader.mozdev.org/firstrun-bg.png);
+    background-image: url(images/bg.png);
     background-repeat: repeat-x;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
-    background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
-    /* TODO: Opera/MS gradients (venor prefixes) */
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(115,255,137)), to(rgb(82,228,105)));
+    background-image: -webkit-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+    background-image: -moz-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+    background-image: -o-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+    background-image: -ms-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
 }
 
 p, ul, li, article {
@@ -76,6 +79,20 @@ abbr {
     border-bottom: 1px dotted #FFFFFF;
 }
 
+ul {
+    list-style-type: none;
+    padding-left: 35px;
+}
+
+ul li {
+    text-indent: -1em;
+}
+
+ul li:before {
+    font-size: 15pt;
+    content: "\00BB \0020";
+}
+
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none;
 }
@@ -129,15 +146,18 @@ div#content {
     border-radius: 9px;
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
-    -moz-box-shadow: 5px 5px 5px rgb(108,114,190);
-    -webkit-box-shadow: 5px 5px 5px rgb(108,114,190);
     box-shadow: 5px 5px 5px rgb(108,114,190);
+    -webkit-box-shadow: 5px 5px 5px rgb(108,114,190);
+    -moz-box-shadow: 5px 5px 5px rgb(108,114,190);
+
     background-color: #4fbbbf;
-    background-image: url(http://mp4downloader.mozdev.org/firstrun-fg.png);
+    background-image: url(images/fg.png);
     background-repeat: repeat-x;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(108,114,230)), to(rgb(79,187,191)));
-    background-image: -moz-linear-gradient(100% 100% 90deg, rgb(79,187,191), rgb(108,114,230));
-    /* TODO: Opera/MS gradients (venor prefixes) */
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(108,114,230)), to(rgb(79,187,191)));
+    background-image: -webkit-linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
+    background-image: -moz-linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
+    background-image: -o-linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
+    background-image: -ms-linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
 }
 
 div#content.longpage {
@@ -147,6 +167,29 @@ div#content.longpage {
     max-width: 1000px;
     min-height: 100%;
     background-size: auto 115px;
+}
+
+div#content.notable {
+    margin: 20px auto;
+    background-size: auto;
+    padding: 10px 10px 5px 10px;
+    text-shadow: rgba(120, 120, 130, 0.7) 0px 1px 1px;
+    color: #FFFFFF;
+}
+
+div#content.notable h1, div#content.notable h2 {
+    text-shadow: 0pt 1pt 0pt #374683;
+}
+
+div#bodyContent {
+    margin: 10px 20px;
+}
+
+footer {
+    display: block;
+    margin: 12px 0;
+    text-align: center;
+    font-size: 9pt;
 }
 
 div.sidebar {
@@ -169,17 +212,89 @@ div.button {
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+
     background-color: rgb(82,228,105);
-    background-image: url(http://mp4downloader.mozdev.org/firstrun-bg.png);
+    background-image: url(images/header.png);
     background-repeat: repeat-x;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
-    background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(115,255,137)), to(rgb(82,228,105)));
+    background-image: -webkit-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+    background-image: -moz-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+    background-image: -o-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+    background-image: -ms-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
 }
 
 div.button:hover {
-    -moz-box-shadow: 5px 5px 5px #ccc;
-    -webkit-box-shadow: 5px 5px 5px #ccc;
     box-shadow: 5px 5px 5px #ccc;
+    -webkit-box-shadow: 5px 5px 5px #ccc;
+    -moz-box-shadow: 5px 5px 5px #ccc;
     margin-left: -4px;
     margin-top: -4px;
 }
+
+
+
+/* For firstrun and releasenotes on MP4 Downloader */
+    header * {
+        margin: 0;
+        padding: 0;
+        border-spacing: 0;
+    }
+
+    header, h3.errorbox {
+        padding: 10px 2px;
+        border: 1px solid white;
+        background-color: #52e469;
+        background-image: url(firstrun-header.png);
+        background-repeat: repeat-x;
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
+        background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
+        -webkit-border-radius: 9px 9px;
+        -moz-border-radius: 9px 9px;
+        border-radius: 9px 9px;
+    }
+
+    h3.errorbox {
+        text-shadow: 0px 1px 0px #e5e5ee;
+        color: red;
+        padding: 10px;
+    }
+
+    header {
+        display: block;
+        text-align: center;
+        padding-top: 10px;
+        width: 60%;
+        margin: 5px auto;
+    }
+
+    header table {
+        width: 100%;
+    }
+
+    header td {
+        text-align: center;
+    }
+
+    header td a, header td a:visited, header td a:hover, header td a:active {
+        font-size: 12pt;
+        font-weight: bold;
+        text-shadow: 0px 1px 0px #e5e5ee;
+        color: #455FF5;
+        text-align: center;
+    }
+
+    .moreinfoBody {
+        background-color: #73ff89;
+        border: 2px solid #52e469;
+        -webkit-border-radius: 9px;
+        -moz-border-radius: 9px;
+        border-radius: 9px;
+        font-size: 0.92em;
+        padding: 4px;
+        text-indent: 0;
+    }
+
+    .moreinfoBodyDark {
+        background-color: #52e469;
+        border: 2px solid #73ff89;
+    }

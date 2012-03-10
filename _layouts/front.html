@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>{{ page.title | escape }}</title>{% if page.atomfeed %}
     <link rel="alternate" type="application/atom+xml" title="Ramblings by Jake &raquo; Feed" href="/blog/atom.xml">{% endif %}
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <link rel="stylesheet" type="text/css" media="screen,tv,projection" href="/style.css">
 </head>
 
@@ -16,7 +19,7 @@
 {{ content }}
         </div>
         <!--[if IE]>
-        <div style="text-align: center;"><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></div>
+        <footer><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></footer>
         <![endif]-->
         <div><br><br></div>
     </td></tr></tbody>
