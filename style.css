@@ -20,6 +20,7 @@ body {
     background-image: -moz-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
     background-image: -o-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
     background-image: -ms-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+    background-image: linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
 }
 
 p, ul, li, article {
@@ -142,12 +143,12 @@ div#content {
     margin: 10px auto;
     padding: 30px 50px 50px 50px;
     border: 2px solid white;
-    border-radius: 9px;
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
-    box-shadow: 5px 5px 5px rgb(108,114,190);
+    border-radius: 9px;
     -webkit-box-shadow: 5px 5px 5px rgb(108,114,190);
     -moz-box-shadow: 5px 5px 5px rgb(108,114,190);
+    box-shadow: 5px 5px 5px rgb(108,114,190);
 
     background-color: #4fbbbf;
     background-image: url(images/fg.png);
@@ -157,6 +158,7 @@ div#content {
     background-image: -moz-linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
     background-image: -o-linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
     background-image: -ms-linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
+    background-image: linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
 }
 
 div#content.longpage {
@@ -212,9 +214,9 @@ div.button {
     color: black;
     padding: 10px;
     border: 1px solid white;
-    border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+    border-radius: 5px;
 
     background-color: rgb(82,228,105);
     background-image: url(images/header.png);
@@ -224,12 +226,13 @@ div.button {
     background-image: -moz-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
     background-image: -o-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
     background-image: -ms-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+    background-image: linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
 }
 
 div.button:hover {
-    box-shadow: 5px 5px 5px #ccc;
     -webkit-box-shadow: 5px 5px 5px #ccc;
     -moz-box-shadow: 5px 5px 5px #ccc;
+    box-shadow: 5px 5px 5px #ccc;
     margin-left: -4px;
     margin-top: -4px;
 }
@@ -246,14 +249,19 @@ div.button:hover {
     header, h3.errorbox {
         padding: 10px 2px;
         border: 1px solid white;
-        background-color: #52e469;
-        background-image: url(images/header.png);
-        background-repeat: repeat-x;
-        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115,255,137)), to(rgb(82,228,105)));
-        background-image: -moz-linear-gradient(100% 100% 90deg, rgb(82,228,105), rgb(115,255,137));
         -webkit-border-radius: 9px 9px;
         -moz-border-radius: 9px 9px;
         border-radius: 9px 9px;
+
+        background-color: #52e469;
+        background-image: url(images/header.png);
+        background-repeat: repeat-x;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(115,255,137)), to(rgb(82,228,105)));
+        background-image: -webkit-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+        background-image: -moz-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+        background-image: -o-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+        background-image: -ms-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
+        background-image: linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
     }
 
     h3.errorbox {
