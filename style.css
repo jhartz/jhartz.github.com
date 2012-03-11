@@ -93,6 +93,7 @@ ul li:before {
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none;
+    text-shadow: inherit !important;
 }
 
 h1 {
@@ -280,13 +281,13 @@ div.button:hover {
     header td a, header td a:visited {
         font-size: 12pt;
         font-weight: bold;
-        text-shadow: 0 1px 0 #e5e5ee;
+        text-shadow: 0 1px 0 #e5e5ee !important;
         color: #455FF5;
         text-align: center;
     }
 
     header td a:hover {
-        text-shadow: 0 1px 5px #e5e5ee;
+        text-shadow: 0 1px 5px #e5e5ee, 0 1px 0 #e5e5ee !important;
     }
 
     .moreinfoBody {
