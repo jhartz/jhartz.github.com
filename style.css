@@ -10,7 +10,7 @@ html {
 body {
     height: 100%;
     font-family: "Trebuchet MS", Garuda, Verdana, "Arial Rounded MT Bold", Calibri, Cambria, Arial, sans-serif;
-    text-shadow: rgba(255, 255, 255, 0.597656) 0px 1px 0px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.596);
 
     background-color: #52e469;
     background-image: url(images/bg.png);
@@ -52,7 +52,7 @@ a, a:visited {
 
 a:hover {
     /* text-decoration: underline; */
-    text-shadow: 0 0 1px white, 0 1px 0 rgba(255, 255, 255, 0.596);
+    text-shadow: 0 0 1px white, 0 1px 1px rgba(255, 255, 255, 0.596);
 }
 
 /*
@@ -66,8 +66,6 @@ a.revealed:hover {
 */
 
 a:focus {
-    /* http://voracity.org/Workarounds/LinkFocus */
-    -moz-outline: none;
     outline: none;
 }
 
@@ -173,7 +171,7 @@ div#content.notable {
     margin: 20px auto;
     background-size: auto;
     padding: 10px 10px 5px 10px;
-    text-shadow: rgba(120, 120, 130, 0.7) 0px 1px 1px;
+    text-shadow: 0 1px 1px rgba(120, 120, 130, 0.7);
     color: #FFFFFF;
 }
 
@@ -182,8 +180,7 @@ div#content.notable h1, div#content.notable h2 {
 }
 
 div#content.notable a:hover {
-    /* TODO: This should be prettier */
-    text-shadow: 0 0 1px white, rgba(120, 120, 130, 0.7) 0px 1px 1px;
+    text-shadow: 0 0 5px white, 0 1px 1px rgba(120, 120, 130, 0.7);
 }
 
 div#bodyContent {
@@ -280,12 +277,16 @@ div.button:hover {
         text-align: center;
     }
 
-    header td a, header td a:visited, header td a:hover, header td a:active {
+    header td a, header td a:visited {
         font-size: 12pt;
         font-weight: bold;
-        text-shadow: 0px 1px 0px #e5e5ee;
+        text-shadow: 0 1px 0 #e5e5ee;
         color: #455FF5;
         text-align: center;
+    }
+
+    header td a:hover {
+        text-shadow: 0 1px 5px #e5e5ee;
     }
 
     .moreinfoBody {
