@@ -190,6 +190,10 @@ div#content.notable a:hover {
     text-shadow: 0 0 3px white, 0 1px 1px rgba(120, 120, 130, 0.7);
 }
 
+div#content.notable b a:hover, div#content.notable strong a:hover {
+    text-shadow: 0 0 1px white, 0 1px 1px rgba(120, 120, 130, 0.7);
+}
+
 div#bodyContent {
     margin: 10px 20px;
 }
