@@ -183,7 +183,7 @@ div#content.notable h1, div#content.notable h2 {
 }
 
 div#content.notable a:hover {
-    text-shadow: 0 0 5px white, 0 1px 1px rgba(120, 120, 130, 0.7);
+    text-shadow: 0 0 3px white, 0 1px 1px rgba(120, 120, 130, 0.7);
 }
 
 div#bodyContent {
