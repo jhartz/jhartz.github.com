@@ -210,8 +210,22 @@ aside small {
 }
 
 article aside {
-    border-style: none;
+    padding: 7px;
     max-width: 34%;
+    border: 1px solid white;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#63D7DB), to(#4FBBBF));
+    background-image: -webkit-linear-gradient(top, #63D7DB, #4FBBBF);
+    background-image: -moz-linear-gradient(top, #63D7DB, #4FBBBF);
+    background-image: -o-linear-gradient(top, #63D7DB, #4FBBBF);
+    background-image: -ms-linear-gradient(top, #63D7DB, #4FBBBF);
+}
+
+article aside.left {
+    float: left;
+    margin-right: 7px;
 }
 
 .bottombar {
