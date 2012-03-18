@@ -4,8 +4,8 @@ title: "Ramblings by Jake"
 noextra: 1
 ---
 {% for post in site.posts limit:10 %}
-                <article>
-                    <h2><a href="{{ post.url | escape}}">{{ post.title | escape }}</a></h2>
-                    <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
-                    <div class="postbody">{{ post.content }}</div>
-                </article>{% endfor %}
+            <article>
+                <h2><a href="{{ post.url | escape}}">{{ post.title | escape }}</a></h2>
+                <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
+                <div class="postbody">{{ post.content }}</div>
+            </article>{% endfor %}
