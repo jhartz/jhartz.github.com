@@ -101,7 +101,7 @@ article p.timestamp {
     text-align: left;
 }
 
-article p.postbody {
+article div.postbody {
     margin-left: 10px;
 }
 
