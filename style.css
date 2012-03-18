@@ -22,29 +22,6 @@ body {
     background-image: -ms-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
 }
 
-p, ul, li, article {
-    text-align: left;
-}
-
-article h2 {
-    margin-bottom: 0;
-}
-
-p.timestamp {
-    font-style: italic;
-    font-size: 11pt;
-    text-align: center;
-}
-
-article p.timestamp {
-    margin: 10px;
-    text-align: left;
-}
-
-.postbody {
-    margin-left: 10px;
-}
-
 a, a:visited {
     /* text-decoration: inherit; */
     color: inherit;
@@ -105,9 +82,27 @@ h1 {
     margin-bottom: 30px;
 }
 
-.postdate {
+p, ul, li, article {
+    text-align: left;
+}
+
+article h2 {
+    margin-bottom: 0;
+}
+
+p.timestamp {
     font-style: italic;
-    white-space: nowrap;
+    font-size: 11pt;
+    text-align: center;
+}
+
+article p.timestamp {
+    margin: 10px;
+    text-align: left;
+}
+
+article p.postbody {
+    margin-left: 10px;
 }
 
 nav {
@@ -201,11 +196,26 @@ footer {
     font-size: 9pt;
 }
 
-.sidebar {
+aside {
+    display: block;
     float: right;
+    clear: both;
+    max-width: 27%;
     border-left: 1px solid white;
     border-bottom: 1px solid white;
-    max-width: 27%;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+
+aside small {
+    font-style: italic;
+    white-space: nowrap;
+}
+
+article aside {
+    border-style: none;
+    max-width: 34%;
 }
 
 .bottombar {
