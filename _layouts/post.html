@@ -22,8 +22,8 @@ atomfeed: 1
 
         <h2>{{ page.title | escape }}</h2>
         <p class="timestamp">Posted on {{ page.date | date: '%m/%d/%Y' }}</p>
-        <article>{% endunless %}
-
+        <article>
+{% endunless %}
 {{ content }}
 {% unless page.noextra %}
         </article>
