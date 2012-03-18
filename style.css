@@ -25,10 +25,6 @@ body {
 a, a:visited {
     /* text-decoration: inherit; */
     color: inherit;
-    -webkit-transition: text-shadow 0.1s;
-    -moz-transition: text-shadow 0.1s;
-    -o-transition: text-shadow 0.1s;
-    -ms-transition: text-shadow 0.1s;
 }
 
 a:hover {
@@ -262,6 +258,13 @@ div.button:hover {
 
 #content.notable h1, #content.notable h2 {
     text-shadow: 0 1pt 0 #374683;
+}
+
+#content.notable a, #content.notable a:visited {
+    -webkit-transition: text-shadow 0.1s;
+    -moz-transition: text-shadow 0.1s;
+    -o-transition: text-shadow 0.1s;
+    -ms-transition: text-shadow 0.1s;
 }
 
 #content.notable a:hover {
