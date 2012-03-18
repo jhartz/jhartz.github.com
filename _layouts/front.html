@@ -1,3 +1,6 @@
+---
+# NOTE: Don't forget to copy this file to gh-pages branches in other repos when you update it!
+---
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,19 +13,19 @@
     <link rel="stylesheet" type="text/css" media="screen,tv,projection" href="/style.css">
 </head>
 
-<body>
-    <table id="bigtable" style="border: none;">
-        <tbody><tr><td style="text-align: center; vertical-align: {% if page.longpage %}top{% else %}middle{% endif %};{% if page.longpage %} padding: 50px;{% endif %}">
-        <div id="content"{% if page.longpage %} class="longpage"{% endif %}>{% if page.homebtn %}
-            <div class="topleftnav"><a href="/">Home</a></div>{% endif %}
+<body>{% if page.centered %}
+<table style="border: none;">
+<tbody><tr><td>{% endif %}
+    <div id="content">{% if page.homebtn %}
+        <nav class="left"><ul><li><a href="/">Home</a></li></ul></nav>{% endif %}
 
 {{ content }}
-        </div>
-        <!--[if IE]>
-        <footer><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></footer>
-        <![endif]-->
-        <div><br><br></div>
-    </td></tr></tbody>
-    </table>
-</body>
+    </div>
+    <!--[if IE]>
+    <footer><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></footer>
+    <![endif]-->
+    <div><br><br></div>
+{% if page.centered %}</td></tr></tbody>
+</table>
+{% endif %}</body>
 </html>

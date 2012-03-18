@@ -110,7 +110,7 @@ h1 {
     white-space: nowrap;
 }
 
-div.topnav {
+nav {
     position: absolute;
     top: 0;
     right: 15px;
@@ -119,20 +119,35 @@ div.topnav {
     margin: 13px 0;
 }
 
-div.topleftnav {
-    position: absolute;
-    top: 0;
+nav.left {
+    right: auto;
     left: 15px;
-    font-size: 12pt;
-    font-weight: bold;
-    margin: 13px 0;
 }
 
-div.topnav a, div.topleftnav a {
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li:before {
+    content: "\0020 \00B7 \0020";
+    font-size: inherit;
+}
+
+nav ul li:first-child:before {
+    content: none;
+}
+
+nav a {
     text-decoration: none;
 }
 
-#bigtable {
+body > table {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -140,11 +155,20 @@ div.topnav a, div.topleftnav a {
     top: 0;
 }
 
+body > table > tbody > tr > td {
+    text-align: center;
+    vertical-align: middle;
+}
+
 #content {
     position: relative;
-    width: 760px;
-    margin: 10px auto;
     padding: 30px 50px 50px 50px;
+    margin: 20px auto;
+    width: auto;
+    min-width: 700px;
+    max-width: 1000px;
+    min-height: 100%;
+    background-size: auto 115px;
     border: 2px solid white;
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
@@ -163,33 +187,10 @@ div.topnav a, div.topleftnav a {
     background-image: -ms-linear-gradient(top, rgb(108,114,230), rgb(79,187,191));
 }
 
-#content.longpage {
-    margin: 0 auto;
-    width: auto;
-    min-width: 700px;
-    max-width: 1000px;
-    min-height: 100%;
-    background-size: auto 115px;
-}
-
-#content.notable {
-    margin: 20px auto;
+body > table #content {
+    margin: 10px auto;
+    width: 760px;
     background-size: auto;
-    padding: 10px 10px 5px 10px;
-    text-shadow: 0 1px 1px rgba(120, 120, 130, 0.7);
-    color: #FFFFFF;
-}
-
-#content.notable h1, #content.notable h2 {
-    text-shadow: 0 1pt 0 #374683;
-}
-
-#content.notable a:hover {
-    text-shadow: 0 0 3px white, 0 1px 1px rgba(120, 120, 130, 0.7);
-}
-
-#content.notable b a:hover, #content.notable strong a:hover {
-    text-shadow: 0 0 2px white, 0 1px 1px rgba(120, 120, 130, 0.7);
 }
 
 #bodyContent {
@@ -243,8 +244,26 @@ div.button:hover {
 }
 
 
-
 /* For firstrun and releasenotes on MP4 Downloader */
+#content.notable {
+    background-size: auto;
+    padding: 10px 10px 5px 10px;
+    text-shadow: 0 1px 1px rgba(120, 120, 130, 0.7);
+    color: #FFFFFF;
+}
+
+#content.notable h1, #content.notable h2 {
+    text-shadow: 0 1pt 0 #374683;
+}
+
+#content.notable a:hover {
+    text-shadow: 0 0 3px white, 0 1px 1px rgba(120, 120, 130, 0.7);
+}
+
+#content.notable b a:hover, #content.notable strong a:hover {
+    text-shadow: 0 0 2px white, 0 1px 1px rgba(120, 120, 130, 0.7);
+}
+
 header * {
     margin: 0;
     padding: 0;
