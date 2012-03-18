@@ -24,6 +24,8 @@ FYI: I'm not trying to blame the W3C or CSS WG - more the process by which brows
 
 Also, In addition to the original article I linked to above, here is [another article][4] by the same author with some clarifications (and also [another one][5]). Additionally, Robert Accettura and Robert Nyman wrote up nice responses [here][6] and [here][7], respectively.
 
+Furthermore, Mozilla is working to [standardize their Web APIs][8] as they are developing them. This proves that it is possible to work to standardize prototypes as you make them - WebKit just isn't doing it.
+
 [1]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/09/CALL-FOR-ACTION%3A-THE-OPEN-WEB-NEEDS-YOU-NOW
 [2]: http://chrome.angrybirds.com/
 [3]: http://www.cuttherope.ie/
@@ -31,3 +33,4 @@ Also, In addition to the original article I linked to above, here is [another ar
 [5]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/10/Blaming-CSS-WG-is-too-easy-Brendan
 [6]: http://robert.accettura.com/blog/2012/02/09/on-prefixing-and-monobrowser-culture/
 [7]: http://robertnyman.com/2012/02/16/thoughts-on-the-css-prefix-situation/
+[8]: http://brendaneich.com/2012/02/mobile-web-api-evolution/
