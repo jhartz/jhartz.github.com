@@ -192,6 +192,10 @@ footer {
     font-size: 9pt;
 }
 
+footer p {
+    text-align: center;
+}
+
 aside {
     display: block;
     float: right;
