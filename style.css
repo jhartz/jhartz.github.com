@@ -194,10 +194,6 @@ body > table #content {
     background-size: auto;
 }
 
-#bodyContent {
-    margin: 10px 20px;
-}
-
 footer {
     display: block;
     margin: 12px 0;
@@ -264,6 +260,10 @@ div.button:hover {
 
 #content.notable b a:hover, #content.notable strong a:hover {
     text-shadow: 0 0 2px white, 0 1px 1px rgba(120, 120, 130, 0.7);
+}
+
+#content.notable > div {
+    margin: 10px 20px;
 }
 
 header * {
