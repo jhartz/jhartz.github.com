@@ -68,6 +68,55 @@ ul li:before {
     content: "\00BB \0020";
 }
 
+blockquote {
+    border: none;
+    margin-left: 40px;
+    margin-right: 50px;
+    padding: 0 7px;
+    background-color: #52BFBD;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-box-shadow: 1px 1px 20px rgb(108,114,190);
+    -moz-box-shadow: 1px 1px 20px rgb(108,114,190);
+    box-shadow: 1px 1px 20px rgb(108,114,190);
+}
+
+
+blockquote p:first-child:before {
+    content: open-quote;
+    font-size: 30pt;
+    float: left;
+    margin-left: -30px;
+    margin-top: -4px;
+}
+
+blockquote p:last-child:after {
+    content: close-quote;
+    font-size: 34pt;
+    float: right;
+    margin-right: -30px;
+    margin-top: -10px;
+}
+
+blockquote + small, blockquote + p > small:first-child, blockquote + div > small:first-child {
+    font-size: 11pt;
+    margin: 0 10%;
+    padding: 1px;
+    position: relative;
+    top: -16px;
+    background-color: #56C4C3;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-box-shadow: 1px 5px 20px rgb(108,114,190);
+    -moz-box-shadow: 1px 5px 20px rgb(108,114,190);
+    box-shadow: 1px 5px 20px rgb(108,114,190);
+}
+
+blockquote + small:before, blockquote + p > small:first-child:before, blockquote + div > small:first-child:before {
+    content: "\2014";
+}
+
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none;
     text-shadow: inherit !important;
@@ -201,11 +250,15 @@ aside {
     float: right;
     clear: both;
     max-width: 27%;
-    border-left: 1px solid white;
-    border-bottom: 1px solid white;
+    margin: 0 0 10px 10px;
+    background-color: #4FBBBF;
+    border: 1px solid white;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     border-radius: 12px;
+    -webkit-box-shadow: 1px 1px 10px rgb(108,114,190);
+    -moz-box-shadow: 1px 1px 10px rgb(108,114,190);
+    box-shadow: 1px 1px 10px rgb(108,114,190);
 }
 
 aside small {
@@ -216,7 +269,7 @@ aside small {
 article aside {
     padding: 7px;
     max-width: 34%;
-    border: 1px solid white;
+    margin: 0 0 0 7px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
@@ -225,11 +278,22 @@ article aside {
     background-image: -moz-linear-gradient(top, #63D7DB, #4FBBBF);
     background-image: -o-linear-gradient(top, #63D7DB, #4FBBBF);
     background-image: -ms-linear-gradient(top, #63D7DB, #4FBBBF);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 article aside.left {
     float: left;
-    margin-right: 7px;
+    margin-right: 0 7px 0 0;
+}
+
+article aside p:first-child {
+    margin-top: 0;
+}
+
+article aside p:last-child {
+    margin-bottom: 0;
 }
 
 .bottombar {
