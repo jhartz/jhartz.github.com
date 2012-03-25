@@ -297,7 +297,7 @@ article aside p:last-child {
 }
 
 .bottombar {
-    margin-right: 28%;
+    /* margin-right: 28%; */
     text-align: left;
     padding-top: 10px;
 }
