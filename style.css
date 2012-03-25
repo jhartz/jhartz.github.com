@@ -131,6 +131,10 @@ p, ul, li, article {
     text-align: left;
 }
 
+.centered p {
+    text-align: center;
+}
+
 article h2 {
     margin-bottom: 0;
 }
