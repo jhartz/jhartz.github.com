@@ -22,6 +22,10 @@ body {
     background-image: -ms-linear-gradient(top, rgb(115,255,137), rgb(82,228,105));
 }
 
+body.manly {
+    background: black;
+}
+
 a, a:visited {
     /* text-decoration: inherit; */
     color: inherit;
@@ -41,10 +45,6 @@ a.revealed:hover {
     text-decoration: none;
 }
 */
-
-a:focus {
-    outline: none;
-}
 
 img {
     border-style: none;
@@ -189,6 +189,10 @@ nav ul li:first-child:before {
 
 nav a {
     text-decoration: none;
+}
+
+nav a:focus {
+    outline: none;
 }
 
 body > table {
