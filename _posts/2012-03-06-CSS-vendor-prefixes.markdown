@@ -26,6 +26,8 @@ Also, In addition to the original article I linked to above, here is [another ar
 
 Furthermore, Mozilla is working to [standardize their Web APIs][10] as they are developing them. This proves that it is possible to work to standardize prototypes as you make them - WebKit just isn't doing it. (But, then again, the majority of CSS WG members are browser vendors...)
 
+And, finally, for those of you who are still not convinced that this might be a problem, check out [this list][11] of vendor-prefixed CSS properties.
+
 [1]: http://www.glazman.org/weblog/dotclear/index.php?post/2012/02/09/CALL-FOR-ACTION%3A-THE-OPEN-WEB-NEEDS-YOU-NOW
 [2]: http://chrome.angrybirds.com/
 [3]: http://www.cuttherope.ie/
@@ -36,3 +38,4 @@ Furthermore, Mozilla is working to [standardize their Web APIs][10] as they are 
 [8]: http://christianheilmann.com/2012/02/09/now-vendor-prefixes-have-become-a-problem-want-to-help-fix-it/
 [9]: http://hsivonen.iki.fi/vendor-prefixes/
 [10]: http://brendaneich.com/2012/02/mobile-web-api-evolution/
+[11]: http://peter.sh/experiments/vendor-prefixed-css-property-overview/
