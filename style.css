@@ -127,6 +127,11 @@ h1 {
     margin-bottom: 30px;
 }
 
+h2.bordered {
+    border-top: 1px solid #EEE;
+    padding-top: 30px;
+}
+
 p, ul, li, article {
     text-align: left;
 }
