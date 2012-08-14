@@ -281,7 +281,7 @@ aside small {
     white-space: nowrap;
 }
 
-article aside, figure {
+article aside {
     padding: 7px;
     max-width: 34%;
     margin: 0 0 0 7px;
@@ -311,13 +311,29 @@ article aside p:last-child {
     margin-bottom: 0;
 }
 
+figure {
+    max-width: 480px;
+    padding: 7px;
+    max-width: 34%;
+    margin: 5px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4FBBBF), to(#63D7DB));
+    background-image: -webkit-linear-gradient(top, #4FBBBF, #63D7DB);
+    background-image: -moz-linear-gradient(top, #4FBBBF, #63D7DB);
+    background-image: -o-linear-gradient(top, #4FBBBF, #63D7DB);
+    background-image: -ms-linear-gradient(top, #4FBBBF, #63D7DB);
+}
+
 .centered figure {
     margin-left: auto;
     margin-right: auto;
 }
 
 figcaption {
-    font-style: italic;
+    /* font-style: italic; */
+    font-size: 11pt;
 }
 
 .bottombar {
