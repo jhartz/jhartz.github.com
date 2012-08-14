@@ -68,55 +68,6 @@ ul li:before {
     content: "\00BB \0020";
 }
 
-blockquote {
-    border: none;
-    margin-left: 40px;
-    margin-right: 50px;
-    padding: 0 7px;
-    background-color: #52BFBD;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    border-radius: 7px;
-    -webkit-box-shadow: 1px 1px 20px rgb(108,114,190);
-    -moz-box-shadow: 1px 1px 20px rgb(108,114,190);
-    box-shadow: 1px 1px 20px rgb(108,114,190);
-}
-
-
-blockquote p:first-child:before {
-    content: open-quote;
-    font-size: 30pt;
-    float: left;
-    margin-left: -30px;
-    margin-top: -4px;
-}
-
-blockquote p:last-child:after {
-    content: close-quote;
-    font-size: 34pt;
-    float: right;
-    margin-right: -30px;
-    margin-top: -10px;
-}
-
-blockquote + small, blockquote + p > small:first-child, blockquote + div > small:first-child {
-    font-size: 11pt;
-    margin: 0 10%;
-    padding: 1px;
-    position: relative;
-    top: -16px;
-    background-color: #56C4C3;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-box-shadow: 1px 5px 20px rgb(108,114,190);
-    -moz-box-shadow: 1px 5px 20px rgb(108,114,190);
-    box-shadow: 1px 5px 20px rgb(108,114,190);
-}
-
-blockquote + small:before, blockquote + p > small:first-child:before, blockquote + div > small:first-child:before {
-    content: "\2014";
-}
-
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none;
     text-shadow: inherit !important;
@@ -260,6 +211,55 @@ footer p {
     text-align: center;
 }
 
+blockquote {
+    border: none;
+    margin-left: 40px;
+    margin-right: 50px;
+    padding: 0 7px;
+    background-color: #52BFBD;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-box-shadow: 1px 1px 20px rgb(108,114,190);
+    -moz-box-shadow: 1px 1px 20px rgb(108,114,190);
+    box-shadow: 1px 1px 20px rgb(108,114,190);
+}
+
+
+blockquote p:first-child:before {
+    content: open-quote;
+    font-size: 30pt;
+    float: left;
+    margin-left: -30px;
+    margin-top: -4px;
+}
+
+blockquote p:last-child:after {
+    content: close-quote;
+    font-size: 34pt;
+    float: right;
+    margin-right: -30px;
+    margin-top: -10px;
+}
+
+blockquote + small, blockquote + p > small:first-child, blockquote + div > small:first-child {
+    font-size: 11pt;
+    margin: 0 10%;
+    padding: 1px;
+    position: relative;
+    top: -16px;
+    background-color: #56C4C3;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-box-shadow: 1px 5px 20px rgb(108,114,190);
+    -moz-box-shadow: 1px 5px 20px rgb(108,114,190);
+    box-shadow: 1px 5px 20px rgb(108,114,190);
+}
+
+blockquote + small:before, blockquote + p > small:first-child:before, blockquote + div > small:first-child:before {
+    content: "\2014";
+}
+
 aside {
     display: block;
     float: right;
@@ -281,7 +281,7 @@ aside small {
     white-space: nowrap;
 }
 
-article aside {
+article aside, figure {
     padding: 7px;
     max-width: 34%;
     margin: 0 0 0 7px;
@@ -309,6 +309,15 @@ article aside p:first-child {
 
 article aside p:last-child {
     margin-bottom: 0;
+}
+
+.centered figure {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figcaption {
+    font-style: italic;
 }
 
 .bottombar {
