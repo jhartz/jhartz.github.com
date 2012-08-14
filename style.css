@@ -139,6 +139,10 @@ nav ul li:before {
     font-size: inherit;
 }
 
+nav.left ul li:before {
+    content: "\0020 \00BB \0020";
+}
+
 nav ul li:first-child:before {
     content: none;
 }
