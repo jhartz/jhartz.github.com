@@ -68,6 +68,10 @@ ul li:before {
     content: "\00BB \0020";
 }
 
+pre {
+    text-indent: 0;
+}
+
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none;
     text-shadow: inherit !important;
