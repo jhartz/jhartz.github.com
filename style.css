@@ -221,13 +221,13 @@ header {
 
 header h1 {
     text-align: center;
-}
-
-header h1 a, header h1 a:visited {
-    font-size: 12pt;
+    font-size: 28pt;
     font-weight: bold;
     text-shadow: 0 1px 0 #E5E5EE !important;
     color: #455FF5;
+}
+
+header h1 a, header h1 a:visited {
     text-decoration: none;
 }
 
@@ -237,7 +237,6 @@ header h1 a:hover {
 
 header.imaged h1 {
     padding-top: 9px;
-    font-size: 28pt;
 }
 
 header.imaged img {
@@ -425,7 +424,7 @@ nav {
     position: absolute;
     top: 0;
     right: 15px;
-    font-size: 12pt;
+    font-size: 11pt;
     font-weight: bold;
     margin: 13px 0;
 }
