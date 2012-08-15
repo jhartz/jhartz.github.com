@@ -115,7 +115,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-body > table #content, #content.sad h1 {
+body > table #content h1, #content.sad h1 {
     text-shadow: inherit !important;
     border-bottom: 1px solid #EEE;
 }
