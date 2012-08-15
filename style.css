@@ -387,14 +387,33 @@ details {
     margin: 4px;
     padding: 4px;
     text-indent: 0;
-    font-size: 0.92em;
-    border: 2px solid #52E469;
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
     border-radius: 9px;
 }
 
-details :not(summary) {
+details > summary {
+    display: block;
+    -webkit-border-radius: 9px 9px 0 0;
+    -moz-border-radius: 9px 9px 0 0;
+    border-radius: 9px 9px 0 0;
+    padding: 4px;
+    
+    background-color: #4FBBBF;
+    background-repeat: repeat-x;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4FBBBF), to(#6C72E6));
+    background-image: -webkit-linear-gradient(top, #4FBBBF, #6C72E6);
+    background-image: -moz-linear-gradient(top, #4FBBBF, #6C72E6);
+    background-image: -o-linear-gradient(top, #4FBBBF, #6C72E6);
+    background-image: -ms-linear-gradient(top, #4FBBBF, #6C72E6);
+}
+
+details > :not(summary) {
+    font-size: 0.91em;
+    -webkit-border-radius: 0 0 9px 9px;
+    -moz-border-radius: 0 0 9px 9px;
+    border-radius: 0 0 9px 9px;
+    
     background-image: url(images/header.png);
     background-repeat: repeat-x;
 {% include gradient-bg.css %}
