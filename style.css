@@ -60,6 +60,7 @@ body > table > tbody > tr > td {
     color: #FFFFFF;
     
     background-color: #6C72E6;
+    background-repeat: repeat-x;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#4FBBBF), to(#6C72E6));
     background-image: -webkit-linear-gradient(top, #4FBBBF, #6C72E6);
     background-image: -moz-linear-gradient(top, #4FBBBF, #6C72E6);
@@ -115,7 +116,7 @@ h1 {
 }
 
 body > table #content, #content.sad h1 {
-    text-shadow: inherit;
+    text-shadow: inherit !important;
     border-bottom: 1px solid #EEE;
 }
 
