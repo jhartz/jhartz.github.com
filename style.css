@@ -307,7 +307,6 @@ aside {
     clear: both;
     max-width: 27%;
     margin: 0 0 10px 10px;
-    background-color: #4FBBBF;
     border: 1px solid white;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
@@ -315,6 +314,18 @@ aside {
     -webkit-box-shadow: 1px 1px 10px #6C72BE;
     -moz-box-shadow: 1px 1px 10px #6C72BE;
     box-shadow: 1px 1px 10px #6C72BE;
+    
+    background-color: #4FBBBF;
+    background-image: url(images/header.png);
+    background-repeat: repeat-x;
+    /*
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#63D7DB), to(#4FBBBF));
+    background-image: -webkit-linear-gradient(top, #63D7DB, #4FBBBF);
+    background-image: -moz-linear-gradient(top, #63D7DB, #4FBBBF);
+    background-image: -o-linear-gradient(top, #63D7DB, #4FBBBF);
+    background-image: -ms-linear-gradient(top, #63D7DB, #4FBBBF);
+    */
+{% include gradient-bg.css %}
 }
 
 aside small {
@@ -332,17 +343,6 @@ article aside {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    
-    background-image: url(images/header.png);
-    background-repeat: repeat-x;
-    /*
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#63D7DB), to(#4FBBBF));
-    background-image: -webkit-linear-gradient(top, #63D7DB, #4FBBBF);
-    background-image: -moz-linear-gradient(top, #63D7DB, #4FBBBF);
-    background-image: -o-linear-gradient(top, #63D7DB, #4FBBBF);
-    background-image: -ms-linear-gradient(top, #63D7DB, #4FBBBF);
-    */
-{% include gradient-bg.css %}
 }
 
 article aside.left {
@@ -423,18 +423,17 @@ div.button {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-
+    
     background-image: url(images/header.png);
     background-repeat: repeat-x;
 {% include gradient-bg.css %}
 }
 
 div.button:hover {
+    margin: -4px 4px 4px -4px;
     -webkit-box-shadow: 5px 5px 5px #CCC;
     -moz-box-shadow: 5px 5px 5px #CCC;
     box-shadow: 5px 5px 5px #CCC;
-    margin-left: -4px;
-    margin-top: -4px;
 }
 
 nav {
