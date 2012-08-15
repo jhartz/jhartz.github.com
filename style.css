@@ -241,7 +241,7 @@ header.imaged h1 {
 }
 
 header.imaged img {
-    margin: -9px 9px 0 0;
+    margin-left: 9px;
     float: left;
 }
 
