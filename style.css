@@ -445,7 +445,6 @@ a button {
     cursor: pointer;
     text-shadow: inherit;
     font: inherit;
-    text-decoration: none;
     
     -webkit-transition: margin 0.1s, box-shadow 0.1s;
     -moz-transition: margin 0.1s, box-shadow 0.1s;
