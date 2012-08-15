@@ -427,21 +427,16 @@ button {
     -moz-border-radius: 5px;
     border-radius: 5px;
     
-    -webkit-transition: margin 0.1s, text-shadow 0.1s;
-    -moz-transition: margin 0.1s, text-shadow 0.1s;
-    -o-transition: margin 0.1s, text-shadow 0.1s;
-    -ms-transition: margin 0.1s, text-shadow 0.1s;
-    
     background-image: url(images/header.png);
     background-repeat: repeat-x;
 {% include gradient-bg.css %}
 }
 
 button:hover {
-    margin: -4px 4px 4px -4px;
-    -webkit-box-shadow: 5px 5px 5px #CCC;
-    -moz-box-shadow: 5px 5px 5px #CCC;
-    box-shadow: 5px 5px 5px #CCC;
+    margin: -2px 2px 2px -2px;
+    -webkit-box-shadow: 2px 2px 2px #CCC;
+    -moz-box-shadow: 2px 2px 2px #CCC;
+    box-shadow: 2px 2px 2px #CCC;
 }
 
 a button {
@@ -449,6 +444,18 @@ a button {
     cursor: pointer;
     text-shadow: inherit;
     font: inherit;
+    
+    -webkit-transition: margin 0.1s, box-shadow 0.1s;
+    -moz-transition: margin 0.1s, box-shadow 0.1s;
+    -o-transition: margin 0.1s, box-shadow 0.1s;
+    -ms-transition: margin 0.1s, box-shadow 0.1s;
+}
+
+a button:hover {
+    margin: -4px 4px 4px -4px;
+    -webkit-box-shadow: 5px 5px 5px #CCC;
+    -moz-box-shadow: 5px 5px 5px #CCC;
+    box-shadow: 5px 5px 5px #CCC;
 }
 
 nav {
