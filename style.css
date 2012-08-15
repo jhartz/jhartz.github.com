@@ -220,6 +220,7 @@ header {
 }
 
 header h1 {
+    padding: 9px;
     text-align: center;
     font-size: 28pt;
     font-weight: bold;
@@ -235,11 +236,7 @@ header h1 a:hover {
     text-shadow: 0 1px 5px #E5E5EE, 0 1px 0 #E5E5EE !important;
 }
 
-header.imaged h1 {
-    padding-top: 9px;
-}
-
-header.imaged img {
+header img {
     margin-left: 9px;
     float: left;
 }
