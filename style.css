@@ -383,14 +383,18 @@ figcaption {
 }
 
 details {
+    display: block;
+    margin: 4px;
+    padding: 4px;
+    text-indent: 0;
+    font-size: 0.92em;
     border: 2px solid #52E469;
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
     border-radius: 9px;
-    font-size: 0.92em;
-    padding: 4px;
-    text-indent: 0;
-    
+}
+
+details :not(summary) {
     background-image: url(images/header.png);
     background-repeat: repeat-x;
 {% include gradient-bg.css %}
