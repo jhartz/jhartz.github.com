@@ -111,12 +111,16 @@ h1, h2 {
     text-shadow: 0 1pt 0 #374683;
 }
 
+body > table #content h1, #content.sad h1,
+body > table #content h2, #content.sad h2 {
+    text-shadow: inherit !important;
+}
+
 h1 {
     margin-bottom: 30px;
 }
 
 body > table #content h1, #content.sad h1 {
-    text-shadow: inherit !important;
     border-bottom: 1px solid #EEE;
 }
 
