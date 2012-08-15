@@ -333,6 +333,10 @@ aside small {
     white-space: nowrap;
 }
 
+aside h3, aside h4, aside h5, aside h6 {
+    text-align: center;
+}
+
 article aside {
     padding: 7px;
     max-width: 34%;
