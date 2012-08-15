@@ -103,7 +103,7 @@ b a:hover, strong a:hover {
     text-shadow: 0 0 2px white, 0 1px 1px rgba(120, 120, 130, 0.7);
 }
 
-#content.sad a:hover {
+body > table #content a:hover, #content.sad a:hover {
     text-shadow: 0 0 1px white, 0 1px 1px rgba(255, 255, 255, 0.596);
 }
 
