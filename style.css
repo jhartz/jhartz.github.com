@@ -1,17 +1,11 @@
 ---
 ---
-body, body > table, body > table > tbody, body > table > tbody > tr, body > table > tbody > tr > td {
-    margin: 0;
-    padding: 0;
-}
-
 html {
     min-height: 100%;
 }
 
 body {
     height: 100%;
-    
     font-family: "Trebuchet MS", Garuda, Verdana, "Arial Rounded MT Bold", Calibri, Cambria, Arial, sans-serif;
     
     background-image: url(images/bg.png);
@@ -71,6 +65,11 @@ abbr {
 
 img {
     border-style: none;
+}
+
+body, body > table, body > table > tbody, body > table > tbody > tr, body > table > tbody > tr > td {
+    margin: 0;
+    padding: 0;
 }
 
 body > table {
