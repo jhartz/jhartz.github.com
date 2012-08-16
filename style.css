@@ -305,6 +305,7 @@ aside {
     display: block;
     float: right;
     clear: both;
+    padding: 0 7px;
     max-width: 27%;
     margin: 0 0 10px 10px;
     border: 1px solid white;
