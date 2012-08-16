@@ -542,6 +542,10 @@ nav a:focus {
     text-align: left;
 }
 
+#content.notable h2 {
+    text-align: center;
+}
+
 #content.notable > div {
     margin: 10px 20px;
 }
