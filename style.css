@@ -520,7 +520,7 @@ nav ul li:first-child:before {
     content: none;
 }
 
-nav a {
+nav a, nav a:hover {
     text-decoration: none;
 }
 
