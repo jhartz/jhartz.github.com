@@ -221,6 +221,10 @@ header, .errorbox {
     text-decoration: underline;
 }
 
+.errorbox a:hover {
+    text-decoration: none;
+}
+
 header {
     display: block;
     text-align: center;
