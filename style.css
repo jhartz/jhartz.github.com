@@ -422,7 +422,7 @@ details > summary {
     background-image: -ms-linear-gradient(top, #4FBBBF, #6C72E6);
 }
 
-details > :not(summary) {
+details > :not(summary), .moreinfoBody {
     padding: 4px;
     font-size: 0.9em;
     -webkit-border-radius: 0 0 9px 9px;
@@ -432,6 +432,13 @@ details > :not(summary) {
     background-image: url(images/header.png);
     background-repeat: repeat-x;
 {% include gradient-bg.css %}
+}
+
+.moreinfoBody {
+    text-indent: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 
 button {
