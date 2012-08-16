@@ -191,13 +191,11 @@ header {
 {% include gradient-bg.css %}
 }
 
-/*
 header * {
     margin: 0;
     padding: 0;
     border-spacing: 0;
 }
-*/
 
 header h1 {
     padding: 9px;
