@@ -168,20 +168,19 @@ p.timestamp {
 
 article p.timestamp {
     margin: 10px;
+    margin-left: 20px;
     text-align: left;
 }
 
 article div.postbody {
-    margin-left: 10px;
-}
-
-header * {
-    margin: 0;
-    padding: 0;
-    border-spacing: 0;
+    margin-left: 20px;
 }
 
 header {
+    display: block;
+    text-align: center;
+    width: 60%;
+    margin: 16px auto;
     padding: 10px 2px;
     border: 1px solid white;
     -webkit-border-radius: 9px 9px;
@@ -192,13 +191,13 @@ header {
 {% include gradient-bg.css %}
 }
 
-header {
-    display: block;
-    text-align: center;
-    padding-top: 10px;
-    width: 60%;
-    margin: 16px auto;
+/*
+header * {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
 }
+*/
 
 header h1 {
     padding: 9px;
@@ -358,6 +357,9 @@ article aside p:last-child {
 }
 
 figure {
+    display: block;
+    float: right;
+    clear: both;
     max-width: 480px;
     padding: 7px;
     margin: 5px;
@@ -371,6 +373,7 @@ figure {
 .centered figure {
     margin-left: auto;
     margin-right: auto;
+    float: none;
 }
 
 figcaption {
