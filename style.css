@@ -197,7 +197,7 @@ header * {
     border-spacing: 0;
 }
 
-header, h3.errorbox {
+header, .errorbox {
     padding: 10px 2px;
     border: 1px solid white;
     -webkit-border-radius: 9px 9px;
@@ -209,10 +209,14 @@ header, h3.errorbox {
 {% include gradient-bg.css %}
 }
 
-h3.errorbox {
+.errorbox {
     text-shadow: 0 1px 0 #E5E5EE;
     color: red;
     padding: 10px;
+}
+
+.errorbox a {
+    color: inherit;
 }
 
 header {
