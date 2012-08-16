@@ -534,7 +534,7 @@ nav a:focus {
 
 /* For firstrun and releasenotes on MP4 Downloader */
 #content.notable {
-    background-size: auto;
+    /* background-size: auto; */
     padding: 10px 10px 5px 10px;
     text-align: left;
 }
