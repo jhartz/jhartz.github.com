@@ -22,19 +22,6 @@ body.manly {
     background: black;
 }
 
-body > table {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-body > table > tbody > tr > td {
-    text-align: center;
-    vertical-align: middle;
-}
-
 #content {
     position: relative;
     text-align: center;
@@ -61,20 +48,6 @@ body > table > tbody > tr > td {
 {% include gradient-fg.css %}
 }
 
-body > table #content {
-    margin: 18px auto 10px auto;
-    width: 760px;
-    background-size: auto;
-}
-
-body > table #content, #content.sad {
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.596);
-    color: #000000;
-    
-    background-image: url(images/fg.png);
-{% include gradient-fg-rev.css %}
-}
-
 a, a:visited {
     color: inherit;
     -webkit-transition: text-shadow 0.1s;
@@ -92,9 +65,39 @@ b a:hover, strong a:hover {
     text-shadow: 0 0 2px white, 0 1px 1px rgba(120, 120, 130, 0.7);
 }
 
-body > table #content a:hover, #content.sad a:hover {
-    text-shadow: 0 0 1px white, 0 1px 1px rgba(255, 255, 255, 0.596);
+abbr {
+    border-bottom: 1px dotted #FFFFFF;
 }
+
+img {
+    border-style: none;
+}
+
+body > table {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+body > table > tbody > tr > td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+body > table #content {
+    margin: 18px auto 10px auto;
+    width: 760px;
+    background-size: auto;
+}
+
+body > table #content, #content.sad {
+    background-image: url(images/fg.png);
+{% include gradient-fg-rev.css %}
+}
+
+{% assign selector = 'body > table #content, #content.sad' %}{% include blackfont.css %}
 
 h1, h2 {
     text-shadow: 0 1pt 0 #374683;
@@ -125,14 +128,6 @@ h3, h4, h5, h6 {
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none;
     text-shadow: inherit !important;
-}
-
-abbr {
-    border-bottom: 1px dotted #FFFFFF;
-}
-
-img {
-    border-style: none;
 }
 
 ul {
@@ -186,7 +181,7 @@ header * {
     border-spacing: 0;
 }
 
-header, .errorbox {
+header {
     padding: 10px 2px;
     border: 1px solid white;
     -webkit-border-radius: 9px 9px;
@@ -195,21 +190,6 @@ header, .errorbox {
     
     background-image: url(images/header.png);
 {% include gradient-bg.css %}
-}
-
-.errorbox {
-    text-shadow: 0 1px 0 #E5E5EE;
-    color: red;
-    padding: 10px;
-}
-
-.errorbox a {
-    color: inherit;
-    text-decoration: underline;
-}
-
-.errorbox a:hover {
-    text-decoration: none;
 }
 
 header {
@@ -248,6 +228,28 @@ footer {
 
 footer p {
     text-align: center;
+}
+
+.errorbox {
+    padding: 10px;
+    border: 1px solid white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    
+    background-image: url(images/header.png);
+{% include gradient-bg.css %}
+}
+
+{% assign selector = '.errorbox' %}{% include blackfont.css %}
+
+.errorbox a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.errorbox a:hover {
+    text-decoration: none;
 }
 
 blockquote {
@@ -317,6 +319,8 @@ aside {
     background-image: url(images/header.png);
 {% include gradient-bg.css %}
 }
+
+{% assign selector = 'aside' %}{% include blackfont.css %}
 
 aside small {
     font-style: italic;
@@ -407,6 +411,8 @@ details > :not(summary), .moreinfoBody {
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
+
+{% assign selector = 'details > :not(summary), .moreinfoBody' %}{% include blackfont.css %}
 
 button {
     padding: 2px;

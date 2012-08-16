@@ -1,0 +1,16 @@
+---
+---
+/* BLACKFONT BEGIN: {{ selector }} */
+{{ selector }} {
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.596);
+    color: #000000;
+}
+
+{{ selector }} a:hover {
+    text-shadow: 0 0 1px white, 0 1px 1px rgba(255, 255, 255, 0.596);
+}
+
+{{ selector }} abbr {
+    border-bottom: 1px dotted #000000;
+}
+/* BLACKFONT END: {{ selector }} */
