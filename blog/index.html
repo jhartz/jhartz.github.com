@@ -3,11 +3,13 @@ layout: post
 noextra: 1
 ---
 {% for post in site.posts limit:10 %}
-
+{% assign body = post.content | split:'<!-- see more -->' %}{% assign body_parts = body | size %}
         <article>
-            <h2><a href="{{ post.url | escape}}">{{ post.title | escape }}</a></h2>
+            <h2><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></h2>
             <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
             <div class="postbody">
-{{ post.content }}
+{{ body | first }}{% if body_parts > 1 %}
+
+                <p style="margin-left: 20px;"><br><a href="{{ post.url | escape }}">See&nbsp;more&nbsp;»</a></p>{% endif %}
             </div>
         </article>{% endfor %}
