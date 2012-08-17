@@ -3,12 +3,12 @@ layout: post
 noextra: 1
 ---
 {% for post in site.posts limit:10 %}
-{% assign body = post.content | split:'<!-- see more -->' %}{% assign body_parts = body | size %}
+
         <article>
             <h2><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></h2>
             <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
-            <div class="postbody" title="{% assign test = "HELLO THERE" %}{{ test | downcase }}{% if test > "JKLM" %}yy{% endif %}{% if test > "HELLO" %}nn{% endif %}">
-{{ body | first }}{% if body_parts != 1 %}
+            <div class="postbody">
+{{ post.content | split:'<!-- see more -->' | first }}{% capture body_parts %}{{ post.content | split:'<!-- see more -->' | size }}{% endcapture %}{% if body_parts != '1' %}
 
                 <p style="margin-left: 20px;"><br><a href="{{ post.url | escape }}">See&nbsp;more&nbsp;&raquo;</a></p>{% endif %}
             </div>
