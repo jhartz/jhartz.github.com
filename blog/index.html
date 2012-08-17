@@ -7,7 +7,7 @@ noextra: 1
         <article>
             <h2><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></h2>
             <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
-            <div class="postbody" title="{{ body_parts }}">
+            <div class="postbody" title="{{ body | size }}">
 {{ body | first }}{% if body_parts != 1 %}
 
                 <p style="margin-left: 20px;"><br><a href="{{ post.url | escape }}">See&nbsp;more&nbsp;»</a></p>{% endif %}
