@@ -7,6 +7,7 @@ html {
 body {
     height: 100%;
     font-family: "Trebuchet MS", Garuda, Verdana, "Arial Rounded MT Bold", Calibri, Cambria, Arial, sans-serif;
+    font-size: 12pt;
     
     background-image: url(images/bg.png);
 {% include gradient-bg.css %}
@@ -319,6 +320,7 @@ aside {
 
 {% assign selector = 'aside' %}{% include blackfont.css %}
 
+
 aside small {
     font-style: italic;
     white-space: nowrap;
@@ -330,6 +332,15 @@ aside h3, aside h4, aside h5, aside h6 {
 
 aside ul {
     padding-left: 20px;
+}
+
+aside ul li {
+    padding-bottom: 5px;
+    font-size: 11pt;
+}
+
+aside ul li:last {
+    padding-bottom: 0;
 }
 
 article aside {
