@@ -10,6 +10,6 @@ noextra: 1
             <div class="postbody">
 {{ post.content }}{% comment %}{{ post.content | split:'<!-- see more -->' | first }}{% capture body_parts %}{{ post.content | split:'<!-- see more -->' | size }}{% endcapture %}{% if body_parts != '1' %}
 
-                <p style="margin-left: 20px;"><br><a href="{{ post.url | escape }}">See&nbsp;more&nbsp;&raquo;</a></p>{% endif %}{% endcomment $}
+                <p style="margin-left: 20px;"><br><a href="{{ post.url | escape }}">See&nbsp;more&nbsp;&raquo;</a></p>{% endif %}{% endcomment %}
             </div>
         </article>{% endfor %}
