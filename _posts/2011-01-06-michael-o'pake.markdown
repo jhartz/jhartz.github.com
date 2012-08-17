@@ -9,6 +9,8 @@ On December 27, 2010, Pennsylvania state senator Mike O'Pake passed away at 70 y
 <p style="text-align: center;"><a href="http://www.senator-opake.com/"><img src="http://www.senator-opake.com/opake.gif" style="width: 600px; height: 670; border-style: none;"></a><br><em>(Sen. O'Pake serving meals at a Senior Center in 1999; <nobr>credit: <a href="http://www.senator-opake.com/">senator-opake.com</a></nobr>)</em></p>
 -->
 
-<em>"I hope tonight and tomorrow, when we all look back, we can answer this question in the affirmative: 'Has my life made a difference for good in the lives of others?'"  -Mike O'Pake, November 5, 2010</em>
+> "I hope tonight and tomorrow, when we all look back, we can answer this question in the affirmative: 'Has my life made a difference for good in the lives of others?'"
+
+<p><small>Mike O'Pake, November 5, 2010</small></p>
 
 <p style="text-align: center;"><a href="http://www.wfmz.com/berksnews/26351462/detail.html"><nobr>A final goodbye to the "People's Senator"</nobr></a> &nbsp;&nbsp; <a href="http://readingeagle.com/article.aspx?id=276505"><nobr>A "Life of Service" to others</nobr></a> &nbsp;&nbsp; <a href="http://readingeagle.com/article.aspx?id=276219"><nobr>Remembrances of a Great Public Servant</nobr></a></p>
