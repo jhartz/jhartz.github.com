@@ -10,6 +10,6 @@ noextra: 1
             <div class="postbody" title="{{ body | size }}">
 {{ body | first }}{% if body_parts != 1 %}
 
-                <p style="margin-left: 20px;"><br><a href="{{ post.url | escape }}">See&nbsp;more&nbsp;»</a></p>{% endif %}
+                <p style="margin-left: 20px;"><br><a href="{{ post.url | escape }}">See&nbsp;more&nbsp;&raquo;</a></p>{% endif %}
             </div>
         </article>{% endfor %}
