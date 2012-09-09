@@ -96,7 +96,7 @@ button:hover {
 }
 
 a.button:hover {
-    margin: -4px 4px 4px -4px;
+    margin: -4px 12px 4px 4px;
     -webkit-box-shadow: 5px 5px 5px #CCC;
     -moz-box-shadow: 5px 5px 5px #CCC;
     box-shadow: 5px 5px 5px #CCC;
