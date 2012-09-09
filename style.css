@@ -72,15 +72,11 @@ button, a.button {
 {% include gradient-bg.css %}
 }
 
-button:hover, a.button:hover {
-    margin: -2px 0 0 -2px;
-    -webkit-box-shadow: 2px 2px 2px #CCC;
-    -moz-box-shadow: 2px 2px 2px #CCC;
-    box-shadow: 2px 2px 2px #CCC;
-}
-
 a.button {
+    display: inline-block;
+    margin: 8px;
     padding: 10px;
+    vertical-align: middle;
     cursor: pointer;
     text-shadow: inherit;
     font: inherit;
@@ -90,6 +86,13 @@ a.button {
     -moz-transition: margin 0.1s, box-shadow 0.1s;
     -o-transition: margin 0.1s, box-shadow 0.1s;
     -ms-transition: margin 0.1s, box-shadow 0.1s;
+}
+
+button:hover {
+    margin: -2px 0 0 -2px;
+    -webkit-box-shadow: 2px 2px 2px #CCC;
+    -moz-box-shadow: 2px 2px 2px #CCC;
+    box-shadow: 2px 2px 2px #CCC;
 }
 
 a.button:hover {
