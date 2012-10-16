@@ -277,6 +277,7 @@ footer p {
     background-position: center top;
     background-repeat: no-repeat;
     display: inline-block;
+    vertical-align: top;
 }
 
 .imgbtns a.firefox {
