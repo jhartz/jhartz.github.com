@@ -269,6 +269,26 @@ footer p {
     text-align: center;
 }
 
+.imgbtns {
+    text-align: center;
+}
+
+.imgbtns a {
+    background-position: center top;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.imgbtns a.firefox {
+    background-image: url(mp4downloader/images/firefox.png);
+    padding-top: 100px;
+}
+
+.imgbtns a.bookmarklet {
+    background-image: url(mp4downloader/images/bookmarklet.png);
+    padding-top: 100px;
+}
+
 .errorbox {
     padding: 10px;
     border: 1px solid white;
