@@ -132,6 +132,11 @@ if (christmas.cookie("lights") == "yes") {
                 break;
         }
         document.getElementById("lights").style.height = (height - 10) + "px";
+        if (document.querySelector && document.querySelector("body > table")) {
+            var old = (document.querySelector("body > table").style.cssText || "").trim();
+            if (old && old.substring(old.length - 1) != ";") old += ";";
+            document.querySelector("body > table").style.cssText = old + "top: " + height + "px; height: -moz-calc(100% - " + height + "px); height: -webkit-calc(100% - " + height + "px); height: calc(100% - " + height + "px)";
+        }
     })();
     
     document.write(unescape('%3Cscript src="http://mp4downloader.mozdev.org/images/christmas/soundmanager2-nodebug-jsmin.js"%3E%3C/script%3E%3Cscript src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo-dom-event/yahoo-dom-event.js&2.6.0/build/animation/animation-min.js"%3E%3C/script%3E%3Cscript src="http://mp4downloader.mozdev.org/images/christmas/christmaslights.js"%3E%3C/script%3E'));
