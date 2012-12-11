@@ -43,7 +43,11 @@ body.manly {
 {% include gradient-fg.css %}
 }
 
-a, a:visited {
+.fakelink {
+    cursor: pointer;
+}
+
+a, a:visited, .fakelink {
     color: inherit;
     -webkit-transition: text-shadow 0.1s;
     -moz-transition: text-shadow 0.1s;
@@ -51,12 +55,12 @@ a, a:visited {
     -ms-transition: text-shadow 0.1s;
 }
 
-a:hover {
+a:hover, .fakelink:hover {
     text-shadow: 0 0 3px white, 0 1px 1px rgba(120, 120, 130, 0.7);
     text-decoration: underline;
 }
 
-b a:hover, strong a:hover {
+b a:hover, strong a:hover, b .fakelink:hover, strong .fakelink:hover {
     text-shadow: 0 0 2px white, 0 1px 1px rgba(120, 120, 130, 0.7);
 }
 
@@ -507,17 +511,17 @@ nav.left {
     left: 15px;
 }
 
-nav ul {
+nav ul, ul.inline {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
+nav ul li, ul.inline li {
     display: inline;
 }
 
-nav ul li:before {
+nav ul li:before, ul.inline li:before {
     content: "\0020 \00B7 \0020";
     font-size: inherit;
 }
@@ -526,7 +530,7 @@ nav.left ul li:before {
     content: "\0020 \00BB \0020";
 }
 
-nav ul li:first-child:before {
+nav ul li:first-child:before, ul.inline li:first-child:before {
     content: none;
 }
 
