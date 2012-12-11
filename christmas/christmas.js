@@ -73,6 +73,10 @@ var christmas = {
                 try {
                     if (typeof window.scrollTo == "function") window.scrollTo(0, 0);
                 } catch (err) {}
+                window.lightsBreakOverFunc = function () {
+                    // TODO: We have the entire YAHOO.Anim library available - why not use it?
+                    document.getElementById("lights").style.display = "none";
+                };
                 xlsf.destroyLights();
                 document.getElementById("christmas_lights_start").style.display = "inline";
             } else {
@@ -112,22 +116,22 @@ if (christmas.cookie("lights") == "yes") {
         var height;
         switch (window.lightsize) {
             case "pico":
-                height = "32px";
+                height = 32;
                 break;
             case "tiny":
-                height = "50px";
+                height = 50;
                 break;
             case "small":
-                height = "64px";
+                height = 64;
                 break;
             case "medium":
-                height = "72px";
+                height = 72;
                 break;
             case "large":
-                height = "96px";
+                height = 96;
                 break;
         }
-        document.getElementById("lights").style.height = height;
+        document.getElementById("lights").style.height = (height - 10) + "px";
     })();
     
     document.write(unescape('%3Cscript src="http://mp4downloader.mozdev.org/images/christmas/soundmanager2-nodebug-jsmin.js"%3E%3C/script%3E%3Cscript src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo-dom-event/yahoo-dom-event.js&2.6.0/build/animation/animation-min.js"%3E%3C/script%3E%3Cscript src="http://mp4downloader.mozdev.org/images/christmas/christmaslights.js"%3E%3C/script%3E'));
