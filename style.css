@@ -548,6 +548,10 @@ nav a:focus {
     padding-top: 10px;
 }
 
+.noprint {
+    display: block;
+}
+
 
 /* For firstrun and releasenotes on MP4 Downloader */
 #content.notable {
