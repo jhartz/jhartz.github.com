@@ -104,26 +104,27 @@ if (christmas.cookie("lights") == "yes") {
     if (christmas.cookie("lightsize") in sizeTable) {
         window.lightsize = christmas.cookie("lightsize");
     } else {
-        window.lightsize = "tiny";
+        window.lightsize = "pico";
     }
     
     (function () {
+        // TODO: integrate into lights.js (because we are just using the heights from that script anyway)
         var height;
         switch (window.lightsize) {
             case "pico":
-                height = "2.3";
+                height = "32px";
                 break;
             case "tiny":
-                height = "4em";
+                height = "50px";
                 break;
             case "small":
-                height = "5.3em";
+                height = "64px";
                 break;
             case "medium":
-                height = "6em";
+                height = "72px";
                 break;
             case "large":
-                height = "7.5em";
+                height = "96px";
                 break;
         }
         document.getElementById("lights").style.height = height;
