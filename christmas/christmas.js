@@ -5,6 +5,19 @@
 if (!window.snowStorm) var snowStorm = {};
 snowStorm.snowColor = "#E0F0FF";
 
+if (typeof String.prototype.trim != "function") {
+    String.prototype.trim = function () {
+        var str = this.replace(/^\s+/, "");
+        for (var i = str.length - 1; i >= 0; i -= 1) {
+            if (/\S/.test(str.charAt(i))) {
+                str = str.substring(0, i + 1);
+                break;
+            }
+        }
+        return str;
+    };
+}
+
 var christmas = {
     cookie: function (name, value) {
         name = "christmas_" + name;
@@ -16,8 +29,8 @@ var christmas = {
         } else {
             var cookies = document.cookie.split(";");
             for (var i = 0; i < cookies.length; i++) {
-                if (cookies[i].substring(0, cookies[i].indexOf("=")) == name) {
-                    return cookies[i].substring(cookies[i].indexOf("=") + 1);
+                if (cookies[i].substring(0, cookies[i].indexOf("=")).trim() == name) {
+                    return cookies[i].substring(cookies[i].indexOf("=") + 1).trim();
                 }
             }
         }
