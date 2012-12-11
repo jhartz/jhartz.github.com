@@ -139,7 +139,7 @@ if (christmas.cookie("lights") == "yes") {
         }
     })();
     
-    document.write(unescape('%3Cscript src="http://mp4downloader.mozdev.org/images/christmas/soundmanager2-nodebug-jsmin.js"%3E%3C/script%3E%3Cscript src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo-dom-event/yahoo-dom-event.js&2.6.0/build/animation/animation-min.js"%3E%3C/script%3E%3Cscript src="http://mp4downloader.mozdev.org/images/christmas/christmaslights.js"%3E%3C/script%3E'));
+    document.write(unescape('%3Cscript src="/christmas/lights/soundmanager2-nodebug-jsmin.js"%3E%3C/script%3E%3Cscript src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo-dom-event/yahoo-dom-event.js&2.6.0/build/animation/animation-min.js"%3E%3C/script%3E%3Cscript src="/christmas/lights/christmaslights.js"%3E%3C/script%3E'));
     
     (function () {
         var mysizes = ["pico", "tiny", "small", "medium", "large"];
