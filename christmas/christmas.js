@@ -107,17 +107,41 @@ if (christmas.cookie("lights") == "yes") {
         window.lightsize = "tiny";
     }
     
+    (function () {
+        var height;
+        switch (window.lightsize) {
+            case "pico":
+                height = "2.3";
+                break;
+            case "tiny":
+                height = "4em";
+                break;
+            case "small":
+                height = "5.3em";
+                break;
+            case "medium":
+                height = "6em";
+                break;
+            case "large":
+                height = "7.5em";
+                break;
+        }
+        document.getElementById("lights").style.height = height;
+    })();
+    
     document.write(unescape('%3Cscript src="http://mp4downloader.mozdev.org/images/christmas/soundmanager2-nodebug-jsmin.js"%3E%3C/script%3E%3Cscript src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo-dom-event/yahoo-dom-event.js&2.6.0/build/animation/animation-min.js"%3E%3C/script%3E%3Cscript src="http://mp4downloader.mozdev.org/images/christmas/christmaslights.js"%3E%3C/script%3E'));
     
-    var mysizes = ["pico", "tiny", "small", "medium", "large"];
-    if (mysizes.indexOf && mysizes.splice && mysizes.indexOf(window.lightsize) != -1) {
-        mysizes.splice(mysizes.indexOf(window.lightsize), 1);
-    }
-    for (var i = 0; i < mysizes.length; i++) {
-        mysizes[i] = '<span class="fakelink" onclick="christmas.lights.sizer(\'' + mysizes[i] + '\'); return false;">' + sizeTable[mysizes[i]] + '</span>';
-    }
-    document.getElementById("christmas_lights_sizes_list").innerHTML = mysizes.join(" | ");
-    document.getElementById("christmas_lights_sizes").style.display = "inline";
+    (function () {
+        var mysizes = ["pico", "tiny", "small", "medium", "large"];
+        if (mysizes.indexOf && mysizes.splice && mysizes.indexOf(window.lightsize) != -1) {
+            mysizes.splice(mysizes.indexOf(window.lightsize), 1);
+        }
+        for (var i = 0; i < mysizes.length; i++) {
+            mysizes[i] = '<span class="fakelink" onclick="christmas.lights.sizer(\'' + mysizes[i] + '\'); return false;">' + sizeTable[mysizes[i]] + '</span>';
+        }
+        document.getElementById("christmas_lights_sizes_list").innerHTML = mysizes.join(" | ");
+        document.getElementById("christmas_lights_sizes").style.display = "inline";
+    })();
     
     document.getElementById("christmas_lights_stop").style.display = "inline";
 } else {
