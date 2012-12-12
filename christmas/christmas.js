@@ -100,6 +100,8 @@ if (christmas.cookie("snow")) {
 }
 if (doSnow) {
     document.write(unescape('%3Cscript type="text/javascript" src="http://www.schillmania.com/projects/snowstorm/snowstorm-min.js"%3E%3C/script%3E'));
+    // Turn off mobile exclusion (since we do it ourselves)
+    document.write(unescape('%3Cscript type="text/javascript"%3EsnowStorm.excludeMobile = false;%3C/script%3E'));
     document.getElementById("christmas_snow_stop").style.display = "inline";
 } else {
     document.getElementById("christmas_snow_start").style.display = "inline";
@@ -161,7 +163,3 @@ if (christmas.cookie("lights") == "yes") {
 } else {
     document.getElementById("christmas_lights_start").style.display = "inline";
 }
-
-if (!window.snowStorm) var snowStorm = {};
-//snowStorm.snowColor = "#E0F0FF";
-snowStorm.excludeMobile = false; // because we do it ourselves
