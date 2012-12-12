@@ -96,8 +96,7 @@ if (christmas.cookie("snow")) {
     doSnow = christmas.cookie("snow") != "no";
 } else {
     // Same logic used in snowstorm.js
-    var isMobile = navigator.userAgent.match(/mobile|opera m(ob|in)/i);
-    doSnow = !isMobile;
+    doSnow = !(navigator.userAgent.match(/mobile|opera m(ob|in)/i));
 }
 if (doSnow) {
     document.write(unescape('%3Cscript type="text/javascript" src="http://www.schillmania.com/projects/snowstorm/snowstorm-min.js"%3E%3C/script%3E'));
