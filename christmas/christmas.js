@@ -2,9 +2,6 @@
 // Most actual script for snow and lights from:
 // http://www.schillmania.com/projects/snowstorm/
 
-if (!window.snowStorm) var snowStorm = {};
-snowStorm.snowColor = "#E0F0FF";
-
 if (typeof String.prototype.trim != "function") {
     String.prototype.trim = function () {
         var str = this.replace(/^\s+/, "");
@@ -94,7 +91,15 @@ var christmas = {
     }
 };
 
-if (christmas.cookie("snow") != "no") {
+var doSnow = true;
+if (christmas.cookie("snow")) {
+    doSnow = christmas.cookie("snow") != "no";
+} else {
+    // Same logic used in snowstorm.js
+    var isMobile = navigator.userAgent.match(/mobile|opera m(ob|in)/i);
+    doSnow = !isMobile;
+}
+if (doSnow) {
     document.write(unescape('%3Cscript type="text/javascript" src="http://www.schillmania.com/projects/snowstorm/snowstorm-min.js"%3E%3C/script%3E'));
     document.getElementById("christmas_snow_stop").style.display = "inline";
 } else {
@@ -157,3 +162,7 @@ if (christmas.cookie("lights") == "yes") {
 } else {
     document.getElementById("christmas_lights_start").style.display = "inline";
 }
+
+if (!window.snowStorm) var snowStorm = {};
+//snowStorm.snowColor = "#E0F0FF";
+snowStorm.excludeMobile = false; // because we do it ourselves
