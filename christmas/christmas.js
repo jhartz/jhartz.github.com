@@ -36,7 +36,8 @@ var christmas = {
     snow: {
         stop: function () {
             christmas.cookie("snow", "no");
-            document.getElementById("christmas_snow_stop").style.display = "none";
+            // Not just doing display:none because we want the next one to be CSS :first-child (so there's no extra bullet point out front)
+            document.getElementById("christmas_snow_stop").parentNode.removeChild(document.getElementById("christmas_snow_stop"));
             if (window.snowStorm) {
                 snowStorm.stop();
                 document.getElementById("christmas_snow_start").style.display = "inline";
@@ -105,6 +106,8 @@ if (doSnow) {
     document.getElementById("christmas_snow_stop").style.display = "inline";
 } else {
     document.getElementById("christmas_snow_start").style.display = "inline";
+    // Get rid of first child so CSS picks up next one as "first"
+    document.getElementById("christmas_snow_stop").parentNode.removeChild(document.getElementById("christmas_snow_stop"));
 }
 
 if (christmas.cookie("lights") == "yes") {
