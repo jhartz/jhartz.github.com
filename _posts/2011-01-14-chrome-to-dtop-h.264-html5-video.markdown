@@ -17,6 +17,8 @@ Well, considering MP4 Downloader is tied with H.264, I have to say that the code
 
 Chrome is dropping H.264 support for HTML5 video. This means that the only browsers still using H.264 for HTML5 &lt;video&gt; tags are Safari and Internet Explorer 9 beta. The other 3 browsers in the top 5 (Chrome, Firefox, and Opera) are supporting open standards, including Theora (Ogg) and VP8 (WebM). Personally, I think the future here lies in WebM, considering that its speed, quality, and compression have a better chance at competing with H.264. However, H.264 isn't going anywhere for a long time. Of these codecs, H.264 is the best in terms of Flash support, and many sites will continue to use Flash to display videos. Also, most video-sharing sites are not inclined to re-encoding their entire video library to WebM (and supporting only WebM would alienate devices (like the iPod/iPhone/iPad and other mobile phones) that can only play H.264 video). So, in the end, Chrome is taking a big step towards supporting a free video codec (which is something I am very happy for, despite what it may sound like I'm implying here), but this doesn't mean H.264 will disappear. However, maybe we can continue to support free standards step-by-step and eventually WebM will be the codec of choice for all web developers.
 
+<!-- see more -->
+
 ### Other Views (and Other News)
 
 Official announcement: [Chromium Blog: HTML Video Codec Support in Chrome](http://blog.chromium.org/2011/01/html-video-codec-support-in-chrome.html)
