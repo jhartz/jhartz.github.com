@@ -39,11 +39,11 @@ var repdec = {
         if (isNaN(a) || isNaN(b)) {
             repdec.elems.dec.innerHTML = "Not a number";
         } else {
-            var str_a = a === null ? "" : a.toString(),
+            var str_a = a === null ? "" : a.toString() + " ",
                 str_b = b === null ? "" : b.toString();
-            if (str_b.length > 2) str_b = str_b + str_b;
-            else str_b = str_b + str_b + str_b;
-            repdec.elems.dec.innerHTML = "0." + str_a + str_b + "...";
+            if (str_b.length > 2) str_b = str_b + " " + str_b;
+            else str_b = str_b + " " + str_b + " " + str_b;
+            repdec.elems.dec.innerHTML = "0." + str_a + str_b + " ...";
         }
     },
     
