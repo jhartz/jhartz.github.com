@@ -36,14 +36,19 @@ var repdec = {
     update: function () {
         var a = repdec.elems.a.value ? parseInt(repdec.elems.a.value, 10) : null;
         var b = repdec.elems.b.value ? parseInt(repdec.elems.b.value, 10) : null;
-        if (isNaN(a) || isNaN(b)) {
+        if (isNaN(a) || isNaN(b) || b === null) {
             repdec.elems.dec.innerHTML = "Not a number";
         } else {
             var str_a = a === null ? "" : a.toString() + " ",
-                str_b = b === null ? "" : b.toString();
-            if (str_b.length > 2) str_b = str_b + " " + str_b;
-            else str_b = str_b + " " + str_b + " " + str_b;
-            repdec.elems.dec.innerHTML = "0." + str_a + str_b + " ...";
+                str_b = b === null ? "" : b.toString() + " ";
+            repdec.elems.dec.innerHTML = "0." + str_a + str_b + str_b + str_b + "...";
+            if (a === null) {
+                repdec.elems.frac_top.innerHTML = b;
+            } else {
+                var new_a = Number(a.toString() + b.toString());
+                repdec.elems.frac_top.innerHTML = new_a - a;
+            }
+            repdec.elems.frac_bottom.innerHTML = (new Array(str_b.length)).join("9") + (new Array(str_a.length)).join("0");
         }
     },
     
