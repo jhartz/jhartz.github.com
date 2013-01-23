@@ -57,30 +57,38 @@ var repdec = {
         } else {
             var str_a = a === null ? "" : a.toString(),
                 str_b = b === null ? "" : b.toString();
-            repdec.elems.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid white;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
-            var top = b;
-            if (a !== null) {
-                var new_a = Number(a.toString() + b.toString());
-                top = new_a - a;
-            }
-            var bottom = Number((new Array(str_b.length + 1)).join("9") + (new Array(str_a.length + 1)).join("0"));
-            repdec.elems.frac_top.innerHTML = top;
-            repdec.elems.frac_bottom.innerHTML = bottom;
-            if (top == bottom) {
-                if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "block";
+            if (str_a.indexOf("e") != -1 || str_b.indexOf("e") != -1) {
+                if (repdec.elems.dec) repdec.elems.dec.innerHTML = "Number too large";
+                repdec.elems.frac_top.innerHTML = "0";
+                repdec.elems.frac_bottom.innerHTML = "0";
+                if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
                 if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
             } else {
-                if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
-                if (repdec.elems.frac_simp_top && repdec.elems.frac_simp_bottom) {
-                    var reduced = repdec.reduce(top, bottom);
-                    if (reduced[0] != top || reduced[1] != bottom) {
-                        if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "block";
-                        repdec.elems.frac_simp_top.innerHTML = reduced[0];
-                        repdec.elems.frac_simp_bottom.innerHTML = reduced[1];
-                    } else {
-                        if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
-                    }
-                } else if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+                repdec.elems.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid white;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
+                var top = b;
+                if (a !== null) {
+                    var new_a = Number(a.toString() + b.toString());
+                    top = new_a - a;
+                }
+                var bottom = Number((new Array(str_b.length + 1)).join("9") + (new Array(str_a.length + 1)).join("0"));
+                repdec.elems.frac_top.innerHTML = top;
+                repdec.elems.frac_bottom.innerHTML = bottom;
+                if (top == bottom) {
+                    if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "block";
+                    if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+                } else {
+                    if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
+                    if (repdec.elems.frac_simp_top && repdec.elems.frac_simp_bottom) {
+                        var reduced = repdec.reduce(top, bottom);
+                        if (reduced[0] != top || reduced[1] != bottom) {
+                            if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "block";
+                            repdec.elems.frac_simp_top.innerHTML = reduced[0];
+                            repdec.elems.frac_simp_bottom.innerHTML = reduced[1];
+                        } else {
+                            if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+                        }
+                    } else if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+                }
             }
         }
     },
