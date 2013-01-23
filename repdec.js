@@ -53,7 +53,7 @@ var repdec = {
         } else {
             var str_a = a === null ? "" : a.toString(),
                 str_b = b === null ? "" : b.toString();
-            repdec.elems.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid black;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
+            repdec.elems.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid white;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
             var top = b;
             if (a !== null) {
                 var new_a = Number(a.toString() + b.toString());
