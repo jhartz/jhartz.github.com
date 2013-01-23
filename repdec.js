@@ -12,13 +12,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 var repdec = {
     ids: {
-        body: "repdec_body",  // Element to make visible when ready (optional)
-        err: "repdec_body",  // Element to replace with error message (optional)
-        a:  "repdec_a",  // Input for first part of decimal (non-repeating section)
-        b:  "repdec_b",  // Input for second part of decimal (repeating section)
+        body: "repdec_body",  // Element to show when ready (optional)
+        err: "repdec_body",  // Element whose contents will be replaced with an error message (optional)
+        a: "repdec_a",  // Input for first part of decimal (non-repeating section)
+        b: "repdec_b",  // Input for second part of decimal (repeating section)
         dec: "repdec_dec",  // Element in which to display the interpretation of the inputted decimal (optional)
         frac_top: "repdec_frac_top",  // Element in which to display the numerator of the fraction
-        frac_bottom: "repdec_frac_bottom"  // Element in which to display the denominator of the fraction
+        frac_bottom: "repdec_frac_bottom",  // Element in which to display the denominator of the fraction
+        frac_simp: "repdec_frac_simp",  // Element to show if a simplified fraction is available (optional)
+        frac_simp_top: "repdec_frac_simp_top",  // Element in which to display the numerator of a simplified fraction (optional)
+        frac_simp_bottom: "repdec_frac_simp_bottom",  // Element in which to display the denominator of a simplified fraction (optional)
+        frac_one: "repdec_frac_one"  // Element to display if the fraction is equal to one (optional)
     },
     required: ["a", "b", "dec", "frac_top", "frac_bottom"],
     
@@ -33,22 +37,47 @@ var repdec = {
         throw msg;
     },
     
+    reduce: function (top, bottom) {
+        var gcd = function gcd(a, b) {
+            return b ? gcd(b, a % b) : a;
+        };
+        gcd = gcd(top, bottom);
+        return [top/gcd, bottom/gcd];
+    },
+    
     update: function () {
         var a = repdec.elems.a.value ? parseInt(repdec.elems.a.value, 10) : null;
         var b = repdec.elems.b.value ? parseInt(repdec.elems.b.value, 10) : null;
         if (isNaN(a) || isNaN(b) || b === null) {
-            repdec.elems.dec.innerHTML = "Not a number";
+            if (repdec.elems.dec) repdec.elems.dec.innerHTML = "Not a number";
         } else {
-            var str_a = a === null ? "" : a.toString() + " ",
-                str_b = b === null ? "" : b.toString() + " ";
-            repdec.elems.dec.innerHTML = "0." + str_a + str_b + str_b + str_b + "...";
-            if (a === null) {
-                repdec.elems.frac_top.innerHTML = b;
-            } else {
+            var str_a = a === null ? "" : a.toString(),
+                str_b = b === null ? "" : b.toString();
+            repdec.elems.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid black;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
+            var top = b;
+            if (a !== null) {
                 var new_a = Number(a.toString() + b.toString());
-                repdec.elems.frac_top.innerHTML = new_a - a;
+                top = new_a - a;
             }
-            repdec.elems.frac_bottom.innerHTML = (new Array(str_b.length)).join("9") + (new Array(str_a.length)).join("0");
+            var bottom = Number((new Array(str_b.length + 1)).join("9") + (new Array(str_a.length + 1)).join("0"));
+            repdec.elems.frac_top.innerHTML = top;
+            repdec.elems.frac_bottom.innerHTML = bottom;
+            if (top == bottom) {
+                if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "block";
+                if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+            } else {
+                if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
+                if (repdec.elems.frac_simp_top && repdec.elems.frac_simp_bottom) {
+                    var reduced = repdec.reduce(top, bottom);
+                    if (reduced[0] != top || reduced[1] != bottom) {
+                        if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "block";
+                        repdec.elems.frac_simp_top.innerHTML = reduced[0];
+                        repdec.elems.frac_simp_bottom.innerHTML = reduced[1];
+                    } else {
+                        if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+                    }
+                } else if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+            }
         }
     },
     
