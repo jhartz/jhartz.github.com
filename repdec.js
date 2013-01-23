@@ -57,7 +57,8 @@ var repdec = {
         } else {
             var str_a = a === null ? "" : a.toString(),
                 str_b = b === null ? "" : b.toString();
-            if (str_a.indexOf("e") != -1 || str_b.indexOf("e") != -1) {
+            if (str_a.indexOf("e") != -1 || str_b.indexOf("e") != -1 || str_a.length > 15 || str_b.length > 15) {
+                // We don't want any weirdness with big numbers that are represented oddly in float-world
                 if (repdec.elems.dec) repdec.elems.dec.innerHTML = "Number too large";
                 repdec.elems.frac_top.innerHTML = "0";
                 repdec.elems.frac_bottom.innerHTML = "0";
