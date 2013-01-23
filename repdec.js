@@ -48,8 +48,12 @@ var repdec = {
     update: function () {
         var a = repdec.elems.a.value ? parseInt(repdec.elems.a.value, 10) : null;
         var b = repdec.elems.b.value ? parseInt(repdec.elems.b.value, 10) : null;
-        if (isNaN(a) || isNaN(b) || b === null) {
+        if (isNaN(a) || isNaN(b) || b === null || (a && a < 0) || (b && b < 0)) {
             if (repdec.elems.dec) repdec.elems.dec.innerHTML = "Not a number";
+            repdec.elems.frac_top.innerHTML = "0";
+            repdec.elems.frac_bottom.innerHTML = "0";
+            if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
+            if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
         } else {
             var str_a = a === null ? "" : a.toString(),
                 str_b = b === null ? "" : b.toString();
