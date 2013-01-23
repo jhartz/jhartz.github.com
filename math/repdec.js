@@ -65,7 +65,7 @@ var repdec = {
                 if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
                 if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
             } else {
-                repdec.elems.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid white;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
+                repdec.elems.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
                 var top = b;
                 if (a !== null) {
                     var new_a = Number(a.toString() + b.toString());
