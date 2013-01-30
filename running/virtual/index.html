@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Virtual Running</title>
+<script type="text/javascript" src="jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.10.0.custom.min.js"></script>
+<script type="text/javascript" src="jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="jquery.path.js"></script>
+<script type="text/javascript" src="virtualrunning.js"></script>
+<script type="text/javascript" src="virtualrunning-courses.js"></script>
+<script type="text/javascript" src="virtualrunning-faces.js"></script>
+</head>
+
+<body>
+<noscript>Please enable JavaScript to view this page.</noscript>
+
+<div id="intros" class="top" style="display: none;" data-items="4"><img class="full" src="bg/intro1.jpg" data-item="1"><img class="full" src="bg/intro2.jpg" data-item="2"><img class="full" src="bg/intro3.jpg" data-item="3"><img class="full" src="bg/intro4.jpg" data-item="4" id="intro_final"></div>
+
+<div id="main" class="top" style="display: none;"><img id="main_img" class="full" src="bg/track.jpg">
+    <div class="full"><table id="main_table"><tr><td>
+        <div id="main_options" class="main_dialog">
+            <div id="main_options_help" class="lilbutton" style="float: right;">?</div>
+            <h1>Virtual Running</h1>
+            <hr>
+            <table><tbody><tr>
+                <td>
+                    <div id="main_options_face" class="dropdown"><span>Runner</span><ul></ul></div>
+                    <div id="main_options_face_custom" style="display: none;"><button id="main_options_face_custom_uploadbtn">Upload Image</button><br><button id="main_options_face_custom_urlbtn">Use Custom URL</button><span style="display: none;"><input id="main_options_face_custom_fileinput" type="file"></span></div>
+                </td>
+                <td><div id="main_options_course" class="dropdown"><span>Course</span><ul></ul></div></td>
+            </tr></tbody></table>
+            <div id="main_options_face_custom_path" style="display: none;"></div>
+            <hr>
+            <div><label for="main_options_laps">Laps: </label><input id="main_options_laps" type="number" min="1" max="999" value="2" size="3" maxlength="3"></div>
+            <hr>
+            <div id="main_options_speed" class="button"><span>Adjust Speed</span></div>
+            <hr>
+            <div id="main_options_go" class="button"><span>Go!</span></div>
+        </div>
+        <div id="main_speedometer" class="main_dialog" style="display: none;">
+            <h2>Speed-o-Meter</h2>
+            <hr>
+            <table><tbody><tr>
+                <td><div id="main_speedometer_fastpresets" class="dropdown"><span>Fast Presets</span><ul></ul></div></td>
+                <td><div id="main_speedometer_slowpresets" class="dropdown"><span>Slow Presets</span><ul></ul></div></td>
+            </tr></tbody></table>
+            <hr>
+            <div><label for="main_speedometer_speed">Speed: </label><input id="main_speedometer_speed" type="number" min="0" max="1000" value="1" step="0.5" size="4"></div>
+            <hr>
+            <table style="width: 100%;"><tbody><tr>
+                <td style="width: 30%;"><div class="checkbox"><input id="main_speedometer_blastoff" type="checkbox" value="yes" style="display: none;"><label for="main_speedometer_blastoff"></label></div></td>
+                <td style="text-align: left;"><label for="main_speedometer_blastoff" style="margin-left: 20px;">Blastoff ending</label></td>
+            </tr></tbody></table>
+            <hr>
+            <div id="main_speedometer_back" class="button"><span>Back</span></div>
+        </div>
+        <div id="main_help" class="main_dialog" style="display: none;">
+            <h2>Virtual Running</h2>
+            <h3>Help</h3>
+            <hr>
+            <div style="text-align: left;">
+                <p>In the main box, choose a runner and a course. Then, adjust the number of laps, and click "Adjust Speed" to open the Speed-o-Meter.</p>
+                <p>In the Speed-o-Meter, enter a starting speed value (lower = faster, higher = slower), or select a Fast Preset or Slow Preset. Check "Blastoff Ending" for a fun finish to your last lap.</p>
+                <hr>
+                <p>Query params:</p>
+                <ul>
+                    <li><code>nointro</code> - disable intro</li>
+                    <li><code>constant</code> - force constant updating of distance and time</li>
+                    <li><code>noconstant</code> - force no constant updating of distance and time</li>
+                    <li><code>debug</code> - turn on debug mode</li>
+                </ul>
+            </div>
+            <hr>
+            <div id="main_help_back" class="button"><span>Back</span></div>
+        </div>
+        <div id="main_controls" class="main_dialog" style="display: none;">
+            <p>Distance traveled: <span id="main_controls_distancetraveled">0</span> m</p>
+            <p>Time elapsed: <span id="main_controls_timeelapsed">0</span></p>
+            <p>Laps completed: <span id="main_controls_lapscompleted">0</span></p>
+            <p>Average mile time: <span id="main_controls_avgmiletime">0</span></p>
+            <p>Mile time at current pace: <span id="main_controls_miletime">0</span></p>
+            <p id="main_controls_debug" style="display: none;">rate: <span id="main_controls_debug_rate"></span><br>ratediff: <span id="main_controls_debug_ratediff"></span><br>diff: <span id="main_controls_debug_diff"></span></p>
+        </div>
+    </td></tr></table></div>
+    <div id="main_face_container" class="full" style="display: none;"><div style="position: relative;"><img id="main_face" src="" style="position: absolute; border-radius: 8px;"></div></div>
+</div>
+
+</body>
+</html>
