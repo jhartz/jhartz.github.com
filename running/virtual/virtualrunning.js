@@ -277,6 +277,11 @@ var vr = {
     introend: function () {
         $("#main_img").css("opacity", ".5");
         $("#main").fadeIn(1000);
+        
+        // While we're waiting for user to make choices, preload course backgrounds
+        $.each(vr.options.courses, function (name, data) {
+            $("<img />").src(data.background).appendTo($("#preload_container"));
+        });
     },
     
     start: function () {
