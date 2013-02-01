@@ -280,7 +280,7 @@ var vr = {
         
         // While we're waiting for user to make choices, preload course backgrounds
         $.each(vr.options.courses, function (name, data) {
-            $("<img />").src(data.background).appendTo("#preload_container");
+            $("<img />").attr("src", data.background).appendTo("#preload_container");
         });
     },
     
