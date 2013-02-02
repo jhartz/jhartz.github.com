@@ -1,3 +1,5 @@
+// NOTE: Update manifest.appcache when you update this file
+
 var vr = {
     // constants
     targetWidth: 1600,
@@ -5,11 +7,14 @@ var vr = {
     startrate: 9,  // m/s
     
     options: {
-        faces: {},  // in separate file
-        face: {},
-        
         courses: {},  // in separate file
         course: {},
+        
+        boosts: {},  // in separate file
+        boost: {},
+        
+        faces: {},  // in separate file
+        face: {},
         
         laps: {value: 2},
         
@@ -93,6 +98,7 @@ var vr = {
         
         $.each(vr.options.faces, function (name, data) {
             if (vr.funfaces || (!data.locked || vr.query[name.toLowerCase()])) {
+                // TODO: cache face URL in localStorage or something
                 $("#main_options_face ul").append('<li><img src="' + vr.escHTML(data.url) + '"><a href="#">' + vr.escHTML(name) + '</a></li>');
             }
         });

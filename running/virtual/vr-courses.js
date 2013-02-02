@@ -1,3 +1,5 @@
+// NOTE: Update manifest.appcache when you update this file
+
 vr.options.courses = {
     "Track": {
         background: "bg/track.jpg",

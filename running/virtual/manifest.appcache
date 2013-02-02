@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# version: 2012-02-02 a
+index.html
+jquery-1.9.0.min.js
+jquery-ui-1.10.0.custom.min.js
+jquery.easing.1.3.js
+jquery.path.js
+style.css
+vr-boosts.js
+vr-courses.js
+vr-faces.js
+vr.js
+bg/cliff.jpg
+bg/intro1.jpg
+bg/intro2.jpg
+bg/intro3.jpg
+bg/intro4.jpg
+bg/track.jpg
+boosts/coffee.png
