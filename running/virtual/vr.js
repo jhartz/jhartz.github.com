@@ -4,7 +4,7 @@ var vr = {
     // constants
     targetWidth: 1600,
     targetHeight: 766,
-    startrate: 9,  // m/s
+    startRate: 9,  // m/s
     
     options: {
         courses: {},  // in separate file
@@ -47,15 +47,11 @@ var vr = {
     timeelapsed: 0,
     constantupdate: null,
     
-    hideall: function () {
-        $(".top").hide();
-    },
-    
     escHTML: function (html) {
         return (html + "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt");
     },
     
-    prettytime: function (time) {
+    prettyTime: function (time) {
         // convert "time" from seconds or minutes into min:sec or hr:min, respectively
         var left = Math.floor(time / 60);
         var right = time - (left * 60);
@@ -64,7 +60,7 @@ var vr = {
         return left + ":" + right;
     },
     
-    parsequery: function (query) {
+    parseQuery: function (query) {
         var qname, qvalue;
         if (query) {
             query = query.split("&");
@@ -85,10 +81,10 @@ var vr = {
     },
     
     load: function () {
-        vr.parsequery(window.location.search.substring(1));
-        vr.parsequery(window.location.hash.substring(1));
+        vr.parseQuery(window.location.search.substring(1));
+        vr.parseQuery(window.location.hash.substring(1));
         $(window).on("hashchange", function () {
-            vr.parsequery(window.location.hash.substring(1));
+            vr.parseQuery(window.location.hash.substring(1));
         });
         
         doit();
@@ -290,7 +286,7 @@ var vr = {
                 $("#intro_final").addClass("move");
                 setTimeout(function () {
                     $("#intros").fadeOut(1000);
-                    vr.introend();
+                    vr.introEnd();
                 }, 4500);
             } else {
                 if (count == 1) {
@@ -309,7 +305,7 @@ var vr = {
         run_intro();
     },
     
-    introend: function () {
+    introEnd: function () {
         $("#main_img").css("opacity", ".5");
         $("#main").fadeIn(1000);
         
@@ -320,8 +316,8 @@ var vr = {
     },
     
     start: function () {
-        vr.rate = vr.startrate / vr.options.speed.value;
-        vr.ratediff = (vr.startrate - vr.rate) * (2/3);  // We want to make up 2/3 of it by the end
+        vr.rate = vr.startRate / vr.options.speed.value;
+        vr.ratediff = (vr.startRate - vr.rate) * (2/3);  // We want to make up 2/3 of it by the end
         
         if (vr.query.noconstant) {
             vr.constantupdate = false;
@@ -363,14 +359,14 @@ var vr = {
         vr.run();
     },
     
-    updatestats: function (distancetraveled, timeelapsed) {
+    updateStats: function (distancetraveled, timeelapsed) {
         vr.distancetraveled += distancetraveled;
         vr.timeelapsed += timeelapsed;
         $("#main_controls_distancetraveled").text(Math.round(vr.distancetraveled));
-        $("#main_controls_timeelapsed").text(vr.prettytime(Math.round(vr.timeelapsed)));
+        $("#main_controls_timeelapsed").text(vr.prettyTime(Math.round(vr.timeelapsed)));
         
         var avgmiletime = Math.round((vr.timeelapsed / vr.distancetraveled) * 1605);
-        if (!isNaN(avgmiletime)) $("#main_controls_avgmiletime").text(vr.prettytime(avgmiletime));
+        if (!isNaN(avgmiletime)) $("#main_controls_avgmiletime").text(vr.prettyTime(avgmiletime));
     },
     
     run: function () {
@@ -380,7 +376,7 @@ var vr = {
             // We're only updating here, as opposed to the other setInterval "constant-update" method
             if (vr.currentpath > -1) {
                 // For distance traveled, we use normal distance; for time elapsed, we use virtual distance
-                vr.updatestats(course.path[vr.currentpath].distance, (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate);
+                vr.updateStats(course.path[vr.currentpath].distance, (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate);
             }
         }
         
@@ -410,8 +406,8 @@ var vr = {
                 $("#main_controls_debug_diff").text(Math.round((vr.rate - oldrate) * 1000) / 1000);
             }
             
-            var miletime_sec = Math.round(1605 / vr.rate);
-            $("#main_controls_miletime").text(vr.prettytime(miletime_sec));
+            var miletime = Math.round(1605 / vr.rate);
+            $("#main_controls_miletime").text(vr.prettyTime(miletime));
             
             var path = course.path[vr.currentpath];
             var params = null;
@@ -437,7 +433,7 @@ var vr = {
                 var upd_timeelapsed = (distance / vr.rate) / upd_times;
                 var upd_complete = 0;
                 var upd_interval = setInterval(function () {
-                    vr.updatestats(upd_distancetraveled, upd_timeelapsed);
+                    vr.updateStats(upd_distancetraveled, upd_timeelapsed);
                     upd_complete++;
                     if (upd_complete >= upd_times) clearInterval(upd_interval);
                 }, 500);
@@ -454,7 +450,7 @@ $(function () {
     vr.load();
     vr.resize();
     if (vr.query.nointro) {
-        vr.introend();
+        vr.introEnd();
     } else {
         vr.intro();
     }
