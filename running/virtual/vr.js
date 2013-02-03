@@ -64,21 +64,33 @@ var vr = {
         return left + ":" + right;
     },
     
-    load: function () {
-        var query = window.location.search.substring(1).split("&"), qname, qvalue;
-        for (var i = 0; i < query.length; i++) {
-            if (query[i].indexOf("=") != -1) {
-                qname = query[i].substring(0, query[i].indexOf("=")).toLowerCase();
-                qvalue = query[i].substring(query[i].indexOf("=") + 1);
-                if (qvalue) {
-                    vr.query[qname] = qvalue;
+    parsequery: function (query) {
+        var qname, qvalue;
+        if (query) {
+            query = query.split("&");
+            for (var i = 0; i < query.length; i++) {
+                if (query[i].indexOf("=") != -1) {
+                    qname = query[i].substring(0, query[i].indexOf("=")).toLowerCase();
+                    qvalue = query[i].substring(query[i].indexOf("=") + 1);
+                    if (qvalue) {
+                        vr.query[qname] = qvalue;
+                    } else {
+                        vr.query[qname] = true;
+                    }
                 } else {
-                    vr.query[qname] = true;
+                    vr.query[query[i].toLowerCase()] = true;
                 }
-            } else {
-                vr.query[query[i].toLowerCase()] = true;
             }
         }
+    },
+    
+    load: function () {
+        vr.parsequery(window.location.search.substring(1));
+        vr.parsequery(window.location.hash.substring(1));
+        $(window).on("hashchange", function () {
+            vr.parsequery(window.location.hash.substring(1));
+        });
+        
         doit();
         
         $(".full").css({width: vr.targetWidth + "px", height: vr.targetHeight + "px"});
