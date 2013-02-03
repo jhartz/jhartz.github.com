@@ -90,12 +90,6 @@ var vr = {
         
         /* CONTROLS */
         
-        $("#main_options_help").click(function () {
-            $("#main_options").fadeOut(function () {
-                $("#main_help").fadeIn();
-            });
-        });
-        
         $.each(vr.options.faces, function (name, data) {
             if (vr.funfaces || (!data.locked || vr.query[name.toLowerCase()])) {
                 // TODO: cache face URL in localStorage or something
@@ -158,7 +152,7 @@ var vr = {
         $("#main_options_laps").val(vr.options.laps.value).change();
         
         $("#main_options_speed").click(function () {
-            $("#main_options").fadeOut(function () {
+            $("#main_options, #main_options_bottom").fadeOut(function () {
                 $("#main_speedometer").fadeIn();
             });
         });
@@ -174,6 +168,21 @@ var vr = {
                 vr.start();
             }
         });
+        
+        $("#main_options_help").click(function () {
+            $("#main_options, #main_options_bottom").fadeOut(function () {
+                $("#main_help").fadeIn();
+            });
+        });
+        
+        if (window.applicationCache && window.indexedDB) {
+            $("#main_options_offline_container").show();
+            $("#main_options_offline").click(function () {
+                $("#main_options, #main_options_bottom").fadeOut(function () {
+                    $("#main_offline").fadeIn();
+                });
+            });
+        }
         
         /* SPEED-O-METER */
         
@@ -211,7 +220,7 @@ var vr = {
         
         $("#main_speedometer_back").click(function () {
             $("#main_speedometer").fadeOut(function () {
-                $("#main_options").fadeIn();
+                $("#main_options, #main_options_bottom").fadeIn();
             });
         });
         
@@ -219,7 +228,15 @@ var vr = {
         
         $("#main_help_back").click(function () {
             $("#main_help").fadeOut(function () {
-                $("#main_options").fadeIn();
+                $("#main_options, #main_options_bottom").fadeIn();
+            });
+        });
+        
+        /* OFFLINE */
+        
+        $("#main_offline_back").click(function () {
+            $("#main_offline").fadeOut(function () {
+                $("#main_options, #main_options_bottom").fadeIn();
             });
         });
     },
@@ -323,7 +340,7 @@ var vr = {
             });
         }
         $("#main_img").attr("src", course.background).animate({opacity: 1});
-        $("#main_options").fadeOut(function () {
+        $("#main_options, #main_options_bottom").fadeOut(function () {
             if (course.controls) {
                 if (course.controls.align) $("#main_table > tbody > tr > td").css("vertical-align", course.controls.align);
                 if (course.controls.theme) $("#main_controls").addClass(course.controls.theme);
