@@ -59,8 +59,9 @@
 
     // Added by me (Jake)
     if (typeof params.start.rotation == "number" && typeof params.end.rotation == "number") {
-        this.rotation_diff = params.end.rotation - params.start.rotation;
-        this.rotation_start = params.start.rotation;
+      this.rotation_diff = params.end.rotation - params.start.rotation;
+      this.rotation_start = params.start.rotation;
+      this.transform_other = " " + (params.transform_other || "");
     }
 
     /* p from 0 to 1 */
@@ -78,6 +79,7 @@
       // Added by me (Jake)
       if (this.rotation_diff) {
         css.rotation = Math.round(this.rotation_start + (this.rotation_diff * (1 - p)));
+        css.transform_other = this.transform_other;
       }
 
       return css;
@@ -101,8 +103,9 @@
 
     // Added by me (Jake)
     if (typeof params.start.rotation == "number" && typeof params.end.rotation == "number") {
-        this.rotation_diff = params.end.rotation - params.start.rotation;
-        this.rotation_start = params.start.rotation;
+      this.rotation_diff = params.end.rotation - params.start.rotation;
+      this.rotation_start = params.start.rotation;
+      this.transform_other = " " + (params.transform_other || "");
     }
 
     this.css = function(p) {
@@ -121,6 +124,7 @@
       // Added by me (Jake)
       if (this.rotation_diff) {
         css.rotation = Math.round(this.rotation_start + (this.rotation_diff * (1 - p)));
+        css.transform_other = this.transform_other;
       }
 
       return css;
@@ -139,9 +143,9 @@
     // Added by me (Jake)
     if (typeof css.rotation == "number") {
         $(fx.elem).css({
-            "-webkit-transform": "rotate(" + css.rotation + "deg)",
-            "-moz-transform": "rotate(" + css.rotation + "deg)",
-            "transform": "rotate(" + css.rotation + "deg)"
+            "-webkit-transform": "rotate(" + css.rotation + "deg)" + css.transform_other,
+            "-moz-transform": "rotate(" + css.rotation + "deg)" + css.transform_other,
+            "transform": "rotate(" + css.rotation + "deg)" + css.transform_other
         });
     }
   };
