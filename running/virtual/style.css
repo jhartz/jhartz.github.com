@@ -52,19 +52,6 @@ input.bad:focus {
     top: 0;
 }
 
-.lilbutton {
-    cursor: pointer;
-    text-decoration: underline;
-    
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-}
-
-.lilbutton:hover {
-    text-decoration: none;
-}
-
 #intro_final {
     -webkit-transition: -webkit-transform 4s, transform 4s;
     -moz-transition: -moz-transform 4s, transform 4s;
@@ -128,6 +115,27 @@ input.bad:focus {
 
 .dialog td {
     vertical-align: top;
+}
+
+.dialog a, .dialog a:visited {
+    color: inherit;
+}
+
+.dialog a:hover {
+    text-decoration: none;
+}
+
+.lilbutton {
+    cursor: pointer;
+    text-decoration: underline;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+}
+
+.lilbutton:hover {
+    text-decoration: none;
 }
 
 
