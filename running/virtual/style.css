@@ -104,6 +104,15 @@ input.bad:focus {
     margin: 8px;
 }
 
+.dialog ul, .dialog p {
+    text-align: left;
+}
+
+.dialog.bottom p {
+    text-align: center;
+    display: inline;
+}
+
 .dialog h1, .dialog h2 {
     margin-bottom: 0;
 }
@@ -200,6 +209,7 @@ input.bad:focus {
     background: #fff;
     list-style: none;
     font-weight: normal; /* Cancels previous font-weight: bold; */
+    text-align: center;
     
     opacity: 0;
     pointer-events: none;
