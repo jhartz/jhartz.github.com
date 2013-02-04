@@ -1,3 +1,8 @@
+/*
+    Copyright (c) 2013, Jake Hartz. All rights reserved.
+    Licensed under a BSD-style license found in the LICENSE file.
+*/
+
 // NOTE: Update manifest.appcache when you update this file
 
 vr.options.boosts = {
