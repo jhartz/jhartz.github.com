@@ -452,65 +452,95 @@ var vr = {
     
     db: {
         idb: null,
+        DB_NAME: "VRDB",
+        DB_STORE: "faces",
         
-        error: function (event, containerFunc, innerFunc) {
+        error: function (event, func) {
             if (typeof console != "undefined" && typeof console.log == "function") {
-                console.log("DATABASE ERROR in " + containerFunc + (innerFunc ? " (" + innerFunc + ")" : "") + ": " + event.target.errorCode);
+                console.log("DATABASE ERROR in " + func + ": " + event.target.errorCode + "...");
                 console.log(event);
             }
         },
         
         load: function () {
             if (window.indexedDB) {
-                var request = openReqShim("VRDB");
+                var request = openReqShim(vr.db.DB_NAME);
                 request.onerror = function (event) {
-                    vr.db.error(event, "vr.db.load", "request.onerror");
+                    vr.db.error(event, "request.onerror");
                 };
                 request.onblocked = function (event) {
-                    alert("BLOCKED");
-                    console.log(event);
+                    vr.db.error(event, "request.onblocked");
                 };
                 request.onsuccess = function (event) {
                     vr.db.idb = request.result;
                     vr.db.idb.onerror = function (event) {
-                        vr.db.error(event, "vr.db.load", "vr.db.idb.onerror");
+                        vr.db.error(event, "vr.db.idb.onerror");
                     };
                     vr.db.update();
                 };
                 request.onupgradeneeded = function (event) {
-                    console.log("ONUPGRADENEEDED", event);
                     var db = event.target.result;
-                    var objectStore = db.createObjectStore("faces", {keyPath: "name"});
+                    var objectStore = db.createObjectStore(vr.db.DB_STORE, {keyPath: "name"});
                 };
             }
         },
         
+        objectStore: function (mode) {
+            if (mode == "readwrite") {
+                mode = IDBTransaction.READ_WRITE || "readwrite";
+            } else {
+                mode = IDBTransaction.READ_ONLY || "readonly";
+            }
+            return vr.db.idb.transaction([vr.db.DB_STORE], mode).objectStore(vr.db.DB_STORE);
+        },
+        
         update: function () {
             // Make sure everything is up-to-date
-            var faces = vr.db.fetchall();
+            vr.db.fetchall(function (face) {
+                // custom face here...
+            });
         },
         
-        add: function (data) {
-            // Add data to object store
-        },
-        
-        fetch: function (name) {
+        fetch: function (name, callback) {
             // Fetch from object store by name
+            if (!vr.db.idb) return false;
+            
+            vr.db.objectStore().get(name).onsuccess = function (event) {
+                if (typeof callback == "function") callback(event.target.result);
+            };
         },
         
-        fetchall: function () {
+        fetchall: function (callback, endcallback) {
             // Fetch list of all objects in object store
             if (!vr.db.idb) return false;
             
-            var transaction = vr.db.idb.transaction(["faces"], IDBTransaction.READ_ONLY);
-            transaction.oncomplete = function (event) {
-                console.log("TRANSACTION ONCOMPLETE", event);
+            vr.db.objectStore().openCursor().onsuccess = function (event) {
+                var cursor = event.target.result;
+                if (cursor) {
+                    if (typeof callback == "function") callback(cursor.value);
+                    cursor.continue();
+                } else {
+                    if (typeof endcallback == "function") endcallback();
+                }
             };
-            transaction.onerror = function (event) {
-                vr.db.error(event, "vr.db.update", "transaction.onerror");
-            };
+        },
+        
+        put: function (data, callback) {
+            // Add data to object store, or modify existing data if there's data with the same key
+            if (!vr.db.idb) return false;
             
-            var objectStore = transaction.objectStore("faces");
+            vr.db.objectStore("readwrite").put(data).onsuccess = function (event) {
+                if (typeof callback == "function") callback.apply(this, arguments);
+            };
+        },
+        
+        remove: function (name, callback) {
+            // Remove name from database
+            if (!vr.db.idb) return false;
+            
+            vr.db.objectStore("readwrite").delete(name).onsuccess = function (event) {
+                if (typeof callback == "function") callback.apply(this, arguments);
+            };
         }
     }
 };
