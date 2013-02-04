@@ -1,3 +1,28 @@
+/*
+Copyright (c) 2013, Jake Hartz
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 // NOTE: Update manifest.appcache when you update this file
 
 var vr = {
@@ -88,6 +113,7 @@ var vr = {
         });
         
         doit();
+        vr.db.load();
         
         $(".full").css({width: vr.targetWidth + "px", height: vr.targetHeight + "px"});
         
@@ -100,7 +126,6 @@ var vr = {
         
         $.each(vr.options.faces, function (name, data) {
             if (vr.funfaces || (!data.locked || vr.query[name.toLowerCase()])) {
-                // TODO: cache face URL in localStorage or something
                 $("#main_options_face ul").append('<li><img src="' + vr.escHTML(data.url) + '"><a href="#">' + vr.escHTML(name) + '</a></li>');
             }
         });
@@ -183,7 +208,7 @@ var vr = {
             });
         });
         
-        if (window.applicationCache && window.indexedDB) {
+        if (window.applicationCache) {
             $("#main_options_offline_container").show();
             $("#main_options_offline").click(function () {
                 $("#main_options, #main_options_bottom").fadeOut(function () {
@@ -444,6 +469,70 @@ var vr = {
             });
         }
     },
+    
+    db: {
+        idb: null,
+        
+        error: function (event, containerFunc, innerFunc) {
+            if (typeof console != "undefined" && typeof console.log == "function") {
+                console.log("DATABASE ERROR in " + containerFunc + (innerFunc ? " (" + innerFunc + ")" : "") + ": " + event.target.errorCode);
+                console.log(event);
+            }
+        },
+        
+        load: function () {
+            if (window.indexedDB) {
+                var request = openReqShim("VRDB");
+                request.onerror = function (event) {
+                    vr.db.error(event, "vr.db.load", "request.onerror");
+                };
+                request.onblocked = function (event) {
+                    alert("BLOCKED");
+                    console.log(event);
+                };
+                request.onsuccess = function (event) {
+                    vr.db.idb = request.result;
+                    vr.db.idb.onerror = function (event) {
+                        vr.db.error(event, "vr.db.load", "vr.db.idb.onerror");
+                    };
+                    vr.db.update();
+                };
+                request.onupgradeneeded = function (event) {
+                    console.log("ONUPGRADENEEDED", event);
+                    var db = event.target.result;
+                    var objectStore = db.createObjectStore("faces", {keyPath: "name"});
+                };
+            }
+        },
+        
+        update: function () {
+            // Make sure everything is up-to-date
+            var faces = vr.db.fetchall();
+        },
+        
+        add: function (data) {
+            // Add data to object store
+        },
+        
+        fetch: function (name) {
+            // Fetch from object store by name
+        },
+        
+        fetchall: function () {
+            // Fetch list of all objects in object store
+            if (!vr.db.idb) return false;
+            
+            var transaction = vr.db.idb.transaction(["faces"], IDBTransaction.READ_ONLY);
+            transaction.oncomplete = function (event) {
+                console.log("TRANSACTION ONCOMPLETE", event);
+            };
+            transaction.onerror = function (event) {
+                vr.db.error(event, "vr.db.update", "transaction.onerror");
+            };
+            
+            var objectStore = transaction.objectStore("faces");
+        }
+    }
 };
 
 $(function () {
