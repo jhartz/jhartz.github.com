@@ -187,20 +187,23 @@ var vr = {
             }
         });
         
-        $("#main_options_help").click(function () {
-            $("#main_options, #main_options_bottom").fadeOut(function () {
-                $("#main_help").fadeIn();
-            });
-        });
-        
         if (window.applicationCache) {
             $("#main_options_offline_container").show();
-            $("#main_options_offline").click(function () {
+        }
+        
+        $.each(["help", "offline", "source"], function (dialog) {
+            $("#main_options_" + dialog).click(function () {
                 $("#main_options, #main_options_bottom").fadeOut(function () {
-                    $("#main_offline").fadeIn();
+                    $("#main_" + dialog).fadeIn();
                 });
             });
-        }
+            
+            $("#main_" + dialog + "_back").click(function () {
+                $("#main_" + dialog).fadeOut(function () {
+                    $("#main_options, #main_options_bottom").fadeIn();
+                });
+            });
+        });
         
         /* SPEED-O-METER */
         
@@ -238,22 +241,6 @@ var vr = {
         
         $("#main_speedometer_back").click(function () {
             $("#main_speedometer").fadeOut(function () {
-                $("#main_options, #main_options_bottom").fadeIn();
-            });
-        });
-        
-        /* HELP */
-        
-        $("#main_help_back").click(function () {
-            $("#main_help").fadeOut(function () {
-                $("#main_options, #main_options_bottom").fadeIn();
-            });
-        });
-        
-        /* OFFLINE */
-        
-        $("#main_offline_back").click(function () {
-            $("#main_offline").fadeOut(function () {
                 $("#main_options, #main_options_bottom").fadeIn();
             });
         });
