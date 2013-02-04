@@ -191,7 +191,7 @@ var vr = {
             $("#main_options_offline_container").show();
         }
         
-        $.each(["help", "offline", "source"], function (dialog) {
+        $.each(["help", "offline", "source"], function (i, dialog) {
             $("#main_options_" + dialog).click(function () {
                 $("#main_options, #main_options_bottom").fadeOut(function () {
                     $("#main_" + dialog).fadeIn();
