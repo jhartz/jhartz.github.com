@@ -170,12 +170,6 @@ var vr = {
         });
         $("#main_options_laps").val(vr.options.laps.value).change();
         
-        $("#main_options_speed").click(function () {
-            $("#main_options, #main_options_bottom").fadeOut(function () {
-                $("#main_speedometer").fadeIn();
-            });
-        });
-        
         $("#main_options_go").click(function () {
             if (!vr.options.face.value) {
                 alert("Please choose a runner!");
@@ -192,7 +186,7 @@ var vr = {
             $("#main_options_offline_container").show();
         }
         
-        $.each(["help", "offline", "source"], function (i, dialog) {
+        $.each(["speedometer", "help", "offline", "source"], function (i, dialog) {
             $("#main_options_" + dialog).click(function () {
                 $("#main_options, #main_options_bottom").fadeOut(function () {
                     $("#main_" + dialog).fadeIn();
