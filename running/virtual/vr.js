@@ -349,12 +349,16 @@ var vr = {
             width: course.imgsize,
             height: course.imgsize
         });
-        if (course.startrotation) {
-            var css_rotate = "rotate(" + course.startrotation + "deg)";
+        if (course.startrotation || course.flipX || course.flipY) {
+            var css = [];
+            if (course.startrotation) css.push("rotate(" + course.startrotation + "deg)");
+            if (course.flipX) css.push("scaleX(-1)");
+            if (course.flipY) css.push("scaleY(-1)");
+            css = css.join(" ");
             $("#main_face").css({
-                "-webkit-transform": css_rotate,
-                "-moz-transform": css_rotate,
-                "transform": css_rotate
+                "-webkit-transform": css,
+                "-moz-transform": css,
+                "transform": css
             });
         }
         $("#main_img").attr("src", course.background).animate({opacity: 1});
@@ -431,8 +435,15 @@ var vr = {
                     top: path.data.y
                 };
             } else if (path.type == "bezier") {
+                var data = path.data;
+                if (course.flipX || course.flipY) {
+                    var css = [];
+                    if ((course.flipX && typeof data.flipX == "undefined") || data.flipX) css.push("scaleX(-1)");
+                    if ((course.flipY && typeof data.flipY == "undefined") || data.flipY) css.push("scaleY(-1)");
+                    data.transform_other = css.join(" ");
+                }
                 params = {
-                    path: new $.path.bezier(path.data)
+                    path: new $.path.bezier(data)
                 };
             }
             
