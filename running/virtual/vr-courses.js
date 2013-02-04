@@ -10,6 +10,8 @@ vr.options.courses = {
         background: "bg/track.jpg",
         imgsize: 55,  // width and height of image (px)
         start: [1135, 655],
+        startrotation: 180,
+        flipX: true,
         path: [
             {
                 type: "bezier",
@@ -20,13 +22,13 @@ vr.options.courses = {
                         y: 655,
                         angle: 40,
                         length: 1/2,
-                        rotation: 360
+                        rotation: 180
                     },
                     end: {
                         x: 1510,
                         y: 380,
                         angle: -51,
-                        rotation: 270
+                        rotation: 90
                     }
                 }
             },
@@ -38,14 +40,14 @@ vr.options.courses = {
                         x: 1510,
                         y: 380,
                         angle: 46,
-                        rotation: 270
+                        rotation: 90
                     },
                     end: {
                         x: 1150,
                         y: 70,
                         angle: -36,
                         length: 1/2,
-                        rotation: 180
+                        rotation: 0
                     }
                 }
             },
@@ -75,14 +77,14 @@ vr.options.courses = {
                         x: 440,
                         y: 70,
                         angle: 35,
-                        rotation: 180
+                        rotation: 360
                     },
                     end: {
                         x: 39,
                         y: 368,
                         angle: -46,
                         length: 1/2,
-                        rotation: 92
+                        rotation: 272
                     }
                 }
             },
@@ -94,14 +96,14 @@ vr.options.courses = {
                         x: 39,
                         y: 368,
                         angle: 54,
-                        rotation: 92
+                        rotation: 272
                     },
                     end: {
                         x: 390,
                         y: 657,
                         angle: -40,
                         length: 1/2,
-                        rotation: 0
+                        rotation: 180
                     }
                 }
             },
@@ -133,13 +135,33 @@ vr.options.courses = {
                         x: 1135,
                         y: 655,
                         angle: 220,
-                        rotation: 0
+                        rotation: 180
                     },
                     end: {
-                        x: 1200,
-                        y: 660,
+                        x: 1170,
+                        y: 655,
                         angle: 220,
-                        rotation: 363
+                        rotation: 340
+                    }
+                }
+            },
+            {
+                type: "bezier",
+                distance: 5,
+                final: true,
+                data: {
+                    flipX: false,
+                    start: {
+                        x: 1170,
+                        y: 655,
+                        angle: 220,
+                        rotation: -20
+                    },
+                    end: {
+                        x: 1210,
+                        y: 662,
+                        angle: 220,
+                        rotation: 3
                     }
                 }
             }
