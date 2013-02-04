@@ -7,7 +7,8 @@
 
 vr.options.faces = {
     "Gold": {
-        url: "faces/gold.gif"
+        url: "faces/gold.gif",
+        endurl: "faces/gold-end.gif"
     },
     
     "Dumbledore": {

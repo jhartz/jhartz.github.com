@@ -56,6 +56,10 @@ var vr = {
         return (html + "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt");
     },
     
+    preload: function (url) {
+        $("<img />").attr("src", url).appendTo("#preload_container");
+    },
+    
     prettyTime: function (time) {
         // convert "time" from seconds or minutes into min:sec or hr:min, respectively
         var left = Math.floor(time / 60);
@@ -107,6 +111,7 @@ var vr = {
         $.each(vr.options.faces, function (name, data) {
             if (vr.funfaces || (!data.locked || vr.query[name.toLowerCase()])) {
                 $("#main_options_face ul").append('<li><img src="' + vr.escHTML(data.url) + '"><a href="#">' + vr.escHTML(name) + '</a></li>');
+                if (data.endurl) vr.preload(data.endurl);
             }
         });
         $("#main_options_face ul").append('<li><a href="#">Custom...</a></li>');
@@ -316,7 +321,7 @@ var vr = {
         
         // While we're waiting for user to make choices, preload course backgrounds
         $.each(vr.options.courses, function (name, data) {
-            $("<img />").attr("src", data.background).appendTo("#preload_container");
+            vr.preload(data.background);
         });
     },
     
@@ -399,6 +404,10 @@ var vr = {
             $("#main_controls_lapscompleted").text(vr.lapscompleted);
             if (vr.lapscompleted < vr.options.laps.value) {
                 vr.run();
+            } else {
+                // We're done!!
+                // TODO: Switch #main_face to endurl if specified in face
+                // (After we redo some of the mess in vr.options.face ...)
             }
         } else {
             if (vr.ratediff > 1) vr.ratediff -= 0.1;
