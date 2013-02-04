@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# version: 2012-02-02 b
+# version: 2012-02-03 a
 index.html
 style.css
 vr.js
@@ -15,6 +15,12 @@ bg/intro4.jpg
 bg/track.jpg
 
 boosts/coffee.png
+
+faces/action.jpg
+faces/dumbledore.jpg
+faces/gold.gif
+faces/ohcanada.jpg
+faces/wimberbury.jpg
 
 lib/IndexedDBShim.min.js
 lib/jquery-1.9.0.min.js
