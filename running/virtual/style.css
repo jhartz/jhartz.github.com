@@ -123,6 +123,10 @@ input.bad:focus {
     color: #F9FEEB;
 }
 
+.dialog table {
+    width: 100%;
+}
+
 .dialog td {
     vertical-align: top;
 }
