@@ -39,13 +39,9 @@
             <h1>Virtual Running</h1>
             <hr>
             <table><tbody><tr>
-                <td>
-                    <div id="main_options_face" class="dropdown"><span>Runner</span><ul></ul></div>
-                    <div id="main_options_face_custom" style="display: none;"><button id="main_options_face_custom_uploadbtn">Upload Image</button><br><button id="main_options_face_custom_urlbtn">Use Custom URL</button><span style="display: none;"><input id="main_options_face_custom_fileinput" type="file"></span></div>
-                </td>
+                <td><div id="main_options_face" class="dropdown"><span>Runner</span><ul></ul></div></td>
                 <td><div id="main_options_course" class="dropdown"><span>Course</span><ul></ul></div></td>
             </tr></tbody></table>
-            <div id="main_options_face_custom_path" style="display: none;"></div>
             <hr>
             <div><label for="main_options_laps">Laps: </label><input id="main_options_laps" type="number" min="1" max="999" value="2" size="3" maxlength="3"></div>
             <hr>
@@ -58,6 +54,23 @@
             <p id="main_options_offline_container" style="display: none;"><span id="main_options_offline" class="lilbutton">Available Offline</span></p>
             <p><span id="main_options_source" class="lilbutton">Source</span></p>
         </div>
+        <div id="main_customface" class="dialog" style="display: none;">
+            <h2>Custom Runner</h2>
+            <hr>
+            <div id="main_customface_uploadbtn_container" style="display: none;">
+                <div><span id="main_customface_uploadbtn" class="button">Upload Runner Definition File (*.vrff)</span></div>
+                <div style="display: none;"><input id="main_customface_fileinput" type="file"></div>
+                <hr>
+            </div>
+            <p style="text-decoration: underline;">Define Custom Runner</p>
+            <p>Name: <input></p>
+            <p>Face image: <input></p>
+            <p>Boost: <input></p>
+            <table><tbody><tr>
+                <td><div id="main_customface_go" class="button"><span>Save</span></div></td>
+                <td><div id="main_customface_back" class="button"><span>Cancel</span></div></td>
+            </tr></tbody></table>
+        </div>
         <div id="main_speedometer" class="dialog" style="display: none;">
             <h2>Speed-o-Meter</h2>
             <hr>
@@ -68,7 +81,7 @@
             <hr>
             <div><label for="main_speedometer_speed">Speed: </label><input id="main_speedometer_speed" type="number" min="0" max="1000" value="1" step="0.5" size="4"></div>
             <hr>
-            <table style="width: 100%;"><tbody><tr>
+            <table><tbody><tr>
                 <td style="width: 30%;"><div class="checkbox"><input id="main_speedometer_blastoff" type="checkbox" value="yes" style="display: none;"><label for="main_speedometer_blastoff"></label></div></td>
                 <td style="text-align: left;"><label for="main_speedometer_blastoff" style="margin-left: 20px;">Blastoff ending</label></td>
             </tr></tbody></table>

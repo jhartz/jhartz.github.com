@@ -117,37 +117,14 @@ var vr = {
         });
         $("#main_options_face ul").append('<li><a href="#">Custom...</a></li>');
         vr.options.face.dropdown = new DropDown($("#main_options_face"), function () {
-            vr.options.face.value = this.val;
-            if (vr.options.face.value == "Custom...") {
-                $("#main_options_face_custom, #main_options_face_custom_path").show();
+            if (this.val == "Custom...") {
+                vr.options.face.customtemp = {};
+                $("#main_options, #main_options_bottom").fadeOut(function () {
+                    $("#main_customface").fadeIn();
+                });
+                return false;
             } else {
-                $("#main_options_face_custom, #main_options_face_custom_path").hide();
-            }
-        });
-        
-        $("#main_options_face_custom_uploadbtn").click(function () {
-            vr.options.face.customtype = "upload";
-            $("#main_options_face_custom_fileinput")[0].click();
-        });
-        $("#main_options_face_custom_urlbtn").click(function () {
-            vr.options.face.customtype = "url";
-            var newurl = prompt("Enter URL:");
-            if (newurl) {
-                vr.options.face.custom = newurl;
-                $("#main_options_face_custom_path").text(vr.options.face.custom);
-            }
-        });
-        $("#main_options_face_custom_fileinput").change(function (event) {
-            if (event.target.files && event.target.files.length > 0) {
-                var file = event.target.files[0];
-                var reader = new FileReader();
-                reader.onload = function (event) {
-                    if (event.target.result) {
-                        vr.options.face.custom = event.target.result;
-                        $("#main_options_face_custom_path").text(file.name);
-                    }
-                };
-                reader.readAsDataURL(file);
+                vr.options.face.value = this.val;
             }
         });
         
@@ -173,8 +150,6 @@ var vr = {
         $("#main_options_go").click(function () {
             if (!vr.options.face.value) {
                 alert("Please choose a runner!");
-            } else if (vr.options.face.value == "Custom..." && !vr.options.face.custom) {
-                alert("Please choose an image or URL for the custom runner!");
             } else if (!vr.options.course.value) {
                 alert("Please choose a course!");
             } else {
@@ -198,6 +173,56 @@ var vr = {
                     $("#main_options, #main_options_bottom").fadeIn();
                 });
             });
+        });
+        
+        /* CUSTOM FACE */
+        
+        if (typeof FileReader != "undefined" && typeof JSON != "undefined") {
+            $("#main_customface_uploadbtn_container").show();
+            $("#main_customface_uploadbtn").click(function () {
+                $("#main_customface_fileinput")[0].click();
+            });
+            
+            $("#main_customface_fileinput").change(function (event) {
+                if (event.target.files && event.target.files.length > 0) {
+                    var file = event.target.files[0];
+                    var ext = file.name.substring(file.name.lastIndexOf(".") + 1);
+                    if (ext.toLowerCase() != "vrff") {
+                        alert("Invalid file!\nPlease select a *.vrff file.");
+                    } else {
+                        var reader = new FileReader();
+                        reader.onload = function () {
+                            if (reader.result) {
+                                var data;
+                                try {
+                                    data = JSON.parse(reader.result);
+                                } catch (err) {}
+                                if (data) {
+                                    alert(JSON.stringify(data));
+                                } else {
+                                    alert("Error reading file!\nDetails: Could not parse JSON");
+                                }
+                            } else {
+                                alert("Error reading file!\nDetails: File is empty");
+                            }
+                        };
+                        reader.onerror = function () {
+                            alert("Error reading file!\nDetails: " + reader.error);
+                        };
+                        reader.readAsText(file);
+                    }
+                }
+            });
+        }
+        
+        $("#main_customface_back").click(function () {
+            $("#main_customface").fadeOut(function () {
+                $("#main_options, #main_options_bottom").fadeIn();
+            });
+        });
+        
+        $("#main_customface_go").click(function () {
+            $("#main_customface_back").click();
         });
         
         /* SPEED-O-METER */
@@ -568,40 +593,32 @@ function doit() {
 
 
 // http://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/
-function DropDown(el, onupdate) {
-    this.dd = el;
-    this.placeholder = this.dd.children("span");
-    this.opts = this.dd.find("ul > li");
+function DropDown($el, onupdate) {
+    this.$placeholder = $el.children("span");
     this.val = "";
     this.index = -1;
-    this.initEvents(onupdate);
-}
-DropDown.prototype = {
-    initEvents: function (onupdate) {
-        var obj = this;
-
-        obj.dd.on("click", function (event) {
-            $(this).toggleClass("active");
-            return false;
-        });
-
-        obj.opts.on("click", function () {
-            var opt = $(this);
-            obj.val = opt.text();
-            obj.index = opt.index();
-            var res = null;
-            if (typeof onupdate == "function") {
-                res = onupdate.call(obj);
-            }
-            if (res !== false) {
-                obj.placeholder.text(obj.val);
-            }
-        });
-    },
-    getValue: function () {
-        return this.val;
-    },
-    getIndex: function () {
-        return this.index;
-    }
+    
+    $el.on("click", function (event) {
+        $(this).toggleClass("active");
+        return false;
+    });
+    
+    var obj = this;
+    $el.find("ul > li").on("click", function () {
+        var $opt = $(this);
+        obj.oldval = obj.val;
+        obj.oldindex = obj.index;
+        obj.val = $opt.text();
+        obj.index = $opt.index();
+        var res = null;
+        if (typeof onupdate == "function") {
+            res = onupdate.call(obj);
+        }
+        if (res === false) {
+            obj.val = obj.oldval;
+            obj.index = obj.oldindex;
+        } else {
+            obj.$placeholder.text(obj.val);
+        }
+    });
 }
