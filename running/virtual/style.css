@@ -210,6 +210,8 @@ input.bad:focus {
     right: 0;
     margin: 0;
     padding: 0;
+    max-height: 500%;
+    overflow: auto;
     
     background: #fff;
     list-style: none;
