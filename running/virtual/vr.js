@@ -670,7 +670,7 @@ var vr = {
         
         load: function () {
             if (window.indexedDB) {
-                var request = openReqShim(vr.db.DB_NAME);
+                var request = window.indexedDB.open(vr.db.DB_NAME);
                 request.onerror = function (event) {
                     vr.db.error(event, "request.onerror");
                 };
