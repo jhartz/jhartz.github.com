@@ -31,7 +31,7 @@ vr.options.boosts = {
         image: "boosts/violin.png"
     },
     
-    "canada": {
+    "syrup": {
         strength: 5,
         uses: 8,
         addictive: false,
