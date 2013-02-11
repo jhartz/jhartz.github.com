@@ -173,6 +173,7 @@ input.bad:focus {
     color: #fff;
     border-radius: 5px;
     outline: none;
+    text-decoration: none;
     cursor: pointer;
     
     font-weight: bold;
