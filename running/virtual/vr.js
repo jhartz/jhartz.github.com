@@ -19,10 +19,10 @@ var vr = {
         boosts: {},  // in separate file
         boost: {},
         
-        faces: {},  // in separate file
+        faces: [],  // in separate file
         face: {},
         
-        laps: {value: 2},
+        laps: 2,
         
         // TODO: "realistic", where 1 lap around track is 1 min.
         speeds: {
@@ -98,7 +98,6 @@ var vr = {
         });
         
         doit();
-        vr.db.load();
         
         $(".full").css({width: vr.targetWidth + "px", height: vr.targetHeight + "px"});
         
@@ -109,51 +108,89 @@ var vr = {
         
         /* CONTROLS */
         
-        $.each(vr.options.faces, function (name, data) {
-            if (vr.funfaces || (!data.locked || vr.query[name.toLowerCase()])) {
-                $("#main_options_face ul").append('<li><img src="' + vr.escHTML(data.url) + '"><a href="#">' + vr.escHTML(name) + '</a></li>');
-                if (data.endurl) vr.preload(data.endurl);
+        $.each(vr.options.faces, function (index, data) {
+            if (data.name && data.url) {
+                if (!data.locked || vr.query[data.name.toLowerCase()] || vr.funfaces) {
+                    $("#main_options_face ul").append('<li data-type="preset" data-value="' + index + '"><img src="' + vr.escHTML(data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
+                    if (data.endurl) vr.preload(data.endurl);
+                }
             }
         });
-        $("#main_options_face ul").append('<li><a href="#">Custom...</a></li>');
         vr.options.face.dropdown = new DropDown($("#main_options_face"), function () {
-            if (this.val == "Custom...") {
-                vr.options.face.customtemp = {};
+            if (this.type == "preset") {
+                vr.options.face.type = "preset";
+                vr.options.face.data = vr.options.faces[this.value];
+            } else if (this.type == "db") {
+                vr.options.face.type = "db";
+                vr.db.fetch(JSON.parse(this.value).key, function (data) {
+                    vr.options.face.data = data;
+                });
+            } else if (this.type == "custom") {
                 $("#main_options, #main_options_bottom").fadeOut(function () {
                     $("#main_customface").fadeIn();
                 });
                 return false;
-            } else {
-                vr.options.face.value = this.val;
             }
         });
+        if (window.indexedDB && typeof JSON != "undefined" && typeof FileReader != "undefined") {
+            vr.db.ready = function () {
+                $("#main_options_face ul").append('<li data-type="custom"><a href="#">Custom...</a></li>');
+                $("#main_options_manage_container").show();
+            };
+            vr.db.update = function () {
+                // Make sure everything is up-to-date
+                $("#main_options_face li[data-type=db]").remove();
+                $("#main_manage_facelist").empty();
+                var completed = 0;
+                vr.db.fetchall(function (key, data) {
+                    completed++;
+                    
+                    $("#main_options_face li[data-type=custom]").before('<li data-type="db" data-value="' + vr.escHTML(JSON.stringify({key: key})) + '"><img src="' + vr.escHTML(data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
+                    
+                    var randid = "CheckBox_MANAGE_" + Math.random().toString(36).substring(2);
+                    $("#main_manage_facelist").append('<div><input id="' + vr.escHTML(randid) + '" type="checkbox" data-value="' + vr.escHTML(JSON.stringify({key: key})) + '" value="yes" title="' + vr.escHTML(data.name) + '"></div>');
+                    $(document.getElementById(randid)).checkbox();
+                }, function () {
+                    if (completed == 0) {
+                        $("#main_manage_facelist").text("No custom runners");
+                    }
+                });
+            };
+            vr.db.load();
+        }
         
         $.each(vr.options.courses, function (name, data) {
             $("#main_options_course ul").append('<li><a href="#">' + vr.escHTML(name) + '</a></li>');
         });
         vr.options.course.dropdown = new DropDown($("#main_options_course"), function () {
-            vr.options.course.value = this.val;
+            vr.options.course.value = this.text;
         });
         
         $("#main_options_laps").change(function () {
             var newval = parseInt($(this).val(), 10);
-            if (!isNaN(newval) || newval <= 0) {
-                $(this).removeClass("bad");
-                vr.options.laps.value = newval;
-                $(this).val(newval);
-            } else {
+            if (isNaN(newval) || newval <= 0) {
                 $(this).addClass("bad");
+            } else {
+                $(this).removeClass("bad");
+                vr.options.laps = newval;
+                $(this).val(newval);
             }
         });
-        $("#main_options_laps").val(vr.options.laps.value).change();
+        $("#main_options_laps").val(vr.options.laps).change();
         
         $("#main_options_go").click(function () {
-            if (!vr.options.face.value) {
-                alert("Please choose a runner!");
+            if (!vr.options.face.data) {
+                alert("Please choose a runner.");
             } else if (!vr.options.course.value) {
-                alert("Please choose a course!");
+                alert("Please choose a course.");
             } else {
-                vr.start();
+                $("#main_options_laps").change();
+                if ($("#main_options_laps").hasClass("bad")) {
+                    alert("Please enter a valid number of laps.");
+                    $("#main_options_laps")[0].focus();
+                } else {
+                    vr.start();
+                }
             }
         });
         
@@ -161,7 +198,7 @@ var vr = {
             $("#main_options_offline_container").show();
         }
         
-        $.each(["speedometer", "help", "offline", "source"], function (i, dialog) {
+        $.each(["speedometer", "help", "manage", "offline", "source"], function (i, dialog) {
             $("#main_options_" + dialog).click(function () {
                 $("#main_options, #main_options_bottom").fadeOut(function () {
                     $("#main_" + dialog).fadeIn();
@@ -177,52 +214,143 @@ var vr = {
         
         /* CUSTOM FACE */
         
-        if (typeof FileReader != "undefined" && typeof JSON != "undefined") {
-            $("#main_customface_uploadbtn_container").show();
-            $("#main_customface_uploadbtn").click(function () {
-                $("#main_customface_fileinput")[0].click();
-            });
-            
-            $("#main_customface_fileinput").change(function (event) {
-                if (event.target.files && event.target.files.length > 0) {
-                    var file = event.target.files[0];
-                    var ext = file.name.substring(file.name.lastIndexOf(".") + 1);
-                    if (ext.toLowerCase() != "vrff") {
-                        alert("Invalid file!\nPlease select a *.vrff file.");
-                    } else {
-                        var reader = new FileReader();
-                        reader.onload = function () {
-                            if (reader.result) {
-                                var data;
-                                try {
-                                    data = JSON.parse(reader.result);
-                                } catch (err) {}
-                                if (data) {
-                                    alert(JSON.stringify(data));
+        $("#main_customface_uploadbtn").click(function () {
+            $("#main_customface_fileinput")[0].click();
+        });
+        
+        $("#main_customface_fileinput").change(function (event) {
+            if (event.target.files && event.target.files.length > 0) {
+                var file = event.target.files[0];
+                var ext = file.name.substring(file.name.lastIndexOf(".") + 1).toLowerCase();
+                if (ext != "vrff") {
+                    alert("Invalid file!\nPlease select a *.vrff file.");
+                } else {
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                        if (reader.result) {
+                            var result;
+                            try {
+                                result = JSON.parse(reader.result);
+                            } catch (err) {}
+                            if (result && (typeof Array.isArray != "function" || Array.isArray(result))) {
+                                var good_result = [];
+                                $.each(result, function (index, data) {
+                                    if (data.name && data.url) {
+                                        good_result.push(data);
+                                    }
+                                });
+                                if (good_result.length) {
+                                    var completed = 0;
+                                    $.each(good_result, function (index, data) {
+                                        vr.db.add(data, function () {
+                                            completed++;
+                                            if (completed >= good_result.length) {
+                                                vr.db.update();
+                                            }
+                                        });
+                                    });
+                                    $("#main_customface_back").click();
                                 } else {
-                                    alert("Error reading file!\nDetails: Could not parse JSON");
+                                    alert("Error reading file!\nDetails: No valid entries.");
                                 }
                             } else {
-                                alert("Error reading file!\nDetails: File is empty");
+                                alert("Error reading file!\nDetails: Could not parse JSON.");
                             }
-                        };
-                        reader.onerror = function () {
-                            alert("Error reading file!\nDetails: " + reader.error);
-                        };
-                        reader.readAsText(file);
-                    }
+                        } else {
+                            alert("Error reading file!\nDetails: File is empty or unreadable.");
+                        }
+                    };
+                    reader.onerror = function () {
+                        alert("Error reading file!\nDetails: " + reader.error);
+                    };
+                    reader.readAsText(file);
                 }
-            });
-        }
+            }
+        });
+        
+        $("#main_customface_custombtn").click(function () {
+            $("#main_customface_custom1_name").val("");
+            $("#main_customface_custom2_filename").text("");
+            vr.options.boosts.dropdown.clear();
+            vr.options.face.customtemp = {};
+            $("#main_customface_custombtn_container").slideUp();
+            $("#main_customface_custom1").slideDown();
+        });
+        
+        $("#main_customface_custom1_next").click(function () {
+            var newval = $("#main_customface_custom1_name").val();
+            if (typeof newval.trim == "function") newval = newval.trim();
+            if (!newval) {
+                alert("Please enter a name.");
+                $("#main_customface_custom1_name")[0].focus();
+            } else {
+                vr.options.face.customtemp.name = newval;
+                $("#main_customface_custom1").slideUp();
+                $("#main_customface_custom2").slideDown();
+            }
+        });
+        
+        $("#main_customface_custom2_browse").click(function () {
+            $("#main_customface_custom2_fileinput")[0].click();
+        });
+        
+        $("#main_customface_custom2_fileinput").change(function (event) {
+            if (event.target.files && event.target.files.length > 0) {
+                var file = event.target.files[0];
+                var ext = file.name.substring(file.name.lastIndexOf(".") + 1).toLowerCase();
+                if (!(ext == "png" || ext == "jpg" || ext == "jpeg" || ext == "gif" || ext == "svg" || ext == "bmp")) {
+                    alert("Invalid file!\nPlease select an image.");
+                } else {
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                        if (reader.result) {
+                            $("#main_customface_custom2_filename").text(file.name);
+                            vr.options.face.customtemp.url = reader.result;
+                        } else {
+                            alert("Error reading file!\nDetails: File is empty or unreadable.");
+                        }
+                    };
+                    reader.onerror = function () {
+                        alert("Error reading file!\nDetails: " + reader.error);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+        
+        $("#main_customface_custom2_next").click(function () {
+            if (!vr.options.face.customtemp.url) {
+                alert("Please click \"Browse\" and select an image.");
+            } else {
+                $("#main_customface_custom2").slideUp();
+                $("#main_customface_custom3").slideDown();
+            }
+        });
+        
+        $.each(vr.options.boosts, function (name, data) {
+            $("#main_customface_custom3_boost ul").append('<li><a href="#">' + vr.escHTML(name) + '</a></li>');
+        });
+        vr.options.boosts.dropdown = new DropDown($("#main_customface_custom3_boost"), function () {
+            vr.options.face.customtemp.boost = this.text;
+        });
+        
+        $("#main_customface_custom3_save").click(function () {
+            if (!vr.options.face.customtemp.boost) {
+                alert("Please select a boost.");
+            } else {
+                vr.db.add(vr.options.face.customtemp, function () {
+                    vr.db.update();
+                });
+                $("#main_customface_back").click();
+            }
+        });
         
         $("#main_customface_back").click(function () {
             $("#main_customface").fadeOut(function () {
                 $("#main_options, #main_options_bottom").fadeIn();
+                $("#main_customface_custombtn_container").show();
+                $("#main_customface_custom1, #main_customface_custom2, #main_customface_custom3").hide()
             });
-        });
-        
-        $("#main_customface_go").click(function () {
-            $("#main_customface_back").click();
         });
         
         /* SPEED-O-METER */
@@ -235,34 +363,90 @@ var vr = {
             }
         });
         vr.options.speeds.fastdropdown = new DropDown($("#main_speedometer_fastpresets"), function () {
-            $("#main_speedometer_speed").val(vr.options.speeds[this.val]).change();
+            $("#main_speedometer_speed").val(vr.options.speeds[this.text]).change();
             return false;
         });
         vr.options.speeds.slowdropdown = new DropDown($("#main_speedometer_slowpresets"), function () {
-            $("#main_speedometer_speed").val(vr.options.speeds[this.val]).change();
+            $("#main_speedometer_speed").val(vr.options.speeds[this.text]).change();
             return false;
         });
         
         $("#main_speedometer_speed").change(function () {
             var newval = Number($(this).val());
-            if (!isNaN(newval) || newval <= 0) {
+            if (isNaN(newval) || newval <= 0) {
+                $(this).addClass("bad");
+            } else {
                 $(this).removeClass("bad");
                 vr.options.speed.value = newval;
                 $(this).val(newval);
-            } else {
-                $(this).addClass("bad");
             }
         });
         $("#main_speedometer_speed").val(vr.options.speed.value).change();
         
-        $("#main_speedometer_blastoff").change(function () {
+        $("#main_speedometer_blastoff").checkbox().change(function () {
             vr.options.blastoff.value = $(this).is(":checked");
         });
         
         $("#main_speedometer_back").click(function () {
-            $("#main_speedometer").fadeOut(function () {
-                $("#main_options, #main_options_bottom").fadeIn();
+            $("#main_speedometer_speed").change();
+            if ($("#main_speedometer_speed").hasClass("bad")) {
+                alert("Please enter a valid speed value or select one of the presets.");
+            } else {
+                $("#main_speedometer").fadeOut(function () {
+                    $("#main_options, #main_options_bottom").fadeIn();
+                });
+            }
+        });
+        
+        /* MANAGE RUNNERS */
+        
+        $("#main_manage_facelist").on("change", "input", function () {
+            var sending = [];
+            var names = [];
+            var completed = 0;
+            var $inputs = $("#main_manage_facelist input:checked");
+            $inputs.each(function () {
+                vr.db.fetch(JSON.parse($(this).attr("data-value")).key, function (data) {
+                    sending.push(data);
+                    names.push(data.name.replace(/[<>:"/\\|?*\x00-\x1f]+/g, "_"));
+                    completed++;
+                    if (completed >= $inputs.length) {
+                        $("#main_manage_export").attr({
+                            href: "data:application/json;base64," + btoa(JSON.stringify(sending)),
+                            download: "Virtual Running - " + names.join(",") + ".vrff"
+                        });
+                    }
+                });
             });
+        });
+        
+        $("#main_manage_delete").click(function () {
+            var $inputs = $("#main_manage_facelist input:checked");
+            if ($inputs.length == 0) {
+                alert("Please select one or more runners.");
+            } else {
+                var completed = 0;
+                $inputs.each(function () {
+                    var $top = $(this).closest("div");
+                    vr.db.remove(JSON.parse($(this).attr("data-value")).key, function () {
+                        completed++;
+                        if (completed >= $inputs.length) {
+                            vr.db.update();
+                        }
+                    });
+                });
+            }
+        });
+        
+        $("#main_manage_export").click(function () {
+            var $inputs = $("#main_manage_facelist input:checked");
+            if ($inputs.length == 0) {
+                alert("Please select one or more runners.");
+                return false;
+            } else if (typeof document.createElement("a").download == "undefined") {
+                alert("Right-click this button, select \"Save Link As\" or \"Save Target As\", and name the file something like \"name.vrff\"");
+                return false;
+            }
         });
     },
     
@@ -345,12 +529,7 @@ var vr = {
         }
         
         var course = vr.options.courses[vr.options.course.value];
-        if (vr.options.face.value == "Custom...") {
-            $("#main_face").attr("src", vr.options.face.custom);
-        } else {
-            $("#main_face").attr("src", vr.options.faces[vr.options.face.value].url);
-        }
-        $("#main_face").css({
+        $("#main_face").attr("src", vr.options.face.data.url).css({
             left: course.start[0],
             top: course.start[1],
             width: course.imgsize,
@@ -402,7 +581,7 @@ var vr = {
         }
         
         vr.currentpath++;
-        if ((vr.lapscompleted + 1) < vr.options.laps.value) {
+        if ((vr.lapscompleted + 1) < vr.options.laps) {
             // Make sure we're not using a path marked "final", ie. last lap only
             while (vr.currentpath < course.path.length && course.path[vr.currentpath].final) {
                 vr.currentpath++;
@@ -413,7 +592,7 @@ var vr = {
             vr.lapscompleted++;
             vr.currentpath = -1;
             $("#main_controls_lapscompleted").text(vr.lapscompleted);
-            if (vr.lapscompleted < vr.options.laps.value) {
+            if (vr.lapscompleted < vr.options.laps) {
                 vr.run();
             } else {
                 // We're done!!
@@ -423,7 +602,7 @@ var vr = {
         } else {
             if (vr.ratediff > 1) vr.ratediff -= 0.1;
             var oldrate = vr.rate;
-            vr.rate += vr.ratediff / (vr.options.laps.value * course.path.length + 1);
+            vr.rate += vr.ratediff / (vr.options.laps * course.path.length + 1);
             if (vr.query.debug) {
                 $("#main_controls_debug").show();
                 $("#main_controls_debug_rate").text(Math.round(vr.rate * 1000) / 1000);
@@ -503,11 +682,12 @@ var vr = {
                     vr.db.idb.onerror = function (event) {
                         vr.db.error(event, "vr.db.idb.onerror");
                     };
+                    vr.db.ready();
                     vr.db.update();
                 };
                 request.onupgradeneeded = function (event) {
                     var db = event.target.result;
-                    var objectStore = db.createObjectStore(vr.db.DB_STORE, {keyPath: "name"});
+                    var objectStore = db.createObjectStore(vr.db.DB_STORE, {autoIncrement: true});
                 };
             }
         },
@@ -521,18 +701,19 @@ var vr = {
             return vr.db.idb.transaction([vr.db.DB_STORE], mode).objectStore(vr.db.DB_STORE);
         },
         
-        update: function () {
-            // Make sure everything is up-to-date
-            vr.db.fetchall(function (face) {
-                // custom face here...
-            });
+        ready: function () {
+            // Implemented above, in vr.load()
         },
         
-        fetch: function (name, callback) {
-            // Fetch from object store by name
+        update: function () {
+            // Implemented above, in vr.load()
+        },
+        
+        fetch: function (key, callback) {
+            // Fetch from object store by key
             if (!vr.db.idb) return false;
             
-            vr.db.objectStore().get(name).onsuccess = function (event) {
+            vr.db.objectStore().get(key).onsuccess = function (event) {
                 if (typeof callback == "function") callback(event.target.result);
             };
         },
@@ -544,7 +725,7 @@ var vr = {
             vr.db.objectStore().openCursor().onsuccess = function (event) {
                 var cursor = event.target.result;
                 if (cursor) {
-                    if (typeof callback == "function") callback(cursor.value);
+                    if (typeof callback == "function") callback(cursor.key, cursor.value);
                     cursor.continue();
                 } else {
                     if (typeof endcallback == "function") endcallback();
@@ -552,20 +733,29 @@ var vr = {
             };
         },
         
-        put: function (data, callback) {
-            // Add data to object store, or modify existing data if there's data with the same key
+        add: function (data, callback) {
+            // Add data to object store
             if (!vr.db.idb) return false;
             
-            vr.db.objectStore("readwrite").put(data).onsuccess = function (event) {
+            vr.db.objectStore("readwrite").add(data).onsuccess = function (event) {
                 if (typeof callback == "function") callback.apply(this, arguments);
             };
         },
         
-        remove: function (name, callback) {
-            // Remove name from database
+        put: function (key, data, callback) {
+            // Update data with key in object store
             if (!vr.db.idb) return false;
             
-            vr.db.objectStore("readwrite").delete(name).onsuccess = function (event) {
+            vr.db.objectStore("readwrite").put(data, key).onsuccess = function (event) {
+                if (typeof callback == "function") callback.apply(this, arguments);
+            };
+        },
+        
+        remove: function (key, callback) {
+            // Remove key from object store
+            if (!vr.db.idb) return false;
+            
+            vr.db.objectStore("readwrite").delete(key).onsuccess = function (event) {
                 if (typeof callback == "function") callback.apply(this, arguments);
             };
         }
@@ -592,33 +782,63 @@ function doit() {
 }
 
 
+// jQuery plugin to go with CSS pretty checkbox (link in style.css)
+(function ($) {
+    jQuery.fn.checkbox = function () {
+        // Turn a normal checkbox into a fancy checkbox
+        var $input = this;
+        var randid = "CheckBox_" + Math.random().toString(36).substring(2);
+        if (!$input[0].id) $input[0].id = randid + "_input";
+        var inputid = $input[0].id;
+        $input.after('<table><tbody><tr><td style="width: 30%;"><div class="checkbox"><span id="' + randid + '"></span><label for="' + vr.escHTML(inputid) + '"></label></div></td><td style="text-align: left;"><label for="' + vr.escHTML(inputid) + '" style="margin-left: 20px;">' + vr.escHTML($input.attr("title")) + '</label></td></tr></tbody></table>');
+        $("#" + randid).replaceWith($input);
+        return $input.css("display", "none");
+    };
+})(jQuery);
+
+
 // http://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/
-function DropDown($el, onupdate) {
-    this.$placeholder = $el.children("span");
-    this.val = "";
-    this.index = -1;
+function DropDown($el, onchange) {
+    var obj = this;
+    obj.$placeholder = $el.children("span");
+    obj.origtext = obj.$placeholder.text();
+    
+    obj.clear = function () {
+        obj.value = null;
+        obj.type = null;
+        obj.text = "";
+        obj.$placeholder.text(obj.origtext);
+    };
+    obj.clear();
     
     $el.on("click", function (event) {
         $(this).toggleClass("active");
         return false;
     });
     
-    var obj = this;
-    $el.find("ul > li").on("click", function () {
+    $el.find("ul").on("click", "li", function () {
         var $opt = $(this);
-        obj.oldval = obj.val;
-        obj.oldindex = obj.index;
-        obj.val = $opt.text();
-        obj.index = $opt.index();
+        
+        obj.oldvalue = obj.value;
+        obj.oldtype = obj.type;
+        obj.oldtext = obj.text;
+        
+        obj.value = $opt.attr("data-value");
+        if (obj.value === undefined) obj.value = null;
+        obj.type = $opt.attr("data-type");
+        if (obj.type === undefined) obj.type = null;
+        obj.text = $opt.text();
+        
         var res = null;
-        if (typeof onupdate == "function") {
-            res = onupdate.call(obj);
+        if (typeof onchange == "function") {
+            res = onchange.call(obj);
         }
         if (res === false) {
-            obj.val = obj.oldval;
-            obj.index = obj.oldindex;
+            obj.value = obj.oldvalue;
+            obj.type = obj.oldtype;
+            obj.text = obj.oldtext;
         } else {
-            obj.$placeholder.text(obj.val);
+            obj.$placeholder.text(obj.text);
         }
     });
 }
