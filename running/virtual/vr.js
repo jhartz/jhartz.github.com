@@ -413,7 +413,7 @@ var vr = {
                     if (completed >= $inputs.length) {
                         $("#main_manage_export").attr({
                             href: "data:application/json;base64," + btoa(JSON.stringify(sending)),
-                            download: "Virtual Running - " + names.join(",") + ".vrff"
+                            download: "Virtual Running - " + names.join(", ") + ".vrff"
                         });
                     }
                 });
@@ -662,6 +662,7 @@ var vr = {
         DB_STORE: "faces",
         
         error: function (event, func) {
+            alert("DATABASE ERROR in " + func + ": " + event.target.errorCode + "\nDetails in error console");
             if (typeof console != "undefined" && typeof console.log == "function") {
                 console.log("DATABASE ERROR in " + func + ": " + event.target.errorCode + "...");
                 console.log(event);
