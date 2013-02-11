@@ -101,6 +101,14 @@ input.bad:focus {
     border-radius: 0 0 9px 9px;
 }
 
+.dialog div.scrolled {
+    max-height: 400px;
+    overflow: auto;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
 .dialog p {
     margin: 8px;
 }
