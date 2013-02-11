@@ -6,32 +6,33 @@
 
 // NOTE: Update manifest.appcache when you update this file
 
-vr.options.faces = {
-    "Gold": {
+vr.options.faces = [
+    {
+        name: "Gold",
         url: "faces/gold.gif",
         endurl: "faces/gold-end.gif"
     },
-    
-    "Dumbledore": {
+    {
+        name: "Dumbledore",
         url: "faces/dumbledore.jpg",
         boost: "magic"
     },
-    
-    "Karl": {
+    {
+        name: "Karl",
         url: "faces/action.jpg",
         locked: true,
         boost: "coffee"
     },
-    
-    "Wimberbury": {
+    {
+        name: "Wimberbury",
         url: "faces/wimberbury.jpg",
         locked: true,
         boost: "violin"
     },
-    
-    "OH Canada": {
+    {
+        name: "OH Canada",
         url: "faces/ohcanada.jpg",
         locked: true,
-        boost: "canada"
+        boost: "syrup"
     }
-};
+];
