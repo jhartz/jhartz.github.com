@@ -271,7 +271,7 @@ var vr = {
         $("#main_customface_custombtn").click(function () {
             $("#main_customface_custom1_name").val("");
             $("#main_customface_custom2_filename").text("");
-            vr.options.boosts.dropdown.clear();
+            vr.options.boost.dropdown.clear();
             vr.options.face.customtemp = {};
             $("#main_customface_custombtn_container").slideUp();
             $("#main_customface_custom1").slideDown();
@@ -330,7 +330,7 @@ var vr = {
         $.each(vr.options.boosts, function (name, data) {
             $("#main_customface_custom3_boost ul").append('<li><a href="#">' + vr.escHTML(name) + '</a></li>');
         });
-        vr.options.boosts.dropdown = new DropDown($("#main_customface_custom3_boost"), function () {
+        vr.options.boost.dropdown = new DropDown($("#main_customface_custom3_boost"), function () {
             vr.options.face.customtemp.boost = this.text;
         });
         
