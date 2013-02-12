@@ -400,25 +400,42 @@ var vr = {
         
         /* MANAGE RUNNERS */
         
-        $("#main_manage_facelist").on("change", "input", function () {
-            var sending = [];
-            var names = [];
-            var completed = 0;
-            var $inputs = $("#main_manage_facelist input:checked");
-            $inputs.each(function () {
-                vr.db.fetch(JSON.parse($(this).attr("data-value")).key, function (data) {
-                    sending.push(data);
-                    names.push(data.name.replace(/[<>:"/\\|?*\x00-\x1f]+/g, "_"));
-                    completed++;
-                    if (completed >= $inputs.length) {
-                        $("#main_manage_export").attr({
-                            href: "data:application/json;base64," + btoa(JSON.stringify(sending)),
-                            download: "Virtual Running - " + names.join(", ") + ".vrff"
+        if (typeof btoa == "function") {
+            $("#main_manage_facelist").on("change", "input", function () {
+                var $inputs = $("#main_manage_facelist input:checked");
+                if ($inputs.length == 0) {
+                    $("#main_manage_export").attr("href", "data:application/json;base64," + btoa("[]"));
+                } else {
+                    var sending = [];
+                    var names = [];
+                    var completed = 0;
+                    $inputs.each(function () {
+                        vr.db.fetch(JSON.parse($(this).attr("data-value")).key, function (data) {
+                            sending.push(data);
+                            names.push(data.name.replace(/[<>:"/\\|?*\x00-\x1f]+/g, "_"));
+                            completed++;
+                            if (completed >= $inputs.length) {
+                                $("#main_manage_export").attr({
+                                    href: "data:application/json;base64," + btoa(JSON.stringify(sending)),
+                                    download: "Virtual Running - " + names.join(", ") + ".vrff"
+                                });
+                            }
                         });
-                    }
-                });
+                    });
+                }
             });
-        });
+            
+            $("#main_manage_export").show().attr("href", "data:application/json;base64," + btoa("[]")).click(function () {
+                var $inputs = $("#main_manage_facelist input:checked");
+                if ($inputs.length == 0) {
+                    alert("Please select one or more runners.");
+                    return false;
+                } else if (typeof document.createElement("a").download == "undefined") {
+                    alert("Right-click this button, select \"Save Link As\" or \"Save Target As\", and name the file something like \"name.vrff\"");
+                    return false;
+                }
+            });
+        }
         
         $("#main_manage_delete").click(function () {
             var $inputs = $("#main_manage_facelist input:checked");
@@ -435,17 +452,6 @@ var vr = {
                         }
                     });
                 });
-            }
-        });
-        
-        $("#main_manage_export").click(function () {
-            var $inputs = $("#main_manage_facelist input:checked");
-            if ($inputs.length == 0) {
-                alert("Please select one or more runners.");
-                return false;
-            } else if (typeof document.createElement("a").download == "undefined") {
-                alert("Right-click this button, select \"Save Link As\" or \"Save Target As\", and name the file something like \"name.vrff\"");
-                return false;
             }
         });
     },
