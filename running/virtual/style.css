@@ -117,6 +117,10 @@ input.bad:focus {
     text-align: left;
 }
 
+.dialog.forcecenter p {
+    text-align: center;
+}
+
 .dialog.bottom p {
     text-align: center;
     display: inline;
