@@ -174,7 +174,11 @@ vr.options.courses = {
         imgsize: 30,
         controls: {
             align: "top",
-            theme: "light"
+            theme: "light",
+            css: {
+                margin: "5px",
+                left: "22%"
+            }
         },
         start: [1473, 70],
         startrotation: 90,
