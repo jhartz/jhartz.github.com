@@ -577,6 +577,7 @@ var vr = {
             if (course.controls) {
                 if (course.controls.align) $("#main_table > tbody > tr > td").css("vertical-align", course.controls.align);
                 if (course.controls.theme) $("#main_controls").addClass(course.controls.theme);
+                if (course.controls.css) $("#main_controls").css(course.controls.css);
             }
             if (vr.query.debug) {
                 $("#main_controls_debug").show();
