@@ -537,6 +537,8 @@ var vr = {
             vr.constantupdate = (vr.options.speed.value >= 0.5);
         }
         
+        if (vr.options.face.data.endurl) vr.preload(vr.options.face.data.endurl);
+        
         var course = vr.options.courses[vr.options.course.value];
         $("#main_face").attr("src", vr.options.face.data.url).css({
             left: course.start[0],
@@ -638,8 +640,9 @@ var vr = {
                 vr.run();
             } else {
                 // We're done!!
-                // TODO: Switch #main_face to endurl if specified in face
-                // (After we redo some of the mess in vr.options.face ...)
+                if (vr.options.face.data.endurl) {
+                    $("#main_face").attr("src", vr.options.face.data.endurl);
+                }
             }
         } else {
             if (vr.ratediff > 1) vr.ratediff -= 0.1;
