@@ -11,6 +11,9 @@ var vr = {
     targetWidth: 1600,
     targetHeight: 766,
     startRate: 9,  // m/s
+    boostTimeNeeded: 4,  // the minimum amount of seconds that a boost should last
+    boostMaxStrength: 10,  // the maximum strength that a boost should be allowed to be (affects how much of any boost the user can use)
+    boostScaler: 1.8,  // how strong boosts should be applied
     
     options: {
         courses: {},  // in separate file
@@ -554,10 +557,29 @@ var vr = {
             });
         }
         $("#main_img").attr("src", course.background).animate({opacity: 1});
+        
+        if (vr.options.boosts.hasOwnProperty(vr.options.face.data.boost)) {
+            vr.options.boost.data = vr.options.boosts[vr.options.face.data.boost];
+            if (vr.options.boost.data.strength > 0 && vr.options.boost.data.strength < vr.boostMaxStrength) {
+                vr.options.boost.useme = 0;
+                vr.options.boost.uses = 0;
+                vr.options.boost.timeelapsed = 0;
+                $("#main_controls_boost").show();
+                $("#main_controls_boost_btn").text(vr.options.boost.data.action).click(function () {
+                    vr.options.boost.useme++;
+                    $("#main_controls_boost_readying_container:hidden").slideDown();
+                    $("#main_controls_boost_readying").text(vr.options.boost.useme);
+                });
+            }
+        }
+        
         $("#main_options, #main_options_bottom").fadeOut(function () {
             if (course.controls) {
                 if (course.controls.align) $("#main_table > tbody > tr > td").css("vertical-align", course.controls.align);
                 if (course.controls.theme) $("#main_controls").addClass(course.controls.theme);
+            }
+            if (vr.query.debug) {
+                $("#main_controls_debug").show();
             }
             $("#main_controls").fadeIn();
             $("#main_face_container").show();
@@ -586,6 +608,17 @@ var vr = {
             }
         }
         
+        if (vr.options.boost.diff && vr.currentpath > -1) {
+            // Here we're using virtual distance since it's time elapsed
+            var timeelapsed = (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate;
+            vr.options.boost.timeelapsed += timeelapsed;
+            if (vr.options.boost.timeelapsed >= vr.boostTimeNeeded) {
+                vr.rate -= vr.options.boost.diff;
+                vr.options.boost.diff = 0;
+                vr.options.boost.timeelapsed = 0;
+            }
+        }
+        
         vr.currentpath++;
         if ((vr.lapscompleted + 1) < vr.options.laps) {
             // Make sure we're not using a path marked "final", ie. last lap only
@@ -609,11 +642,41 @@ var vr = {
             if (vr.ratediff > 1) vr.ratediff -= 0.1;
             var oldrate = vr.rate;
             vr.rate += vr.ratediff / (vr.options.laps * course.path.length + 1);
+            
+            if (vr.options.boost.timeelapsed == 0) {
+                vr.options.boost.diff = 0;
+                while (vr.options.boost.useme > 0 && vr.options.boost.diff < vr.options.boost.data.strength * vr.boostScaler * 2) {
+                    vr.options.boost.useme--;
+                    if (vr.options.boost.uses >= vr.boostMaxStrength - vr.options.boost.data.strength) {
+                        vr.options.boost.diff -= vr.options.boost.data.strength * vr.boostScaler;
+                    } else {
+                        vr.options.boost.diff += vr.options.boost.data.strength * vr.boostScaler;
+                    }
+                    vr.options.boost.uses++;
+                }
+                if (vr.rate + vr.options.boost.diff < 0) {
+                    // We can't go all the way because that would be a negative rate, so we'll just cut off 4/5 of the rate
+                    vr.options.boost.diff = vr.rate * (-0.8);
+                    if (vr.rate + vr.options.boost.diff < 0.01) {
+                        // But still too much
+                        vr.options.boost.diff = 0.01 - vr.rate;
+                    }
+                }
+                vr.rate += vr.options.boost.diff;
+            }
+            $("#main_controls_boost_uses").text(vr.options.boost.uses + "/" + (vr.boostMaxStrength - vr.options.boost.data.strength));
+            if (vr.options.boost.useme) {
+                $("#main_controls_boost_readying_container:hidden").slideDown();
+                $("#main_controls_boost_readying").text(vr.options.boost.useme);
+            } else {
+                $("#main_controls_boost_readying_container:visible").slideUp();
+            }
+            
             if (vr.query.debug) {
-                $("#main_controls_debug").show();
                 $("#main_controls_debug_rate").text(Math.round(vr.rate * 1000) / 1000);
                 $("#main_controls_debug_ratediff").text(Math.round(vr.ratediff * 1000) / 1000);
                 $("#main_controls_debug_diff").text(Math.round((vr.rate - oldrate) * 1000) / 1000);
+                $("#main_controls_debug_boostdiff").text(Math.round(vr.options.boost.diff * 1000) / 1000);
             }
             
             var miletime = Math.round(1605 / vr.rate);

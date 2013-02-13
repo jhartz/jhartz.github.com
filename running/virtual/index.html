@@ -134,13 +134,15 @@
             <div id="main_source_back" class="button">Back</div>
         </div>
         
-        <div id="main_controls" class="dialog" style="display: none;">
+        <div id="main_controls" class="dialog forcecenter" style="display: none;">
             <p>Distance traveled: <span id="main_controls_distancetraveled">0</span> m</p>
             <p>Time elapsed: <span id="main_controls_timeelapsed">0</span></p>
             <p>Laps completed: <span id="main_controls_lapscompleted">0</span></p>
             <p>Average mile time: <span id="main_controls_avgmiletime">0</span></p>
             <p>Mile time at current pace: <span id="main_controls_miletime">0</span></p>
-            <p id="main_controls_debug" style="display: none;">rate: <span id="main_controls_debug_rate"></span><br>ratediff: <span id="main_controls_debug_ratediff"></span><br>diff: <span id="main_controls_debug_diff"></span></p>
+            <p id="main_controls_debug" style="display: none;">rate: <span id="main_controls_debug_rate"></span><br>ratediff: <span id="main_controls_debug_ratediff"></span><br>diff: <span id="main_controls_debug_diff"></span><br>boost.diff: <span id="main_controls_debug_boostdiff"></span></p>
+            <p id="main_controls_boost" style="display: none; margin-top: 20px;"><span id="main_controls_boost_btn" class="button"></span><br><span style="text-shadow: 0 0 3px #E69982, 0 0 6px #F9FEEB, 0 -4px 9px #E69982;">(<span id="main_controls_boost_uses"></span>)</span></p>
+            <div id="main_controls_boost_readying_container" style="display: none;">Readying: <span id="main_controls_boost_readying"></span></div>
         </div>
     </td></tr></table></div>
     <div id="main_face_container" class="full" style="display: none;"><div style="position: relative;"><img id="main_face" src="" style="position: absolute; border-radius: 8px;"></div></div>
