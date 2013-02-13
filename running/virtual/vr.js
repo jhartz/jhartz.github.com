@@ -558,9 +558,11 @@ var vr = {
         }
         $("#main_img").attr("src", course.background).animate({opacity: 1});
         
+        vr.options.boost.enabled = false;
         if (vr.options.boosts.hasOwnProperty(vr.options.face.data.boost)) {
             vr.options.boost.data = vr.options.boosts[vr.options.face.data.boost];
             if (vr.options.boost.data.strength > 0 && vr.options.boost.data.strength < vr.boostMaxStrength) {
+                vr.options.boost.enabled = true;
                 vr.options.boost.useme = 0;
                 vr.options.boost.uses = 0;
                 vr.options.boost.timeelapsed = 0;
@@ -644,33 +646,35 @@ var vr = {
             var oldrate = vr.rate;
             vr.rate += vr.ratediff / (vr.options.laps * course.path.length + 1);
             
-            if (vr.options.boost.timeelapsed == 0) {
-                vr.options.boost.diff = 0;
-                while (vr.options.boost.useme > 0 && vr.options.boost.diff < vr.options.boost.data.strength * vr.boostScaler * 2) {
-                    vr.options.boost.useme--;
-                    if (vr.options.boost.uses >= vr.boostMaxStrength - vr.options.boost.data.strength) {
-                        vr.options.boost.diff -= vr.options.boost.data.strength * vr.boostScaler;
-                    } else {
-                        vr.options.boost.diff += vr.options.boost.data.strength * vr.boostScaler;
+            if (vr.options.boost.enabled) {
+                if (vr.options.boost.timeelapsed == 0) {
+                    vr.options.boost.diff = 0;
+                    while (vr.options.boost.useme > 0 && vr.options.boost.diff < vr.options.boost.data.strength * vr.boostScaler * 2) {
+                        vr.options.boost.useme--;
+                        if (vr.options.boost.uses >= vr.boostMaxStrength - vr.options.boost.data.strength) {
+                            vr.options.boost.diff -= vr.options.boost.data.strength * vr.boostScaler;
+                        } else {
+                            vr.options.boost.diff += vr.options.boost.data.strength * vr.boostScaler;
+                        }
+                        vr.options.boost.uses++;
                     }
-                    vr.options.boost.uses++;
-                }
-                if (vr.rate + vr.options.boost.diff < 0) {
-                    // We can't go all the way because that would be a negative rate, so we'll just cut off 4/5 of the rate
-                    vr.options.boost.diff = vr.rate * (-0.8);
-                    if (vr.rate + vr.options.boost.diff < 0.01) {
-                        // But still too much
-                        vr.options.boost.diff = 0.01 - vr.rate;
+                    if (vr.rate + vr.options.boost.diff < 0) {
+                        // We can't go all the way because that would be a negative rate, so we'll just cut off 4/5 of the rate
+                        vr.options.boost.diff = vr.rate * (-0.8);
+                        if (vr.rate + vr.options.boost.diff < 0.01) {
+                            // But still too much
+                            vr.options.boost.diff = 0.01 - vr.rate;
+                        }
                     }
+                    vr.rate += vr.options.boost.diff;
                 }
-                vr.rate += vr.options.boost.diff;
-            }
-            $("#main_controls_boost_uses").text(vr.options.boost.uses + "/" + (vr.boostMaxStrength - vr.options.boost.data.strength));
-            if (vr.options.boost.useme) {
-                $("#main_controls_boost_readying_container:hidden").slideDown();
-                $("#main_controls_boost_readying").text(vr.options.boost.useme);
-            } else {
-                $("#main_controls_boost_readying_container:visible").slideUp();
+                $("#main_controls_boost_uses").text(vr.options.boost.uses + "/" + (vr.boostMaxStrength - vr.options.boost.data.strength));
+                if (vr.options.boost.useme) {
+                    $("#main_controls_boost_readying_container:hidden").slideDown();
+                    $("#main_controls_boost_readying").text(vr.options.boost.useme);
+                } else {
+                    $("#main_controls_boost_readying_container:visible").slideUp();
+                }
             }
             
             if (vr.query.debug) {
