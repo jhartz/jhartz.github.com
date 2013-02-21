@@ -201,6 +201,7 @@ input.bad:focus {
 
 .dropdown {
     position: relative; /* Enable absolute positionning for children and pseudo elements */
+    z-index: 10; /* To fix issue with checkboxes on top of dropdown */
 }
 
 .dropdown:after {
