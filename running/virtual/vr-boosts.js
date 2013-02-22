@@ -8,10 +8,10 @@
 
 /*
     "name": {
-        action: string,     // name of action
-        strength: number,   // higher strength = more of a boost, but fewer uses (pick a value BETWEEN 0 and 10)
-        sound: string,      // url of sound to play while boost is being used
-        image: string       // url of image to show while boost is being used
+        action: string,    // name of action
+        strength: number,  // higher strength = more of a boost, but fewer uses (pick a value BETWEEN 0 and 10)
+        image: string,     // url of image to show while boost is being used
+        sound: array       // list of urls of sound to play while boost is being used (multiple URLs for different audio formats)
     }
 */
 
@@ -19,8 +19,8 @@ vr.options.boosts = {
     "magic": {
         action: "Use Magic",
         strength: 9,
-        sound: "boosts/magic.wav",
-        image: "boosts/magic.png"
+        image: "boosts/magic.png",
+        sound: ["boosts/magic.wav"]
     },
     
     "coffee": {
@@ -32,14 +32,14 @@ vr.options.boosts = {
     "violin": {
         action: "Play Music",
         strength: 5,
-        sound: "boosts/violin.wav",
-        image: "boosts/violin.png"
+        image: "boosts/violin.png",
+        sound: ["boosts/violin.wav"]
     },
     
     "syrup": {
         action: "Drink Syrup",
         strength: 5,
-        sound: "boosts/canada.wav",
-        image: "boosts/canada.png"
+        image: "boosts/canada.png",
+        sound: ["boosts/canada.wav"]
     }
 };
