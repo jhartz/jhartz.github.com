@@ -10,7 +10,6 @@
     "name": {
         action: string,     // name of action
         strength: number,   // higher strength = more of a boost, but fewer uses (pick a value BETWEEN 0 and 10)
-        addictive: boolean, // if true, then after the boost is used too much, the user becomes dependent on it
         sound: string,      // url of sound to play while boost is being used
         image: string       // url of image to show while boost is being used
     }
@@ -27,7 +26,6 @@ vr.options.boosts = {
     "coffee": {
         action: "Drink Coffee",
         strength: 7,
-        addictive: true,
         image: "boosts/coffee.png"
     },
     
