@@ -20,7 +20,7 @@ vr.options.boosts = {
         action: "Use Magic",
         strength: 9,
         image: "boosts/magic.png",
-        sound: ["boosts/magic.wav"]
+        sound: ["boosts/magic.mp3", "boosts/magic.wav"]
     },
     
     "coffee": {
