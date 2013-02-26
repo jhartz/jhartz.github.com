@@ -675,6 +675,7 @@ var vr = {
                 if (vr.options.face.data.endurl) {
                     $("#main_face").attr("src", vr.options.face.data.endurl);
                 }
+                $("#main_controls_boost:visible, #main_controls_boost_readying_container:visible").slideUp();
             }
         } else {
             if (vr.ratediff > 1) vr.ratediff -= 0.1;
