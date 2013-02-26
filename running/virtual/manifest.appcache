@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# version: 2012-02-25 a
+# version: 2012-02-26 a
 index.html
 LICENSE.txt
 style.css
@@ -15,10 +15,13 @@ bg/intro3.jpg
 bg/intro4.jpg
 bg/track.jpg
 
+boosts/canada.png
 boosts/coffee.png
 boosts/magic.mp3
 boosts/magic.ogg
+boosts/magic.png
 boosts/magic.wav
+boosts/violin.png
 
 faces/action.jpg
 faces/dumbledore.jpg
