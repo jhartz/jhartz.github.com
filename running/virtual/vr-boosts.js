@@ -30,7 +30,7 @@ vr.options.boosts = {
     },
     
     "violin": {
-        action: "Play Music",
+        action: "Play Violin",
         strength: 5,
         image: "boosts/violin.png",
         sound: ["boosts/violin.wav"]
