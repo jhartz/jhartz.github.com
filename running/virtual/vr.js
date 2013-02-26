@@ -568,6 +568,37 @@ var vr = {
                 vr.options.boost.useme = 0;
                 vr.options.boost.uses = 0;
                 vr.options.boost.timeelapsed = 0;
+                if (vr.options.boost.data.image) {
+                    vr.options.boost.image = vr.options.boost.data.image;
+                    // Try to cut the opacity of the image in half (and preload it while we're at it)
+                    var img = new Image();
+                    img.onload = function () {
+                        if (img.width && img.height) {
+                            var canvas = document.createElement("canvas");
+                            if (typeof canvas.getContext == "function") {
+                                canvas.width = img.width;
+                                canvas.height = img.height;
+                                var context = canvas.getContext("2d");
+                                context.globalAlpha = 0.5;
+                                context.drawImage(img, 0, 0);
+                                vr.options.boost.image = canvas.toDataURL("image/png");
+                            }
+                        }
+                    };
+                    img.src = vr.options.boost.data.image;
+                }
+                if (typeof vr.options.boost.data.sound == "object" && vr.options.boost.data.sound.length) {
+                    var $audio = $("#boost_sound");
+                    if (typeof $audio[0].play == "function") {
+                        $.each(vr.options.boost.data.sound, function (index, data) {
+                            var source = document.createElement("source");
+                            source.src = data;
+                            $audio.append(source);
+                        });
+                        $audio[0].load();
+                        vr.options.boost.audioenabled = true;
+                    }
+                }
                 $("#main_controls_boost").show();
                 $("#main_controls_boost_btn").text(vr.options.boost.data.action).click(function () {
                     vr.options.boost.useme++;
@@ -621,6 +652,7 @@ var vr = {
                 vr.rate -= vr.options.boost.diff;
                 vr.options.boost.diff = 0;
                 vr.options.boost.timeelapsed = 0;
+                $("#main_controls").css("background-image", "none");
             }
         }
         
@@ -670,6 +702,14 @@ var vr = {
                         }
                     }
                     vr.rate += vr.options.boost.diff;
+                    if (vr.options.boost.diff) {
+                        if (vr.options.boost.image) {
+                            $("#main_controls").css("background-image", "url(" + vr.options.boost.image + ")");
+                        }
+                        if (vr.options.boost.audioenabled) {
+                            $("#boost_sound")[0].play();
+                        }
+                    }
                 }
                 $("#main_controls_boost_uses").text(vr.options.boost.uses + "/" + (vr.boostMaxStrength - vr.options.boost.data.strength));
                 if (vr.options.boost.useme) {
