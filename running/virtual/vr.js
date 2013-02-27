@@ -114,8 +114,9 @@ var vr = {
         $.each(vr.options.faces, function (index, data) {
             if (data.name && data.url) {
                 if (!data.locked || vr.query[data.name.toLowerCase()] || vr.funfaces) {
-                    $("#main_options_face ul").append('<li data-type="preset" data-value="' + index + '"><img src="' + vr.escHTML(data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
-                    if (data.endurl) vr.preload(data.endurl);
+                    $("#main_options_face ul").append('<li data-type="preset" data-value="' + index + '"><img src="' + vr.escHTML(data.endurl || data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
+                    // If we have an endurl above, then we need to preload normal url
+                    if (data.endurl) vr.preload(data.url);
                 }
             }
         });
@@ -148,7 +149,7 @@ var vr = {
                 vr.db.fetchall(function (key, data) {
                     completed++;
                     
-                    $("#main_options_face li[data-type=custom]").before('<li data-type="db" data-value="' + vr.escHTML(JSON.stringify({key: key})) + '"><img src="' + vr.escHTML(data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
+                    $("#main_options_face li[data-type=custom]").before('<li data-type="db" data-value="' + vr.escHTML(JSON.stringify({key: key})) + '"><img src="' + vr.escHTML(data.endurl || data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
                     
                     var randid = "CheckBox_MANAGE_" + Math.random().toString(36).substring(2);
                     $("#main_manage_facelist").append('<div><input id="' + vr.escHTML(randid) + '" type="checkbox" data-value="' + vr.escHTML(JSON.stringify({key: key})) + '" value="yes" title="' + vr.escHTML(data.name) + '"></div>');
