@@ -662,6 +662,11 @@ var vr = {
             while (vr.currentpath < course.path.length && course.path[vr.currentpath].final) {
                 vr.currentpath++;
             }
+        } else if (vr.currentpath > -1) {
+            // We're on the last lap; check if we should start blastoff ending
+            if (vr.options.blastoff.value && course.path[vr.currentpath].blastoffStart) {
+                vr.options.blastoff.go = true;  // to start the blastoff; then for future paths we'll check vr.options.blastoff.started to keep the blastoff speed going
+            }
         }
         
         if (vr.currentpath >= course.path.length) {
@@ -768,9 +773,15 @@ var vr = {
                 }, 500);
             }
             
-            $("#main_face").animate(params, time, "linear", function () {
+            if (vr.options.blastoff.go) {
+                vr.options.blastoff.started = true;
+            }
+            
+            $("#main_face").animate(params, time, vr.options.blastoff.go ? "easeInBack" : "linear", function () {
                 vr.run();
             });
+            
+            vr.options.blastoff.go = false;
         }
     },
     
