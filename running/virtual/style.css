@@ -47,6 +47,21 @@ input.bad:focus {
     box-shadow: 0 0 15px red;
 }
 
+label {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+}
+label::-webkit-selection, label *::-webkit-selection {
+    background: transparent;
+}
+label::-moz-selection, label *::-moz-selection {
+    background: transparent;
+}
+label::selection, label *::selection {
+    background: transparent;
+}
+
 .full {
     position: absolute;
     left: 0;
