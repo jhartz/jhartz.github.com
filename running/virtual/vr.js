@@ -636,15 +636,13 @@ var vr = {
     run: function () {
         var course = vr.options.courses[vr.options.course.value];
         
-        if (!vr.constantupdate) {
+        if (!vr.constantupdate && vr.currentpath > -1 && course.path[vr.currentpath].distance > 5) {
             // We're only updating here, as opposed to the other setInterval "constant-update" method
-            if (vr.currentpath > -1) {
-                // For distance traveled, we use normal distance; for time elapsed, we use virtual distance
-                vr.updateStats(course.path[vr.currentpath].distance, (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate);
-            }
+            // For distance traveled, we use normal distance; for time elapsed, we use virtual distance
+            vr.updateStats(course.path[vr.currentpath].distance, (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate);
         }
         
-        if (vr.options.boost.diff && vr.currentpath > -1) {
+        if (vr.options.boost.diff && vr.currentpath > -1 && course.path[vr.currentpath].distance > 5) {
             // Here we're using virtual distance since it's time elapsed
             var timeelapsed = (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate;
             vr.options.boost.timeelapsed += timeelapsed;
@@ -662,7 +660,7 @@ var vr = {
             while (vr.currentpath < course.path.length && course.path[vr.currentpath].final) {
                 vr.currentpath++;
             }
-        } else if (vr.currentpath > -1) {
+        } else if (vr.currentpath > -1 && course.path[vr.currentpath]) {
             // We're on the last lap; check if we should start blastoff ending
             if (vr.options.blastoff.value && course.path[vr.currentpath].blastoffStart) {
                 vr.options.blastoff.go = true;  // to start the blastoff; then for future paths we'll check vr.options.blastoff.started to keep the blastoff speed going
@@ -759,7 +757,7 @@ var vr = {
             var distance = path.virtualdistance || path.distance;
             var time = Math.round((distance / vr.rate) * 1000);
             
-            if (vr.constantupdate) {
+            if (vr.constantupdate && path.distance > 5) {
                 // Update stats every 500 ms
                 var upd_times = Math.floor(time / 500);
                 // For distance traveled, we use normal distance; for time elapsed, we use virtual distance
