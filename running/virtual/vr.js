@@ -390,6 +390,7 @@ var vr = {
         $("#main_speedometer_blastoff").checkbox().change(function () {
             vr.options.blastoff.value = $(this).is(":checked");
         });
+        $("#main_speedometer_blastoff")[0].checked = vr.options.blastoff.value;
         
         $("#main_speedometer_back").click(function () {
             $("#main_speedometer_speed").change();
