@@ -11,6 +11,7 @@ var vr = {
     targetWidth: 1600,
     targetHeight: 766,
     startRate: 9,  // m/s
+    constantupdateInterval: 500,  // ms
     boostTimeNeeded: 4,  // the minimum amount of seconds that a boost should last
     boostMaxStrength: 10,  // the maximum strength that a boost should be allowed to be (affects how much of any boost the user can use)
     boostScaler: 1.8,  // how strong boosts should be applied
@@ -782,8 +783,8 @@ var vr = {
             var time = Math.round((distance / vr.rate) * 1000);
             
             if (vr.constantupdate) {
-                // Update stats every 500 ms
-                var upd_times = Math.floor(time / 500) || 1;
+                // Update stats every vr.constantupdateInterval milliseconds
+                var upd_times = Math.floor(time / vr.constantupdateInterval) || 1;
                 // For distance traveled, we use normal distance; for time elapsed, we use virtual distance
                 var upd_distancetraveled = path.distance / upd_times;
                 var upd_timeelapsed = (distance / vr.rate) / upd_times;
@@ -792,7 +793,7 @@ var vr = {
                     vr.updateStats(upd_distancetraveled, upd_timeelapsed);
                     upd_complete++;
                     if (upd_complete >= upd_times) clearInterval(upd_interval);
-                }, upd_times == 1 ? time : 500);
+                }, upd_times == 1 ? time : vr.constantupdateInterval);
             }
             
             $("#main_face").animate(params, time, vr.options.blastoff.start ? "easeInBack" : "linear", function () {
