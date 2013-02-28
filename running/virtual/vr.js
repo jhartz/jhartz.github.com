@@ -7,14 +7,15 @@
 // NOTE: Update manifest.appcache when you update this file
 
 var vr = {
-    // constants
-    targetWidth: 1600,
-    targetHeight: 766,
-    startRate: 9,  // m/s
-    constantupdateInterval: 500,  // ms
-    boostTimeNeeded: 4,  // the minimum amount of seconds that a boost should last
-    boostMaxStrength: 10,  // the maximum strength that a boost should be allowed to be (affects how much of any boost the user can use)
-    boostScaler: 1.8,  // how strong boosts should be applied
+    constants: {
+        targetWidth: 1600,
+        targetHeight: 766,
+        startRate: 9,  // m/s
+        constantupdateInterval: 500,  // ms
+        boostTimeNeeded: 4,  // the minimum amount of seconds that a boost should last
+        boostMaxStrength: 10,  // the maximum strength that a boost should be allowed to be (affects how much of any boost the user can use)
+        boostScaler: 1.8  // how strong boosts should be applied
+    },
     
     options: {
         courses: {},  // in separate file
@@ -124,7 +125,7 @@ var vr = {
         
         doit();
         
-        $(".full").css({width: vr.targetWidth + "px", height: vr.targetHeight + "px"});
+        $(".full").css({width: vr.constants.targetWidth + "px", height: vr.constants.targetHeight + "px"});
         
         $(document).click(function() {
             // all dropdowns
@@ -491,16 +492,16 @@ var vr = {
         });
         var w = $(window).width(),
             h = $(window).height(),
-            wratio = w / vr.targetWidth,
-            hratio = h / vr.targetHeight,
+            wratio = w / vr.constants.targetWidth,
+            hratio = h / vr.constants.targetHeight,
             scale;
         if (wratio < hratio) {
             scale = Math.round(wratio * 100) / 100;
             vr.offsetLeft = 0;
-            vr.offsetTop = Math.round(((h / wratio - vr.targetHeight) / 2) * 100) / 100;
+            vr.offsetTop = Math.round(((h / wratio - vr.constants.targetHeight) / 2) * 100) / 100;
         } else {
             scale = Math.round(hratio * 100) / 100;
-            vr.offsetLeft = Math.round(((w / hratio - vr.targetWidth) / 2) * 100) / 100;
+            vr.offsetLeft = Math.round(((w / hratio - vr.constants.targetWidth) / 2) * 100) / 100;
             vr.offsetTop = 0;
         }
         $("body").css({
@@ -550,8 +551,8 @@ var vr = {
     },
     
     start: function () {
-        vr.rate = vr.startRate / vr.options.speed.value;
-        vr.ratediff = (vr.startRate - vr.rate) * (2/3);  // We want to make up 2/3 of it by the end
+        vr.rate = vr.constants.startRate / vr.options.speed.value;
+        vr.ratediff = (vr.constants.startRate - vr.rate) * (2/3);  // We want to make up 2/3 of it by the end
         
         if (vr.query.noconstant) {
             vr.constantupdate = false;
@@ -590,7 +591,7 @@ var vr = {
         vr.options.boost.enabled = false;
         if (vr.options.boosts.hasOwnProperty(vr.options.face.data.boost)) {
             vr.options.boost.data = vr.options.boosts[vr.options.face.data.boost];
-            if (vr.options.boost.data.strength > 0 && vr.options.boost.data.strength < vr.boostMaxStrength) {
+            if (vr.options.boost.data.strength > 0 && vr.options.boost.data.strength < vr.constants.boostMaxStrength) {
                 vr.options.boost.enabled = true;
                 vr.options.boost.useme = 0;
                 vr.options.boost.uses = 0;
@@ -662,7 +663,7 @@ var vr = {
             var timeelapsed = (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate;
             if (timeelapsed != Infinity) {
                 vr.options.boost.timeelapsed += timeelapsed;
-                if (vr.options.boost.timeelapsed >= vr.boostTimeNeeded) {
+                if (vr.options.boost.timeelapsed >= vr.constants.boostTimeNeeded) {
                     vr.rate -= vr.options.boost.diff;
                     vr.options.boost.diff = 0;
                     vr.options.boost.timeelapsed = 0;
@@ -713,12 +714,12 @@ var vr = {
             if (vr.options.boost.enabled) {
                 if (vr.options.boost.timeelapsed == 0) {
                     vr.options.boost.diff = 0;
-                    while (vr.options.boost.useme > 0 && vr.options.boost.diff < vr.options.boost.data.strength * vr.boostScaler * 2) {
+                    while (vr.options.boost.useme > 0 && vr.options.boost.diff < vr.options.boost.data.strength * vr.constants.boostScaler * 2) {
                         vr.options.boost.useme--;
-                        if (vr.options.boost.uses >= vr.boostMaxStrength - vr.options.boost.data.strength) {
-                            vr.options.boost.diff -= vr.options.boost.data.strength * vr.boostScaler;
+                        if (vr.options.boost.uses >= vr.constants.boostMaxStrength - vr.options.boost.data.strength) {
+                            vr.options.boost.diff -= vr.options.boost.data.strength * vr.constants.boostScaler;
                         } else {
-                            vr.options.boost.diff += vr.options.boost.data.strength * vr.boostScaler;
+                            vr.options.boost.diff += vr.options.boost.data.strength * vr.constants.boostScaler;
                         }
                         vr.options.boost.uses++;
                     }
@@ -740,7 +741,7 @@ var vr = {
                         }
                     }
                 }
-                $("#main_controls_boost_uses").text(vr.options.boost.uses + "/" + (vr.boostMaxStrength - vr.options.boost.data.strength));
+                $("#main_controls_boost_uses").text(vr.options.boost.uses + "/" + (vr.constants.boostMaxStrength - vr.options.boost.data.strength));
                 if (vr.options.boost.useme) {
                     $("#main_controls_boost_readying_container:hidden").slideDown();
                     $("#main_controls_boost_readying").text(vr.options.boost.useme);
@@ -783,8 +784,8 @@ var vr = {
             var time = Math.round((distance / vr.rate) * 1000);
             
             if (vr.constantupdate) {
-                // Update stats every vr.constantupdateInterval milliseconds
-                var upd_times = Math.floor(time / vr.constantupdateInterval) || 1;
+                // Update stats every vr.constants.constantupdateInterval milliseconds
+                var upd_times = Math.floor(time / vr.constants.constantupdateInterval) || 1;
                 // For distance traveled, we use normal distance; for time elapsed, we use virtual distance
                 var upd_distancetraveled = path.distance / upd_times;
                 var upd_timeelapsed = (distance / vr.rate) / upd_times;
@@ -793,7 +794,7 @@ var vr = {
                     vr.updateStats(upd_distancetraveled, upd_timeelapsed);
                     upd_complete++;
                     if (upd_complete >= upd_times) clearInterval(upd_interval);
-                }, upd_times == 1 ? time : vr.constantupdateInterval);
+                }, upd_times == 1 ? time : vr.constants.constantupdateInterval);
             }
             
             $("#main_face").animate(params, time, vr.options.blastoff.start ? "easeInBack" : "linear", function () {
