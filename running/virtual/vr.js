@@ -93,6 +93,27 @@ var vr = {
         }
     },
     
+    modImage: function (url, props, callback) {
+        // Use canvas to modify image properties (opacity, width, height)
+        var img = new Image();
+        img.onload = function () {
+            if (img.width && img.height) {
+                var canvas = document.createElement("canvas");
+                if (typeof canvas.getContext == "function") {
+                    if (props.width) img.width = props.width;
+                    if (props.height) img.height = props.height;
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    var context = canvas.getContext("2d");
+                    if (props.opacity) context.globalAlpha = props.opacity
+                    context.drawImage(img, 0, 0, img.width, img.height);
+                    callback(canvas.toDataURL("image/png"));
+                }
+            }
+        };
+        img.src = url;
+    },
+    
     load: function () {
         vr.parseQuery(window.location.search.substring(1));
         vr.parseQuery(window.location.hash.substring(1));
@@ -548,6 +569,9 @@ var vr = {
             width: course.imgsize,
             height: course.imgsize
         });
+        vr.modImage(vr.options.face.data.url, {width: course.imgsize, height: course.imgsize}, function (dataURL) {
+            $("#main_face").attr("src", dataURL);
+        });
         if (course.startrotation || course.flipX || course.flipY) {
             var css = [];
             if (course.startrotation) css.push("rotate(" + course.startrotation + "deg)");
@@ -572,22 +596,10 @@ var vr = {
                 vr.options.boost.timeelapsed = 0;
                 if (vr.options.boost.data.image) {
                     vr.options.boost.image = vr.options.boost.data.image;
-                    // Try to cut the opacity of the image in half (and preload it while we're at it)
-                    var img = new Image();
-                    img.onload = function () {
-                        if (img.width && img.height) {
-                            var canvas = document.createElement("canvas");
-                            if (typeof canvas.getContext == "function") {
-                                canvas.width = img.width;
-                                canvas.height = img.height;
-                                var context = canvas.getContext("2d");
-                                context.globalAlpha = 0.5;
-                                context.drawImage(img, 0, 0);
-                                vr.options.boost.image = canvas.toDataURL("image/png");
-                            }
-                        }
-                    };
-                    img.src = vr.options.boost.data.image;
+                    // Try to cut the opacity of the image in half (which also preloads it while we're at it)
+                    vr.modImage(vr.options.boost.data.image, {opacity: 0.5}, function (dataURL) {
+                        vr.options.boost.image = dataURL;
+                    });
                 }
                 if (typeof vr.options.boost.data.sound == "object" && vr.options.boost.data.sound.length) {
                     var $audio = $("#boost_sound");
