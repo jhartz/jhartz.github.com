@@ -666,6 +666,10 @@ var vr = {
                     vr.options.boost.diff = 0;
                     vr.options.boost.timeelapsed = 0;
                     $("#main_controls").css("background-image", "none");
+                    if (vr.options.boost.audioenabled) {
+                        $("#boost_sound")[0].pause();
+                        $("#boost_sound")[0].currentTime = 0;
+                    }
                 }
             }
         }
