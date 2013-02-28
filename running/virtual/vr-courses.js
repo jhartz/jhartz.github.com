@@ -296,6 +296,7 @@ vr.options.courses = {
             {
                 type: "line",
                 distance: 30,
+                blastoffStart: true,
                 data: {
                     x: 460,
                     y: 387
