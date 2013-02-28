@@ -626,8 +626,8 @@ var vr = {
     },
     
     updateStats: function (distancetraveled, timeelapsed) {
-        vr.distancetraveled += distancetraveled;
-        vr.timeelapsed += timeelapsed;
+        if (distancetraveled != Infinity) vr.distancetraveled += distancetraveled;
+        if (timeelapsed != Infinity) vr.timeelapsed += timeelapsed;
         $("#main_controls_distancetraveled").text(Math.round(vr.distancetraveled));
         $("#main_controls_timeelapsed").text(vr.prettyTime(Math.round(vr.timeelapsed)));
         
@@ -638,21 +638,23 @@ var vr = {
     run: function () {
         var course = vr.options.courses[vr.options.course.value];
         
-        if (!vr.constantupdate && vr.currentpath > -1 && course.path[vr.currentpath].distance > 5) {
+        if (!vr.constantupdate && vr.currentpath > -1) {
             // We're only updating here, as opposed to the other setInterval "constant-update" method
             // For distance traveled, we use normal distance; for time elapsed, we use virtual distance
             vr.updateStats(course.path[vr.currentpath].distance, (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate);
         }
         
-        if (vr.options.boost.diff && vr.currentpath > -1 && course.path[vr.currentpath].distance > 5) {
+        if (vr.options.boost.diff && vr.currentpath > -1) {
             // Here we're using virtual distance since it's time elapsed
             var timeelapsed = (course.path[vr.currentpath].virtualdistance || course.path[vr.currentpath].distance) / vr.rate;
-            vr.options.boost.timeelapsed += timeelapsed;
-            if (vr.options.boost.timeelapsed >= vr.boostTimeNeeded) {
-                vr.rate -= vr.options.boost.diff;
-                vr.options.boost.diff = 0;
-                vr.options.boost.timeelapsed = 0;
-                $("#main_controls").css("background-image", "none");
+            if (timeelapsed != Infinity) {
+                vr.options.boost.timeelapsed += timeelapsed;
+                if (vr.options.boost.timeelapsed >= vr.boostTimeNeeded) {
+                    vr.rate -= vr.options.boost.diff;
+                    vr.options.boost.diff = 0;
+                    vr.options.boost.timeelapsed = 0;
+                    $("#main_controls").css("background-image", "none");
+                }
             }
         }
         
@@ -665,7 +667,11 @@ var vr = {
         } else if (vr.currentpath > -1 && course.path[vr.currentpath]) {
             // We're on the last lap; check if we should start blastoff ending
             if (vr.options.blastoff.value && course.path[vr.currentpath].blastoffStart) {
-                vr.options.blastoff.go = true;  // to start the blastoff; then for future paths we'll check vr.options.blastoff.started to keep the blastoff speed going
+                vr.options.blastoff.adding = vr.rate;
+                vr.options.blastoff.start = true;
+            }
+            if (vr.options.blastoff.adding) {
+                vr.rate += vr.options.blastoff.adding;
             }
         }
         
@@ -759,9 +765,9 @@ var vr = {
             var distance = path.virtualdistance || path.distance;
             var time = Math.round((distance / vr.rate) * 1000);
             
-            if (vr.constantupdate && path.distance > 5) {
+            if (vr.constantupdate) {
                 // Update stats every 500 ms
-                var upd_times = Math.floor(time / 500);
+                var upd_times = Math.floor(time / 500) || 1;
                 // For distance traveled, we use normal distance; for time elapsed, we use virtual distance
                 var upd_distancetraveled = path.distance / upd_times;
                 var upd_timeelapsed = (distance / vr.rate) / upd_times;
@@ -770,18 +776,14 @@ var vr = {
                     vr.updateStats(upd_distancetraveled, upd_timeelapsed);
                     upd_complete++;
                     if (upd_complete >= upd_times) clearInterval(upd_interval);
-                }, 500);
+                }, upd_times == 1 ? time : 500);
             }
             
-            if (vr.options.blastoff.go) {
-                vr.options.blastoff.started = true;
-            }
-            
-            $("#main_face").animate(params, time, vr.options.blastoff.go ? "easeInBack" : "linear", function () {
+            $("#main_face").animate(params, time, vr.options.blastoff.start ? "easeInBack" : "linear", function () {
                 vr.run();
             });
             
-            vr.options.blastoff.go = false;
+            vr.options.blastoff.start = false;
         }
     },
     
