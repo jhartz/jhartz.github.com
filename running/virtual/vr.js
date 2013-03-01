@@ -1032,11 +1032,7 @@ var vr = {
 $(function () {
     vr.load();
     vr.resize();
-    if (vr.query.nointro) {
-        vr.introEnd();
-    } else {
-        vr.intro();
-    }
+    vr.intro();
 });
 
 $(window).resize(function () {
