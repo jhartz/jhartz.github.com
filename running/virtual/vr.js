@@ -60,6 +60,8 @@ var vr = {
     constantupdate: null,
     debugmode: false,
     
+    stopIntro: false,
+    
     escHTML: function (html) {
         return (html + "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt");
     },
@@ -288,6 +290,13 @@ var vr = {
         
         $(document).on("keydown keyup", function (event) {
             var action = null;
+            if (event.which == 27 && !vr.stopIntro) {
+                // Esc during intro
+                action = function () {
+                    vr.introStop();
+                };
+            }
+            
             if (event.altKey && event.which == 65) {
                 // Alt-A (add locked faces)
                 action = function () {
@@ -614,31 +623,41 @@ var vr = {
         var $i = $("#intros");
         var count = 0, items = parseInt($i.attr("data-items"));
         var run_intro = function () {
-            count++;
-            if (count > items) {
-                $("#intro_final").addClass("move");
-                setTimeout(function () {
-                    $("#intros").fadeOut(1000);
-                    vr.introEnd();
-                }, 4500);
-            } else {
-                if (count == 1) {
-                    $("#intros > img").hide();
-                    $("#intros").show();
-                } else {
-                    $("#intros > img").fadeOut();
-                }
-                $("#intros > img[data-item=" + count + "]").fadeIn(function () {
+            if (!vr.stopIntro) {
+                count++;
+                if (count > items) {
+                    $("#intro_final").addClass("move");
                     setTimeout(function () {
-                        run_intro();
-                    }, 2000);
-                });
+                        if (!vr.stopIntro) {
+                            $("#intros").fadeOut(1000);
+                            vr.introEnd();
+                        }
+                    }, 4500);
+                } else {
+                    if (count == 1) {
+                        $("#intros > img").hide();
+                        $("#intros").show();
+                    } else {
+                        $("#intros > img").fadeOut();
+                    }
+                    $("#intros > img[data-item=" + count + "]").fadeIn(function () {
+                        setTimeout(function () {
+                            run_intro();
+                        }, 2000);
+                    });
+                }
             }
         };
         run_intro();
     },
     
+    introStop: function () {
+        $("#intros").hide();
+        vr.introEnd();
+    },
+    
     introEnd: function () {
+        vr.stopIntro = true;
         $("#main_img").css("opacity", ".5");
         $("#main").fadeIn(1000);
         
