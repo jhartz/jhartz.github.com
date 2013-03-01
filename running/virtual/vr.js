@@ -173,8 +173,6 @@ var vr = {
             vr.parseQuery(window.location.hash.substring(1));
         });
         
-        doit();
-        
         $(".full").css({width: vr.constants.targetWidth + "px", height: vr.constants.targetHeight + "px"});
         
         $(document).click(function() {
@@ -1044,11 +1042,6 @@ $(function () {
 $(window).resize(function () {
     vr.resize();
 });
-
-
-function doit() {
-    eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('7 3=["\\4\\5\\f\\4\\6\\d\\9\\8\\l\\8\\j\\g\\h\\6\\c\\c","\\4\\5\\f\\4\\6\\d\\9\\8","\\i\\5\\9\\n\\m"];7 a=3[0];7 b=3[1];k(e[3[2]][a]){e[b]=o};',25,25,'|||_0x42c1|x66|x75|x61|var|x73|x65|||x6C|x63|vr|x6E|x6F|x77|x71|x68|if|x5F|x79|x72|true'.split('|'),0,{}));
-}
 
 
 // jQuery plugin to go with CSS pretty checkbox (link in style.css)
