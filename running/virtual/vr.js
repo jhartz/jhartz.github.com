@@ -688,9 +688,12 @@ var vr = {
             width: course.imgsize,
             height: course.imgsize
         });
-        vr.modImage(vr.options.face.data.url, {width: course.imgsize, height: course.imgsize}, function (dataURL) {
-            $("#main_face").attr("src", dataURL);
-        });
+        if (vr.options.face.data.url.indexOf(".gif") == -1) {
+            // Only if it's not a gif
+            vr.modImage(vr.options.face.data.url, {width: course.imgsize, height: course.imgsize}, function (dataURL) {
+                $("#main_face").attr("src", dataURL);
+            });
+        }
         if (course.startrotation || course.flipX || course.flipY) {
             var css = [];
             if (course.startrotation) css.push("rotate(" + course.startrotation + "deg)");
