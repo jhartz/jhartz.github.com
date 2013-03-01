@@ -105,32 +105,51 @@ var vr = {
         }
     },
     
-    modImage: function (url, props, callback, errorcallback) {
+    modImage: function (url, props, callback, errorcallback, type) {
         // Use canvas to modify image properties (opacity, width, height, maxwidth, maxheight)
         var img = new Image();
         img.onload = function () {
             if (img.width && img.height) {
                 var canvas = document.createElement("canvas");
                 if (typeof canvas.getContext == "function") {
-                    if (props.width) img.width = props.width;
-                    if (props.maxwidth && img.width > props.maxwidth) img.width = props.maxwidth;
-                    if (props.height) img.height = props.height;
-                    if (props.maxheight && img.height > props.maxheight) img.height = props.maxheight;
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    var context = canvas.getContext("2d");
-                    if (props.opacity) context.globalAlpha = props.opacity
-                    context.drawImage(img, 0, 0, img.width, img.height);
-                    var dataURL;
-                    try {
-                        dataURL = canvas.toDataURL("image/png");
-                    } catch (err) {
-                        vr.log("modImage ERROR: Data URL creation unsuccessful...", err);
+                    var needsMod = false;
+                    if (props.width) {
+                        img.width = props.width;
+                        needsMod = true;
                     }
-                    if (dataURL) {
-                        callback(dataURL);
-                    } else {
+                    if (props.maxwidth && img.width > props.maxwidth) {
+                        img.width = props.maxwidth;
+                        needsMod = true;
+                    }
+                    if (props.height) {
+                        img.height = props.height;
+                        needsMod = true;
+                    }
+                    if (props.maxheight && img.height > props.maxheight) {
+                        img.height = props.maxheight;
+                        needsMod = true;
+                    }
+                    if (props.opacity) needsMod = true;
+                    if (!needsMod) {
+                        // No sense modifying if we don't need to
                         if (typeof errorcallback == "function") errorcallback();
+                    } else {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        var context = canvas.getContext("2d");
+                        if (props.opacity) context.globalAlpha = props.opacity;
+                        context.drawImage(img, 0, 0, img.width, img.height);
+                        var dataURL;
+                        try {
+                            dataURL = canvas.toDataURL(type || "image/png");
+                        } catch (err) {
+                            vr.log("modImage ERROR: Data URL creation unsuccessful...", err);
+                        }
+                        if (dataURL) {
+                            callback(dataURL);
+                        } else {
+                            if (typeof errorcallback == "function") errorcallback();
+                        }
                     }
                 } else {
                     if (typeof errorcallback == "function") errorcallback();
@@ -402,13 +421,16 @@ var vr = {
                     var reader = new FileReader();
                     reader.onload = function () {
                         if (reader.result) {
+                            var type = reader.result.substring(5);
+                            if (type.indexOf(";") != -1) type = type.substring(0, type.indexOf(";"));
+                            if (type.indexOf(",") != -1) type = type.substring(0, type.indexOf(","));
                             vr.modImage(reader.result, {maxwidth: vr.constants.maxImgSize, maxheight: vr.constants.maxImgSize}, function (dataURL) {
                                 vr.options.face.customtemp.url = dataURL;
                                 $("#main_customface_custom2_filename").text(file.name);
                             }, function () {
                                 vr.options.face.customtemp.url = reader.result;
                                 $("#main_customface_custom2_filename").text(file.name);
-                            });
+                            }, type.substring(0, 5) == "image" ? type : null);
                         } else {
                             alert("Error reading file!\nDetails: File is empty or unreadable.");
                         }
