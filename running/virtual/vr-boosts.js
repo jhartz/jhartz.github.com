@@ -40,6 +40,6 @@ vr.options.boosts = {
         action: "Drink Syrup",
         strength: 5,
         image: "boosts/canada.png",
-        sound: ["boosts/canada.wav"]
+        sound: ["boosts/canada.mp3", "boosts/canada.ogg", "boosts/canada.wav"]
     }
 };
