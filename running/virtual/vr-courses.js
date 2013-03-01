@@ -129,7 +129,8 @@ vr.options.courses = {
             },
             {
                 type: "bezier",
-                distance: 5,
+                distance: 0,
+                virtualdistance: 5,
                 final: true,
                 data: {
                     start: {
@@ -148,7 +149,8 @@ vr.options.courses = {
             },
             {
                 type: "bezier",
-                distance: 5,
+                distance: 0,
+                virtualdistance: 5,
                 final: true,
                 data: {
                     flipX: false,
