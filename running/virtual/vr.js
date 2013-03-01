@@ -14,7 +14,8 @@ var vr = {
         constantupdateInterval: 500,  // ms
         boostTimeNeeded: 4,  // the minimum amount of seconds that a boost should last
         boostMaxStrength: 10,  // the maximum strength that a boost should be allowed to be (affects how much of any boost the user can use)
-        boostScaler: 1.8  // how strong boosts should be applied
+        boostScaler: 1.8,  // how strong boosts should be applied
+        maxImgSize: 400,  // maxium width and height for custom faces
     },
     
     options: {
@@ -57,9 +58,18 @@ var vr = {
     distancetraveled: 0,
     timeelapsed: 0,
     constantupdate: null,
+    debugmode: false,
     
     escHTML: function (html) {
         return (html + "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt");
+    },
+    
+    log: function () {
+        if (typeof console != "undefined" && typeof console.log == "function") {
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+        }
     },
     
     preload: function (url) {
@@ -95,23 +105,42 @@ var vr = {
         }
     },
     
-    modImage: function (url, props, callback) {
-        // Use canvas to modify image properties (opacity, width, height)
+    modImage: function (url, props, callback, errorcallback) {
+        // Use canvas to modify image properties (opacity, width, height, maxwidth, maxheight)
         var img = new Image();
         img.onload = function () {
             if (img.width && img.height) {
                 var canvas = document.createElement("canvas");
                 if (typeof canvas.getContext == "function") {
                     if (props.width) img.width = props.width;
+                    if (props.maxwidth && img.width > props.maxwidth) img.width = props.maxwidth;
                     if (props.height) img.height = props.height;
+                    if (props.maxheight && img.height > props.maxheight) img.height = props.maxheight;
                     canvas.width = img.width;
                     canvas.height = img.height;
                     var context = canvas.getContext("2d");
                     if (props.opacity) context.globalAlpha = props.opacity
                     context.drawImage(img, 0, 0, img.width, img.height);
-                    callback(canvas.toDataURL("image/png"));
+                    var dataURL;
+                    try {
+                        dataURL = canvas.toDataURL("image/png");
+                    } catch (err) {
+                        vr.log("modImage ERROR: Data URL creation unsuccessful...", err);
+                    }
+                    if (dataURL) {
+                        callback(dataURL);
+                    } else {
+                        if (typeof errorcallback == "function") errorcallback();
+                    }
+                } else {
+                    if (typeof errorcallback == "function") errorcallback();
                 }
+            } else {
+                if (typeof errorcallback == "function") errorcallback();
             }
+        };
+        img.onerror = img.onabort = function () {
+            errorcallback();
         };
         img.src = url;
     },
@@ -135,12 +164,11 @@ var vr = {
         /* CONTROLS */
         
         $.each(vr.options.faces, function (index, data) {
-            if (data.name && data.url) {
-                if (!data.locked || vr.query[data.name.toLowerCase()] || vr.funfaces) {
-                    $("#main_options_face ul").append('<li data-type="preset" data-value="' + index + '"><img src="' + vr.escHTML(data.endurl || data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
-                    // If we have an endurl above, then we need to preload normal url
-                    if (data.endurl) vr.preload(data.url);
-                }
+            if (data.name && data.url && (!data.locked || vr.query[data.name.toLowerCase()])) {
+                // Similar to code below (update that when you update this)
+                $("#main_options_face ul").append('<li data-type="preset" data-value="' + index + '"><img src="' + vr.escHTML(data.endurl || data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
+                // If we have an endurl above, then we need to preload normal url
+                if (data.endurl) vr.preload(data.url);
             }
         });
         vr.options.face.dropdown = new DropDown($("#main_options_face"), function () {
@@ -239,6 +267,47 @@ var vr = {
             });
         });
         
+        $(document).on("keydown keyup", function (event) {
+            var action = null;
+            if (event.altKey && event.which == 65) {
+                // Alt-A (add locked faces)
+                action = function () {
+                    // Make sure we haven't already added the locked faces
+                    if ($("#main_options_face li[data-locked=true]").length == 0) {
+                        var $selector = $("#main_options_face li[data-type=custom]");
+                        if ($("#main_options_face li[data-type=db]").length > 0) $selector = $("#main_options_face li[data-type=db]");
+                        var $first = $($selector[0]);
+                        $.each(vr.options.faces, function (index, data) {
+                            // If valid, and not already added
+                            if (data.name && data.url && data.locked && !vr.query[data.name.toLowerCase()]) {
+                                // Similar to code above (update that when you update this)
+                                $first.before('<li data-type="preset" data-locked="true" data-value="' + index + '"><img src="' + vr.escHTML(data.endurl || data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
+                                // If we have an endurl above, then we need to preload normal url
+                                if (data.endurl) vr.preload(data.url);
+                            }
+                        });
+                    }
+                };
+            }
+            
+            if (event.altKey && event.which == 68) {
+                // Alt-D (toggle debug mode)
+                action = function () {
+                    vr.debugmode = !vr.debugmode;
+                    $("#main_options_debugmodeon")[vr.debugmode ? "slideDown" : "slideUp"]();
+                    if (!vr.debugmode) $("#main_controls_debug").hide();
+                };
+            }
+            
+            if (action) {
+                event.preventDefault();
+                // Only run the shortcut on keyup (the keydown handler is so preventDefault is called)
+                if (event.type == "keyup") {
+                    action();
+                }
+            }
+        });
+        
         /* CUSTOM FACE */
         
         $("#main_customface_uploadbtn").click(function () {
@@ -301,7 +370,9 @@ var vr = {
             vr.options.boost.dropdown.clear();
             vr.options.face.customtemp = {};
             $("#main_customface_custombtn_container").slideUp();
-            $("#main_customface_custom1").slideDown();
+            $("#main_customface_custom1").slideDown(function () {
+                $("#main_customface_custom1_name")[0].focus();
+            });
         });
         
         $("#main_customface_custom1_next").click(function () {
@@ -331,8 +402,13 @@ var vr = {
                     var reader = new FileReader();
                     reader.onload = function () {
                         if (reader.result) {
-                            $("#main_customface_custom2_filename").text(file.name);
-                            vr.options.face.customtemp.url = reader.result;
+                            vr.modImage(reader.result, {maxwidth: vr.constants.maxImgSize, maxheight: vr.constants.maxImgSize}, function (dataURL) {
+                                vr.options.face.customtemp.url = dataURL;
+                                $("#main_customface_custom2_filename").text(file.name);
+                            }, function () {
+                                vr.options.face.customtemp.url = reader.result;
+                                $("#main_customface_custom2_filename").text(file.name);
+                            });
                         } else {
                             alert("Error reading file!\nDetails: File is empty or unreadable.");
                         }
@@ -630,9 +706,6 @@ var vr = {
                 if (course.controls.theme) $("#main_controls").addClass(course.controls.theme);
                 if (course.controls.css) $("#main_controls").css(course.controls.css);
             }
-            if (vr.query.debug) {
-                $("#main_controls_debug").show();
-            }
             $("#main_controls").fadeIn();
             $("#main_face_container").show();
         });
@@ -669,8 +742,12 @@ var vr = {
                     vr.options.boost.timeelapsed = 0;
                     $("#main_controls").css("background-image", "none");
                     if (vr.options.boost.audioenabled) {
-                        $("#boost_sound")[0].pause();
-                        $("#boost_sound")[0].currentTime = 0;
+                        try {
+                            $("#boost_sound")[0].pause();
+                            $("#boost_sound")[0].currentTime = 0;
+                        } catch (err) {
+                            vr.log("run ERROR: stopping sound failed...", err);
+                        }
                     }
                 }
             }
@@ -750,7 +827,8 @@ var vr = {
                 }
             }
             
-            if (vr.query.debug) {
+            if (vr.debugmode) {
+                $("#main_controls_debug:hidden").show();
                 $("#main_controls_debug_rate").text(Math.round(vr.rate * 1000) / 1000);
                 $("#main_controls_debug_ratediff").text(Math.round(vr.ratediff * 1000) / 1000);
                 $("#main_controls_debug_diff").text(Math.round((vr.rate - oldrate) * 1000) / 1000);
@@ -812,10 +890,7 @@ var vr = {
         
         error: function (event, func) {
             alert("DATABASE ERROR in " + func + ": " + event.target.errorCode + "\nDetails in error console");
-            if (typeof console != "undefined" && typeof console.log == "function") {
-                console.log("DATABASE ERROR in " + func + ": " + event.target.errorCode + "...");
-                console.log(event);
-            }
+            vr.log("DATABASE ERROR in " + func + ": " + event.target.errorCode + "...", event);
         },
         
         load: function () {
