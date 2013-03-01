@@ -49,8 +49,6 @@ var vr = {
     offsetLeft: 0,
     offsetTop: 0,
     
-    query: {},
-    
     rate: 0,
     ratediff: 0,
     currentpath: -1,
@@ -85,26 +83,6 @@ var vr = {
         right = right.toString();
         if (right.length == 1) right = "0" + right;
         return left + ":" + right;
-    },
-    
-    parseQuery: function (query) {
-        var qname, qvalue;
-        if (query) {
-            query = query.split("&");
-            for (var i = 0; i < query.length; i++) {
-                if (query[i].indexOf("=") != -1) {
-                    qname = query[i].substring(0, query[i].indexOf("=")).toLowerCase();
-                    qvalue = query[i].substring(query[i].indexOf("=") + 1);
-                    if (qvalue) {
-                        vr.query[qname] = qvalue;
-                    } else {
-                        vr.query[qname] = true;
-                    }
-                } else {
-                    vr.query[query[i].toLowerCase()] = true;
-                }
-            }
-        }
     },
     
     modImage: function (url, props, callback, errorcallback, type) {
@@ -167,12 +145,6 @@ var vr = {
     },
     
     load: function () {
-        vr.parseQuery(window.location.search.substring(1));
-        vr.parseQuery(window.location.hash.substring(1));
-        $(window).on("hashchange", function () {
-            vr.parseQuery(window.location.hash.substring(1));
-        });
-        
         $(".full").css({width: vr.constants.targetWidth + "px", height: vr.constants.targetHeight + "px"});
         
         $(document).click(function() {
@@ -183,7 +155,7 @@ var vr = {
         /* CONTROLS */
         
         $.each(vr.options.faces, function (index, data) {
-            if (data.name && data.url && (!data.locked || vr.query[data.name.toLowerCase()])) {
+            if (data.name && data.url && !data.locked) {
                 // Similar to code below (update that when you update this)
                 $("#main_options_face ul").append('<li data-type="preset" data-value="' + index + '"><img src="' + vr.escHTML(data.endurl || data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
                 // If we have an endurl above, then we need to preload normal url
@@ -286,6 +258,16 @@ var vr = {
             });
         });
         
+        vr.constantupdatedropdown = new DropDown($("#main_options_debugmode_constantupdate"), function () {
+            if (this.text == "On") {
+                vr.constantupdate = true;
+            } else if (this.text == "Off") {
+                vr.constantupdate = false;
+            } else {
+                vr.constantupdate = null;
+            }
+        });
+        
         $(document).on("keydown keyup", function (event) {
             var action = null;
             if (event.which == 27 && !vr.stopIntro) {
@@ -305,7 +287,7 @@ var vr = {
                         var $first = $($selector[0]);
                         $.each(vr.options.faces, function (index, data) {
                             // If valid, and not already added
-                            if (data.name && data.url && data.locked && !vr.query[data.name.toLowerCase()]) {
+                            if (data.name && data.url && data.locked) {
                                 // Similar to code above (update that when you update this)
                                 $first.before('<li data-type="preset" data-locked="true" data-value="' + index + '"><img src="' + vr.escHTML(data.endurl || data.url) + '"><a href="#">' + vr.escHTML(data.name) + '</a></li>');
                                 // If we have an endurl above, then we need to preload normal url
@@ -320,7 +302,7 @@ var vr = {
                 // Alt-D (toggle debug mode)
                 action = function () {
                     vr.debugmode = !vr.debugmode;
-                    $("#main_options_debugmodeon")[vr.debugmode ? "slideDown" : "slideUp"]();
+                    $("#main_options_debugmode")[vr.debugmode ? "slideDown" : "slideUp"]();
                     if (!vr.debugmode) $("#main_controls_debug").hide();
                 };
             }
@@ -669,13 +651,7 @@ var vr = {
         vr.rate = vr.constants.startRate / vr.options.speed.value;
         vr.ratediff = (vr.constants.startRate - vr.rate) * (2/3);  // We want to make up 2/3 of it by the end
         
-        if (vr.query.noconstant) {
-            vr.constantupdate = false;
-        } else if (vr.query.constant) {
-            vr.constantupdate = true;
-        } else {
-            vr.constantupdate = (vr.options.speed.value >= 0.5);
-        }
+        if (vr.constantupdate === null) vr.constantupdate = (vr.options.speed.value >= 0.5);
         
         if (vr.options.face.data.endurl) vr.preload(vr.options.face.data.endurl);
         
