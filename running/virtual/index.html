@@ -52,6 +52,7 @@
             <p id="main_options_manage_container" style="display: none;"><span id="main_options_manage" class="lilbutton">Manage Runners</span></p>
             <p id="main_options_offline_container" style="display: none;"><span id="main_options_offline" class="lilbutton">Offline</span></p>
             <p><span id="main_options_source" class="lilbutton">Source</span></p>
+            <div id="main_options_debugmodeon" style="display: none;"><p>Debug Mode On</p></div>
         </div>
         <div id="main_customface" class="dialog" style="display: none;">
             <h2>Custom Runner</h2>
@@ -96,12 +97,15 @@
             <p>In the main box, choose a runner and a course. Then, adjust the number of laps, and click "Adjust Speed" to open the Speed-o-Meter.</p>
             <p>In the Speed-o-Meter, enter a starting speed value (lower = faster, higher = slower), or select a Fast Preset or Slow Preset. Check "Blastoff Ending" for a fun finish to your last lap.</p>
             <hr>
+            <p>Keyboard Shortcurs:</p>
+            <ul>
+                <li><code>Alt-D</code> - toggle debug mode</li>
+            </ul>
             <p>Query params:</p>
             <ul>
                 <li><code>nointro</code> - disable intro</li>
                 <li><code>constant</code> - force constant updating of distance and time</li>
                 <li><code>noconstant</code> - force no constant updating of distance and time</li>
-                <li><code>debug</code> - turn on debug mode</li>
             </ul>
             <hr>
             <div id="main_help_back" class="button">Back</div>
