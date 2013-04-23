@@ -283,6 +283,7 @@ var vr = {
                     // Make sure we haven't already added the locked faces
                     if ($("#main_options_face li[data-locked=true]").length == 0) {
                         var $selector = $("#main_options_face li[data-type=custom]");
+                        if ($selector.length == 0) $selector = $("#main_options_face li:last-child");
                         if ($("#main_options_face li[data-type=db]").length > 0) $selector = $("#main_options_face li[data-type=db]");
                         var $first = $($selector[0]);
                         $.each(vr.options.faces, function (index, data) {
