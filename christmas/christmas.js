@@ -1,4 +1,4 @@
-// Loader for Christmas decorations on jhartz.github.com
+// Loader for Christmas decorations on jhartz.github.io
 // Most actual script for snow and lights from:
 // http://www.schillmania.com/projects/snowstorm/
 

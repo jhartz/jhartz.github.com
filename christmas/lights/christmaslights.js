@@ -1,7 +1,7 @@
 // Christmas Light Smashfest
 // Adapted from XLSF 2007 as originally used on http://schillmania.com/?theme=2007&christmas=1
 
-// Modified a bit for use with jhartz.github.com
+// Modified a bit for use with jhartz.github.io
 // For original, see: http://www.schillmania.com/projects/snowstorm/
 
 var urlBase = '/christmas/lights/';
