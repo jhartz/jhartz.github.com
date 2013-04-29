@@ -1,20 +1,15 @@
 ---
-layout: front
-centered: 1
-title: Jake
+layout: post
+noextra: 1
 ---
-        <!-- <h1><a href="name.html">Jeff.net</a></h1> -->
-        <h1>Jake</h1>
-        <nav>
-            <ul>
-                <li><a href="/blog/">Blog</a></li>
-                <li><a href="http://github.com/jhartz">GitHub</a></li>
-            </ul>
-        </nav>
+{% for post in paginator.posts %}
 
-        <h2>Projects</h2>
-        <div><a href="/mp4downloader/" class="button front"><img src="http://mp4downloader.mozdev.org/button_real.png" style="height: 48px; width: 48px;"> MP4 Downloader</a> <a href="/masterchess/" class="button front"><img src="https://github.com/jhartz/masterchess/raw/master/resources/Chess-48.png" style="height: 48px; width: 48px;"> MasterChess</a></div>
-        <!-- <div style="float: right;"><a href="projects.html">More Projects</a></div> -->
+        <article>
+            <h2><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></h2>
+            <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
+            <div class="postbody">
+{{ post.content | split:'<!-- see more -->' | first }}{% capture body_parts %}{{ post.content | split:'<!-- see more -->' | size }}{% endcapture %}{% if body_parts != '1' %}
 
-        <h2>Musings and Tools</h2>
-        <div><a href="math/" class="button front">Math</a> <a href="running/" class="button front">Running</a></div>
+                <p style="margin-left: 20px;"><a href="{{ post.url | escape }}">See&nbsp;more&nbsp;&raquo;</a></p>{% endif %}
+            </div>
+        </article>{% endfor %}
