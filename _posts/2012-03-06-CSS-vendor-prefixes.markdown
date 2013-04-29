@@ -6,6 +6,8 @@ excerpt: 'CSS vendor prefixes, a system originally meant for testing prototypes 
 ---
 I just read [a great article][1] by Daniel Glazman regarding the current problems in the browser world (mostly among mobile browsers) regarding CSS vendor prefixes. A system originally meant for testing prototypes of not-yet-standardized CSS features, vendor prefixes (such as the most problematic, `-webkit-*`) have led to "Only-works-in-WebKit" sites on the mobile Web, just like the old days of "Only-works-in-IE6" sites (a problem which took a decade to fix).
 
+<!-- see more -->
+
 Additionally, going with the domino effect that interconnects the problems of the Internet, this is leading web developers back into bad old habits. The biggest problem is that developers are using browser detection, resulting in vendor-specific websites, sometimes even used to promote a specific browser as being better, even though most modern browsers support the features in question. A few examples:
 
 * [Angry Birds][2] (Chrome-branded)
