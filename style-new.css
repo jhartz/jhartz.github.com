@@ -204,7 +204,7 @@ header ul.pretty li:before {
 }
 header ul.pretty a {
   line-height: 1;
-  font-size: 14px;
+  font-size: 11px;
   color: #fff;
   color: rgba(255, 255, 255, 0.8);
   display: block;
@@ -213,6 +213,11 @@ header ul.pretty a {
   padding-top: 6px;
   height: 40px;
   text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
+}
+header ul.pretty a strong {
+  font-size: 14px;
+  display: block;
+  color: #fff;
   -webkit-font-smoothing: antialiased;
 }
 
