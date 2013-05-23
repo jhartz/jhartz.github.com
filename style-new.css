@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  padding: 50px 0;
+  padding: 30px 0; /* NOTE: modified by me (Jake) */
   margin: 0;
   font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #555;
@@ -20,9 +20,17 @@ body {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg==') fixed;
 }
 
-.wrapper {
-  width: 640px;
+.wrapper, footer {
+  /* NOTE: width modifications by me (Jake) */
+  min-width: 640px;
+  max-width: 1000px;
+  width: auto;
+  width: -webkit-calc(100% - 60px);
+  width: -moz-calc(100% - 60px);
+  width: calc(100% - 60px);
   margin: 0 auto;
+}
+.wrapper {
   background: #DEDEDE;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -382,8 +390,7 @@ aside ul li:last {
 }
 
 footer {
-  width: 640px;
-  margin: 0 auto;
+  /* NOTE: width and margin defined above (with .wrapper); modified by me (Jake) */
   padding: 20px 0 0;
   color: #ccc;
   overflow: hidden;
@@ -416,6 +423,8 @@ footer p + p {
     -o-box-shadow: none;
     box-shadow: none;
     width: 100%;
+    min-width: 0; /* NOTE: added by me (Jake) */
+    max-width: none; /* NOTE: added by me (Jake) */
   }
 
   /* NOTE: aside added by me (Jake) */
@@ -432,6 +441,8 @@ footer p + p {
     border-radius: 0;
     padding: 20px;
     width: auto;
+    min-width: 0; /* NOTE: added by me (Jake) */
+    max-width: none; /* NOTE: added by me (Jake) */
   }
   footer p {
     float: none;
@@ -462,6 +473,11 @@ footer p + p {
 
   header p {
     width: 100%;
+  }
+  
+  /* NOTE: added by me (Jake) */
+  header p.noview {
+    display: none;
   }
 }
 
