@@ -327,6 +327,16 @@ th, td {
   border-bottom: 1px solid #aaa;
 }
 
+/* NOTE: table.little added by me (Jake) */
+table.little, table.little table {
+    margin: 0;
+    width: auto;
+}
+table.little th, table.little td {
+    padding: 1px;
+    border-bottom: none;
+}
+
 dt {
   color: #222;
   font-weight: 700;
