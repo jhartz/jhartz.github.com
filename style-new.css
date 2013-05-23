@@ -498,8 +498,13 @@ footer p + p {
   }
 }
 
-/* NOTE: .noprint added by me (Jake) */
+/* NOTE: added by me (Jake) */
 @media print {
+    html, body, .wrapper, header, section {
+        background-image: none;
+        background-color: transparent;
+    }
+    
     .noprint {
         display: none;
     }
