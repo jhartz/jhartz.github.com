@@ -413,13 +413,13 @@ footer a {
   font-weight: bold;
 }
 /* NOTE: below added/modified by me (Jake) */
-footer p {
+footer > p {
     float: right;
 }
-footer p:first-child {
+footer > p:first-child {
     float: left;
 }
-footer > :only-child {
+footer > p:only-child {
     float: none;
     text-align: center;
 }
