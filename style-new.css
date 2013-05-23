@@ -336,19 +336,17 @@ hr {
   margin: 0 0 20px;
 }
 
-/* NOTE: .timestamp and <article> and <aside> stuff added by me (Jake) */
+/* NOTE: .timestamp and <article> and <aside> and .bottombar stuff added by me (Jake) */
 
 p.timestamp {
     font-style: italic;
     float: right;
 }
-
 article p.timestamp {
     float: none;
     margin: 10px;
     margin-left: 20px;
 }
-
 article div.postbody {
     margin-left: 20px;
 }
@@ -361,31 +359,36 @@ aside {
      clear: both;
      display: block;
      float: right;
-     margin: 0 0 5px 5px;
+     margin: 0 0 15px 15px;
      max-width: 27%;
      padding: 7px 7px 0;
 }
-
 aside small {
      font-style: italic;
      white-space: nowrap;
 }
-
 aside h3, aside h4, aside h5, aside h6 {
      text-align: center;
 }
-
 aside ul {
      padding-left: 20px;
 }
-
 aside ul li {
      font-size: 93%;
      padding-bottom: 5px;
 }
-
 aside ul li:last {
     padding-bottom: 0;
+}
+
+.bottombar {
+    border-top: 1px solid #aaa;
+}
+.bottombar span {
+    float: right;
+}
+.bottombar span:first-child {
+    float: none;
 }
 
 footer {
@@ -426,9 +429,13 @@ footer p + p {
     max-width: none; /* NOTE: added by me (Jake) */
   }
 
-  /* NOTE: aside added by me (Jake) */
+  /* NOTE: aside and .bottombar added by me (Jake) */
   aside {
     display: none;
+  }
+  
+  .bottombar span {
+    float: none;
   }
 
   footer {
