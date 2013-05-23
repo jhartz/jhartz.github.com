@@ -271,13 +271,24 @@ blockquote {
   color: #222;
 }
 
-/* NOTE: .cite stuff added by me (Jake) */
+/* NOTE: .cite stuff and basic <figure> stuff added by me (Jake) */
 blockquote .cite:before {
     content: "\2014";
 }
 blockquote .cite {
     font-size: 90%;
     margin-left: 20px;
+}
+
+figure {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, .1);
+    padding: 10px;
+    border-radius: 2px;
+    vertical-align: top;
+}
+figure p {
+    margin: 0 0 10px;
 }
 
 img {
