@@ -412,11 +412,16 @@ footer a {
   color: #fff;
   font-weight: bold;
 }
+/* NOTE: below added/modified by me (Jake) */
 footer p {
-  float: left;
+    float: right;
 }
-footer p + p {
-  float: right;
+footer p:first-child {
+    float: left;
+}
+footer > :only-child {
+    float: none;
+    text-align: center;
 }
 
 @media print, screen and (max-width: 740px) {
