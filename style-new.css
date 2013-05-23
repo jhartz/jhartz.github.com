@@ -340,14 +340,13 @@ hr {
 
 p.timestamp {
     font-style: italic;
-    font-size: 11pt;
-    text-align: center;
+    float: right;
 }
 
 article p.timestamp {
+    float: none;
     margin: 10px;
     margin-left: 20px;
-    text-align: left;
 }
 
 article div.postbody {
