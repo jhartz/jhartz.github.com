@@ -1,26 +1,46 @@
 <!DOCTYPE html>
+<!-- Modernist theme by Steve Smith - https://github.com/orderedlist -->
 <html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    
     <title>Not Found</title>
-    <link rel="stylesheet" type="text/css" media="screen,tv,projection" href="/style.css">
+    
+    <link rel="stylesheet" type="text/css" href="/style-new.css">
+    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 
 <body>
-<table style="border: none;">
-<tbody><tr><td>
-    <div id="content" class="centered">
-        <nav class="left"><ul><li><a href="/">Home</a></li></ul></nav>
-
-        <h1>404 Not Found</h1>
-        <p>Whoops! Nothing seems to exist at the URL you entered.</p>
-        <p>While you're pondering what to do next, enjoy this screenshot of my battery with exactly<br><a href="http://en.wikipedia.org/wiki/Pi" class="revealed">3 hours</a><a href="http://en.wikipedia.org/wiki/Pi#Infinite_series" class="revealed"> and 14 </a><a href="http://en.wikipedia.org/wiki/Millennium#Debate_over_millennium_celebrations" class="revealed">minutes</a> left: <img src="/images/404.png" alt="3:14" style="vertical-align: bottom;"></p>
+    <div class="wrapper">
+        <header class="without-description">
+            <p class="view"><a href="/">jhartz.github.io</a></p>
+            <h1>404 Not Found</h1>
+            <p><a href="/">jhartz.github.io</a></p>
+        </header>
+        
+        <section>
+            <p>Whoops! Nothing seems to exist at the URL you entered.</p>
+            <p>While you're pondering what to do next, enjoy this screenshot of my battery with exactly<br><a href="http://en.wikipedia.org/wiki/Pi" class="revealed">3 hours</a><a href="http://en.wikipedia.org/wiki/Pi#Infinite_series" class="revealed"> and 14 </a><a href="http://en.wikipedia.org/wiki/Millennium#Debate_over_millennium_celebrations" class="revealed">minutes</a> left: <img src="/images/404.png" alt="3:14" style="vertical-align: bottom;"></p>
+        </section>
     </div>
+    
     <!--[if IE]>
-    <div style="text-align: center;"><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></div>
+    <footer class="noprint"><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></footer>
     <![endif]-->
-    <div><br><br></div>
-</td></tr></tbody>
-</table>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-38625058-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
 </body>
 </html>
