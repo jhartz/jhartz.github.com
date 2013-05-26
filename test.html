@@ -1,0 +1,9 @@
+---
+name: {en: "About", es: "Sobre"}
+---
+
+{% for lang in page.name %}
+<h2>{{ lang }}</h2>
+<p>{{ lang[0] }}</p>
+<p>{{ lang[1] }}</p>
+{% endfor %}
