@@ -428,7 +428,8 @@ footer {
     color: #ccc;
     overflow: hidden;
 }
-footer a {
+/* MOD: .fakelink added */
+footer a, footer .fakelink {
     color: #fff;
     font-weight: bold;
 }
