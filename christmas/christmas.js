@@ -100,7 +100,7 @@ if (christmas.cookie("snow")) {
     doSnow = !(navigator.userAgent.match(/mobile|opera m(ob|in)/i));
 }
 if (doSnow) {
-    document.write(unescape('%3Cscript type="text/javascript" src="http://www.schillmania.com/projects/snowstorm/snowstorm-min.js"%3E%3C/script%3E'));
+    document.write(unescape('%3Cscript type="text/javascript" src="/christmas/snowstorm-min.js"%3E%3C/script%3E'));
     // Turn off mobile exclusion (since we do it ourselves)
     document.write(unescape('%3Cscript type="text/javascript"%3EsnowStorm.excludeMobile = false;%3C/script%3E'));
     document.getElementById("christmas_snow_stop").style.display = "inline";
