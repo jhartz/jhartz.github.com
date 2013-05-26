@@ -1,9 +1,140 @@
 ---
-name: {en: "About", es: "Sobre"}
----
+christmas: 1
 
-{% for lang in page.name %}
-<h2>{{ lang }}</h2>
-<p>{{ lang[0] }}</p>
-<p>{{ lang[1] }}</p>
-{% endfor %}
+index: MP4 Downloader
+indexlangs: [es]
+nav:
+  - name: About
+    page: index.html
+    langs: {es: Sobre}
+    pages: {es: index.es.html}
+  - name: Download
+    langs: {es: Descargar}
+  - name: Screenshots
+  - name: Development
+  - name: Documentation
+    page: "docs/"
+  - name: Contact
+    langs: {es: Contactar}
+
+---
+{% comment %}
+
+NOTE: In this explanation...
+  s"varname" means a string variable with name varname
+  a"varname" means an array with name varname
+  o"varname" means an object (or associative array) with name varname
+
+Explanation of Indexes and Navigation:
+
+Each page using this layout can define s"index" (and optional s"indexurl") that defines the name of that section of the site and the URL of its home. Also, a"indexlangs" can be used to specify different languages of the index.html file for that section of the site (used depending on value of s"lang" for that page).
+
+Navigation is specified in a"nav", where each child is an object with...
+  s"name"  (required; the display name)
+  s"url"   (the URL of the item; overrides s"page" and o"pages")
+  s"page"  (the page, relative to the index; if not specified, defaults to lowercase s"name" with spaces removed and ".html" appended)
+  o"langs" (the languages that the page is in, with each language pointing to the title of the page in that language)
+  o"pages" (same as s"page", but with the pages for different languages; if not specified, default is same as s"page" except with ".lang.html" appended instead, where "lang" is the language value)
+
+{% endcomment %}<!DOCTYPE html>
+<!-- Modernist theme by Steve Smith - https://github.com/orderedlist -->
+<html>
+<head>
+    <meta charset="utf-8">{% if page.redirect %}
+    <noscript><meta http-equiv="refresh" content="0; url={{ page.redirect | escape }}"></noscript>{% endif %}
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{% if page.title %}{{ page.title | escape }}{% if page.index %} - {% endif %}{% endif %}{% if page.index %}{{ page.index | escape }}{% endif %}</title>{% if page.atomfeed %}
+    <link rel="alternate" type="application/atom+xml" title="Ramblings by Jake &raquo; Feed" href="/blog/atom.xml">{% endif %}
+    
+    <link rel="stylesheet" type="text/css" href="/style-new.css">{% if page.christmas %}
+    <link rel="stylesheet" type="text/css" href="/christmas/christmas.css">{% endif %}{% if page.shadowbox %}
+    <link rel="stylesheet" type="text/css" href="/shadowbox/shadowbox.css">{% endif %}
+    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->{% if page.redirect %}
+    <script type="text/javascript">
+    location.replace("{{ page.redirect | xml_escape }}");
+    </script>{% endif %}{% if page.shadowbox %}
+    <script type="text/javascript" src="/shadowbox/shadowbox.js"></script>{% endif %}
+</head>
+
+<body>{% if page.christmas %}
+    <div id="lights" style="display: none;"></div>
+    <div id="christmas_lights_preload" style="display: none;"></div>
+    {% endif %}
+    <div class="wrapper">
+        <header>{% capture indexurl %}{% if page.indexurl %}{{ page.indexurl | escape }}{% else %}{% if page.index %}/{{ page.index | downcase | replace:' ','' | escape }}/{% endif %}{% endif %}{% endcapture %}
+            <p class="view"><a href="/">jhartz.github.io</a></p>
+            <h1>{% if page.index %}<a href="{{ indexurl }}{% if page.lang and page.indexlangs %}{% for lang in page.indexlangs %}{% if page.lang == lang %}index.{{ lang | escape }}.html{% endif %}{% endfor %}{% endif %}">{{ page.index | escape }}</a>{% else %}{% if page.title %}{{ page.title | escape }}{% else %}jhartz.github.io{% endif %}{% endif %}</h1>{% if page.nav %}
+            <ul>{% for nav in page.nav %}
+                <li><a href="
+                {% if nav.url %}
+                    {{ nav.url | escape }}
+                {% else %}
+                    {{ indexurl }}
+                    {% assign done = false %}
+                    
+                    {% if page.lang and nav.pages %}
+                        {% for lang in nav.pages %}
+                            {% if page.lang == lang[0] %}{{ lang[1] | escape }}{% assign done = true %}{% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if done == false %}
+                        {% if nav.page %}
+                            {{ nav.page | escape }}
+                        {% else %}
+                            {{ nav.name | downcase | replace:' ','' | escape }}
+                            {% if page.lang and nav.langs %}
+                                {% for lang in nav.langs %}
+                                    {% if page.lang == lang[0] %}{{ lang[0] }}{% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            .html
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                ">{% assign done = false %}{% if page.lang and nav.langs %}{% for lang in nav.langs %}{% if page.lang == lang[0] %}{{ lang[1] | escape }}{% assign done = true %}{% endif %}{% endfor %}{% endif %}{% if done == false %}{{ nav.name | escape }}{% endif %}</a></li>{% endfor %}
+            </ul>{% endif %}
+            <p class="noview"><a href="/">jhartz.github.io</a></p>
+        </header>
+        <section>{% if page.redirect %}
+            <p>Redirecting to: <a href="{{ page.redirect | escape }}">{% if page.title %}{{ page.title | escape }}{% else %}{{ page.redirect | escape }}{% endif %}</a></p>{% else %}
+
+{{ content }}{% endif %}
+        </section>
+    </div>
+    
+    {% if page.christmas %}<footer class="noprint">
+        <!--[if gte IE 8]><!--><ul class="inline" style="text-align: center;">
+            <li id="christmas_snow_stop" style="display: none;"><span class="fakelink" onclick="christmas.snow.stop(); return false;">Stop Snowstorm</span></li>
+            <li id="christmas_snow_start" style="display: none;"><span class="fakelink" onclick="christmas.snow.start(); return false;">Start Snowstorm</span></li>
+            <li id="christmas_lights_stop" style="display: none;"><span class="fakelink" onclick="christmas.lights.stop(); return false;">Hide Christmas Lights</span></li>
+            <li id="christmas_lights_start" style="display: none;"><span class="fakelink" onclick="christmas.lights.start(); return false;">Show Christmas Lights</span></li>
+            <li id="christmas_lights_sizes" style="display: none;">Size: <span id="christmas_lights_sizes_list"></span></li>
+        </ul><!--<![endif]-->
+        <!--[if lt IE 8]><p><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></p><![endif]-->
+    </footer>{% else %}<!--[if IE]>
+    <footer class="noprint"><p><a href="http://www.mozilla.com/firefox/features/">A Better Browser</a></p></footer>
+    <![endif]-->{% endif %}
+{% if page.email %}<script type="text/javascript" src="/email.js"></script>
+{% endif %}{% if page.shadowbox %}<script type="text/javascript">
+Shadowbox.init({
+    continuous: true
+});
+</script>
+{% endif %}{% if page.christmas %}<!--[if gte IE 8]><!--><script type="text/javascript" src="/christmas/christmas.js"></script><!--<![endif]-->
+{% endif %}{% unless page.noanalytics %}<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-38625058-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+{% endunless %}</body>
+</html>
