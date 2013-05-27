@@ -1,5 +1,12 @@
 /* Modernist theme by Steve Smith - https://github.com/orderedlist */
 /* Modifications by Jake are noted with a CSS comment beginning with "MOD" */
+/* Vendor prefixes in this file (in addition to the unprefixed version)
+    border-radius: -webkit, -moz
+    box-shadow: -webkit, -moz
+    transition: -webkit, -moz, -o
+    linear-gradient: -webkit, -moz, -o, -ms
+    calc: -webkit, -moz
+*/
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
@@ -37,15 +44,11 @@ body {
 }
 .wrapper {
     background: #DEDEDE;
-    -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
-    -o-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -khtml-border-radius: 8px;
+    -moz-border-radius: 8px;
     border-radius: 8px;
-    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.45) 0 3px 10px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.45) 0 3px 10px;
-    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.45) 0 3px 10px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.45) 0 3px 10px;
     box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.45) 0 3px 10px;
 }
 
@@ -65,7 +68,7 @@ a, .fakelink {
     -webkit-transition: text-shadow 0.1s;
     -moz-transition: text-shadow 0.1s;
     -o-transition: text-shadow 0.1s;
-    -ms-transition: text-shadow 0.1s;
+    transition: text-shadow 0.1s;
 }
 
 /* MOD: hover styling */
@@ -84,11 +87,8 @@ strong {
 }
 
 header {
-    -moz-border-radius: 8px 8px 0 0;
     -webkit-border-radius: 8px 8px 0 0;
-    -o-border-radius: 8px 8px 0 0;
-    -ms-border-radius: 8px 8px 0 0;
-    -khtml-border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
     border-radius: 8px 8px 0 0;
     background: #C6EAFA;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ddfbfc), color-stop(100%, #c6eafa));
@@ -166,10 +166,11 @@ header ul.pretty {
     top: 20px;
     height: 38px;
     padding: 1px 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     border-radius: 5px;
-    -moz-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
     -webkit-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
-    -o-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
+    -moz-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
     box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
     /*width: 240px;*/
 }
@@ -182,15 +183,11 @@ header ul.pretty:before {
     right: -5px;
     bottom: -6px;
     background: rgba(0, 0, 0, 0.1);
-    -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
-    -o-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -khtml-border-radius: 8px;
+    -moz-border-radius: 8px;
     border-radius: 8px;
-    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
     -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
-    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
     box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
 }
 header ul.pretty li {
@@ -211,11 +208,15 @@ header ul.pretty li {
 header ul.pretty li:first-child {
     width: 79px;
     border-left: none;
+    -webkit-border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
     border-radius: 5px 0 0 5px;
 }
 header ul.pretty li:last-child {
     width: 79px;
     border-right: none;
+    -webkit-border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
     border-radius: 0 5px 5px 0;
 }
 header ul.pretty li:before {
@@ -250,11 +251,8 @@ section {
     background: -o-linear-gradient(#fafafa, #dedede 700px);
     background: -ms-linear-gradient(#fafafa, #dedede 700px);
     background: linear-gradient(#fafafa, #dedede 700px);
-    -moz-border-radius: 0 0 8px 8px;
     -webkit-border-radius: 0 0 8px 8px;
-    -o-border-radius: 0 0 8px 8px;
-    -ms-border-radius: 0 0 8px 8px;
-    -khtml-border-radius: 0 0 8px 8px;
+    -moz-border-radius: 0 0 8px 8px;
     border-radius: 0 0 8px 8px;
     position: relative;
 }
@@ -308,6 +306,8 @@ figure {
     display: inline-block;
     background-color: rgba(0, 0, 0, .1);
     padding: 10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     vertical-align: top;
 }
@@ -398,8 +398,12 @@ article div.postbody {
 
 aside {
      background-color: #fff;
-     border-radius: 12px 12px 12px 12px;
+     -webkit-border-radius: 12px;
+     -moz-border-radius: 12px;
+     border-radius: 12px;
      border: 1px solid white;
+     -webkit-box-shadow: 1px 1px 10px #6C72BE;
+     -moz-box-shadow: 1px 1px 10px #6C72BE;
      box-shadow: 1px 1px 10px #6C72BE;
      clear: both;
      display: block;
@@ -469,15 +473,11 @@ footer > p:only-child {
     }
 
     .wrapper {
-        -moz-border-radius: 0;
         -webkit-border-radius: 0;
-        -o-border-radius: 0;
-        -ms-border-radius: 0;
-        -khtml-border-radius: 0;
+        -moz-border-radius: 0;
         border-radius: 0;
-        -moz-box-shadow: none;
         -webkit-box-shadow: none;
-        -o-box-shadow: none;
+        -moz-box-shadow: none;
         box-shadow: none;
         width: 100%;
         /* MOD: min/max width added */
@@ -495,11 +495,8 @@ footer > p:only-child {
     }
 
     footer {
-        -moz-border-radius: 0;
         -webkit-border-radius: 0;
-        -o-border-radius: 0;
-        -ms-border-radius: 0;
-        -khtml-border-radius: 0;
+        -moz-border-radius: 0;
         border-radius: 0;
         padding: 20px;
         width: auto;
