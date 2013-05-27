@@ -61,6 +61,16 @@ header, section, footer {
 a, .fakelink {
     color: #069;
     text-decoration: none;
+    /* MOD: transition to go with hover styles */
+    -webkit-transition: text-shadow 0.1s;
+    -moz-transition: text-shadow 0.1s;
+    -o-transition: text-shadow 0.1s;
+    -ms-transition: text-shadow 0.1s;
+}
+
+/* MOD: hover styling */
+a:hover, .fakelink:hover {
+    text-shadow: 0 0 1px rgba(0,102,153,.6);
 }
 
 p {
@@ -116,6 +126,10 @@ header p.view {
 }
 header p.view a {
     color: #06c;
+}
+/* MOD: hover styles (to cancel out from above) */
+header p.view a:hover {
+    text-shadow: inherit;
 }
 header p.view small {
     font-weight: 400;
@@ -217,7 +231,7 @@ header ul.pretty a {
     font-weight: 400;
     padding-top: 6px;
     height: 40px;
-    text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
+    text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0; /* should override text-shadow in a:hover from above */
 }
 header ul.pretty a strong {
     font-size: 14px;
@@ -432,6 +446,10 @@ footer {
 footer a, footer .fakelink {
     color: #fff;
     font-weight: bold;
+}
+/* MOD: hover styles (to cancel out from above) */
+footer a:hover, footer .fakelink:hover {
+    text-shadow: inherit;
 }
 /* MOD: footer */
 footer > p {
