@@ -8,9 +8,11 @@
 <html manifest="manifest.appcache">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Virtual Running</title>
 
+<!--[if gte IE 10]><!-->
 <!-- IndexedDB shim for older browsers that support WebSQL but not IndexedDB -->
 <script type="text/javascript" src="lib/IndexedDBShim.min.js"></script>
 <!-- jQuery and plugins -->
@@ -24,10 +26,18 @@
 <script type="text/javascript" src="vr-courses.js"></script>
 <script type="text/javascript" src="vr-boosts.js"></script>
 <script type="text/javascript" src="vr-faces.js"></script>
+<!--<![endif]-->
 </head>
 
 <body>
 <noscript>Please enable JavaScript to view this page.</noscript>
+<!--[if lt IE 10]>
+<div class="dialog">
+<h1>ERROR</h1>
+<p>Virtual Running does not work properly in Internet Explorer.</p>
+<p>Please try Virtual Running in a different browser such as <a href="http://www.mozilla.org/en-US/firefox/features/">Firefox</a>.</p>
+</div>
+<![endif]-->
 
 <div id="intros" class="top" style="display: none;" data-items="4"><img class="full" src="bg/intro1.jpg" data-item="1"><img class="full" src="bg/intro2.jpg" data-item="2"><img class="full" src="bg/intro3.jpg" data-item="3"><img class="full" src="bg/intro4.jpg" data-item="4" id="intro_final"></div>
 
