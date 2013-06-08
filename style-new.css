@@ -154,92 +154,7 @@ header ul li:before, ul.inline li:before {
 header ul li:first-child:before, ul.inline li:first-child:before {
     content: none;
 }
-
-header ul.pretty {
-    float: none; /* to cancel out from above */
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    z-index: 1;
-    right: 20px;
-    top: 20px;
-    height: 38px;
-    padding: 1px 0;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
-    -moz-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
-    box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
-    /*width: 240px;*/
-}
-header ul.pretty:before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    left: -5px;
-    top: -4px;
-    right: -5px;
-    bottom: -6px;
-    background: rgba(0, 0, 0, 0.1);
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
-    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
-}
-header ul.pretty li {
-    display: block; /* to cancel out from above */
-    width: 78px;
-    float: left;
-    border-left: 1px solid #8BBEF3;
-    border-right: 1px solid #3A7CBE;
-    height: 38px;
-    background: #5198DF;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #77b9fb), color-stop(100%, #3782cd));
-    background: -webkit-linear-gradient(#77b9fb, #3782cd);
-    background: -moz-linear-gradient(#77b9fb, #3782cd);
-    background: -o-linear-gradient(#77b9fb, #3782cd);
-    background: -ms-linear-gradient(#77b9fb, #3782cd);
-    background: linear-gradient(#77b9fb, #3782cd);
-}
-header ul.pretty li:first-child {
-    width: 79px;
-    border-left: none;
-    -webkit-border-radius: 5px 0 0 5px;
-    -moz-border-radius: 5px 0 0 5px;
-    border-radius: 5px 0 0 5px;
-}
-header ul.pretty li:last-child {
-    width: 79px;
-    border-right: none;
-    -webkit-border-radius: 0 5px 5px 0;
-    -moz-border-radius: 0 5px 5px 0;
-    border-radius: 0 5px 5px 0;
-}
-header ul.pretty li:before {
-    content: none; /* to cancel out from above */
-}
-header ul.pretty a {
-    line-height: 1;
-    font-size: 11px;
-    color: #fff;
-    color: rgba(255, 255, 255, 0.8);
-    display: block;
-    text-align: center;
-    font-weight: 600;
-    padding-top: 6px;
-    height: 40px;
-    text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0; /* should override text-shadow in a:hover from above */
-}
-header ul.pretty a strong {
-    font-size: 14px;
-    display: block;
-    color: #fff;
-    -webkit-font-smoothing: antialiased;
-}
+/* MOD: header ul.pretty stuff down at bottom, with all the other @media stuff */
 
 section {
     padding: 15px 20px;
@@ -467,6 +382,95 @@ footer > p:only-child {
     text-align: center;
 }
 
+/* MOD: added header ul.pretty here since we use @media */
+@media print, screen and (min-width:580px) {
+    header ul.pretty {
+        float: none; /* to cancel out from above */
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        position: absolute;
+        z-index: 1;
+        right: 20px;
+        top: 20px;
+        height: 38px;
+        padding: 1px 0;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
+        -moz-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
+        box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
+        /*width: 240px;*/
+    }
+    header ul.pretty:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: -5px;
+        top: -4px;
+        right: -5px;
+        bottom: -6px;
+        background: rgba(0, 0, 0, 0.1);
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
+        -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
+    }
+    header ul.pretty li {
+        display: block; /* to cancel out from above */
+        width: 78px;
+        float: left;
+        border-left: 1px solid #8BBEF3;
+        border-right: 1px solid #3A7CBE;
+        height: 38px;
+        background: #5198DF;
+        background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #77b9fb), color-stop(100%, #3782cd));
+        background: -webkit-linear-gradient(#77b9fb, #3782cd);
+        background: -moz-linear-gradient(#77b9fb, #3782cd);
+        background: -o-linear-gradient(#77b9fb, #3782cd);
+        background: -ms-linear-gradient(#77b9fb, #3782cd);
+        background: linear-gradient(#77b9fb, #3782cd);
+    }
+    header ul.pretty li:first-child {
+        width: 79px;
+        border-left: none;
+        -webkit-border-radius: 5px 0 0 5px;
+        -moz-border-radius: 5px 0 0 5px;
+        border-radius: 5px 0 0 5px;
+    }
+    header ul.pretty li:last-child {
+        width: 79px;
+        border-right: none;
+        -webkit-border-radius: 0 5px 5px 0;
+        -moz-border-radius: 0 5px 5px 0;
+        border-radius: 0 5px 5px 0;
+    }
+    header ul.pretty li:before {
+        content: none; /* to cancel out from above */
+    }
+    header ul.pretty a {
+        line-height: 1;
+        font-size: 11px;
+        color: #fff;
+        color: rgba(255, 255, 255, 0.8);
+        display: block;
+        text-align: center;
+        font-weight: 600;
+        padding-top: 6px;
+        height: 40px;
+        text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0; /* should override text-shadow in a:hover from above */
+    }
+    header ul.pretty a strong {
+        font-size: 14px;
+        display: block;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
 @media print, screen and (max-width: 740px) {
     body {
         padding: 0;
@@ -514,9 +518,6 @@ footer > p:only-child {
 }
 @media print, screen and (max-width:580px) {
     /* MOD: header ul stuff modified in accordance with modifications above */
-    header ul.pretty {
-        display: none;
-    }
     header ul {
         float: none;
     }
@@ -525,53 +526,6 @@ footer > p:only-child {
     }
     header ul li:before {
         content: none;
-    }
-    /* MOD: to cancel out ul.pretty stuff above (as opposed to just hiding it) */
-    header ul.pretty {
-        margin: auto;
-        padding: auto;
-        position: static;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-    }
-    header ul.pretty:before {
-        content: '';
-        position: static;
-        background-color: transparent;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-    }
-    header ul.pretty li {
-        display: block;
-        width: auto;
-        float: none;
-        border: none;
-        height: auto;
-        background-color: transparent;
-        background: none;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
-    }
-    header ul.pretty a {
-        line-height: 1;
-        font-size: 11px;
-        color: inherit;
-        display: inline;
-        text-align: left;
-    }
-    header ul.pretty a strong {
-        font-size: 14px;
-        display: inline;
-        color: inherit;
     }
 
     header p.view {
