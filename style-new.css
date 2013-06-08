@@ -229,7 +229,7 @@ header ul.pretty a {
     color: rgba(255, 255, 255, 0.8);
     display: block;
     text-align: center;
-    font-weight: 400;
+    font-weight: 600;
     padding-top: 6px;
     height: 40px;
     text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0; /* should override text-shadow in a:hover from above */
