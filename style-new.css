@@ -382,6 +382,16 @@ footer > p:only-child {
     text-align: center;
 }
 
+/* MOD: added .buttons stuff */
+div.buttons dt {
+    clear: both;
+}
+
+div.buttons dd > img:first-child {
+    max-height: 3em;
+    float: left;
+}
+
 /* MOD: added header ul.pretty here since we use @media */
 @media print, screen and (min-width:580px) {
     header ul.pretty {
@@ -475,15 +485,6 @@ footer > p:only-child {
         display: inline-block;
         width: 50%;
         vertical-align: top;
-    }
-    
-    div.buttons dt {
-        clear: both;
-    }
-    
-    div.buttons dd > img:first-child {
-        max-height: 3em;
-        float: left;
     }
 }
 
