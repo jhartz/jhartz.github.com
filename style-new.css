@@ -476,6 +476,15 @@ footer > p:only-child {
         width: 50%;
         vertical-align: top;
     }
+    
+    div.buttons dt {
+        clear: both;
+    }
+    
+    div.buttons dd > img:first-child {
+        max-height: 3em;
+        float: left;
+    }
 }
 
 @media print, screen and (max-width: 740px) {
