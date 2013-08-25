@@ -469,6 +469,13 @@ footer > p:only-child {
         color: #fff;
         -webkit-font-smoothing: antialiased;
     }
+    
+    /* MOD: added .buttons stuff */
+    div.buttons {
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+    }
 }
 
 @media print, screen and (max-width: 740px) {
