@@ -135,23 +135,23 @@ header p.view small {
     font-weight: 400;
 }
 
-/* MOD: header ul stuff */
+/* MOD: header/footer ul stuff */
 header ul {
     float: right;
 }
-header ul, ul.inline {
+header ul, footer ul, ul.inline {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-header ul li, ul.inline li {
+header ul li, footer ul li, ul.inline li {
     display: inline;
 }
-header ul li:before, ul.inline li:before {
+header ul li:before, footer ul li:before, ul.inline li:before {
     content: "\0020 \00B7 \0020";
     font-size: inherit;
 }
-header ul li:first-child:before, ul.inline li:first-child:before {
+header ul li:first-child:before, footer ul li:first-child_before, ul.inline li:first-child:before {
     content: none;
 }
 /* MOD: header ul.pretty stuff down at bottom, with all the other @media stuff */
@@ -372,14 +372,19 @@ footer a:hover, footer .fakelink:hover {
 }
 /* MOD: footer */
 footer > p, footer > ul {
-    float: right;
-}
-footer > p:first-child, footer > ul:first-child {
-    float: left;
-}
-footer > p:only-child, footer > ul:only-child {
+    /* If it's the only thing (or if there's no support for nth-child, etc.), center it */
     float: none;
     text-align: center;
+}
+/* If multiple things, make columns (left, right, left, right, ...) */
+footer > p:not(:only-child):nth-child(2n+1), footer > ul:not(:only-child):nth-child(2n+1) {
+    /* Odd children */
+    float: left;
+    clear: both;
+}
+footer > p:not(:only-child):nth-child(2n), footer > ul:not(:only-child):nth-child(2n) {
+    /* Even children */
+    float: right;
 }
 
 /* MOD: added .buttons stuff */
@@ -525,13 +530,10 @@ div.buttons dd > img:first-child {
         min-width: 0;
         max-width: none;
     }
-    /* MOD: footer */
+    /* MOD: footer stuff modified in accordance with modifications above */
     footer p, footer ul {
         float: none;
         margin: 0;
-    }
-    footer p + p {
-        float: none;
     }
 }
 @media print, screen and (max-width:580px) {
