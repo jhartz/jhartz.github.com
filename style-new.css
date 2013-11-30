@@ -371,13 +371,13 @@ footer a:hover, footer .fakelink:hover {
     text-shadow: inherit;
 }
 /* MOD: footer */
-footer > p {
+footer > p, footer > ul {
     float: right;
 }
-footer > p:first-child {
+footer > p:first-child, footer > ul:first-child {
     float: left;
 }
-footer > p:only-child {
+footer > p:only-child, footer > ul:only-child {
     float: none;
     text-align: center;
 }
@@ -525,7 +525,8 @@ div.buttons dd > img:first-child {
         min-width: 0;
         max-width: none;
     }
-    footer p {
+    /* MOD: footer */
+    footer p, footer ul {
         float: none;
         margin: 0;
     }
