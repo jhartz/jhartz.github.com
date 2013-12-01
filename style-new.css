@@ -533,8 +533,11 @@ div.buttons dd > img:first-child {
         max-width: none;
     }
     /* MOD: footer stuff modified in accordance with modifications above */
-    footer p, footer ul {
+    footer p, footer ul,
+    footer > p:not(:only-child):nth-child(2n+1), footer > ul:not(:only-child):nth-child(2n+1),
+    footer > p:not(:only-child):nth-child(2n), footer > ul:not(:only-child):nth-child(2n) {
         float: none;
+        text-align: center;
         margin: 0;
     }
 }
