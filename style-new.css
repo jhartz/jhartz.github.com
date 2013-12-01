@@ -379,12 +379,14 @@ footer > p, footer > ul {
 /* If multiple things, make columns (left, right, left, right, ...) */
 footer > p:not(:only-child):nth-child(2n+1), footer > ul:not(:only-child):nth-child(2n+1) {
     /* Odd children */
-    float: left;
     clear: both;
+    float: left;
+    text-align: left;
 }
 footer > p:not(:only-child):nth-child(2n), footer > ul:not(:only-child):nth-child(2n) {
     /* Even children */
     float: right;
+    text-align: right;
 }
 
 /* MOD: added .buttons stuff */
