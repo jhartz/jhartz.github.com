@@ -151,7 +151,7 @@ header ul li:before, footer ul li:before, ul.inline li:before {
     content: "\0020 \00B7 \0020";
     font-size: inherit;
 }
-header ul li:first-child:before, footer ul li:first-child_before, ul.inline li:first-child:before {
+header ul li:first-child:before, footer ul li:first-child:before, ul.inline li:first-child:before {
     content: none;
 }
 /* MOD: header ul.pretty stuff down at bottom, with all the other @media stuff */
