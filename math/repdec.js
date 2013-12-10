@@ -94,7 +94,7 @@ var repdec = {
                 // Zeroes in front of a or b?
                 if (a !== null) str_a = repdec.addzeroes(repdec.elems.byId.a.value, str_a);
                 str_b = repdec.addzeroes(repdec.elems.byId.b.value, str_b);
-                repdec.elems.byId.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
+                repdec.elems.byId.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid;">' + str_b + '</span> <em>or</em> 0.' + str_a + '<em>' + str_b + str_b + str_b + '...</em>';
                 
                 var top = Number(str_a + str_b) - a;
                 var bottom = Number((new Array(str_b.length + 1)).join("9") + (new Array(str_a.length + 1)).join("0"));
