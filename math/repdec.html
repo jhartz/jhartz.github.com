@@ -6,40 +6,50 @@ title: Repeating Decimal to Fraction Converter
 <h2>Repeating Decimal to Fraction Converter</h2>
 
 <div id="repdec_body" style="display: none;">
-    <table class="little"><tbody>
-        <tr><td>Enter decimal: <strong>0.</strong></td><td><input id="repdec_a" size="4" style="width: 100%;"></td><td><input id="repdec_b" size="4" style="width: 100%;"></td></tr>
-        <tr><td>&nbsp;</td><td style="vertical-align: top;"><small>digits in front<br>(can be empty)</small></td><td style="vertical-align: top;"><small>repeating part</small></td></tr>
-        <tr><td>&nbsp;</td></tr>
-    </tbody></table>
-    
-    <table class="little"><tbody>
-        <tr>
-            <td>Decimal:</td>
-            <td><span id="repdec_dec">0.0</span></td>
-        </tr>
-        <tr>
-            <td>Fraction:</td>
-            <td>
-                <table><tbody><tr>
-                    <td>
-                        <table><tbody>
-                            <tr><td style="border-bottom: 1px solid; text-align: center;"><span id="repdec_frac_top">0</span></td></tr>
-                            <tr><td style="text-align: center;"><span id="repdec_frac_bottom">0</span></td></tr>
-                        </tbody></table>
-                    </td>
-                    <td>
-                        <div id="repdec_frac_simp" style="display: none;">
+    <div class="buttons">
+        <table class="little"><tbody>
+            <tr><td>Enter decimal: <strong>0.</strong></td><td><input id="repdec_a" size="4" style="width: 100%;"></td><td><input id="repdec_b" size="4" style="width: 100%;"></td></tr>
+            <tr><td>&nbsp;</td><td style="vertical-align: top;"><small>digits in front<br>(can be empty)</small></td><td style="vertical-align: top;"><small>repeating part</small></td></tr>
+            <tr><td>&nbsp;</td></tr>
+        </tbody></table>
+        
+        <table class="little"><tbody>
+            <tr>
+                <td>Decimal:</td>
+                <td><span id="repdec_dec">0.0</span></td>
+            </tr>
+            <tr>
+                <td>Fraction:</td>
+                <td>
+                    <table><tbody><tr>
+                        <td>
                             <table><tbody>
-                                <tr><td rowspan="2">=&nbsp;&nbsp;</td><td style="border-bottom: 1px solid; text-align: center;"><span id="repdec_frac_simp_top">0</span></td></tr>
-                                <tr><td style="text-align: center;"><span id="repdec_frac_simp_bottom">0</span></td></tr>
+                                <tr><td style="border-bottom: 1px solid; text-align: center;"><span id="repdec_frac_top">0</span></td></tr>
+                                <tr><td style="text-align: center;"><span id="repdec_frac_bottom">0</span></td></tr>
                             </tbody></table>
-                        </div>
-                    </td>
-                    <td><span id="repdec_frac_zero" style="display: none;">=&nbsp;&nbsp;0</span><span id="repdec_frac_one" style="display: none;">=&nbsp;&nbsp;1</span></td>
-                </tr></tbody></table>
-            </td>
-        </tr>
-    </tbody></table>
+                        </td>
+                        <td>
+                            <div id="repdec_frac_simp" style="display: none;">
+                                <table><tbody>
+                                    <tr><td rowspan="2">=&nbsp;&nbsp;</td><td style="border-bottom: 1px solid; text-align: center;"><span id="repdec_frac_simp_top">0</span></td></tr>
+                                    <tr><td style="text-align: center;"><span id="repdec_frac_simp_bottom">0</span></td></tr>
+                                </tbody></table>
+                            </div>
+                        </td>
+                        <td><span id="repdec_frac_zero" style="display: none;">=&nbsp;&nbsp;0</span><span id="repdec_frac_one" style="display: none;">=&nbsp;&nbsp;1</span></td>
+                    </tr></tbody></table>
+                </td>
+            </tr>
+        </tbody></table>
+    </div><div class="buttons">
+        <h3>Examples</h3>
+        <ul>
+            <li><span class="repdec_example fakelink" data-non-repeating="" data-repeating="3">0.<span class="border-top: 1px solid;">3</span> <em>or</em> 0.<em>333</em>...</span></li>
+            <li><span class="repdec_example fakelink" data-non-repeating="000" data-repeating="3">0.000<span class="border-top: 1px solid;">3</span> <em>or</em> 0.000<em>333</em>...</span></li>
+            <li><span class="repdec_example fakelink" data-non-repeating="89" data-repeating="345">0.89<span class="border-top: 1px solid;">345</span> <em>or</em> 0.89<em>345345345</em>...</span></li>
+            <li><span class="repdec_example fakelink" data-non-repeating="" data-repeating="9">0.<span class="border-top: 1px solid;">9</span> <em>or</em> 0.<em>999</em>...</span></li>
+        </ul>
+    </div>
 </div>
 
 <noscript><p>Please enable JavaScript.</p></noscript>

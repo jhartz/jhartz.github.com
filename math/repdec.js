@@ -25,9 +25,17 @@ var repdec = {
         frac_zero: "repdec_frac_zero",  // Element to display if the fraction is equal to zero (optional)
         frac_one: "repdec_frac_one"  // Element to display if the fraction is equal to one (optional)
     },
-    required: ["a", "b", "dec", "frac_top", "frac_bottom"],
+    required_ids: ["a", "b", "dec", "frac_top", "frac_bottom"],
+    classNames: {
+        example: "repdec_example"  // Any element that, when clicked, should populate the repdec fields (optional)
+                                   // These elements should have a "data-non-repeating" attribute that specifies the non-repeating digits (like ids.a) and a "data-repeating" attribute that specifies the repeating digits (like ids.b).
+    },
+    required_classNames: [],
     
-    elems: {},
+    elems: {
+        byId: {},
+        byClassName: {}
+    },
     
     err: function (msg, isbrowser) {
         if (document.getElementById(repdec.ids.err)) {
@@ -39,12 +47,12 @@ var repdec = {
     },
     
     prettyerr: function (msg) {
-        if (repdec.elems.dec) repdec.elems.dec.innerHTML = msg;
-        repdec.elems.frac_top.innerHTML = "0";
-        repdec.elems.frac_bottom.innerHTML = "0";
-        if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
-        if (repdec.elems.frac_zero) repdec.elems.frac_zero.style.display = "none";
-        if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
+        if (repdec.elems.byId.dec) repdec.elems.byId.dec.innerHTML = msg;
+        repdec.elems.byId.frac_top.innerHTML = "0";
+        repdec.elems.byId.frac_bottom.innerHTML = "0";
+        if (repdec.elems.byId.frac_simp) repdec.elems.byId.frac_simp.style.display = "none";
+        if (repdec.elems.byId.frac_zero) repdec.elems.byId.frac_zero.style.display = "none";
+        if (repdec.elems.byId.frac_one) repdec.elems.byId.frac_one.style.display = "none";
     },
     
     reduce: function (top, bottom) {
@@ -72,8 +80,8 @@ var repdec = {
     },
     
     update: function () {
-        var a = repdec.elems.a.value ? parseInt(repdec.elems.a.value, 10) : null;
-        var b = repdec.elems.b.value ? parseInt(repdec.elems.b.value, 10) : null;
+        var a = repdec.elems.byId.a.value ? parseInt(repdec.elems.byId.a.value, 10) : null;
+        var b = repdec.elems.byId.b.value ? parseInt(repdec.elems.byId.b.value, 10) : null;
         if (isNaN(a) || isNaN(b) || b === null || (a && a < 0) || (b && b < 0)) {
             repdec.prettyerr("Not a number");
         } else {
@@ -84,35 +92,35 @@ var repdec = {
                 repdec.prettyerr("Number too large");
             } else {
                 // Zeroes in front of a or b?
-                if (a !== null) str_a = repdec.addzeroes(repdec.elems.a.value, str_a);
-                str_b = repdec.addzeroes(repdec.elems.b.value, str_b);
-                repdec.elems.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
+                if (a !== null) str_a = repdec.addzeroes(repdec.elems.byId.a.value, str_a);
+                str_b = repdec.addzeroes(repdec.elems.byId.b.value, str_b);
+                repdec.elems.byId.dec.innerHTML = '0.' + str_a + '<span style="border-top: 1px solid;">' + str_b + '</span> <em>or</em> 0.' + str_a + str_b + str_b + str_b + '...';
                 
                 var top = Number(str_a + str_b) - a;
                 var bottom = Number((new Array(str_b.length + 1)).join("9") + (new Array(str_a.length + 1)).join("0"));
-                repdec.elems.frac_top.innerHTML = top;
-                repdec.elems.frac_bottom.innerHTML = bottom;
-                if (top == 0 && repdec.elems.frac_zero) {
-                    if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
-                    if (repdec.elems.frac_zero) repdec.elems.frac_zero.style.display = "block";
-                    if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
-                } else if (top == bottom && repdec.elems.frac_one) {
-                    if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
-                    if (repdec.elems.frac_zero) repdec.elems.frac_zero.style.display = "none";
-                    if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "block";
+                repdec.elems.byId.frac_top.innerHTML = top;
+                repdec.elems.byId.frac_bottom.innerHTML = bottom;
+                if (top == 0 && repdec.elems.byId.frac_zero) {
+                    if (repdec.elems.byId.frac_simp) repdec.elems.byId.frac_simp.style.display = "none";
+                    if (repdec.elems.byId.frac_zero) repdec.elems.byId.frac_zero.style.display = "block";
+                    if (repdec.elems.byId.frac_one) repdec.elems.byId.frac_one.style.display = "none";
+                } else if (top == bottom && repdec.elems.byId.frac_one) {
+                    if (repdec.elems.byId.frac_simp) repdec.elems.byId.frac_simp.style.display = "none";
+                    if (repdec.elems.byId.frac_zero) repdec.elems.byId.frac_zero.style.display = "none";
+                    if (repdec.elems.byId.frac_one) repdec.elems.byId.frac_one.style.display = "block";
                 } else {
-                    if (repdec.elems.frac_zero) repdec.elems.frac_zero.style.display = "none";
-                    if (repdec.elems.frac_one) repdec.elems.frac_one.style.display = "none";
-                    if (repdec.elems.frac_simp_top && repdec.elems.frac_simp_bottom) {
+                    if (repdec.elems.byId.frac_zero) repdec.elems.byId.frac_zero.style.display = "none";
+                    if (repdec.elems.byId.frac_one) repdec.elems.byId.frac_one.style.display = "none";
+                    if (repdec.elems.byId.frac_simp_top && repdec.elems.byId.frac_simp_bottom) {
                         var reduced = repdec.reduce(top, bottom);
                         if (reduced[0] != top || reduced[1] != bottom) {
-                            if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "block";
-                            repdec.elems.frac_simp_top.innerHTML = reduced[0];
-                            repdec.elems.frac_simp_bottom.innerHTML = reduced[1];
+                            if (repdec.elems.byId.frac_simp) repdec.elems.byId.frac_simp.style.display = "block";
+                            repdec.elems.byId.frac_simp_top.innerHTML = reduced[0];
+                            repdec.elems.byId.frac_simp_bottom.innerHTML = reduced[1];
                         } else {
-                            if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+                            if (repdec.elems.byId.frac_simp) repdec.elems.byId.frac_simp.style.display = "none";
                         }
-                    } else if (repdec.elems.frac_simp) repdec.elems.frac_simp.style.display = "none";
+                    } else if (repdec.elems.byId.frac_simp) repdec.elems.byId.frac_simp.style.display = "none";
                 }
             }
         }
@@ -121,28 +129,48 @@ var repdec = {
     onload: function () {
         for (var id in repdec.ids) {
             if (repdec.ids.hasOwnProperty(id)) {
-                repdec.elems[id] = document.getElementById(repdec.ids[id]);
-                if (!repdec.elems[id] && repdec.required.indexOf(id) != -1) {
+                repdec.elems.byId[id] = document.getElementById(repdec.ids[id]);
+                if (!repdec.elems.byId[id] && repdec.required_ids.indexOf(id) != -1) {
                     repdec.err("Couldn't find " + id);
                     return;
                 }
             }
         }
         
-        if (typeof repdec.elems.a.addEventListener != "function") {
+        for (var className in repdec.classNames) {
+            if (repdec.classNames.hasOwnProperty(className)) {
+                repdec.elems.byClassName[className] = document.getElementsByClassName(repdec.classNames[className]);
+                if (repdec.elems.byClassName[className].length == 0 && repdec.required_classNames.indexOf(className) != -1) {
+                    repdec.err("Couldn't find " + className);
+                    return;
+                }
+            }
+        }
+        
+        if (typeof repdec.elems.byId.a.addEventListener != "function") {
             repdec.err("addEventListener not found", true);
             return;
         }
         
-        repdec.elems.a.addEventListener("keyup", function (event) {
+        repdec.elems.byId.a.addEventListener("keyup", function (event) {
             repdec.update();
         }, false);
-        repdec.elems.b.addEventListener("keyup", function (event) {
+        repdec.elems.byId.b.addEventListener("keyup", function (event) {
             repdec.update();
         }, false);
         
+        if (repdec.elems.byClassName.example.length > 0) {
+            for (var i = 0; i < repdec.elems.byClassName.example.length; i++) {
+                repdec.elems.byClassName.example[i].addEventListener("click", function (event) {
+                    repdec.elems.byId.a.value = this.getAttribute("data-non-repeating") || "";
+                    repdec.elems.byId.b.value = this.getAttribute("data-repeating") || "";
+                    repdec.update();
+                }, false);
+            }
+        }
+        
         repdec.update();
-        if (repdec.elems.body) repdec.elems.body.style.display = "block";
+        if (repdec.elems.byId.body) repdec.elems.byId.body.style.display = "block";
     }
 };
 
