@@ -125,7 +125,6 @@ snowStorm.events.add(window, "load", function doStart() {
 if ((christmas_defaults.lights ? (christmas.cookie("lights") != "no") : (christmas.cookie("lights") == "yes"))) {
     document.getElementById("lights").style.display = "block";
     
-    var sizeTable = {pico: "tiny", tiny: "small", small: "medium", medium: "large", large: "huge"};
     if (sizeTable.hasOwnProperty(christmas.cookie("lightsize"))) {
         window.lightsize = christmas.cookie("lightsize");
     } else {
