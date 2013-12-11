@@ -113,14 +113,14 @@ if (christmas.cookie("lights") == "yes") {
     document.getElementById("lights").style.display = "block";
     
     var sizeTable = {pico: "tiny", tiny: "small", small: "medium", medium: "large", large: "huge"};
-    if (christmas.cookie("lightsize") in sizeTable) {
+    if (sizeTable.hasOwnProperty(christmas.cookie("lightsize"))) {
         window.lightsize = christmas.cookie("lightsize");
     } else {
         window.lightsize = "pico";
     }
     
     (function () {
-        // TODO: integrate into lights.js (because we are just using the heights from that script anyway)
+        // TODO: We need bigger heights when responsibe design kicks in for smaller devices!
         var height;
         switch (window.lightsize) {
             case "pico":
@@ -139,12 +139,7 @@ if (christmas.cookie("lights") == "yes") {
                 height = 96;
                 break;
         }
-        document.getElementById("lights").style.height = (height - 10) + "px";
-        if (document.querySelector && document.querySelector("body > table")) {
-            var old = (document.querySelector("body > table").style.cssText || "").trim();
-            if (old && old.substring(old.length - 1) != ";") old += ";";
-            document.querySelector("body > table").style.cssText = old + "top: " + height + "px; height: -moz-calc(100% - " + height + "px); height: -webkit-calc(100% - " + height + "px); height: calc(100% - " + height + "px)";
-        }
+        document.getElementById("lights").style.height = height + "px";
     })();
     
     document.write(unescape('%3Cscript src="/christmas/lights/soundmanager2-nodebug-jsmin.js"%3E%3C/script%3E%3Cscript src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo-dom-event/yahoo-dom-event.js&2.6.0/build/animation/animation-min.js"%3E%3C/script%3E%3Cscript src="/christmas/lights/christmaslights.js"%3E%3C/script%3E'));

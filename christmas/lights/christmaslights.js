@@ -115,7 +115,7 @@ function XLSF(oTarget) {
     this.vY = vY*(1.5+Math.random());
     this.oA = null;
     this.oA2 = null;
-    this.burstPhase = 3; // starting background offset point
+    this.burstPhase = 1; // starting background offset point
     this.burstPhases = 4; // 1+offset (ignore large size)
     this.o.style.backgroundPosition = ((this.w*-this.burstPhase)+'px '+(this.h*-nType)+'px');
 
@@ -317,7 +317,7 @@ function XLSF(oTarget) {
     this.smash = function(e) {
       if (self.broken) return false;
       self.broken = true;
-      if (soundManager && soundManager._didInit && !soundManager._disabled) {
+      if (soundManager && soundManager.ok()) {
         soundManager.play(self.soundID,{pan:self.pan});
         // soundManager.sounds[self.soundID].play({pan:self.pan});
         // if (self.bonusSound != null) window.setTimeout(self.smashBonus,1000);
@@ -474,16 +474,17 @@ function smashInit() {
   xlsf.initSounds();
 }
 
-soundManager.flashVersion = 9;
-soundManager.debugMode = false;
-
-soundManager.onload = function() {
-  setTimeout(smashInit,20);
-}
-
-soundManager.onerror = function() {
-  setTimeout(smashInit,20);
-}
+soundManager.setup({
+  flashVersion: 9,
+  preferFlash: false,
+  url: '/christmas/lights/',
+  onready: function() {
+    smashInit();
+  },
+  ontimeout: function() {
+    smashInit();
+  }
+});
 
 function logger(msg) {
     try {
