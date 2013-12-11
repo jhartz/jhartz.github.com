@@ -103,6 +103,16 @@ snowStorm.events.add(window, "load", function doStart() {
         }
     } else {
         doSnow = christmas.cookie("snow") == "yes";
+        if (!christmas.cookie("snow")) {
+            // Show the "festive" message! (but only for the first 5 visits while the snow cookie is still unset)
+            var numtimes = Number(christmas.cookie("festive"));
+            if (isNaN(numtimes)) numtimes = 0;
+            numtimes++;
+            christmas.cookie("festive", ++numtimes);
+            if (numtimes <= 5) {
+                document.getElementById("christmas_festive_mood").style.display = "block";
+            }
+        }
     }
     
     if (doSnow) {
