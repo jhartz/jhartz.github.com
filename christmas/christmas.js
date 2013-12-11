@@ -36,10 +36,12 @@ var christmas = {
     snow: function () {
         if (snowStorm.active) {
             christmas.cookie("snow", "no");
-            document.getElementById("christmas_snow_toggle").innerHTML = "Start Snowstorm";
+            document.getElementById("christmas_snow_toggle_start").style.display = "inline";
+            document.getElementById("christmas_snow_toggle_stop").style.display = "none";
         } else {
             christmas.cookie("snow", "yes");
-            document.getElementById("christmas_snow_toggle").innerHTML = "Stop Snowstorm";
+            document.getElementById("christmas_snow_toggle_start").style.display = "none";
+            document.getElementById("christmas_snow_toggle_stop").style.display = "inline";
         }
         snowStorm.toggleSnow();
     },
@@ -84,16 +86,27 @@ var christmas = {
 };
 
 
-snowStorm.excludeMobile = false; // since we do it ourselves
 snowStorm.snowColor = "#99ccff"; // blue-ish snow (since we have a white background)
+// NOTE: excludeMobile and autoStart need to be set to false in snowstorm.js (or snowstorm-min.js)!!!
 
-if (christmas.cookie("snow")) {
-    snowStorm.autoStart = christmas.cookie("snow") != "no";
-} else {
-    // Same logic used in snowstorm.js
-    snowStorm.autoStart = !(navigator.userAgent.match(/mobile|opera m(ob|in)/i));
-}
-if (!snowStorm.autoStart) document.getElementById("christmas_snow_toggle").innerHTML = "Start Snowstorm";
+// This is almost exactly like the very end of snowstorm.js
+snowStorm.events.add(window, "load", function doStart() {
+    snowStorm.events.remove(window, "load", doStart);
+    
+    var doSnow = false;
+    if (christmas.cookie("snow")) {
+        doSnow = christmas.cookie("snow") != "no";
+    } else {
+        // Same logic used in snowstorm.js
+        doSnow = !(navigator.userAgent.match(/mobile|opera m(ob|in)/i));
+    }
+    
+    if (doSnow) {
+        christmas.snow();
+    } else {
+        document.getElementById("christmas_snow_toggle_start").style.display = "inline";
+    }
+}, false);
 
 
 if (christmas.cookie("lights") == "yes") {
