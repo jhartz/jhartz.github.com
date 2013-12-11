@@ -172,6 +172,16 @@ section {
     position: relative;
 }
 
+/* MOD: Added section-top-msg */
+div.section-msg {
+    /* Used to display an important message; this div is usually the first child of the section */
+    text-align: center;
+    border-bottom: 1px solid;
+    margin-bottom: 20px;
+    font-size: 88%;
+    font-style: italic;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: #222;
     padding: 0;
