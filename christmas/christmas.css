@@ -1,3 +1,6 @@
+#lights {
+    overflow: hidden;
+}
 .xlsf-light {
     position: absolute;
 }
