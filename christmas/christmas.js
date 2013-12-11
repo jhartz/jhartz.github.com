@@ -33,24 +33,15 @@ var christmas = {
         }
     },
     
-    snow: {
-        stop: function () {
+    snow: function () {
+        if (snowStorm.active) {
             christmas.cookie("snow", "no");
-            // Not just doing display:none because we want the next one to be CSS :first-child (so there's no extra bullet point out front)
-            document.getElementById("christmas_snow_stop").parentNode.removeChild(document.getElementById("christmas_snow_stop"));
-            if (window.snowStorm) {
-                snowStorm.stop();
-                document.getElementById("christmas_snow_start").style.display = "inline";
-            } else {
-                location.reload();
-            }
-        },
-        
-        start: function () {
+            document.getElementById("christmas_snow_toggle").innerHTML = "Start Snowstorm";
+        } else {
             christmas.cookie("snow", "yes");
-            document.getElementById("christmas_snow_start").style.display = "none";
-            location.reload();
+            document.getElementById("christmas_snow_toggle").innerHTML = "Stop Snowstorm";
         }
+        snowStorm.toggleSnow();
     },
     
     lights: {
@@ -92,23 +83,18 @@ var christmas = {
     }
 };
 
-var doSnow = true;
+
+snowStorm.excludeMobile = false; // since we do it ourselves
+snowStorm.snowColor = "#99ccff"; // blue-ish snow (since we have a white background)
+
 if (christmas.cookie("snow")) {
-    doSnow = christmas.cookie("snow") != "no";
+    snowStorm.autoStart = christmas.cookie("snow") != "no";
 } else {
     // Same logic used in snowstorm.js
-    doSnow = !(navigator.userAgent.match(/mobile|opera m(ob|in)/i));
+    snowStorm.autoStart = !(navigator.userAgent.match(/mobile|opera m(ob|in)/i));
 }
-if (doSnow) {
-    document.write(unescape('%3Cscript type="text/javascript" src="/christmas/snowstorm-min.js"%3E%3C/script%3E'));
-    // Turn off mobile exclusion (since we do it ourselves)
-    document.write(unescape('%3Cscript type="text/javascript"%3EsnowStorm.excludeMobile = false;%3C/script%3E'));
-    document.getElementById("christmas_snow_stop").style.display = "inline";
-} else {
-    document.getElementById("christmas_snow_start").style.display = "inline";
-    // Get rid of first child so CSS picks up next one as "first"
-    document.getElementById("christmas_snow_stop").parentNode.removeChild(document.getElementById("christmas_snow_stop"));
-}
+if (!snowStorm.autoStart) document.getElementById("christmas_snow_toggle").innerHTML = "Start Snowstorm";
+
 
 if (christmas.cookie("lights") == "yes") {
     document.getElementById("lights").style.display = "block";
