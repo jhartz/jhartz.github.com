@@ -220,7 +220,11 @@ blockquote .cite {
 figure {
     display: inline-block;
     background-color: rgba(0, 0, 0, .1);
+    margin: 10px;
     padding: 10px;
+    max-width: -webkit-calc(50% - 40px);
+    max-width: -moz-calc(50% - 40px);
+    max-width: calc(50% - 40px);
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -520,6 +524,14 @@ div.buttons dd > img:first-child {
 
     .bottombar span {
         float: none;
+    }
+    
+    /* MOD: figure stuff (in accordance with above) */
+    figure {
+        max-width: 100%;
+        max-width: -webkit-calc(100% - 40px);
+        max-width: -moz-calc(100% - 40px);
+        max-width: calc(100% - 40px);
     }
 
     footer {
