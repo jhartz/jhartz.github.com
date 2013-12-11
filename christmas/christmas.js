@@ -94,11 +94,15 @@ snowStorm.events.add(window, "load", function doStart() {
     snowStorm.events.remove(window, "load", doStart);
     
     var doSnow = false;
-    if (christmas.cookie("snow")) {
-        doSnow = christmas.cookie("snow") != "no";
+    if (christmas_defaults.snow) {
+        if (christmas.cookie("snow")) {
+            doSnow = christmas.cookie("snow") != "no";
+        } else {
+            // Same logic used in snowstorm.js
+            doSnow = !(navigator.userAgent.match(/mobile|opera m(ob|in)/i));
+        }
     } else {
-        // Same logic used in snowstorm.js
-        doSnow = !(navigator.userAgent.match(/mobile|opera m(ob|in)/i));
+        doSnow = christmas.cookie("snow") == "yes";
     }
     
     if (doSnow) {
@@ -109,7 +113,7 @@ snowStorm.events.add(window, "load", function doStart() {
 }, false);
 
 
-if (christmas.cookie("lights") == "yes") {
+if ((christmas_defaults.lights ? (christmas.cookie("lights") != "no") : (christmas.cookie("lights") == "yes"))) {
     document.getElementById("lights").style.display = "block";
     
     var sizeTable = {pico: "tiny", tiny: "small", small: "medium", medium: "large", large: "huge"};
