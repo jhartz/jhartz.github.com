@@ -1,8 +1,8 @@
 ---
 layout: post
-noextra: 1
+blogindex: true
 ---
-{% for post in site.posts limit:10 %}
+{% for post in paginator.posts %}
             <article>
                 <h2><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></h2>
                 <p class="timestamp">Posted on {{ post.date | date: '%m/%d/%Y' }}</p>
