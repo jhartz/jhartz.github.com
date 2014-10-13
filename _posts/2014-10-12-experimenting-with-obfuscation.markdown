@@ -8,14 +8,12 @@ Everyone knows about the age-old idea of JavaScript obfuscation. To start right 
 1. It goes against the principles behind Free and Open-Source software.
 2. It is quite easily reversible:
 
-```javascript
         _eval = eval;
         eval = function () {
             console.log(arguments);
             _eval.apply(this, arguments);
         };
         /* Execute obfuscated code now */
-```
 
 (If anyone can find a method of obfuscation that is not flunked by that method, please let me know; it would be interesting!)
 
@@ -35,7 +33,7 @@ function obfuscate(str) {
             return '\\' + (longhand ? 'u' : 'x') + ('0000' + escape).slice(longhand ? -4 : -2);
         });
     };
-    var coded = [(str.charCodeAt(i)+1).toString(32) for (i in (function(){let x = str.length; while (x--) yield x;})())];
+    var coded = [(str.charCodeAt(i)+1).toString(32) for (i in (function(){var x = str.length; while (x--) yield x;})())];
     if ([j.length == 2 for (j of coded)].indexOf(false) != -1) {
         return '"Error: One or more characters are not in between 30 and 1023!"';
     }
