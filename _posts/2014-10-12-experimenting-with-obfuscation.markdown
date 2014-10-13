@@ -8,12 +8,14 @@ Everyone knows about the age-old idea of JavaScript obfuscation. To start right 
 1. It goes against the principles behind Free and Open-Source software.
 2. It is quite easily reversible:
 
+```javascript
         _eval = eval;
         eval = function () {
             console.log(arguments);
             _eval.apply(this, arguments);
         };
         /* Execute obfuscated code now */
+```
 
 (If anyone can find a method of obfuscation that is not flunked by that method, please let me know; it would be interesting!)
 
@@ -24,6 +26,7 @@ Anyway, I'm working on a project where I'm accessing an API that requires a clie
 NOTE: This based on [Firefox's array comprehensions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Array_comprehensions#Differences_to_the_older_JS1.7.2FJS1.8_comprehensions) (not even the new fancy [ECMAScript6 array comprehensions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Array_comprehensions)). This is completely incompatible with everything except Firefox. (Can you tell that this project that I was working on is Firefox-specific? Perhaps, if you're clever, you can pick out from my hints that it's actually a Firefox add-on!)
 
 <script type="text/javascript">
+"use strict";
 function obfuscate(str) {
     var u = function (str) {
         return str.replace(/[\s\S]/g, function(character) {
