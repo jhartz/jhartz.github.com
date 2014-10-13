@@ -8,12 +8,12 @@ Everyone knows about the age-old idea of JavaScript obfuscation. To start right 
 1. It goes against the principles behind Free and Open-Source software.
 2. It is quite easily reversible:
 
-    _eval = eval;
-    eval = function () {
-        console.log(arguments);
-        _eval.apply(this, arguments);
-    };
-    /* Execute obfuscated code now */
+        _eval = eval;
+        eval = function () {
+            console.log(arguments);
+            _eval.apply(this, arguments);
+        };
+        /* Execute obfuscated code now */
 
 (If anyone can find a method of obfuscation that is not flunked by that method, please let me know; it would be interesting!)
 
@@ -25,7 +25,6 @@ NOTE: This based on [Firefox's array comprehensions](https://developer.mozilla.o
 
 <script type="text/javascript">
 function obfuscate(str) {
-    // https://gist.github.com/mathiasbynens/1243213
     var u = function (str) {
         return str.replace(/[\s\S]/g, function(character) {
             var escape = character.charCodeAt().toString(16),
@@ -33,7 +32,6 @@ function obfuscate(str) {
             return '\\' + (longhand ? 'u' : 'x') + ('0000' + escape).slice(longhand ? -4 : -2);
         });
     };
-    // With toString(32), it's guaranteed to be 2 digits as long as the character code is from 32 (which is the first non-control character) to 1023 (inclusive).
     var coded = [(str.charCodeAt(i)+1).toString(32) for (i in (function(){let x = str.length; while (x--) yield x;})())];
     if ([j.length == 2 for (j of coded)].indexOf(false) != -1) {
         return '"Error: One or more characters are not in between 30 and 1023!"';
@@ -42,7 +40,6 @@ function obfuscate(str) {
     var template = 'void(this["' + u('eval') + '"]([this["' + u('String') + '"]["' + u('fromCharCode') + '"](this["' + u('parseInt') + '"]("__CODED__".substring(i-0x1,i+0x1),0x20)-0x1)for(i in (function(){let x=__CODED_LENGTH__;while(x) yield (x--,x--);})())]["' + u('join') + '"]("")))';
     return 'this["' + u('eval') + '"]("' + u(template.replace('__CODED__', u(coded)).replace('__CODED_LENGTH__', coded.length)) + '")';
 }
-
 window.addEventListener("load", function () {
     [
         'const mySecret = "ABCDE:fghijkl.12345";',
@@ -58,33 +55,30 @@ window.addEventListener("load", function () {
         li.appendChild(span);
         document.getElementById("examples").appendChild(li);
     });
-    
     document.getElementById("obfuscate").addEventListener("click", function () {
         document.getElementById("from_obfuscate").value = obfuscate(document.getElementById("to_obfuscate").value);
     }, false);
 }, false);
 </script>
 
-```javascript
-function obfuscate(str) {
-    var u = function (str) {
-        // from https://gist.github.com/mathiasbynens/1243213
-        return str.replace(/[\s\S]/g, function(character) {
-            var escape = character.charCodeAt().toString(16),
-            longhand = escape.length > 2;
-            return '\\' + (longhand ? 'u' : 'x') + ('0000' + escape).slice(longhand ? -4 : -2);
-        });
-    };
-    // With toString(32), it's guaranteed to be 2 digits as long as the character code is from 32 (which is the first non-control character) to 1023 (inclusive).
-    var coded = [(str.charCodeAt(i)+1).toString(32) for (i in (function(){let x = str.length; while (x--) yield x;})())];
-    if ([j.length == 2 for (j of coded)].indexOf(false) != -1) {
-        return '"Error: One or more characters are not in between 30 and 1023!"';
-    }
-    coded = coded.join('');
-    var template = 'void(this["' + u('eval') + '"]([this["' + u('String') + '"]["' + u('fromCharCode') + '"](this["' + u('parseInt') + '"]("__CODED__".substring(i-0x1,i+0x1),0x20)-0x1)for(i in (function(){let x=__CODED_LENGTH__;while(x) yield (x--,x--);})())]["' + u('join') + '"]("")))';
-    return 'this["' + u('eval') + '"]("' + u(template.replace('__CODED__', u(coded)).replace('__CODED_LENGTH__', coded.length)) + '")';
-}
-```
+        function obfuscate(str) {
+            var u = function (str) {
+                // from https://gist.github.com/mathiasbynens/1243213
+                return str.replace(/[\s\S]/g, function(character) {
+                    var escape = character.charCodeAt().toString(16),
+                    longhand = escape.length > 2;
+                    return '\\' + (longhand ? 'u' : 'x') + ('0000' + escape).slice(longhand ? -4 : -2);
+                });
+            };
+            // With toString(32), it's guaranteed to be 2 digits as long as the character code is from 32 (which is the first non-control character) to 1023 (inclusive).
+            var coded = [(str.charCodeAt(i)+1).toString(32) for (i in (function(){let x = str.length; while (x--) yield x;})())];
+            if ([j.length == 2 for (j of coded)].indexOf(false) != -1) {
+                return '"Error: One or more characters are not in between 30 and 1023!"';
+            }
+            coded = coded.join('');
+            var template = 'void(this["' + u('eval') + '"]([this["' + u('String') + '"]["' + u('fromCharCode') + '"](this["' + u('parseInt') + '"]("__CODED__".substring(i-0x1,i+0x1),0x20)-0x1)for(i in (function(){let x=__CODED_LENGTH__;while(x) yield (x--,x--);})())]["' + u('join') + '"]("")))';
+            return 'this["' + u('eval') + '"]("' + u(template.replace('__CODED__', u(coded)).replace('__CODED_LENGTH__', coded.length)) + '")';
+        }
 
 Examples (if you're running Firefox):
 
