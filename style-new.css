@@ -28,7 +28,8 @@ body {
     padding: 30px 0; /* MOD: padding */
     margin: 0;
     font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #555;
+    /* MOD: color (used to be #555) */
+    color: #3f3d3d;
     font-weight: 300;
 }
 
@@ -160,12 +161,16 @@ section {
     padding: 15px 20px;
     font-size: 15px;
     border-top: 1px solid #fff;
+    /* MOD: background (==> background-color) */
+    /*
     background: -webkit-gradient(linear, 50% 0%, 50% 700, color-stop(0%, #fafafa), color-stop(100%, #dedede));
     background: -webkit-linear-gradient(#fafafa, #dedede 700px);
     background: -moz-linear-gradient(#fafafa, #dedede 700px);
     background: -o-linear-gradient(#fafafa, #dedede 700px);
     background: -ms-linear-gradient(#fafafa, #dedede 700px);
     background: linear-gradient(#fafafa, #dedede 700px);
+    */
+    background-color: #fafafa;
     -webkit-border-radius: 0 0 8px 8px;
     -moz-border-radius: 0 0 8px 8px;
     border-radius: 0 0 8px 8px;
@@ -211,7 +216,8 @@ h3, h4, h5, h6 {
 
 blockquote {
     margin: 0 -20px 20px;
-    padding: 15px 20px 1px 40px;
+    /* MOD: padding */
+    padding: 15px 20px 15px 40px;
     font-style: italic;
     background: #ccc;
     background: rgba(0, 0, 0, 0.06);
