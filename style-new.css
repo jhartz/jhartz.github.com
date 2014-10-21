@@ -604,6 +604,9 @@ div.buttons dd > img:first-child {
     header ul li:before {
         content: none;
     }
+    header ul.pretty a strong {
+        color: inherit;
+    }
 
     header p.view {
         display: block;
