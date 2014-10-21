@@ -17,14 +17,14 @@ html {
 
 body {
     /* MOD: background */
-    background-color: #434b55;
+    background-color: #6C7989;
     background-attachment: fixed;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #434b55), color-stop(100%, #6c7989));
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-linear-gradient(#434b55, #6c7989);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -moz-linear-gradient(#434b55, #6c7989);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -o-linear-gradient(#434b55, #6c7989);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -ms-linear-gradient(#434b55, #6c7989);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#434b55, #6c7989);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6c7989), color-stop(100%, #434b55));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-linear-gradient(#6c7989, #434b55);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -moz-linear-gradient(#6c7989, #434b55);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -o-linear-gradient(#6c7989, #434b55);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -ms-linear-gradient(#6c7989, #434b55);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#6c7989, #434b55);
     padding: 30px 0; /* MOD: padding */
     margin: 0;
     font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -36,7 +36,7 @@ body {
 .wrapper, footer {
     /* MOD: width */
     min-width: 640px;
-    max-width: 1100px;
+    max-width: 1000px;
     width: auto;
     width: -webkit-calc(100% - 60px);
     width: -moz-calc(100% - 60px);
@@ -44,7 +44,7 @@ body {
     margin: 0 auto;
 }
 .wrapper {
-    background: #dedede;
+    background: #DEDEDE;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -91,35 +91,31 @@ header {
     -webkit-border-radius: 8px 8px 0 0;
     -moz-border-radius: 8px 8px 0 0;
     border-radius: 8px 8px 0 0;
-    /* MOD: header background */
-    background: #434b55;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6c7989), color-stop(100%, #434b55));
-    background: -webkit-linear-gradient(#6c7989, #434b55);
-    background: -moz-linear-gradient(#6c7989, #434b55);
-    background: -o-linear-gradient(#6c7989, #434b55);
-    background: -ms-linear-gradient(#6c7989, #434b55);
-    background: linear-gradient(#6c7989, #434b55);
+    background: #C6EAFA;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ddfbfc), color-stop(100%, #c6eafa));
+    background: -webkit-linear-gradient(#ddfbfc, #c6eafa);
+    background: -moz-linear-gradient(#ddfbfc, #c6eafa);
+    background: -o-linear-gradient(#ddfbfc, #c6eafa);
+    background: -ms-linear-gradient(#ddfbfc, #c6eafa);
+    background: linear-gradient(#ddfbfc, #c6eafa);
     position: relative;
     padding: 15px 20px;
-    /* MOD: border color */
-    border-bottom: 1px solid #3f3d3d;
+    border-bottom: 1px solid #B2D2E1;
 }
 header h1 {
     margin: 0;
     padding: 0;
     font-size: 24px;
     line-height: 1.2;
-    /* MOD: color and shadow color */
-    color: #fafafa;
-    text-shadow: rgba(0, 0, 0, 0.9) 0 1px 0;
+    color: #069;
+    text-shadow: rgba(255, 255, 255, 0.9) 0 1px 0;
 }
 header.without-description h1 {
     margin: 10px 0;
 }
 header p {
     margin: 0;
-    /* MOD: color */
-    color: #fafafa;
+    color: #61778B;
     width: 300px;
     font-size: 13px;
 }
@@ -129,9 +125,8 @@ header p.view {
     text-shadow: rgba(255, 255, 255, 0.9) 0 1px 0;
     -webkit-font-smoothing: antialiased;
 }
-/* MOD: color */
-header a {
-    color: #fafafa;
+header p.view a {
+    color: #06c;
 }
 /* MOD: hover styles (to cancel out from above) */
 header p.view a:hover {
@@ -342,9 +337,9 @@ aside {
      -moz-border-radius: 12px;
      border-radius: 12px;
      border: 1px solid white;
-     -webkit-box-shadow: 1px 1px 6px #6c7989;
-     -moz-box-shadow: 1px 1px 6px #6c7989;
-     box-shadow: 1px 1px 6px #6c7989;
+     -webkit-box-shadow: 1px 1px 10px #6C72BE;
+     -moz-box-shadow: 1px 1px 10px #6C72BE;
+     box-shadow: 1px 1px 10px #6C72BE;
      clear: both;
      display: block;
      float: right;
@@ -536,13 +531,6 @@ div.buttons dd > img:first-child {
         /* MOD: min/max width added */
         min-width: 0;
         max-width: none;
-    }
-    
-    /* MOD: header added here */
-    header {
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
     }
 
     /* MOD: aside and .bottombar added */
