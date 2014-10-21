@@ -9,7 +9,6 @@ nav:
 
 bodyClassName: christmas
 christmas:
-  enabled: true
   # We're keeping these defaults to match top.html so we don't screw up the cookies
   defaults:
     snow: false
