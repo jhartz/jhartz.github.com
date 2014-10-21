@@ -7,6 +7,7 @@ nav:
   - name: GitHub
     url: https://github.com/jhartz
 
+# NOTE: For this to work, bodyClassName can't be defined in top.html.
 bodyClassName: fall
 ---
 ## Testing Fall Theme
