@@ -104,6 +104,10 @@ header {
     /* MOD: border color */
     border-bottom: 1px solid #3f3d3d;
 }
+/* MOD: hover added */
+header a:hover {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(255, 255, 255, 0.2);
+}
 header h1 {
     margin: 0;
     padding: 0;
@@ -115,10 +119,6 @@ header h1 {
 }
 header.without-description h1 {
     margin: 10px 0;
-}
-/* MOD: hover added */
-header h1 a:hover, header ul li a {
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(255, 255, 255, 0.2);
 }
 header p {
     margin: 0;
