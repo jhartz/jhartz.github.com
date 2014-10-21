@@ -17,6 +17,7 @@ html {
 
 body {
     /* MOD: background */
+    /* NOTE: background is modified for seasonal themes (at bottom of file) */
     background-color: #434b55;
     background-attachment: fixed;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #434b55), color-stop(100%, #6c7989));
@@ -44,7 +45,7 @@ body {
     margin: 0 auto;
 }
 .wrapper {
-    background: #dedede;
+    background-color: #dedede;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -92,13 +93,14 @@ header {
     -moz-border-radius: 8px 8px 0 0;
     border-radius: 8px 8px 0 0;
     /* MOD: header background */
-    background: #434b55;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6c7989), color-stop(100%, #434b55));
-    background: -webkit-linear-gradient(#6c7989, #434b55);
-    background: -moz-linear-gradient(#6c7989, #434b55);
-    background: -o-linear-gradient(#6c7989, #434b55);
-    background: -ms-linear-gradient(#6c7989, #434b55);
-    background: linear-gradient(#6c7989, #434b55);
+    /* NOTE: Background is modified for seasonal themes (bottom of file) */
+    background-color: #434b55;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6c7989), color-stop(100%, #434b55));
+    background-image: -webkit-linear-gradient(#6c7989, #434b55);
+    background-image: -moz-linear-gradient(#6c7989, #434b55);
+    background-image: -o-linear-gradient(#6c7989, #434b55);
+    background-image: -ms-linear-gradient(#6c7989, #434b55);
+    background-image: linear-gradient(#6c7989, #434b55);
     position: relative;
     padding: 15px 20px;
     /* MOD: border color */
@@ -273,7 +275,7 @@ code, pre {
 
 pre {
     padding: 20px;
-    background: #3A3C42;
+    background-color: #3A3C42;
     color: #f8f8f2;
     margin: 0 -20px 20px;
     overflow-x:auto;
@@ -322,7 +324,7 @@ small {
 
 hr {
     border: 0;
-    background: #aaa;
+    background-color: #aaa;
     height: 1px;
     margin: 0 0 20px;
 }
@@ -463,9 +465,11 @@ div.buttons dd > img:first-child {
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
         border-radius: 8px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
-        -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 0;
+        /*
+        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 3px;
+        -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 3px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0, inset rgba(255, 255, 255, 0.7) 0 -1px 3px;
+        */
     }
     header ul.pretty li {
         display: block; /* to cancel out from above */
@@ -474,13 +478,13 @@ div.buttons dd > img:first-child {
         border-left: 1px solid #8BBEF3;
         border-right: 1px solid #3A7CBE;
         height: 38px;
-        background: #5198DF;
-        background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #77b9fb), color-stop(100%, #3782cd));
-        background: -webkit-linear-gradient(#77b9fb, #3782cd);
-        background: -moz-linear-gradient(#77b9fb, #3782cd);
-        background: -o-linear-gradient(#77b9fb, #3782cd);
-        background: -ms-linear-gradient(#77b9fb, #3782cd);
-        background: linear-gradient(#77b9fb, #3782cd);
+        background-color: #5198DF;
+        background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #77b9fb), color-stop(100%, #3782cd));
+        background-image: -webkit-linear-gradient(#77b9fb, #3782cd);
+        background-image: -moz-linear-gradient(#77b9fb, #3782cd);
+        background-image: -o-linear-gradient(#77b9fb, #3782cd);
+        background-image: -ms-linear-gradient(#77b9fb, #3782cd);
+        background-image: linear-gradient(#77b9fb, #3782cd);
     }
     header ul.pretty li:first-child {
         width: 79px;
@@ -625,4 +629,25 @@ div.buttons dd > img:first-child {
     .noprint {
         display: none;
     }
+}
+
+/* MOD: seasonal themes */
+body.christmas {
+    background-color: #13722b;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #13722b), color-stop(100%, #084417));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-linear-gradient(#13722b, #084417);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -moz-linear-gradient(#13722b, #084417);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -o-linear-gradient(#13722b, #084417);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -ms-linear-gradient(#13722b, #084417);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#13722b, #084417);
+}
+
+body.christmas header {
+    background-color: #d34747;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff4b4b), color-stop(100%, #d34747));
+    background-image: -webkit-linear-gradient(#ff4b4b, #d34747);
+    background-image: -moz-linear-gradient(#ff4b4b, #d34747);
+    background-image: -o-linear-gradient(#ff4b4b, #d34747);
+    background-image: -ms-linear-gradient(#ff4b4b, #d34747);
+    background-image: linear-gradient(#ff4b4b, #d34747);
 }
