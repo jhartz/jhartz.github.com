@@ -684,6 +684,7 @@ body.fall header {
     background-image: -o-linear-gradient(rgba(108, 121, 137, 0), rgba(183, 84, 34, 0.6), rgba(183, 84, 34, 0.9)), url("/images/leaves.jpg");
     background-image: -ms-linear-gradient(rgba(108, 121, 137, 0), rgba(183, 84, 34, 0.6), rgba(183, 84, 34, 0.9)), url("/images/leaves.jpg");
     background-image: linear-gradient(rgba(108, 121, 137, 0), rgba(183, 84, 34, 0.6), rgba(183, 84, 34, 0.9)), url("/images/leaves.jpg");
+    background-size: cover;
 }
 
 body.fall header p a, body.fall header ul:not(.pretty) a {
