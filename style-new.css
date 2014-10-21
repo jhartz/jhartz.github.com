@@ -675,3 +675,8 @@ body.fall header {
     background-image: -ms-linear-gradient(rgba(108, 121, 137, 0), rgba(183, 84, 34, 0.6), rgba(183, 84, 34, 0.9)), url("/images/leaves.jpg");
     background-image: linear-gradient(rgba(108, 121, 137, 0), rgba(183, 84, 34, 0.6), rgba(183, 84, 34, 0.9)), url("/images/leaves.jpg");
 }
+
+body.fall header a {
+    /* Boost the font size */
+    font-size: 15px;
+}
