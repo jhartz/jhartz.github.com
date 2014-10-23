@@ -576,6 +576,7 @@ div.buttons dd > img:first-child {
     /* MOD: aside added */
     aside {
         float: none;
+        max-width: none;
     }
     
     /* MOD: figure stuff (in accordance with above) */
