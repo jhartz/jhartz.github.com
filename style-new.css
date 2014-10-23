@@ -360,6 +360,9 @@ aside {
      max-width: 27%;
      padding: 7px 7px 0;
 }
+aside.limitless {
+    max-width: auto;
+}
 aside small {
      font-style: italic;
      white-space: nowrap;
@@ -565,11 +568,7 @@ div.buttons dd > img:first-child {
         border-radius: 0;
     }
 
-    /* MOD: aside and .bottombar added */
-    aside {
-        display: none;
-    }
-
+    /* MOD: .bottombar added */
     .bottombar span {
         float: none;
     }
@@ -602,6 +601,11 @@ div.buttons dd > img:first-child {
     }
 }
 @media print, screen and (max-width:580px) {
+    /* MOD: aside added */
+    aside {
+        display: none;
+    }
+    
     /* MOD: header ul stuff modified in accordance with modifications above */
     header ul {
         float: none;
