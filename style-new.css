@@ -361,7 +361,7 @@ aside {
      padding: 7px 7px 0;
 }
 aside.limitless {
-    max-width: auto;
+    max-width: none;
 }
 aside small {
      font-style: italic;
