@@ -412,6 +412,10 @@ footer a, footer .fakelink {
 footer a:hover, footer .fakelink:hover {
     text-shadow: inherit;
 }
+/* MOD: footer code */
+footer pre, footer code {
+    color: #fff;
+}
 /* MOD: footer */
 footer > p, footer > ul {
     /* If it's the only thing (or if there's no support for nth-child, etc.), center it */
