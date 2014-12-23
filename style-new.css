@@ -190,8 +190,8 @@ section {
     position: relative;
 }
 
-/* MOD: Added section-top-msg */
-div.section-msg {
+/* MOD: Added section-msg and section-msg-bottom */
+div.section-msg, div.section-msg-bottom {
     /* Used to display an important message (or ads, lol); this div is usually the first child of the section */
     text-align: center;
     border-bottom: 1px solid;
@@ -199,6 +199,13 @@ div.section-msg {
     padding-bottom: 10px;
     font-size: 88%;
     font-style: italic;
+}
+
+div.section-msg-bottom {
+    border-bottom: none;
+    border-top: 1px solid;
+    margin-top: 10px;
+    padding-top: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
