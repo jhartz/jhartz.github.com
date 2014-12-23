@@ -665,7 +665,7 @@ div.buttons dd > img:first-child {
     }
     
     .noprint {
-        display: none;
+        display: none !important;
     }
 }
 
