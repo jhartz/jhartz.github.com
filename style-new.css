@@ -652,20 +652,18 @@ div.buttons dd > img:first-child {
     }
 }
 
-/* MOD: ad-hiding added for small screen sizes/printing */
-@media print, screen and (max-width: 400px) {
+/* MOD: print formatting added */
+@media print {
+    html, body, .wrapper, header, section, footer {
+        background-image: none !important;
+        background-color: #fff !important;
+        color: #000 !important;
+    }
+    
     .ads-container {
         display: none;
     }
-}
-
-/* MOD: print formatting added */
-@media print {
-    html, body, .wrapper, header, section {
-        background-image: none;
-        background-color: transparent;
-    }
-
+    
     .noprint {
         display: none;
     }
