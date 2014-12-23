@@ -652,6 +652,13 @@ div.buttons dd > img:first-child {
     }
 }
 
+/* MOD: ad-hiding added for small screen sizes/printing */
+@media print, screen and (max-width: 400px) {
+    .ads-container {
+        display: none;
+    }
+}
+
 /* MOD: print formatting added */
 @media print {
     html, body, .wrapper, header, section {
