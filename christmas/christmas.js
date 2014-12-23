@@ -86,7 +86,8 @@ var christmas = {
 };
 
 
-snowStorm.snowColor = "#99ccff"; // blue-ish snow (since we have a white background)
+snowStorm.snowColor = "#99ccff"; // blue-ish snow (since we have a whiteish background)
+snowStorm.className = "noprint"; // hide the snow when printing
 // NOTE: excludeMobile and autoStart need to be set to false in snowstorm.js (or snowstorm-min.js)!!!
 
 // This is almost exactly like the very end of snowstorm.js
