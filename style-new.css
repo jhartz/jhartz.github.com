@@ -192,10 +192,11 @@ section {
 
 /* MOD: Added section-top-msg */
 div.section-msg {
-    /* Used to display an important message; this div is usually the first child of the section */
+    /* Used to display an important message (or ads, lol); this div is usually the first child of the section */
     text-align: center;
     border-bottom: 1px solid;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     font-size: 88%;
     font-style: italic;
 }
