@@ -591,6 +591,11 @@ div.buttons dd > img:first-child {
         max-width: none;
     }
     
+    /* MOD: aside.sidebar (for an aside that should only be visible as a sidebar) */
+    aside.sidebar {
+        display: none;
+    }
+    
     /* MOD: figure stuff (in accordance with above) */
     figure {
         max-width: 100%;
