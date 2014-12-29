@@ -1,5 +1,5 @@
 // Loader for Christmas decorations on jhartz.github.io
-// Most actual script for snow and lights from:
+// The actual code for snow and lights is from:
 // http://www.schillmania.com/projects/snowstorm/
 
 if (typeof String.prototype.trim != "function") {
@@ -16,11 +16,14 @@ if (typeof String.prototype.trim != "function") {
 }
 
 var christmas = {
-    cookie: function (name, value) {
+    cookie: function (name, value, dontSendEvent) {
         name = "christmas_" + name;
         if (value) {
+            if (!dontSendEvent && typeof ga == "function") {
+                ga("send", "event", "christmas", name, value);
+            }
             var max_age = (60*60*24*365) / 2; // 1/2 year (in seconds)
-            var expires = (new Date()).getTime() + max_age * 1000; // 1/2 year (in milliseconds)
+            var expires = (new Date()).getTime() + max_age * 1000; // 1/2 year later (in milliseconds)
             expires = new Date(expires);
             document.cookie = name + "=" + value + ";path=/;max-age=" + max_age + ";expires=" + (expires.toGMTString ? expires.toGMTString() : expires.toUTCString());
         } else {
@@ -35,18 +38,12 @@ var christmas = {
     
     snow: function (isOnLoad) {
         if (snowStorm.active) {
-            if (!isOnLoad && typeof ga == "function") {
-                ga("send", "event", "christmas", "snow", "stop");
-            }
-            christmas.cookie("snow", "no");
+            christmas.cookie("snow", "no", isOnLoad);
             
             document.getElementById("christmas_snow_toggle_start").style.display = "inline";
             document.getElementById("christmas_snow_toggle_stop").style.display = "none";
         } else {
-            if (!isOnLoad && typeof ga == "function") {
-                ga("send", "event", "christmas", "snow", "start");
-            }
-            christmas.cookie("snow", "yes");
+            christmas.cookie("snow", "yes", isOnLoad);
             
             document.getElementById("christmas_snow_toggle_start").style.display = "none";
             document.getElementById("christmas_snow_toggle_stop").style.display = "inline";
@@ -56,9 +53,6 @@ var christmas = {
     
     lights: {
         start: function () {
-            if (typeof ga == "function") {
-                ga("send", "event", "christmas", "lights", "start");
-            }
             christmas.cookie("lights", "yes");
             
             document.getElementById("christmas_lights_start").style.display = "none";
@@ -72,9 +66,6 @@ var christmas = {
         },
         
         stop: function () {
-            if (typeof ga == "function") {
-                ga("send", "event", "christmas", "lights", "stop");
-            }
             christmas.cookie("lights", "no");
             
             document.getElementById("christmas_lights_stop").style.display = "none";
@@ -98,9 +89,6 @@ var christmas = {
         },
         
         sizer: function (size) {
-            if (typeof ga == "function") {
-                ga("send", "event", "christmas", "lightsize", size);
-            }
             christmas.cookie("lightsize", size);
             
             try {
@@ -136,7 +124,7 @@ snowStorm.events.add(window, "load", function doStart() {
             // Show the "festive" message! (but only for the first 5 visits while the snow cookie is still unset)
             var numtimes = Number(christmas.cookie("festive"));
             if (isNaN(numtimes)) numtimes = 0;
-            christmas.cookie("festive", ++numtimes);
+            christmas.cookie("festive", ++numtimes, true);
             if (numtimes <= 5) {
                 document.getElementById("christmas_festive_mood").style.display = "block";
             }
