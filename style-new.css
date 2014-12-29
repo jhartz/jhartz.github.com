@@ -424,7 +424,8 @@ footer a:hover, footer .fakelink:hover {
 footer pre, footer code {
     color: #fff;
 }
-/* MOD: footer */
+
+/* MOD: footer items */
 footer > p, footer > ul {
     /* If it's the only thing (or if there's no support for nth-child, etc.), center it */
     float: none;
@@ -432,6 +433,7 @@ footer > p, footer > ul {
     /* For all of them, change up the margin */
     margin: 8px 0;
 }
+
 /* If multiple things, make columns (left, right, left, right, ...)
    Can be specified using class names ("left" and "right"), or by default alternates (left, right, left, right, ...) */
 footer > p:not(.right):not(:only-child):nth-child(2n+1), footer > ul:not(.right):not(:only-child):nth-child(2n+1),
@@ -450,6 +452,30 @@ footer > p.right, footer > ul.right {
     padding-right: 10px;
 }
 
+/* If 2 right-aligned things in a row, make sure the second one is cleared.
+   We need to do this for each possible first + second combination for the right column */
+footer > p:not(.left):not(:only-child):nth-child(2n) + footer > p:not(.left):not(:only-child):nth-child(2n),
+footer > p:not(.left):not(:only-child):nth-child(2n) + footer > ul:not(.left):not(:only-child):nth-child(2n),
+footer > p:not(.left):not(:only-child):nth-child(2n) + footer > p.right,
+footer > p:not(.left):not(:only-child):nth-child(2n) + footer > ul.right,
+
+footer > ul:not(.left):not(:only-child):nth-child(2n) + footer > p:not(.left):not(:only-child):nth-child(2n),
+footer > ul:not(.left):not(:only-child):nth-child(2n) + footer > ul:not(.left):not(:only-child):nth-child(2n),
+footer > ul:not(.left):not(:only-child):nth-child(2n) + footer > p.right,
+footer > ul:not(.left):not(:only-child):nth-child(2n) + footer > ul.right,
+
+footer > p.right + footer > p:not(.left):not(:only-child):nth-child(2n),
+footer > p.right + footer > ul:not(.left):not(:only-child):nth-child(2n),
+footer > p.right + footer > p.right,
+footer > p.right + footer > ul.right,
+
+footer > ul.right + footer > p:not(.left):not(:only-child):nth-child(2n),
+footer > ul.right + footer > ul:not(.left):not(:only-child):nth-child(2n),
+footer > ul.right + footer > p.right,
+footer > ul.right + footer > ul.right {
+    /* Finally ... */
+    clear: both;
+}
 /* MOD: added .buttons stuff */
 div.buttons dt {
     clear: both;
