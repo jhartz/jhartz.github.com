@@ -99,7 +99,7 @@ var christmas = {
         
         sizer: function (size) {
             if (typeof ga == "function") {
-                ga("send", "event", "christmas", "lights", size);
+                ga("send", "event", "christmas", "lightsize", size);
             }
             christmas.cookie("lightsize", size);
             
