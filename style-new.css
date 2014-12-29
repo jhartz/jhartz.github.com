@@ -439,7 +439,7 @@ footer > p, footer > ul {
 footer > p:not(.right):not(:only-child):nth-child(2n+1), footer > ul:not(.right):not(:only-child):nth-child(2n+1),
 footer > p.left, footer > ul.left {
     /* Left (default for odd children) */
-    clear: both;
+    clear: left;
     float: left;
     text-align: left;
     padding-left: 10px;
@@ -447,35 +447,12 @@ footer > p.left, footer > ul.left {
 footer > p:not(.left):not(:only-child):nth-child(2n), footer > ul:not(.left):not(:only-child):nth-child(2n),
 footer > p.right, footer > ul.right {
     /* Right (default for even children) */
+    clear: right;
     float: right;
     text-align: right;
     padding-right: 10px;
 }
 
-/* If 2 right-aligned things in a row, make sure the second one is cleared.
-   We need to do this for each possible first + second combination for the right column */
-footer > p:not(.left):not(:only-child):nth-child(2n) + footer > p:not(.left):not(:only-child):nth-child(2n),
-footer > p:not(.left):not(:only-child):nth-child(2n) + footer > ul:not(.left):not(:only-child):nth-child(2n),
-footer > p:not(.left):not(:only-child):nth-child(2n) + footer > p.right,
-footer > p:not(.left):not(:only-child):nth-child(2n) + footer > ul.right,
-
-footer > ul:not(.left):not(:only-child):nth-child(2n) + footer > p:not(.left):not(:only-child):nth-child(2n),
-footer > ul:not(.left):not(:only-child):nth-child(2n) + footer > ul:not(.left):not(:only-child):nth-child(2n),
-footer > ul:not(.left):not(:only-child):nth-child(2n) + footer > p.right,
-footer > ul:not(.left):not(:only-child):nth-child(2n) + footer > ul.right,
-
-footer > p.right + footer > p:not(.left):not(:only-child):nth-child(2n),
-footer > p.right + footer > ul:not(.left):not(:only-child):nth-child(2n),
-footer > p.right + footer > p.right,
-footer > p.right + footer > ul.right,
-
-footer > ul.right + footer > p:not(.left):not(:only-child):nth-child(2n),
-footer > ul.right + footer > ul:not(.left):not(:only-child):nth-child(2n),
-footer > ul.right + footer > p.right,
-footer > ul.right + footer > ul.right {
-    /* Finally ... */
-    clear: both;
-}
 /* MOD: added .buttons stuff */
 div.buttons dt {
     clear: both;
