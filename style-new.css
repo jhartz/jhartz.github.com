@@ -622,6 +622,11 @@ div.buttons dd > img:first-child {
         float: none !important;
         text-align: center !important;
         margin: 5px !important;
+        padding-bottom: 5px;
+        border-bottom: 1px solid;
+    }
+    footer > p:last-child, footer > ul:last-child {
+        border-bottom: none;
     }
 }
 @media print, screen and (max-width:580px) {
