@@ -33,13 +33,21 @@ var christmas = {
         }
     },
     
-    snow: function () {
+    snow: function (isOnLoad) {
         if (snowStorm.active) {
+            if (!isOnLoad && typeof ga == "function") {
+                ga("send", "event", "christmas", "snow", "stop");
+            }
             christmas.cookie("snow", "no");
+            
             document.getElementById("christmas_snow_toggle_start").style.display = "inline";
             document.getElementById("christmas_snow_toggle_stop").style.display = "none";
         } else {
+            if (!isOnLoad && typeof ga == "function") {
+                ga("send", "event", "christmas", "snow", "start");
+            }
             christmas.cookie("snow", "yes");
+            
             document.getElementById("christmas_snow_toggle_start").style.display = "none";
             document.getElementById("christmas_snow_toggle_stop").style.display = "inline";
         }
@@ -48,22 +56,34 @@ var christmas = {
     
     lights: {
         start: function () {
+            if (typeof ga == "function") {
+                ga("send", "event", "christmas", "lights", "start");
+            }
             christmas.cookie("lights", "yes");
+            
             document.getElementById("christmas_lights_start").style.display = "none";
+            
             try {
                 if (typeof window.scrollTo == "function") window.scrollTo(0, 0);
             } catch (err) {}
-            location.reload();
+            setTimeout(function () {
+                location.reload();
+            }, 10);
         },
         
         stop: function () {
+            if (typeof ga == "function") {
+                ga("send", "event", "christmas", "lights", "stop");
+            }
             christmas.cookie("lights", "no");
+            
             document.getElementById("christmas_lights_stop").style.display = "none";
             document.getElementById("christmas_lights_sizes").style.display = "none";
+            
+            try {
+                if (typeof window.scrollTo == "function") window.scrollTo(0, 0);
+            } catch (err) {}
             if (window.xlsf) {
-                try {
-                    if (typeof window.scrollTo == "function") window.scrollTo(0, 0);
-                } catch (err) {}
                 window.lightsBreakOverFunc = function () {
                     // TODO: We have the entire YAHOO.Anim library available - why not use it?
                     document.getElementById("lights").style.display = "none";
@@ -71,16 +91,24 @@ var christmas = {
                 xlsf.destroyLights();
                 document.getElementById("christmas_lights_start").style.display = "inline";
             } else {
-                location.reload();
+                setTimeout(function () {
+                    location.reload();
+                }, 10);
             }
         },
         
         sizer: function (size) {
+            if (typeof ga == "function") {
+                ga("send", "event", "christmas", "lights", size);
+            }
             christmas.cookie("lightsize", size);
+            
             try {
                 if (typeof window.scrollTo == "function") window.scrollTo(0, 0);
             } catch (err) {}
-            location.reload();
+            setTimeout(function () {
+                location.reload();
+            }, 10);
         }
     }
 };
@@ -116,7 +144,7 @@ snowStorm.events.add(window, "load", function doStart() {
     }
     
     if (doSnow) {
-        christmas.snow();
+        christmas.snow(true);
     } else {
         document.getElementById("christmas_snow_toggle_start").style.display = "inline";
     }
