@@ -28,7 +28,7 @@ snowStorm.events.add(window, "load", function doStart() {
     snowStorm.events.remove(window, "load", doStart);
     
     var doSnow = false;
-    if (decorations_defaults.snow) {
+    if (decorations.defaults.snow) {
         if (decorations.cookie("snow")) {
             doSnow = decorations.cookie("snow") != "no";
         } else {

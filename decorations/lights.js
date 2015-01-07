@@ -3,7 +3,7 @@
 // The actual code for the snow and Christmas lights is from:
 // http://www.schillmania.com/projects/snowstorm/
 
-decorations.lights: {
+decorations.lights = {
     start: function () {
         decorations.cookie("lights", "yes");
         
@@ -53,7 +53,7 @@ decorations.lights: {
 };
 
 
-if ((decorations_defaults.lights ? (decorations.cookie("lights") != "no") : (decorations.cookie("lights") == "yes"))) {
+if ((decorations.defaults.lights ? (decorations.cookie("lights") != "no") : (decorations.cookie("lights") == "yes"))) {
     document.getElementById("lights").style.display = "block";
     
     if (sizeTable.hasOwnProperty(decorations.cookie("lightsize"))) {
