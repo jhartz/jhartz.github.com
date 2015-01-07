@@ -754,6 +754,16 @@ body.winter header {
     background-size: cover;
 }
 
+@media print, screen and (max-width:580px) {
+    body.winter header {
+        background-image: -webkit-linear-gradient(rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
+        background-image: -moz-linear-gradient(rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
+        background-image: -o-linear-gradient(rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
+        background-image: -ms-linear-gradient(rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
+        background-image: linear-gradient(rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
+    }
+}
+
 body.fall header p a, body.fall header ul:not(.pretty) a,
 body.winter header p a, body.winter header ul:not(.pretty) a {
     /* Boost the font size for themes with a background image */
