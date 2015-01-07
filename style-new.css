@@ -733,7 +733,29 @@ body.fall header {
     background-size: cover;
 }
 
-body.fall header p a, body.fall header ul:not(.pretty) a {
-    /* Boost the font size */
+body.winter {
+    background-color: rgb(155, 255, 255);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgb(155, 255, 255)), color-stop(100%, rgb(112, 211, 255)));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -webkit-linear-gradient(rgb(155, 255, 255), rgb(112, 211, 255));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -moz-linear-gradient(rgb(155, 255, 255), rgb(112, 211, 255));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -o-linear-gradient(rgb(155, 255, 255), rgb(112, 211, 255));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), -ms-linear-gradient(rgb(155, 255, 255), rgb(112, 211, 255));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(rgb(155, 255, 255), rgb(112, 211, 255));
+}
+
+body.winter header {
+    background-color: rgb(112, 211, 255);
+    /* background-image: -webkit-gradient(...screw this one...), ...; */
+    background-image: -webkit-linear-gradient(rgba(108, 121, 137, 0), rgba(112, 211, 255, 0.6), rgba(112, 211, 255, 0.9)), url("/images/winter.jpg");
+    background-image: -moz-linear-gradient(rgba(108, 121, 137, 0), rgba(112, 211, 255, 0.6), rgba(112, 211, 255, 0.9)), url("/images/winter.jpg");
+    background-image: -o-linear-gradient(rgba(108, 121, 137, 0), rgba(112, 211, 255, 0.6), rgba(112, 211, 255, 0.9)), url("/images/winter.jpg");
+    background-image: -ms-linear-gradient(rgba(108, 121, 137, 0), rgba(112, 211, 255, 0.6), rgba(112, 211, 255, 0.9)), url("/images/winter.jpg");
+    background-image: linear-gradient(rgba(108, 121, 137, 0), rgba(112, 211, 255, 0.6), rgba(112, 211, 255, 0.9)), url("/images/winter.jpg");
+    background-size: cover;
+}
+
+body.fall header p a, body.fall header ul:not(.pretty) a,
+body.winter header p a, body.winter header ul:not(.pretty) a {
+    /* Boost the font size for themes with a background image */
     font-size: 15px;
 }
