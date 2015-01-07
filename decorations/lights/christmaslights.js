@@ -4,8 +4,8 @@
 // Modified a bit for use with jhartz.github.io
 // For original, see: http://www.schillmania.com/projects/snowstorm/
 
-var urlBase = '/christmas/lights/';
-soundManager.url = '/christmas/lights/';
+var urlBase = '/decorations/lights/';
+soundManager.url = '/decorations/lights/';
 
 var Y = {
  // shortcuts
@@ -477,7 +477,7 @@ function smashInit() {
 soundManager.setup({
   flashVersion: 9,
   preferFlash: false,
-  url: '/christmas/lights/',
+  url: '/decorations/lights/',
   onready: function() {
     smashInit();
   },
