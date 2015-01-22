@@ -187,7 +187,7 @@ section {
   position: relative;
 }
 
-/* MOD: Added section-msg and section-msg-bottom */
+/* MOD: Added section-msg and section-msg-bottom and ads-container (only used with section-msg) */
 div.section-msg, div.section-msg-bottom {
   /* Used to display an important message (or ads, lol); this div is usually the first child of the section */
   text-align: center;
@@ -203,6 +203,15 @@ div.section-msg-bottom {
   border-top: 1px solid;
   margin-top: 10px;
   padding-top: 10px;
+}
+
+div.ads-container {
+  background-color: rgba(0,0,0,0.25);
+  background-clip: content-box;
+}
+
+div.section-msg.ads-container > * {
+  padding: 10px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
