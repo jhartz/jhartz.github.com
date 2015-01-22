@@ -210,8 +210,8 @@ div.ads-container {
   background-clip: content-box;
 }
 
-div.section-msg.ads-container > * {
-  padding: 10px 0;
+div.ads-container > * {
+  padding: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
