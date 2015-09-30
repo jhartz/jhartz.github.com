@@ -462,6 +462,12 @@ footer > p.right, footer > ul.right {
 /* MOD: added .buttons stuff */
 div.buttons dt {
   clear: both;
+  margin-left: 15px;
+}
+
+div.buttons dd {
+  margin-left: 40px;
+  margin-right: 30px;
 }
 
 div.buttons dd > img:first-child {
