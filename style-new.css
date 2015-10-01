@@ -426,9 +426,17 @@ footer a, footer .fakelink {
 footer a:hover, footer .fakelink:hover {
   text-shadow: inherit;
 }
-/* MOD: footer code */
+
+/* MOD: footer {pre,code,hr} */
 footer pre, footer code {
   color: #fff;
+}
+footer hr {
+  clear: both;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+footer hr:first-child {
+  display: none;
 }
 
 /* MOD: footer items */
