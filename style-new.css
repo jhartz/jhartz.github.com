@@ -471,6 +471,7 @@ footer > p.right, footer > ul.right {
 div.buttons dt {
   clear: both;
   margin-left: 15px;
+  margin-top: 10px;
 }
 
 div.buttons dd {
