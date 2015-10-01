@@ -77,9 +77,9 @@ function haiku_ify() {
   var elems = document.getElementById("haiku-body").getElementsByTagName("i");
   for (var i = 0; i < elems.length; i++) {
     if (elems[i].className.indexOf("nein") == -1) {
-      elems[i].style.display = "inline";
       elems[i].innerHTML += "<br>";
     }
+    elems[i].style.display = "inline";
     elems[i].parentNode.style.fontStyle = "italic";
   }
   document.getElementById("haiku-mode").style.display = "none";
