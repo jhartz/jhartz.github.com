@@ -64,7 +64,8 @@ nav:
         </dl>
       </div>
     </div>
-    <div id="haiku-mode" class="fakelink" style="text-align: center; display: none;">Turn on Haiku Mode</div>
+    <div id="haiku-mode-on" class="fakelink" style="text-align: center; display: none;">Turn on Haiku Mode</div>
+    <div id="haiku-mode-off" class="fakelink" style="text-align: center; display: none;">Turn off Haiku Mode</div>
 
 {% comment %}
 Future TODO: "Recent Blog Posts"
@@ -73,26 +74,35 @@ Future TODO: "Recent Blog Posts"
 
 
 <script type="text/javascript">
-function haiku_ify() {
+function haiku_ify(enabled, isInit) {
   var elems = document.getElementById("haiku-body").getElementsByTagName("i");
   for (var i = 0; i < elems.length; i++) {
-    if (elems[i].className.indexOf("nein") == -1) {
+    // This must only be done the first time
+    if (isInit && elems[i].className.indexOf("nein") == -1) {
       elems[i].innerHTML += "<br>";
     }
-    elems[i].style.display = "inline";
-    elems[i].parentNode.style.fontStyle = "italic";
+    
+    if (enabled) {
+      elems[i].style.display = "inline";
+      elems[i].parentNode.style.fontStyle = "italic";
+    } else {
+      elems[i].style.display = "none";
+      elems[i].parentNode.style.fontStyle = "";
+    }
   }
-  document.getElementById("haiku-mode").style.display = "none";
+  
+  document.getElementById("haiku-mode-on").style.display = enabled ? "none" : "";
+  document.getElementById("haiku-mode-off").style.display = enabled ? "" : "none";
 }
 
-document.getElementById("haiku-mode").addEventListener("click", haiku_ify, false);
-document.getElementById("haiku-mode").style.display = "block";
+document.getElementById("haiku-mode-on").addEventListener("click", function () {
+  haiky_ify(true);
+}, false);
+document.getElementById("haiku-mode-off").addEventListener("click", function () {
+  haiky_ify(false);
+}, false);
 
-// Everything worked; hide the haiku-specific sections
-(function () {
-  var elems = document.getElementById("haiku-body").getElementsByTagName("i");
-  for (var i = 0; i < elems.length; i++) {
-    elems[i].style.display = "none";
-  }
-})();
+// Everything worked; hide the haiku-specific sections and show "Turn On ..."
+haiku_ify(false, true);
+document.getElementById("haiku-mode-on").style.display = "block";
 </script>
