@@ -434,6 +434,7 @@ footer pre, footer code {
 footer hr {
   clear: both;
   background-color: rgba(255, 255, 255, 0.6);
+  margin: 0 10px;
 }
 footer hr:first-child {
   display: none;
@@ -442,6 +443,7 @@ footer hr:first-child {
 /* MOD: footer items */
 footer > p, footer > ul {
   /* If it's the only thing (or if there's no support for nth-child, etc.), center it */
+  /* Or, if it's specifically supposed to be centered */
   float: none;
   text-align: center;
   /* For all of them, change up the margin */
@@ -450,7 +452,8 @@ footer > p, footer > ul {
 
 /* If multiple things, make columns (left, right, left, right, ...)
    Can be specified using class names ("left" and "right"), or by default alternates (left, right, left, right, ...) */
-footer > p:not(.right):not(:only-child):nth-child(2n+1), footer > ul:not(.right):not(:only-child):nth-child(2n+1),
+footer >  p:not(.right):not(.center):not(:only-child):nth-child(2n+1),
+footer > ul:not(.right):not(.center):not(:only-child):nth-child(2n+1),
 footer > p.left, footer > ul.left {
   /* Left (default for odd children) */
   clear: left;
@@ -458,7 +461,8 @@ footer > p.left, footer > ul.left {
   text-align: left;
   padding-left: 10px;
 }
-footer > p:not(.left):not(:only-child):nth-child(2n), footer > ul:not(.left):not(:only-child):nth-child(2n),
+footer >  p:not(.left):not(.center):not(:only-child):nth-child(2n),
+footer > ul:not(.left):not(.center):not(:only-child):nth-child(2n),
 footer > p.right, footer > ul.right {
   /* Right (default for even children) */
   clear: right;
