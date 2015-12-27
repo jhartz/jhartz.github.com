@@ -1,0 +1,49 @@
+html, body, div, canvas {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#bigboy {
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+div.box {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #968F78;
+    box-shadow: 0px 0px 9px 1px #968F78;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    max-width: 25%;
+}
+
+#message-container {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+#message {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+#message-container.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
