@@ -4,8 +4,10 @@
 // Modified a bit for use with jhartz.github.io
 // For original, see: http://www.schillmania.com/projects/snowstorm/
 
-var urlBase = '/decorations/lights/';
-soundManager.url = '/decorations/lights/';
+if (typeof urlBase == "undefined") {
+    var urlBase = '/decorations/lights/';
+}
+soundManager.url = urlBase;
 
 var Y = {
  // shortcuts
