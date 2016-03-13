@@ -8,7 +8,8 @@
     calc: -webkit, -moz
 */
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+/* MOD: no longer use this font */
+/* @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700); */
 
 html {
   /* MOD: backgrounds moved to body tag; added min-height */
@@ -27,7 +28,8 @@ body {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#434b55, #6c7989);
   padding: 30px 0; /* MOD: padding */
   margin: 0;
-  font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* MOD: font family used to start with Lato, "Helvetica Neue" */
+  font: 14px/1.5 Helvetica, Arial, sans-serif;
   /* MOD: color (used to be #555) */
   color: #3f3d3d;
   font-weight: 300;
@@ -170,7 +172,8 @@ header ul li:first-child:before, footer ul li:first-child:before, ul.inline li:f
 
 section {
   padding: 15px 20px;
-  font-size: 15px;
+  /* MOD: no bump for font size */
+  /* font-size: 15px; */
   border-top: 1px solid #fff;
   /* MOD: background (==> background-color) */
   /*
