@@ -187,7 +187,7 @@ section {
   position: relative;
 }
 
-section p, section li, section td {
+section p, section li, section td, section dd {
     /* MOD: added font-family and font-size */
     font-family: Helvetica;
     font-size: 14px;
