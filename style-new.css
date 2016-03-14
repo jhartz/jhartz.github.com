@@ -170,9 +170,7 @@ header ul li:first-child:before, footer ul li:first-child:before, ul.inline li:f
 
 section {
   padding: 15px 20px;
-  /* MOD: added font-family, commented out font-size */
-  font-family: Helvetica;
-  /* font-size: 15px; */
+  font-size: 15px;
   border-top: 1px solid #fff;
   /* MOD: background (==> background-color) */
   /*
@@ -187,6 +185,12 @@ section {
   -moz-border-radius: 0 0 8px 8px;
   border-radius: 0 0 8px 8px;
   position: relative;
+}
+
+section p {
+    /* MOD: added font-family and font-size */
+    font-family: Helvetica;
+    font-size: 14px;
 }
 
 /* MOD: Added section-msg and section-msg-bottom and ads-container (only used with section-msg) */
