@@ -16,3 +16,7 @@ h1, h2 {
     margin-top: 40px;
     margin-left: -15px;
 }
+
+img {
+    max-width: 100%;
+}
