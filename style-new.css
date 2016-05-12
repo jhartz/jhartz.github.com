@@ -717,13 +717,13 @@ body.winter header {
 }
 
 body.summer {
-    background-color: rgb(177, 196, 71);
-    background-image: linear-gradient(rgb(177, 196, 71), rgb(42, 102, 4));
+    background-color: rgb(121,180,126);
+    background-image: linear-gradient(rgb(121,180,126), rgb(207,237,206));
 }
 
 body.summer header {
-    background-color: rgb(42, 102, 4);
-    background-image: linear-gradient(rgba(177, 196, 71, 0), rgba(177, 196, 71, 0.6), rgba(42, 102, 4, 0.9)), url("/images/summer.jpg");
+    background-color: rgb(121,180,126);
+    background-image: linear-gradient(rgba(207,237,206, 0), rgba(121,180,126, 0.6), rgba(121,180,126, 0.9)), url("/images/summer.jpg");
     background-size: cover;
 }
 
