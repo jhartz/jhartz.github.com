@@ -718,12 +718,12 @@ body.winter header {
 
 body.summer {
     background-color: rgb(121,180,126);
-    background-image: linear-gradient(rgb(121,180,126), rgb(207,237,206));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(rgb(207,237,206), rgb(151,216,150));
 }
 
 body.summer header {
     background-color: rgb(121,180,126);
-    background-image: linear-gradient(rgba(207,237,206, 0), rgba(121,180,126, 0.6), rgba(121,180,126, 0.9)), url("/images/summer.jpg");
+    background-image: linear-gradient(rgba(207,237,206, 0.2), rgba(121,180,126, 0.6), rgba(121,180,126, 0.9)), url("/images/summer.jpg");
     background-size: cover;
 }
 
