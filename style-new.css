@@ -1,34 +1,32 @@
-/* Modernist theme by Steve Smith - https://github.com/orderedlist */
-/* Modifications by Jake are noted with a CSS comment beginning with "MOD" (except for vendor prefix fixes) */
-/* Vendor prefixes in this file (in addition to the unprefixed version)
-    box-shadow: -webkit, -moz
-    transition: -webkit, -moz, -o
-    calc: -webkit, -moz
-*/
+/*
+ * CSS Stylesheet for jhartz.github.io
+ * Based on the Modernist theme by Steve Smith - https://github.com/orderedlist
+ *
+ * Vendor prefixes in this file (in addition to the unprefixed version)
+ *   box-shadow: -webkit, -moz
+ *   transition: -webkit, -moz, -o
+ *   calc: -webkit, -moz
+ */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
 html {
-  /* MOD: backgrounds moved to body tag; added min-height */
   min-height: 100%;
 }
 
 body {
-  /* MOD: background */
   /* NOTE: background is modified for seasonal themes (at bottom of file) */
   background-color: #434b55;
   background-attachment: fixed;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#434b55, #6c7989);
-  padding: 30px 0; /* MOD: padding */
+  padding: 30px 0;
   margin: 0;
   font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* MOD: color (used to be #555) */
   color: #3f3d3d;
   font-weight: 300;
 }
 
 .wrapper, footer {
-  /* MOD: width */
   min-width: 640px;
   max-width: 1100px;
   width: auto;
@@ -49,7 +47,6 @@ header, section, footer {
   display: block;
 }
 
-/* MOD: .fakelink support */
 .fakelink {
   cursor: pointer;
 }
@@ -57,14 +54,12 @@ header, section, footer {
 a, .fakelink {
   color: #069;
   text-decoration: none;
-  /* MOD: transition to go with hover styles */
   -webkit-transition: text-shadow 0.1s;
   -moz-transition: text-shadow 0.1s;
   -o-transition: text-shadow 0.1s;
   transition: text-shadow 0.1s;
 }
 
-/* MOD: hover styling */
 a:hover, .fakelink:hover {
   text-shadow: 0 0 1px rgba(0,102,153,.6);
 }
@@ -81,34 +76,29 @@ strong {
 
 header {
   border-radius: 8px 8px 0 0;
-  /* MOD: header background */
   /* NOTE: Background is modified for seasonal themes (bottom of file) */
   background-color: #434b55;
   background-image: linear-gradient(#6c7989, #434b55);
   position: relative;
   padding: 15px 20px;
-  /* MOD: border color */
   border-bottom: 1px solid #3f3d3d;
 }
-/* MOD: hover added */
 header a:hover {
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(255, 255, 255, 0.2);
 }
 header h1 {
-  margin: 0;
+  margin: 6px 0 12px;
   padding: 0;
   font-size: 28px;
   line-height: 1.2;
-  /* MOD: color and shadow color */
   color: #fafafa;
-  text-shadow: rgba(0, 0, 0, 0.9) 0 1px 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 header.without-description h1 {
   margin: 10px 0;
 }
 header p {
   margin: 0;
-  /* MOD: color */
   color: #fafafa;
   width: 300px;
 }
@@ -117,11 +107,9 @@ header p.view {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
-/* MOD: color */
 header a {
   color: #fafafa;
 }
-/* MOD: hover styles (to cancel out from above) */
 header p.view a:hover {
   text-shadow: inherit;
 }
@@ -129,7 +117,6 @@ header p.view small {
   font-weight: 400;
 }
 
-/* MOD: header/footer ul stuff */
 header ul {
   float: right;
 }
@@ -146,34 +133,26 @@ header ul li:before, footer ul li:before, ul.inline li:before {
   font-size: inherit;
 }
 header ul li:before {
-  /* MOD: color */
   color: #fafafa;
 }
 header ul li:first-child:before, footer ul li:first-child:before, ul.inline li:first-child:before {
   content: none;
 }
-/* MOD: header ul.pretty stuff down at bottom, with all the other @media stuff */
 
 section {
   padding: 15px 20px;
   font-size: 15px;
   border-top: 1px solid #fff;
-  /* MOD: background (==> background-color) */
-  /*
-  background: linear-gradient(#fafafa, #dedede 700px);
-  */
   background-color: #fafafa;
   border-radius: 0 0 8px 8px;
   position: relative;
 }
 
 section p, section li, section td, section dd {
-    /* MOD: added font-family and font-size */
     font-family: Helvetica;
     font-size: 14px;
 }
 
-/* MOD: Added section-msg and section-msg-bottom and ads-container (only used with section-msg) */
 div.section-msg, div.section-msg-bottom {
   /* Used to display an important message (or ads, lol); this div is usually the first child of the section */
   text-align: center;
@@ -229,7 +208,6 @@ h3, h4, h5, h6 {
 
 blockquote {
   margin: 0 -20px 20px;
-  /* MOD: padding */
   padding: 15px 20px 15px 40px;
   font-style: italic;
   background: #ccc;
@@ -237,7 +215,6 @@ blockquote {
   color: #222;
 }
 
-/* MOD: .cite stuff and basic <figure> stuff added */
 blockquote .cite:before {
   content: "\2014";
 }
@@ -297,7 +274,6 @@ th, td {
   border-bottom: 1px solid #aaa;
 }
 
-/* MOD: table.little added */
 table.little, table.little table {
   margin: 0;
   width: auto;
@@ -327,7 +303,6 @@ hr {
   margin: 0 0 20px;
 }
 
-/* MOD: .timestamp and <article> and <aside> and .bottombar stuff added */
 
 p.timestamp {
   font-style: italic;
@@ -388,26 +363,21 @@ aside ul li:last {
 }
 
 footer {
-  /* MOD: width and margin-{left,right} defined above (with .wrapper) */
   padding: 0;
   margin-top: 20px;
   color: #ccc;
   overflow: hidden;
-  /* MOD: background, border-radius added */
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 9px;
 }
-/* MOD: .fakelink added */
 footer a, footer .fakelink {
   color: #fff;
   font-weight: bold;
 }
-/* MOD: hover styles (to cancel out from above) */
 footer a:hover, footer .fakelink:hover {
   text-shadow: inherit;
 }
 
-/* MOD: footer {pre,code,hr} */
 footer pre, footer code {
   color: #fff;
 }
@@ -420,7 +390,6 @@ footer hr:first-child {
   display: none;
 }
 
-/* MOD: footer items */
 footer > p, footer > ul {
   /* If it's the only thing (or if there's no support for nth-child, etc.), center it */
   /* Or, if it's specifically supposed to be centered */
@@ -451,7 +420,6 @@ footer > p.right, footer > ul.right {
   padding-right: 10px;
 }
 
-/* MOD: added .buttons stuff */
 div.buttons dt {
   clear: both;
   margin-left: 15px;
@@ -468,7 +436,6 @@ div.buttons dd > img:first-child {
   float: left;
 }
 
-/* MOD: added header ul.pretty here since we use @media */
 @media print, screen and (min-width:580px) {
   header ul.pretty {
     float: none; /* to cancel out from above */
@@ -482,12 +449,6 @@ div.buttons dd > img:first-child {
     height: 38px;
     padding: 1px 0;
     border-radius: 5px;
-    /*
-    -webkit-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
-    -moz-box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
-    box-shadow: inset rgba(255, 255, 255, 0.45) 0 1px 0, inset rgba(0, 0, 0, 0.2) 0 -1px 0;
-    */
-    /*width: 240px;*/
   }
   header ul.pretty:before {
     content: '';
@@ -545,7 +506,6 @@ div.buttons dd > img:first-child {
     -webkit-font-smoothing: antialiased;
   }
 
-  /* MOD: added .buttons stuff */
   div.buttons {
     display: inline-block;
     width: 50%;
@@ -564,33 +524,27 @@ div.buttons dd > img:first-child {
     -moz-box-shadow: none;
     box-shadow: none;
     width: 100%;
-    /* MOD: min/max width added */
     min-width: 0;
     max-width: none;
   }
 
-  /* MOD: header added here */
   header {
     border-radius: 0;
   }
 
-  /* MOD: .bottombar added */
   .bottombar span {
     float: none;
   }
 
-  /* MOD: aside added */
   aside {
     float: none;
     max-width: none;
   }
 
-  /* MOD: aside.sidebar (for an aside that should only be visible as a sidebar) */
   aside.sidebar {
     display: none;
   }
 
-  /* MOD: figure stuff (in accordance with above) */
   figure {
     max-width: 100%;
     max-width: -webkit-calc(100% - 40px);
@@ -602,11 +556,9 @@ div.buttons dd > img:first-child {
     border-radius: 0;
     padding: 20px;
     width: auto;
-    /* MOD: min/max width added */
     min-width: 0;
     max-width: none;
   }
-  /* MOD: footer stuff modified in accordance with modifications above */
   footer > p, footer > ul {
     float: none !important;
     text-align: center !important;
@@ -619,18 +571,15 @@ div.buttons dd > img:first-child {
   }
 }
 @media print, screen and (max-width:580px) {
-  /* MOD: aside added */
   aside {
     display: none;
   }
 
-  /* MOD: header ul stuff modified in accordance with modifications above */
   header ul {
     float: none;
   }
   header ul li {
     display: block;
-    /* MOD: bigger font size */
     font-size: 16px;
   }
   header ul li:before {
@@ -648,18 +597,16 @@ div.buttons dd > img:first-child {
     width: 100%;
   }
 
-  /* MOD: .noview added */
   header p.noview {
     display: none;
   }
 
-  /* MOD: Just in case this might be helpful... */
+  /* Just in case this might be helpful... */
   .nomobile {
     display: none;
   }
 }
 
-/* MOD: print formatting added */
 @media print {
   html, body, .wrapper, header, section, footer {
     background-image: none !important;
@@ -676,7 +623,9 @@ div.buttons dd > img:first-child {
   }
 }
 
-/* MOD: seasonal themes */
+
+/* SEASONAL THEMES */
+
 body.christmas {
   background-color: #13722b;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#13722b, #084417);
@@ -718,7 +667,7 @@ body.winter header {
 
 body.summer {
     background-color: rgb(121,180,126);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(rgb(207,237,206), rgb(151,216,150));
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(rgb(207,237,206), rgb(151,216,150), rgb(121, 180, 126));
 }
 
 body.summer header {
