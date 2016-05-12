@@ -141,7 +141,7 @@ header ul li:first-child:before, footer ul li:first-child:before, ul.inline li:f
 }
 
 header p > a, header ul {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 4px;
   border-radius: 4px;
 }
@@ -687,7 +687,7 @@ body.fall header p a, body.fall header ul:not(.pretty) a,
 body.winter header p a, body.winter header ul:not(.pretty) a,
 body.summer header p a, body.summer header ul:not(.pretty) a {
   /* Boost the font size for themes with a background image */
-  font-size: 15px;
+  font-size: 18px;
 }
 
 body.fall header h1, body.fall header h1 a, body.fall header h1 a:hover,
