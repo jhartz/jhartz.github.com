@@ -99,7 +99,7 @@ header h1 {
   color: #fafafa;
 }
 header h1, header h1 a, header h1 a:hover {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), -1px -1px 1px rgba(0,0,0,0.9);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 header.without-description h1 {
   margin: 10px 0;
@@ -689,3 +689,11 @@ body.summer header p a, body.summer header ul:not(.pretty) a {
   /* Boost the font size for themes with a background image */
   font-size: 15px;
 }
+
+body.fall header h1, body.fall header h1 a, body.fall header h1 a:hover,
+body.winter header h1, body.winter header h1 a, body.winter header h1 a:hover,
+body.summer header h1, body.summer header h1 a, body.summer header h1 a:hover {
+  /* More text shadow for page title for themes with a background image */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), -1px -1px 1px rgba(0,0,0,0.9);
+}
+
