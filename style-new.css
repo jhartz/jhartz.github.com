@@ -575,8 +575,6 @@ div.buttons dd > img:first-child {
 
   header ul {
     float: none;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 12px;
   }
   header ul li {
     display: block;
@@ -595,6 +593,12 @@ div.buttons dd > img:first-child {
 
   header p {
     width: 100%;
+  }
+
+  header p, header ul {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 8px;
+    border-radius: 4px;
   }
 
   header p.noview {
@@ -671,8 +675,8 @@ body.summer {
 }
 
 body.summer header {
-    background-color: rgb(121,180,126);
-    background-image: linear-gradient(rgba(207,237,206, 0.2) 50%, rgba(121,180,126, 0.9) 70%), url("/images/summer.jpg");
+    background-color: rgb(84,126,88);
+    background-image: linear-gradient(rgba(207,237,206, 0.2) 50%, rgba(84,126,88, 0.9) 70%), url("/images/summer.jpg");
     background-size: cover;
 }
 
