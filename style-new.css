@@ -1,3 +1,4 @@
+/* vim: set tabstop=2 shiftwidth=2 expandtab smarttab: */
 /*
  * CSS Stylesheet for jhartz.github.io
  * Based on the Modernist theme by Steve Smith - https://github.com/orderedlist
@@ -135,6 +136,12 @@ header ul li:before {
 }
 header ul li:first-child:before, footer ul li:first-child:before, ul.inline li:first-child:before {
   content: none;
+}
+
+header p > a, header ul {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 4px;
+  border-radius: 4px;
 }
 
 section {
@@ -593,12 +600,6 @@ div.buttons dd > img:first-child {
 
   header p {
     width: 100%;
-  }
-
-  header p, header ul {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 8px;
-    border-radius: 4px;
   }
 
   header p.noview {
