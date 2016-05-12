@@ -7,6 +7,6 @@ nav:
   - name: GitHub
     url: https://github.com/jhartz
 
-theme: fall
+themeOverride: fall
 ---
 ## Testing Fall Theme

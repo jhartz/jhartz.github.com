@@ -7,7 +7,7 @@ nav:
   - name: GitHub
     url: https://github.com/jhartz
 
-theme: winter
+themeOverride: winter
 # NOTE: For this to work, these variables can't be defined in top.html.
 decorations_snow: "true"
 ---

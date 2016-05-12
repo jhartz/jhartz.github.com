@@ -7,6 +7,6 @@ nav:
   - name: GitHub
     url: https://github.com/jhartz
 
-theme: summer
+themeOverride: summer
 ---
 ## Testing Summer Theme
