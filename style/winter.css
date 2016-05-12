@@ -1,0 +1,16 @@
+body.winter {
+  background-color: rgb(112, 211, 255);
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(rgb(112, 211, 255), rgb(0, 112, 224));
+}
+
+body.winter header {
+  background-color: rgb(0, 112, 224);
+  background-image: linear-gradient(rgba(108, 121, 137, 0), rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
+  background-size: cover;
+}
+
+@media print, screen and (max-width:580px) {
+  body.winter header {
+    background-image: linear-gradient(rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
+  }
+}

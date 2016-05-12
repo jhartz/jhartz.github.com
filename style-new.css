@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  /* NOTE: background is modified for seasonal themes (at bottom of file) */
+  /* NOTE: background is modified for seasonal themes */
   background-color: #434b55;
   background-attachment: fixed;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#434b55, #6c7989);
@@ -77,7 +77,7 @@ strong {
 
 header {
   border-radius: 8px 8px 0 0;
-  /* NOTE: Background is modified for seasonal themes (bottom of file) */
+  /* NOTE: Background is modified for seasonal themes */
   background-color: #434b55;
   background-image: linear-gradient(#6c7989, #434b55);
   position: relative;
@@ -633,67 +633,12 @@ div.buttons dd > img:first-child {
 
 /* SEASONAL THEMES */
 
-body.christmas {
-  background-color: #13722b;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#13722b, #084417);
-}
-
-body.christmas header {
-  background-color: #d34747;
-  background-image: linear-gradient(#ff4b4b, #d34747);
-}
-
-
-body.fall {
-  background-color: #ff935e;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(#ff935e, #b75422);
-}
-
-body.fall header {
-  background-color: rgb(183, 84, 34);
-  background-image: linear-gradient(rgba(108, 121, 137, 0), rgba(183, 84, 34, 0.6), rgba(183, 84, 34, 0.9)), url("/images/leaves.jpg");
-  background-size: cover;
-}
-
-body.winter {
-  background-color: rgb(112, 211, 255);
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(rgb(112, 211, 255), rgb(0, 112, 224));
-}
-
-body.winter header {
-  background-color: rgb(0, 112, 224);
-  background-image: linear-gradient(rgba(108, 121, 137, 0), rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
-  background-size: cover;
-}
-
-@media print, screen and (max-width:580px) {
-  body.winter header {
-    background-image: linear-gradient(rgba(0, 112, 224, 0.6), rgba(0, 112, 224, 0.9)), url("/images/winter.jpg");
-  }
-}
-
-body.summer {
-    background-color: rgb(121,180,126);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg=='), linear-gradient(rgb(207,237,206), rgb(151,216,150), rgb(121, 180, 126));
-}
-
-body.summer header {
-    background-color: rgb(84,126,88);
-    background-image: linear-gradient(rgba(207,237,206, 0.1) 50%, rgba(84,126,88, 0.7) 70%), url("/images/summer.jpg");
-    background-size: cover;
-}
-
-body.fall header p a, body.fall header ul:not(.pretty) a,
-body.winter header p a, body.winter header ul:not(.pretty) a,
-body.summer header p a, body.summer header ul:not(.pretty) a {
+body.themed header p a, body.themed header ul:not(.pretty) a {
   /* Boost the font size for themes with a background image */
   font-size: 18px;
 }
 
-body.fall header h1, body.fall header h1 a, body.fall header h1 a:hover,
-body.winter header h1, body.winter header h1 a, body.winter header h1 a:hover,
-body.summer header h1, body.summer header h1 a, body.summer header h1 a:hover {
+body.theme header h1, body.theme header h1 a, body.theme header h1 a:hover {
   /* More text shadow for page title for themes with a background image */
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), -1px -1px 1px rgba(0,0,0,0.9);
 }
-

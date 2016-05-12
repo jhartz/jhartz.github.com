@@ -7,6 +7,6 @@ nav:
   - name: GitHub
     url: https://github.com/jhartz
 
-theme: fall
+theme: summer
 ---
-## Testing Fall Theme
+## Testing Summer Theme
