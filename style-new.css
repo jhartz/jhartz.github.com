@@ -788,8 +788,17 @@ body.winter header {
   }
 }
 
+body.summer {
+}
+
+body.summer header {
+    background-image: url("/images/summer.jpg");
+    background-size: cover;
+}
+
 body.fall header p a, body.fall header ul:not(.pretty) a,
-body.winter header p a, body.winter header ul:not(.pretty) a {
+body.winter header p a, body.winter header ul:not(.pretty) a,
+body.summer header p a, body.summer header ul:not(.pretty) a {
   /* Boost the font size for themes with a background image */
   font-size: 15px;
 }
