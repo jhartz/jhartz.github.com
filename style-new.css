@@ -83,11 +83,15 @@ header {
   padding: 15px 20px;
   border-bottom: 1px solid #3f3d3d;
 }
+header a {
+  color: #fafafa;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
 header a:hover {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(255, 255, 255, 0.2);
 }
 header h1 {
-  margin: 6px 0 12px;
+  margin: 6px 0 38px;
   padding: 0;
   font-size: 28px;
   line-height: 1.2;
@@ -106,12 +110,6 @@ header p.view {
   display: none;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
-}
-header a {
-  color: #fafafa;
-}
-header p.view a:hover {
-  text-shadow: inherit;
 }
 header p.view small {
   font-weight: 400;
@@ -577,6 +575,8 @@ div.buttons dd > img:first-child {
 
   header ul {
     float: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 12px;
   }
   header ul li {
     display: block;
@@ -672,7 +672,7 @@ body.summer {
 
 body.summer header {
     background-color: rgb(121,180,126);
-    background-image: linear-gradient(rgba(207,237,206, 0.2), rgba(121,180,126, 0.6), rgba(121,180,126, 0.9)), url("/images/summer.jpg");
+    background-image: linear-gradient(rgba(207,237,206, 0.2) 50%, rgba(121,180,126, 0.9) 70%), url("/images/summer.jpg");
     background-size: cover;
 }
 
