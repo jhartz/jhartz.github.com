@@ -451,6 +451,10 @@ div.buttons dd > img:first-child {
   float: left;
 }
 
+div.row > div.row-item {
+  white-space: nowrap;
+}
+
 @media print, screen and (min-width:580px) {
   header ul.pretty {
     float: none; /* to cancel out from above */
@@ -529,6 +533,7 @@ div.buttons dd > img:first-child {
 
   div.row > div.row-item {
     display: inline-block;
+    padding-right: 10px;
   }
 }
 
