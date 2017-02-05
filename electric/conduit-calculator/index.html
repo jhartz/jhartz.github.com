@@ -1,0 +1,105 @@
+---
+# vim: set tabstop=2 shiftwidth=2 expandtab smarttab:
+layout: electric
+title: Conduit Calculator
+---
+
+<meta charset="utf-8">
+
+<h2>Conduit Calculator</h2>
+
+<noscript><p>Please enable JavaScript.</p></noscript>
+
+<div id="main-container">
+  <div class="buttons">
+    <h3>Circuits in Conduit</h3>
+
+    <table><tbody id="circuit-table"></tbody></table>
+    <p><button id="add-circuit-button">Add Circuit</button></p>
+
+    <p>
+      <label for="add-egc"><input type="checkbox" id="add-egc"> Include <abbr title="Equipment Grounding Conductor">EGC</abbr></label>
+      <span id="add-egc-container">
+        <select id="add-egc-type"></select>
+        <span style="display: inline-block;">
+          <label for="add-egc-material-cu">
+            <input type="radio" id="add-egc-material-cu" name="add-egc-material" value="cu" checked>
+            <abbr title="Copper">Cu</abbr>
+          </label>
+          <br>
+          <label for="add-egc-material-al">
+            <input type="radio" id="add-egc-material-al" name="add-egc-material" value="al">
+            <abbr title="Aluminum">Al</abbr>
+          </label>
+        </span>
+        <select id="add-egc-size"></select>
+      </span>
+    </p>
+  </div><div class="buttons">
+    <p><label for="ambient-temp">Ambient Temperature: </label><select id="ambient-temp"></select></p>
+    <p><label for="conduit-type">Conduit Type: </label><select id="conduit-type"></select></p>
+
+    <hr>
+
+    <h3>Minimum Conduit Size: <span id="minimum-conduit-size"></span></h3>
+  </div>
+</div>
+
+<div id="add-circuit-container">
+  <h3 class="centered">Add Circuit</h3>
+
+  <div class="buttons">
+    <p><label for="add-circuit-name">Circuit Name: </label><input id="add-circuit-name"></p>
+    <p>Conductors:</p>
+    <table><tbody id="add-circuit-conductor-table"></tbody></table>
+  </div><div class="buttons">
+    <form id="add-conductor-1-form">
+      <fieldset>
+        <legend>Add by Required Amberage (Breaker Size)</legend>
+        <div><em>Recommended</em></div>
+        <p>
+          <input type="color" id="add-conductor-1-color">
+          <select id="add-conductor-1-type"></select>
+          <span style="display: inline-block;">
+            <label for="add-conductor-1-material-cu">
+              <input type="radio" id="add-conductor-1-material-cu" name="add-conductor-1-material" value="cu" checked>
+              <abbr title="Copper">Cu</abbr>
+            </label>
+            <br>
+            <label for="add-conductor-1-material-al">
+              <input type="radio" id="add-conductor-1-material-al" name="add-conductor-1-material" value="al">
+              <abbr title="Aluminum">Al</abbr>
+            </label>
+          </span>
+          <label for="add-conductor-1-ccc"><input type="checkbox" id="add-conductor-1-ccc"> <abbr title="Current-Carrying Conductor">CCC</abbr></label>
+        </p>
+        <p><input type="submit" value="Add"></p>
+      </fieldset>
+    </form>
+
+    <form id="add-conductor-2-form">
+      <fieldset>
+        <legend>Add by Conductor Size</legend>
+        <div><em>Warning: This assumes that you have already done derating calculations to determine that this is the correct size wire for its load.</em></div>
+        <p>
+          <input type="color" id="add-conductor-2-color">
+          <select id="add-conductor-2-type"></select>
+          <select id="add-conductor-2-size"></select>
+          <label for="add-conductor-2-ccc"><input type="checkbox" id="add-conductor-2-ccc"> <abbr title="Current-Carrying Conductor">CCC</abbr></label>
+        </p>
+        <p><input type="submit" value="Add"></p>
+      </fieldset>
+    </form>
+  </div>
+
+  <p class="centered"><button id="add-circuit-add">Add</button> <button id="add-circuit-cancel">Cancel</button></p>
+</div>
+
+<script type="text/javascript" src="conduit-data.js"></script>
+<script type="text/javascript" src="conductor-data.js"></script>
+<script type="text/javascript" src="calc.js"></script>
+<script type="text/javascript" src="ui.js"></script>
+<script type="text/javascript">
+UI.init();
+</script>
+
