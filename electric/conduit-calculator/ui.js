@@ -55,6 +55,8 @@ const UI = {
         ambientTempDropdown: document.getElementById("ambient-temp"),
         conduitTypeDropdown: document.getElementById("conduit-type"),
         minimumConduitSize: document.getElementById("minimum-conduit-size"),
+        conduitFillPercent: document.getElementById("conduit-fill-percent"),
+        conduitFillLimit: document.getElementById("conduit-fill-limit"),
         circuitTable: document.getElementById("circuit-table"),
         addCircuitButton: document.getElementById("add-circuit-button"),
 
@@ -123,11 +125,13 @@ const UI = {
             doCalculation();
         },
 
-        setConduitSize: function (tradeSize) {
+        setConduitSize: function (tradeSize, fillPercent, fillLimit) {
             this.minimumConduitSize.textContent = tradeSize.split(" ").map(function (part) {
                 if (FRAC.hasOwnProperty(part)) return FRAC[part];
                 return part;
             }).join(" ");
+            this.conduitFillPercent.textContent = fillPercent;
+            this.conduitFillLimit.textContent = fillLimit;
         }
     },
 

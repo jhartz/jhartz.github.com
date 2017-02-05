@@ -33,11 +33,15 @@
 
 // TEST SETUP
 
-var latestSize = null;
+var latestSize = null,
+    latestFillPercent = null,
+    latestFillLimit = null;
 const UI = {
     main: {
-        setConduitSize: function (size) {
+        setConduitSize: function (size, fillPercent, fillLimit) {
             latestSize = size;
+            latestFillPercent = fillPercent;
+            latestFillLimit = fillLimit;
         }
     }
 };
