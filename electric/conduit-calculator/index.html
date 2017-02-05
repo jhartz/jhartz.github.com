@@ -58,16 +58,19 @@ title: Conduit Calculator
 </div>
 
 <div id="add-circuit-container" style="display: none;">
-  <h3 class="centered">Add Circuit</h3>
-
   <div class="buttons">
+    <h3 class="centered">Add Circuit</h3>
     <p><label for="add-circuit-name">Circuit Name: </label><input id="add-circuit-name"></p>
+
     <p>Conductors:</p>
     <table><tbody id="add-circuit-conductor-table"></tbody></table>
+
+    <p class="centered"><button id="add-circuit-add">Add</button> <button id="add-circuit-cancel">Cancel</button></p>
   </div><div class="buttons">
+    <h3>Add Conductors to Circuit</h3>
     <form id="add-conductor-1-form">
       <fieldset>
-        <legend>Add by Required Amberage (Breaker Size)</legend>
+        <legend>Add by Required Amperage (Breaker Size)</legend>
         <div><em>Recommended</em></div>
         <div class="row">
           <div class="middled row-item"><input type="color" id="add-conductor-1-color" placeholder="Color" value="#000000"></div>
@@ -82,6 +85,10 @@ title: Conduit Calculator
               <input type="radio" id="add-conductor-1-material-al" name="add-conductor-1-material" value="al">
               <abbr title="Aluminum">Al</abbr>
             </label>
+          </div>
+          <div class="middled row-item">
+            <input id="add-conductor-1-amperage" type="number" size="4" min="1" step="1" value="15">
+            <label for="add-conductor-1-amperage">amps</label>
           </div>
           <div class="middled row-item">
             <label for="add-conductor-1-ccc"><input type="checkbox" id="add-conductor-1-ccc"> <abbr title="Current-Carrying Conductor">CCC</abbr></label>
@@ -107,8 +114,6 @@ title: Conduit Calculator
       </fieldset>
     </form>
   </div>
-
-  <p class="centered"><button id="add-circuit-add">Add</button> <button id="add-circuit-cancel">Cancel</button></p>
 </div>
 
 <script type="text/javascript" src="conduit-data.js"></script>

@@ -283,6 +283,9 @@ const UI = {
         form: document.getElementById("add-conductor-1-form"),
         colorInput: document.getElementById("add-conductor-1-color"),
         typeDropdown: document.getElementById("add-conductor-1-type"),
+        materialCuRadio: document.getElementById("add-conductor-1-material-cu"),
+        materialAlRadio: document.getElementById("add-conductor-1-material-al"),
+        amperageInput: document.getElementById("add-conductor-1-amperage"),
         cccCheckbox: document.getElementById("add-conductor-1-ccc"),
 
         init: function () {
