@@ -261,7 +261,7 @@ const UI = {
 
             self.nameInput.value = "";
             self.conductors = [];
-            self.updateConductors();
+            self.updateConductorTable();
 
             self.container.style.display = "block";
         },

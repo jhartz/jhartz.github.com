@@ -201,10 +201,6 @@ h1, h2, h3 {
   line-height: 1.1;
 }
 
-h1.centered, h2.centered, h3.centered {
-  text-align: center;
-}
-
 h1 {
   font-size: 28px;
 }
@@ -215,6 +211,14 @@ h2 {
 
 h3, h4, h5, h6 {
   color: #494949;
+}
+
+.middled {
+  vertical-align: middle;
+}
+
+.centered {
+  text-align: center;
 }
 
 blockquote {
@@ -521,6 +525,10 @@ div.buttons dd > img:first-child {
     display: inline-block;
     width: 50%;
     vertical-align: top;
+  }
+
+  div.row > div.row-item {
+    display: inline-block;
   }
 }
 
