@@ -17,21 +17,21 @@ title: Conduit Calculator
     <table><tbody id="circuit-table"></tbody></table>
     <p><button id="add-circuit-button">Add Circuit</button></p>
 
-    <table><tbody>
+    <table class="little"><tbody>
       <tr>
-        <td class="middled">
+        <td>
           <input type="checkbox" id="add-egc">
         </td>
-        <td class="middled">
-          <label for="add-egc"> Include <abbr title="Equipment Grounding Conductor">EGC</abbr></label>
+        <td>
+          <label for="add-egc">Include <abbr title="Equipment Grounding Conductor">EGC</abbr></label>
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
-        <td class="middled">
-          <div id="add-egc-container" class="middled row">
-            <div class="row-item"><select id="add-egc-type"></select></div>
-            <div class="row-item">
+        <td>
+          <div id="add-egc-container" class="row">
+            <div class="middled row-item"><select id="add-egc-type"></select></div>
+            <div class="middled row-item">
               <label for="add-egc-material-cu">
                 <input type="radio" id="add-egc-material-cu" name="add-egc-material" value="cu" checked>
                 <abbr title="Copper">Cu</abbr>
@@ -42,7 +42,7 @@ title: Conduit Calculator
                 <abbr title="Aluminum">Al</abbr>
               </label>
             </div>
-            <div class="row-item"><select id="add-egc-size"></select></div>
+            <div class="middled row-item"><select id="add-egc-size"></select></div>
           </div>
         </td>
       </tr>
@@ -69,10 +69,10 @@ title: Conduit Calculator
       <fieldset>
         <legend>Add by Required Amberage (Breaker Size)</legend>
         <div><em>Recommended</em></div>
-        <div class="middled row">
-          <div class="row-item"><input type="color" id="add-conductor-1-color"></div>
-          <div class="row-item"><select id="add-conductor-1-type"></select></div>
-          <div class="row-item">
+        <div class="row">
+          <div class="middled row-item"><input type="color" id="add-conductor-1-color" placeholder="Color" value="#000000"></div>
+          <div class="middled row-item"><select id="add-conductor-1-type"></select></div>
+          <div class="middled row-item">
             <label for="add-conductor-1-material-cu">
               <input type="radio" id="add-conductor-1-material-cu" name="add-conductor-1-material" value="cu" checked>
               <abbr title="Copper">Cu</abbr>
@@ -83,7 +83,7 @@ title: Conduit Calculator
               <abbr title="Aluminum">Al</abbr>
             </label>
           </div>
-          <div class="row-item">
+          <div class="middled row-item">
             <label for="add-conductor-1-ccc"><input type="checkbox" id="add-conductor-1-ccc"> <abbr title="Current-Carrying Conductor">CCC</abbr></label>
           </div>
         </div>
