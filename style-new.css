@@ -336,19 +336,21 @@ article div.postbody {
   margin-left: 20px;
 }
 
-aside {
+aside, .box {
    background-color: #fff;
    border-radius: 12px;
    border: 1px solid white;
    -webkit-box-shadow: 1px 1px 6px #6c7989;
    -moz-box-shadow: 1px 1px 6px #6c7989;
    box-shadow: 1px 1px 6px #6c7989;
+   margin: 0 0 15px 15px;
+   padding: 7px 7px 0;
+}
+aside {
+   max-width: 27%;
+   float: right;
    clear: both;
    display: block;
-   float: right;
-   margin: 0 0 15px 15px;
-   max-width: 27%;
-   padding: 7px 7px 0;
 }
 aside.limitless {
   max-width: none;
