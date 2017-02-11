@@ -600,10 +600,6 @@ div.row > div.row-item {
   }
 }
 @media print, screen and (max-width:580px) {
-  aside {
-    display: none;
-  }
-
   header ul {
     float: none;
   }
