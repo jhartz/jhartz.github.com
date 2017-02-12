@@ -75,6 +75,10 @@ strong, b {
   font-weight: 700;
 }
 
+small {
+  font-size: 11px;
+}
+
 details summary {
   cursor: pointer;
 }
@@ -113,12 +117,12 @@ header p {
   color: #fafafa;
   width: 300px;
 }
-header p.view {
+header p.tagline-mobile {
   display: none;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
-header p.view small {
+header p.tagline-mobile small {
   font-weight: 400;
 }
 
@@ -258,7 +262,7 @@ figure p {
 }
 
 img {
-  max-width:100%;
+  max-width: 100%;
 }
 
 code, pre {
@@ -293,6 +297,10 @@ th, td {
   border-bottom: 1px solid #aaa;
 }
 
+th {
+  color: #222;
+}
+
 table.little, table.little table {
   margin: 0;
   width: auto;
@@ -307,21 +315,12 @@ dt {
   font-weight: 700;
 }
 
-th {
-  color: #222;
-}
-
-small {
-  font-size: 11px;
-}
-
 hr {
   border: 0;
   background-color: #aaa;
   height: 1px;
   margin: 0 0 20px;
 }
-
 
 p.timestamp {
   font-style: italic;
@@ -332,7 +331,8 @@ article p.timestamp {
   margin: 10px;
   margin-left: 20px;
 }
-article div.postbody {
+
+.indented {
   margin-left: 20px;
 }
 
@@ -422,8 +422,8 @@ footer > p, footer > ul {
 
 /* If multiple things, make columns (left, right, left, right, ...)
    Can be specified using class names ("left" and "right"), or by default alternates (left, right, left, right, ...) */
-footer >  p:not(.right):not(.center):not(:only-child):nth-child(2n+1),
-footer > ul:not(.right):not(.center):not(:only-child):nth-child(2n+1),
+footer >  p:not(.right):not(.centered):not(:only-child):nth-child(2n+1),
+footer > ul:not(.right):not(.centered):not(:only-child):nth-child(2n+1),
 footer > p.left, footer > ul.left {
   /* Left (default for odd children) */
   clear: left;
@@ -431,8 +431,8 @@ footer > p.left, footer > ul.left {
   text-align: left;
   padding-left: 10px;
 }
-footer >  p:not(.left):not(.center):not(:only-child):nth-child(2n),
-footer > ul:not(.left):not(.center):not(:only-child):nth-child(2n),
+footer >  p:not(.left):not(.centered):not(:only-child):nth-child(2n),
+footer > ul:not(.left):not(.centered):not(:only-child):nth-child(2n),
 footer > p.right, footer > ul.right {
   /* Right (default for even children) */
   clear: right;
@@ -457,7 +457,7 @@ div.grid-cell dd > img:first-child {
   float: left;
 }
 
-div.row > div.row-item {
+div.row > div.row-cell {
   white-space: nowrap;
   padding-bottom: 10px;
 }
@@ -543,7 +543,7 @@ div.row > div.row-item {
     box-sizing: border-box;
   }
 
-  div.row > div.row-item {
+  div.row > div.row-cell {
     display: inline-block;
     padding-right: 10px;
   }
@@ -621,7 +621,11 @@ div.row > div.row-item {
     color: inherit;
   }
 
-  header p.view {
+  header p.tagline {
+    display: none;
+  }
+
+  header p.tagline-mobile {
     display: block;
   }
 
@@ -629,11 +633,6 @@ div.row > div.row-item {
     width: 100%;
   }
 
-  header p.noview {
-    display: none;
-  }
-
-  /* Just in case this might be helpful... */
   .nomobile {
     display: none;
   }
@@ -646,7 +645,7 @@ div.row > div.row-item {
     color: #000 !important;
   }
 
-  .ads-container {
+  div.ads-container {
     display: none;
   }
 
