@@ -536,6 +536,8 @@ div.row > div.row-item {
     display: inline-block;
     width: 50%;
     vertical-align: top;
+    padding: 6px;
+    box-sizing: border-box;
   }
 
   div.row > div.row-item {
