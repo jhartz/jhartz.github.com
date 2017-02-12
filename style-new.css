@@ -441,18 +441,18 @@ footer > p.right, footer > ul.right {
   padding-right: 10px;
 }
 
-div.buttons dt {
+div.grid-cell dt {
   clear: both;
   margin-left: 15px;
   margin-top: 10px;
 }
 
-div.buttons dd {
+div.grid-cell dd {
   margin-left: 40px;
   margin-right: 30px;
 }
 
-div.buttons dd > img:first-child {
+div.grid-cell dd > img:first-child {
   max-height: 3em;
   float: left;
 }
@@ -532,9 +532,12 @@ div.row > div.row-item {
     -webkit-font-smoothing: antialiased;
   }
 
-  div.buttons {
-    display: inline-block;
+  div.grid-2col div.grid-cell {
     width: 50%;
+  }
+
+  div.grid-cell {
+    display: inline-block;
     vertical-align: top;
     padding: 6px;
     box-sizing: border-box;
